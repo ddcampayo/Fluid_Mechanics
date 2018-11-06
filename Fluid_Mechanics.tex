@@ -1,0 +1,51 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage{graphicx} %\usepackage[utf8]{inputenc}
+% center all figures:
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\usepackage{bbold}
+
+
+\usepackage{amsmath}
+\usepackage{bm}
+
+\usepackage[sc]{mathpazo}
+\linespread{1.05} % Palladio needs more leading (space between lines)
+\usepackage[T1]{fontenc}
+
+\usepackage{siunitx}
+
+%\newcommand{\eye}{\mathbf{1}}
+\newcommand{\eye}{\mathbb{1}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfq}{\mathbf{q}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bff}{\mathbf{f}}
+\newcommand{\bfg}{\mathbf{g}}
+\newcommand{\bfe}{\mathbf{e}}
+\newcommand{\bfn}{\mathbf{n}}
+\newcommand{\bfr}{\mathbf{r}}
+\newcommand{\vort}{\bm{\omega}}
+\newcommand{\divu}{\nabla\cdot\bfu}
+
+\begin{document}
+
+\include{front}
+
+\tableofcontents
+
+\include{intro}
+
+\include{chapter_inviscid}
+\include{chapter_viscous}
+%\input{etc}
+
+\begin{appendix}
+   \listoffigures
+   \listoftables
+\end{appendix}
+
+
+\end{document}

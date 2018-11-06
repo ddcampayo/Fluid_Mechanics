@@ -1,0 +1,491 @@
+If the flow is initially irrotational, it will remain so due to
+Lagrange's theorem. This means it must be the gradient of a scalar
+function, which is called the velocity potential:
+\[
+\bfu = \nabla \phi .
+\]
+
+This is similar to the relationship between electric field and
+electric potential (or the gravitational equivalent), with the
+important practical difference that no minus sign is used. This means
+that the velocity points from regions of low potential to regions of
+high potential, in the direction of steepest ascent.
+
+If the flow is also incompressible, $\nabla\cdot\bfu$, it follows that
+the potential must be a solution of Laplace's equation:
+\[
+\nabla^2 \phi =0 .
+\]
+
+
+
+\section{Flow past a cylinder}
+
+Let us consider the 2D flow past a cylinder. The velocity field must
+approach a constant value far away from the obstacle, which we will
+take as the horizontal direction: $u_x = u_0 $. The traverse direction
+is $y$, and there is no dependence on $z$. This value fixes one of the
+boundary conditions for the potential:
+\[
+\phi \to u_0 x \qquad \text{away from cylinder} ,
+\]
+plus a non-important constant, which we will take as $0$, fixing
+$\phi$ to be zero at the origin (which coincides with the cylinder
+axis.)
+
+The other boundary condition is related to the presence of the
+cylinder. The least that the velocity field must satisfy is that the
+flow does not trespass the surface of the cylinder. This means its
+normal component should vanish there:
+\[
+\bfu \bfn = 0  \qquad \text{at the cylinder} ,
+\]
+where $\bfn$ is the normal vector at the surface of the cylinder,
+pointing outside. Given our choice of origin, this vector is the unit
+radial vector, $\bfn = \bfe_r$.
+
+It turns out this condition is the \emph{only one} needed to complete
+the problem --- in the positive sense that we will be able to find
+explicit solutions to the problem, but also in the negative sense that
+more physical boundary conditions cannot be accomodated. In
+particular, it is not possible to impose the often-used ``no-slip''
+boundary condition, in which the velocity would be zero at the surface
+(not only its normal component, but its tangential components too).
+
+Given the latter condition is somewhat more complex than the first
+one, it is best to switch to polar coordinates. In
+Annex \ref{annex:diff} we can find the expression for the gradient:
+\begin{align}
+u_r &= \frac{\partial\phi}{\partial r}\\
+u_\theta &= \frac{1}{r} \frac{\partial\phi}{\partial \theta}\\
+\end{align}
+
+
+Our boundary conditions for the potential are
+\begin{align}
+  \phi(r \to \infty ) &=  u_0 r \cos(\theta)  \\
+  \left. \frac{\partial\phi}{\partial r} \right|_{r = R } &= 0  .
+\end{align}
+%The last one is very simple, since in polar coordinates,
+
+Let us try a function
+\[
+\phi =  u_0 r \cos(\theta)  + f(r) g(\theta) .
+\]
+The boundary conditions imply that $g(r)$ should vanish as $r$ gets
+large. Also, the angular function $g$ must clearly be
+$\cos\theta$. Otherwise, it will be unable to cancel the $u_0
+r \cos(\theta)$ term. Lastly, it must itself be a solution of the
+Laplace equation. With the Laplacian operator in
+Annex \ref{annex:diff},
+\[
+\nabla^2 (f \cos(theta ) ) =
+\frac{ \cos(theta ) }{r} \frac{\partial r f}{\partial r} -
+\frac{ f \cos(theta ) }{r^2} = 0
+\]
+This equation has solutions $f=r$ (which we already knew), and
+$f=1/r$. Of course, a prefactor may be added, so our guess is now
+\[
+\phi = \left( u_0 r + \frac{A}{r} \right) \cos(\theta) .
+\]
+
+Now, in order its radial derivative vanish at $r=R$,
+\[
+ \left ( u_0  - \frac{A}{R^2} \right) \cos(\theta) = 0 ,
+\]
+which gives $A=u_0 R^2 $ The solution can then be written as
+\[
+\phi = u_0 r \left[ 1 + \left( \frac{R}{r}\right)^2 \right] \cos(\theta) .
+\]
+
+\subsection{Velocity field}
+
+The velocity results immediately from this expression. From the
+expressions above:
+\begin{align}
+u_r     &=   u_0  \left[ 1 - \left( \frac{R}{r}\right)^2 \right] \cos(\theta) \\
+u_\theta &=   u_0  \left[ 1 + \left( \frac{R}{r}\right)^2 \right] \sin(\theta) .
+\end{align}
+
+Notice this field has a clear up-down, and left-right symmetry, which
+was already present in the potential. Also, there are two points, at
+$r=R$ and $\theta=0$ and $\pi$ in which the velocity is null. We said
+it was impossible to make the velocity equal to zero all over the
+surface of the cylinder, but it turns out it may be so at some
+points. These are call stagnation points, because the liquid particles
+may be traped there for a long time.
+
+Also, the velocity modulus is
+\[
+u = \sqrt{ u_r^2 + u_\theta^2}  ,
+\]
+which may be readily computed, see
+Fig. \ref{fig:potential_flow_past_cylinder_vel}, where it is shown
+that the velocity has maximum values at point at the surface of the
+cylinder, at $\theta=\pm \pi/2$. At these surface, the radial velocity
+vanishes and the velocity is readily obtained:
+\[
+u = |u_\theta| = 2 u_0  \sin(\theta) ,
+\]
+so the maximum speed is twice the current velocity.
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_vel}
+  \caption{\label{fig:potential_flow_past_cylinder_vel}}
+\end{figure}
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_vel_p}
+  \caption{}%\label{fig:potential_flow_past_cylinder_vel}}
+\end{figure}
+
+
+The pressure field can be obtained from Bernoulli's principle:
+\[
+p= p_0 +  \frac{\rho}2  \left(u_0^2 - u^2 \right) ,
+\]
+and is plotted in
+Fig. \ref{fig:potential_flow_past_cylinder_phi_p}. This Figure also
+shows the potential field, to stress the difference between the
+two. The velocity field does not simply ``goes from high to low
+pressures'', except in those areas in which the two fields happen to
+have similar gradients.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_phi_p}
+  \caption{\label{fig:potential_flow_past_cylinder_phi_p}}
+\end{figure}
+
+The pressure field has a striking left-right symmetry. This of course
+applied to its value at the surface. Since the pressure is the only
+force this fluid may exert upon the cylinder, the consequence is that
+the net force on it is exactly zero. The push it experiences towards
+the right is exactly cancelled by the push back towards the
+left. Therefore, the drag, which in this case is the net horizontal
+force, is zero.
+
+This striking result is known as d'Alembert's paradox, and marked a
+historical chasm between theoretical fluid mechanics and applied
+hydraulics. Indeed, the applied community could accept that the push
+back may exist. Indeed, it had been hypothesized to be solely
+responsible for objects moving even when not given a force in
+Aristotelian physics. The effect is real, and is used regularly by
+cyclist that may take advantage from it, by staying close to the back
+of a moving vehicle. However, it is not acceptable to accept that it
+should be exactly equal to the drag.
+
+We now know that the crucial ingredient is the viscosity, which
+manifests mathematically in a different boundary condition, such as
+no-slip. This way, a real cylinder is dragged with the flow. We will
+show later that it is easy to obtain the drag on a sphere in the limit
+of high viscosity (a cylinder is not solvable due to another paradox,
+as we will see.)
+
+In case some mathematical justification is required, the pressure
+at the surface on the cylinder is
+\[
+ p= p_0 + \frac12  u_0^2 \left(1 -  4   \sin^2(\theta) \right),
+\]
+
+Now, the drag is given by the net force in the $x$ direction. The
+(vector) force due to pressure is:
+\[
+\mathbf{F} = \int_0^H \int_0^{2\pi}   p(\theta)  \bfn  R d\theta  dz ,
+\]
+where $p(\theta) \bfn \bfe_x R d\theta dz $ is the pressure force on a
+differential surface of area $ R d\theta dz$. Now, the drag will be
+its projection on the horizontal axis:
+\[
+D= \mathbf{F} \cdot \bfe_x = \int_0^H \int_0^{2\pi}
+p(\theta) \cos(\theta) R d\theta dz .
+\]
+The integral is zero, since it consists of two terms. The first one
+involves constant term. Of course, a constant pressure exerts no net
+force, and mathematically:
+\[
+ \int_0^{2\pi} C \cos(\theta) d\theta = C  \int_0^{2\pi}  \cos(\theta) d\theta = 0 .
+\]
+
+The other term involves a $sin^2$ term. Now, this integral is also
+zero:
+\[
+ \int_0^{2\pi}  \cos(\theta)  \sin^2(\theta) d\theta = 0 .
+\]
+qThe reason is that $\sin^2$ may be written as another constant term
+and a term proportional to $\cos(2\theta)$. (To be precise,
+$\sin^{2}\theta ={\frac {1-\cos(2\theta )}{2}}$.) Cosines form an
+orthogonal basis: an integral of two different cosines over one period
+will be zero. Unless they are the same cosine, when the integral is
+$\pi$. To be precise, for integer $m$ and $n$:
+\[
+\frac{1}{2\pi} \int_0^{2\pi}  \cos(m \theta) \cos(n \theta)  d\theta = 
+\begin{cases}
+0 \quad \text{if } m\ne n \\
+\frac12 \quad \text{if } m = n 
+\end{cases} .
+\]
+(It is more elegant to divide by $2\pi$ to express the integral as a
+mean value.) In fact, the previous result about the constant pressure
+is a particular case in which $m=0$.
+
+It is also interesting that such an integral involving a sine and a
+cosine is always zero. This shows that the lift is always null:
+\[
+L= \mathbf{F} \cdot \bfe_x = \int_0^H \int_0^{2\pi}
+p(\theta) \sin(\theta) R d\theta dz = 0
+\]
+
+
+
+\subsection{Streamlines}
+
+For steady 2D flow, it is very convenient to introduce the stream
+function $\psi$. It is defined such that its contour lines produce the
+streamlines. Upon some reflection this means that its gradient should
+always be perpendicular to the velocity:
+\[
+\bfu \cdot \nabla\psi = 0 .
+\]
+This is at variance with the potential, whose gradient is parallel to
+the velocity (it is indeed, the velocity itself). Thus $\phi$ and
+$\psi$ are orthogonal functions, in the sense that their gradients
+are.
+
+It is easy to check that if
+\[
+\bfu = \nabla\psi \times \bfe_z ,
+\]
+the resulting velocity has only $x$ and $y$ components (being
+perpendicular to $\bfe_z$), as it must. Also, $\nabla\psi$ will fit
+the requirements (since its gradient will be both perpendicular to
+$\bfe_z$, and to $\bfu$).
+
+This leads to the identities, in cylindrical coordinates
+\begin{align}
+%\bfu_x &=  \frac{\partial \psi}{\partial y} \\
+%\bfu_y &= -\frac{\partial \psi}{\partial x} ,
+\bfu_r &= \frac1r \frac{\partial \psi}{\partial \theta} \\
+\bfu_\theta &=   - \frac{\partial \psi}{\partial r} .
+\end{align}
+The $\psi$ field is then found to be
+\[
+\psi = u_0 \left( r-{\frac {R^{2}}{r}}\right)\sin \theta
+\]
+
+The contour lines of this field are shown in
+Fig. \ref{fig:potential_flow_past_cylinder}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder}
+  \caption{\label{fig:potential_flow_past_cylinder}}
+\end{figure}
+
+Interestingly, the $\psi$ field is also a solution of Laplace's
+equation, $\nabla^2 \psi=0$. There is also the fact that we may write
+\[
+\phi = u_0 \Re \left( z  + \frac{R^2}{z} \right) ,
+\]
+where $z=r e^{i\theta}$ is the complex number related to the $r$ and
+$\theta$ coordinates. Then,
+\[
+\psi = u_0 \Im \left( z  + \frac{R^2}{z} \right) .
+\]
+%
+I.e. both fields are the real and imaginary part of the same complex
+function:
+\[
+f(z) = u_0 \left( z  + \frac{R^2}{z} \right)
+\]
+
+This is no coincidence, but a consequence of Cauchy-Riemann
+equations: the real and imaginary part of a complex function are
+harmonic (i.e. they satisfy Laplace's equation) and orthogonal. To be
+more precise, the complex function must be analytic. The later
+requirement is pretty general: it means the function must be
+single-valued and and must have a derivative everywhere. The reader
+may worry about the origin and the $1/z$ function. This is, however,
+outside our domain, which ends when $r>R$. However, the fact that our
+domain has this ``hole'' in it has some consequences, as we will see
+next.
+
+
+\subsection{Circulation and lift}
+
+It turns out that, despite our previous claims of having found the
+solution to the problem, this is not a unique solution%
+\footnote{This is because our domain has a hole in it. Technically, it
+  is not simply-connected. This means there is an additional parameter
+  to fix the most general solution. This is called the ``winding
+  number'', and is basically this section's $\Gamma$.}.
+%
+The most general one is given by
+\[
+ f(z) = u_0 \left( z + \frac{R^2}{z} \right)
+ + \frac{i \Gamma}{2\pi} \log z \qquad
+ \phi=\Re(f) \quad
+ \psi=\Im(f) .
+\]
+I.e. we may add an additional term which is also analytic. The $i
+\Gamma/(2\pi)$ factor is chosen for convenience, as will become
+clear. Both $\phi$ and $\psi$ are still harmonic and orthogonal, since
+$\log(z)$ is analytic. Notice $i \log(z)= i \log(r) - \theta$, so
+$\phi$ contains a term that is just the polar angle, while $\psi$ will
+include a $\log(r)$ term.
+
+The resulting velocity field still complies with the boundary
+conditions, since the resulting velocities:
+\begin{align}
+u_r     &=   u_0  \left[ 1 - \left( \frac{R}{r}\right)^2 \right] \cos(\theta) \\
+u_\theta &=   u_0  \left[ 1 + \left( \frac{R}{r}\right)^2 \right] \sin(\theta) +\frac{\Gamma}{2\pi r} 
+\end{align}
+have an additional term which dies away far from the cylinder, while
+the no-trespass condition at the surface is still respected (since the
+radial velocity does not change at all).
+
+The name of $\Gamma$ is ``circulation'', since
+\[
+\Gamma = \oint_C \bfu\cdot d\mathbf{l}
+\]
+for any contour around the cylinder \footnote{This makes the velocity
+  field non-conservative, which is again allowed due to the domain
+  being not simply-connected.}.
+
+At the surface of the cylinder,
+\[
+u= u_\theta =   u_0  2 \sin(\theta) +\frac{\Gamma}{2\pi R} .
+\]
+The stagnation points then move away from their positions, to points given by
+\[
+\sin(\theta_\mathrm{st})  = \frac{\Gamma}{4\pi R u_0} .
+\]
+This has two solutions, of course, as long as the right-hand side is
+between $-1$ and $1$. For values below or above, the points coalesce
+into a single stagnation point that is outside the cylinder.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_rotating}
+  \caption{\label{fig:}}
+\end{figure}
+
+
+This new velocity field does not solve d'Alambert's paradox, but it
+does provide a lift, since the pressure at the surface is
+\[
+p= p_0 + \frac{\rho}2   \left(u_0^2 -  \left[ 2  u_0 \sin(\theta) - \frac{\Gamma}{2\pi R} \right]^2 \right) =
+\ldots  2 \rho u_0   \frac{\Gamma}{2\pi R} \sin\theta ,
+\]
+where we single out the only term that can produce a contribution to the lift.
+
+Now,
+\[
+L= \mathbf{F} \cdot \bfe_x = \int_0^H \int_0^{2\pi}
+p(\theta) \sin(\theta) R d\theta dz =
+2 L  \rho u_0  R  \frac{\Gamma}{2\pi R}   \int_0^{2\pi}  \sin^2(\theta) d\theta =
+ H \rho u_0   \Gamma .
+\]
+Therefore, the lift per unit length is $L/H= \rho u_0 \Gamma$. It is
+interesting that heavier fluids, high speeds and high $\Gamma$ produce
+higher lift forces.
+
+It turns out that this result for the lift is quite general, at least
+for these kind of potential flows. It is known as the Kutta-Joukowski
+Lift Theorem, and has been used for decades in aeronautics. The idea
+is to map our solution for a cylinder to another, more wing-like,
+shape, by some conformal transformations. These transformations, or
+``mappings'', preserve the harmonicity of functions --- hence the
+transformed $\phi$ and $\psi$ will still be solutions of Laplace's
+equation. Historically, the best known mappings are the Joukowsky
+K\'rm\'an–Trefftz transforms.
+
+For a plane wing, it makes sense to relate circulation and lift, since
+this captures, in a way, the fact that the velocity is higher at the
+top of the wing, lower below, so the net circulation is non zero. (Of
+course, this cannot hold right at the surface of an actual wing, since
+the velocity there will be zero. But this can be measured somewhat
+further away, beyond a boundary layer.) For a cylinder, this makes
+little sense, but this picture is sometimes used to explain the Magnus
+effect. This causes a rotating cylinder to bend as it moves across a
+fluid. This is used (for spheres) in sports, such as tennis, golf and
+football. Also, for cylinder-like rotors in ``rotor ships,'' which use
+the Magnus effect for propulsion.
+
+
+As an aside, if we move along with the plane, or ship, we will not see
+those velocity fields. The horizontal component should be avoided in
+every equation, and the resulting velocity looks different. This is
+shown in Fig. , for the flow past a cylinder with and without
+circulation. It is seen that, for an observoer moving with the
+cylinder, the surrounding fluid is pushed from the fore, and moved
+around towards the aft (where it pushes our vehicle, magically making
+our journey a costless one!).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_moving}
+  \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_rotating_moving}
+  \caption{\label{fig:}}
+\end{figure}
+
+
+
+
+\subsection{Exercises}
+
+
+  The potential flow past a sphere of radius $R$ is given by the
+  potential function
+  \[
+  \phi(r,z) = u_0 r
+  \left[
+    1 +
+    \frac12 \left(\frac{R}{r})^3\right)
+  \right] \cos\theta .
+  \]
+  Spherical coordinates are used: $r$ is the distance to the origin
+  (which coincides with the centre of the sphere), and $\theta$ is the
+  angle with the $z$ axis. Flow far away from the sphere is along the
+  $+z$ direction, with magnitude $u_0$.
+
+    \begin{enumerate}
+      \item Demonstrate this fact.
+      \item Compute the velocity components $u_r$ and $u_\theta$.
+      \item Show that the stream function is given by
+      (see Fig. \ref{fig:potential_streamlines_sphere}).
+        \[
+      \psi(r,z) = \frac12 u_0 r^2
+      \left[
+        1 -
+        \left(\frac{R}{r})^3\right)
+        \right] \sin^2\theta .
+      \]
+    \item Compute the stream function for the flow as seen when moving
+      with the sphere
+      (see Fig. \ref{fig:potential_streamlines_moving_sphere}). 
+    \end{enumerate}
+
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_sphere}
+      \caption{\label{fig:potential_streamlines_sphere} Streamlines of
+        the potential flow past sphere}
+    \end{figure}
+
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_sphere_moving}
+  \caption{\label{fig:potential_streamlines_moving_sphere}}
+\end{figure}
+
+
+
+
+

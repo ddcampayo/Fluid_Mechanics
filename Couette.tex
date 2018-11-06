@@ -1,0 +1,254 @@
+\section{Couette flow}
+
+As a simple solution, let us derive the flow that was given as an
+example in our derivation of section \ref{sec:}. A plane moves in the
+$x$ direction, parallel of a fixed plane, and separated a distance $L$
+from it. The velocity field is supposed to depend only on $y$ and have
+reached a steady state. (Notice that these assumptions restrict our
+solution space to a very limited choice. Since the equation are known
+not to comply with unicity, there may be other solutions, as indeed
+there are.)
+
+While this particular geometry may seem artificial, the original
+Couette aparatus used a fluid between two coaxial cylinders. It is
+quite easy to assemble and is one of the first accurate
+viscometers. This flat geometry may be thought of as the limit of a
+thin fluid layer between the curved surfaces.
+
+In this flow, the total derivative in the momentum equation is
+zero. The partial derivative is zero in steady state, and the
+non-linear term also is, since $\bfu\nabla \bfu$ is
+\[
+u_x \frac{\partial u_y}{\partial x} +
+u_y \frac{\partial u_y}{\partial y} = 0 .
+\]
+
+Also, $\nabla\cdot\bfu=0$, so the flow will always be
+incompressible. The pressure then is constant, since it does not need
+to ``ensure'' incompressibility.
+
+The equation reduces then to
+\[
+\mu \frac{\partial^2 u_x}{\partial y^2} = 0 .
+\]
+
+The viscosity is then seen to be of no importance (other than it is
+needed to reach a steady state, as shown below). The solution is
+simply a linear function of $y$. The particular shape of the function
+is given by the boundary conditions. If we take the usual no-slip
+conditions, the velocity matches the velocity at the walls:
+\[
+u_x(y=0) =  0 \qquad u_x(y=L) = u_0 .
+\]
+Therefore,
+\[
+u_x =   u_0 \frac{y}{L} .
+\]
+These are called Dirichlet boundary conditions, since they fix the
+value of the field.
+
+This is the solution assumed in previous sections, when introducing
+the viscosity coefficient. Even if the latter does not appear in the
+velocity field, the stress tensor has only one independent component:
+\[
+\epsilon_{xy}=
+\epsilon_{yx}=
+\mu \frac{u_0}{L} .
+\]
+The tensor is also constant throughout the fluid.
+
+This has physical importance, since both plates will feel a total
+stress force
+\[
+F= A \epsilon_{xy} = \mu A \frac{u_0}{L} .
+\]
+
+This force must be maintained on the moving plate in order to keep the
+steady flow (the fixed one must be anchored, and should resist the
+same force in order not to be dragged along). Energy must then be
+provided to the system, which is dissipated by viscosity. The power
+into the system will be
+\[
+F u_0 = \mu A \frac{u_0^2}{L} = \mu V  \left( \frac{u_0}{L}\right)^2 ,
+\]
+where $V=AL$ is the total fluid volume.
+
+Lastly, let us consider the volumetric flux:
+\[
+Q = \int_A v_x = \int_0^H dz \int_0^L dy v_x(y) =
+H  u_0 \int_0^L \frac{y}{L} dy =
+H L  u_0 \int_0^1 y' dy' =
+\frac12 A u_0 .
+\]
+
+The mean velocity is defined as $Q/A$. Therefore,
+\[
+\bar{u} = \frac12 u_0 ,
+\]
+so the solution may be written as
+\[
+u_x =   2\bar{u} \frac{y}{L} .
+\]
+
+
+
+
+\subsection{Start-up of Couette flow}
+
+It is not too difficult to solve the Navier-Stokes equations for
+non-steady Couette flow. In this case, the partial time derivative
+will not be absent, and
+\[
+{\frac {\partial u_x}{\partial t}}=\nu {\frac {\partial
+    ^{2}u_x}{\partial y^{2}}}.
+\]
+
+Boundary conditions are as above, and let us consider the initial
+fluid is at rest.
+
+It is easer to work out the solution by substrating the known steady state:
+\[
+u_x(y,t) = u(y,t)  + u_0 \frac{y}{L} \qquad
+u(y,t) = u_x(y,t)  - u_0 \frac{y}{L} 
+\]
+
+The reason is that the boundary conditions for the velocity field
+about the steady state are homegeneous:
+\[
+u(y=0,t) = u(y=L,t) = 0
+\]
+
+Then, one may use the standard technique of separation of variables:
+\[
+u(y,t) = Y(y) T(t) .
+\]
+
+The equation of motion then reads
+\[
+Y T' = \nu T Y'' \qquad\to\qquad  \frac{T'}{ \nu T} = \frac{Y''}{Y} = -c
+\]
+The last equality follows because functions of two independent
+variables can only be equal if constant.
+
+Therefore
+\[
+Y''= - c Y ,
+\]
+whose $n$-th solution, given the boundary conditions, is
+\[
+Y_n= A_n \sin(n\pi y/L),
+\]
+where $n$ is an integer greater than zero. The constant must then be
+$c=(n\pi/h)^2$. The corresponding time function is then,
+\[
+T_n=\exp(-c_n t) = \exp(-  n^2 \nu (\pi/L)^2   t) .
+\]
+
+In general, the solution will be a combination of all possible modes:
+\[
+u_x(y,t) =  u_0 \frac{y}{L}
++ \sum_n A_n
+\exp(-  n^2 \nu (\pi/L)^2   t)  \sin(n\pi y/h),
+\]
+where it is clearly seen that mode $n$ decays in a time that has an
+$n^2 /\nu $ dependence. The longest-lived one is then $n=1$, and modes
+with shortest wavelength decay quadratically faster. Also, the
+viscosity sets the time-scale of the process: high viscosity means
+shorter relaxation times. In the limit of no viscosity all times
+diverge, since a fluid without viscosity is unable to transmit the
+stress produced by the moving plane.
+
+The $A_n$ are given by the initial condition:
+\[
+u_x(y,t=0) =  
+u_0 \frac{y}{L}
++ \sum_n A_n \sin(n\pi y/h) = 0 ,
+\]
+which is a standard exercise in Fourier series analysis. The result
+may be shown to be
+\[
+u_x(y,t=0) / u_0  =  
+ \frac{y}{L}
++\frac{2}{\pi}
+ \sum_n \frac{(-1)^n}{n} \sin(n\pi y/h)  .
+\]
+
+This can also be written as 
+\[
+u_x(y,t=0) / u_0  =  
+ \frac{y}{L}
+-\frac{2}{\pi}
+ \sum_n \frac{1}{n} \sin(n\pi (1-y/h))  ,
+\]
+where the last sine term is always starts with a positive slope close to $y=h$.
+The negative sign of every term in the expansion means that all of them are
+trying very hard in order to push down the final steady-state linear solution
+toward the initial one, which is null.
+
+
+
+\subsection{Temperature}
+
+
+For the steady state, the temperature equation reduces to
+\[
+0 = k  \frac{\partial^2 T}{\partial y^2} + \Phi  .
+\]
+The dissipation function in this case is simply
+\[
+\Phi =   \mu  \left( \frac{\partial u_y}{\partial x} \right)^2 =
+4 \mu \bar{u}^2  \left(\frac{1}{L}  \right)^2 .
+\]
+
+The equation for the energy is therefore
+\[
+0 = k \frac{\partial^2 T}{\partial y^2} +
+4  \frac{ \mu \bar{u}^2  }{L^2} ,
+\]
+where $k$ is the thermal conductivity (units of power / (length
+$\times$ temperature), the whole equation has units of power / volume
+.) The boundary conditions needed may be the temperature at the two
+walls:
+\[
+T(y=0) = T_0 \qquad
+T(y=L) = T_1 ,
+\]
+also known as the ``no-jump'' temperature conditions. The fluid is
+supposed to have the same temperature as the walls under this
+framework. Others may be easily explored, such as fixed energy influx,
+which translate into conditions for the temperature derivatives at the
+walls (also known as Neumann boundary conditions). If the derivative
+is null, one has an adiabatic wall (aka homegeneous Neumann).
+
+Before solving the equation, let us cast it into dimensionless form,
+by reducing the temperature by its value on one wall: $T^* =
+T/T_0$. Similarly, $y^* = y/L$. Then,
+\[
+0 = k\frac{T_0}{ L^2} \frac{\partial^2 T^*}{\partial y^{*2}} +
+4  \frac{ \mu \bar{u}^2  }{L^2} ,
+\]
+or
+\[
+ \frac{\partial^2 T^*}{\partial y^{*2}} = 
+ -4  \frac{ \mu \bar{u}^2 }{ k T_0 }  =
+ -4 \mathrm{Br} ,
+\]
+where we define the important Brinkman number:
+\[
+\mathrm{Br} =
+\frac{ \mu \bar{u}^2 }{ k T_0 } .
+\]
+
+The number measures the importance of viscous dissipation over
+temperature dissipation.
+
+The final solution is:
+\[
+T^* = 1 + \frac{T_1-T_0}{T_0} y^* +
+2 \mathrm{Br}  y^* \left(1- y^* \right) .
+\]
+The first two terms ensure the boundary conditions are satisfied, and
+would be the only ones pressent if there were no viscous
+dissipation. The latter term provides the needed second derivative,
+and vanishes at the walls.
+

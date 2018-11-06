@@ -1,0 +1,128 @@
+\section{Material derivative}
+
+\section{Pressure forces}
+
+\section{The momentum equation}
+
+\begin{equation}
+  \label{eq:Euler_momentum}
+  \rho \frac{d\bfu }{dt} =
+  - \nabla p 
+  + \rho \bfg 
+\end{equation}
+
+\section{Bernouilli's principle}
+
+\input{Bernoulli}
+
+
+\section{Dimensionless variables}
+\label{sec:Euler_adim}
+
+A procedure to gain insight into a physical problem is to try to cast
+the different magnitudes into dimensionless (or, ``reduced'')
+ones. For example, if there is a relevant length scale $L$, all
+lengths may be rescaled according to it:
+\[
+x^*=\frac{x}{L} \quad
+y^*=\frac{y}{L} \quad
+z^*=\frac{z}{L} ,
+\]
+where an asterisk marks a dimensionless magnitude. We can also write
+it in vector notation: $\bfr^* = \bfr / L$.
+
+As an example, in some problems this is the only relevant scale, and
+the movement is driven by gravity, whose accelaration is $g$. In such
+cases, the time scale will be given by the only combination of $L$ and
+$g$:
+\[
+t_0 \sim \sqrt{\frac{ L }{ g }} .
+\]
+This is actually the correct result for the period of a simple
+pendulum, but for a numerical factor of $2\pi$ with no dimensions:
+$T=2\pi t_0$. No equations have been solved (or even written down) in
+order to arrive to this result. Notice also that for larger
+displacements of the pendulum, the amplitude of the motion is another
+length, which complicates the analysis.
+
+In many fluid problems there is a well-defined velocity $u_0$ that
+sets the velocity values (e.g. the upstream velocity in flows around
+objects). If this is the case,
+\[
+\bfu^* = \frac{\bfu}{u_0} \qquad
+t^*=\frac{t}{L/u_0} ,
+\]
+so the velocity and length set the time scale. If we apply this to
+our Euler equation,
+\[
+\rho \frac{d\bfu }{dt} =
+- \nabla p 
++ \rho \bfg  \qquad
+\rho \frac{u_0}{L/u_0} \frac{d\bfu^* }{dt^* } =
+- \nabla p 
++ \rho \bfg .
+\]
+
+Notice that the $\nabla$ operator can also be cast into dimensionless
+form. For example, its $x$ component is
+\[
+\nabla_x = \frac{\partial}{\partial x} = \frac{\partial}{\partial (x^* L) } =
+\frac{ 1 }{ L } \frac{\partial}{\partial x^* },
+\]
+so we may define
+\[
+\nabla^* = \frac{ 1 }{ L } \nabla.
+\]
+
+The Euler equation then reads,
+\[
+\rho \frac{u_0}{L/u_0} \frac{d\bfu^* }{dt^* } =
+- \frac{ 1 }{ L } \nabla^* p 
++ \rho \bfg .
+\]
+
+Usually, a reference value $\rho_0$ for the density is often known, so
+that $\rho^* = \rho / \rho_0$, and
+\[
+\rho_0 \rho^* \frac{u_0}{L/u_0} \frac{d\bfu^* }{dt^* } =
+- \frac{ 1 }{ L } \nabla^* p 
++ \rho \bfg .
+\]
+
+
+Now, multiplying throughout by $L/(\rho_0 u_0^2)$, and supposing for simplicity
+that the density is constant,
+\begin{equation}
+  \label{eq:Euler_just_before_adim}
+\rho^*
+\frac{d\bfu^* }{dt^* } =
+-  \nabla^* \frac{ p }{ \rho_0 u_0^2 } 
++  \frac{ L }{ u_0^2 } \bfg \qquad \to \qquad
+\rho^* \frac{d\bfu^* }{dt^* } =
+-  \nabla^* p^*
++  \rho^* \bfg^* 
+\end{equation}
+We have therefore found that the dimensionless pressure and gravity
+acceleration are given by
+\[
+p^*= \frac{ p }{ \rho_0 u_0^2 } \qquad
+\bfg^* = \frac{ L }{ u_0^2 } \bfg .
+\]
+
+The reduced pressure was to be expected, given the Bernoulli
+expressions involving $\rho u^2$. The reduced gravity is directly
+related to Froude's number, which is historically defined as
+\[
+\mathrm{Fr}=\frac{ \sqrt{gL}}{u_0}.
+\]
+Therefore, $ \bfg^* = \mathrm{Fr}^2 (\bfg/g) $, where vector $(\bfg/g)
+$ is the unit vector pointing in whichever direction the gravity
+points to in our problem (usually, $-y$ or $-z$.)
+
+
+It is easy to check that the continuity equation can likewise be
+cast into reduced form:
+\[
+\frac{d\rho^* }{dt^* }+
+ ( \nabla^* \bfu^*) = 0 .
+\]

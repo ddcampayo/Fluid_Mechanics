@@ -1,0 +1,177 @@
+In addition to continuity and momentum, there is an additional
+Navier-Stokes equation for the energy.
+
+It contains the previous expression for ideal fluid, plus a term
+expressing energy dissipation by viscosity.
+
+We must re-evaluate the work done on each of the faces of the
+particles due to stresses. For example, on the left wall the energy
+due to stress forces is
+\[
+dW(\mathrm{left})  =
+ -(u_x dt)   \tau_{xx} dy dz
+ -(u_y dt)   \tau_{xy} dy dz
+ -(u_z dt)   \tau_{xz} dy dz .
+\]
+
+Each of the stresses on this wall does work only in its direction of
+motion: $\tau_{xx}$ is compression and will feature a $-p$ term, which
+$\tau_{xy}$ and $\tau_{xz}$ produce shear forces. The minus sign stem from
+the sign convention, since on this wall shear stresses have directions
+opposed to the Cartesian axes. Similarly,
+\[
+dW(\mathrm{right})  =
+ (u_x' dt)   \tau'_{xx}  dy dz
++(u_y' dt)   \tau'_{xy} dy dz
++(u_z' dt)   \tau'_{xz} dy dz ,
+\]
+where the primed values mean those fields may be different from the
+left wall. Expanding in Fourier series, and adding everything up,
+\[
+dW(\mathrm{left,right})  =
+ \frac{\partial u_x \tau_{xx}}{\partial x}  dt dx  dy dz  +
+ \frac{\partial u_y \tau_{xy}}{\partial x}  dt dx  dy dz  +
+ \frac{\partial u_z \tau_{xz}}{\partial x}  dt dx  dy dz ,
+ \]
+or, we find for the power
+\[
+\frac{dW(\mathrm{left,right})}{dt}  =
+dV 
+\frac{\partial }{\partial x}
+\left(
+ u_x \tau_{xx} +
+ u_y \tau_{xy} +
+ u_z \tau_{xz}
+ \right) =
+dV 
+\frac{\partial }{\partial x}
+\sum_j u_j \tau_{xj}
+\]
+
+Adding the other four walls, we have:
+\[
+\frac{dW}{dt}  =
+dV
+ \sum_i \frac{\partial }{\partial x_i} \sum_j u_j \tau_{ij} .
+\]
+
+Since the stress tensor is symmetric, we may write the latter as
+\[
+\frac{dW}{dt}  =
+dV
+\nabla\cdot ( \tau \cdot  \bfu ) ,
+\]
+
+Now, the energy equation is, from the First Law:
+\[
+\frac{dE}{dt}  = \frac{dW}{dt} + \frac{dQ}{dt} =
+dV \nabla\cdot ( \tau \cdot  \bfu ) - dV\nabla\cdot\bfq .
+\]
+(The second term, due to heat flux, does not change from the inviscid
+case.)
+
+Dividing by the mass of the particle,
+\begin{equation}
+\label{eq:NS_en_2}
+\rho \frac{d \epsilon }{dt}  = 
+ \nabla\cdot ( \tau \cdot  \bfu ) - \nabla\cdot\bfq .
+\end{equation}
+(In this equation, $\epsilon=E/M$, as in \ref{}, not the strain rate.)
+
+The term $\nabla\cdot ( \tau \cdot \bfu )$ may be written applying the
+chain rule carefully:
+\begin{equation}
+  \nabla\cdot ( \tau \cdot  \bfu ) =
+  \tau : \nabla\bfu + \bfu\cdot(\nabla\cdot\tau) ,
+\label{eq:nabla_tau_u}
+\end{equation}
+where ``$:$'' means a total reduction of two tensors, $a:b=\sum_{ij}
+a_{ij} b_{ij} $, and $\nabla\bfu$ is the tensor with components
+$\partial u_i/\partial x_j$ (as introduced in the Euler
+equation \ref{eq:Euler_2}).
+
+We now just follow the steps already employed when deriving the energy
+equation for an inviscid fluid (Eqs \ref{eq:}).  The $\nabla\cdot\tau$
+appears in the general Navier-Stokes momentum equation \ref{eq:NS}:
+\[
+ \nabla \cdot \tau =
+\rho \left( \frac{d\bfu }{dt}    - \bfg \right) .
+\]
+
+Therefore,
+\[
+\bfu\cdot(\nabla\cdot\tau) =
+ \rho \left[
+ \frac12 
+  \frac{d u^2 }{dt}    - \bfg\cdot\bfu
+  \right] =
+   \rho
+  \frac{d (u^2 /2 - \bfg\cdot\bfr ) }{dt}    .
+\]
+
+The conclusion is then that the energy equation \ref{eq:NS_en_2} may be
+expressed as a law for the specific internal energy:
+\[
+\rho \frac{d e }{dt}  = 
+  \tau : \nabla\bfu - \nabla\cdot\bfq .
+\]
+This looks more similar to \ref{eq:} for an ideal fluid if we split the
+stress tensor into the pressure diagonal and the rest:
+\[
+\tau = \tau' - p \eye \qquad \to \qquad
+ \tau' : \nabla\bfu = \tau' : \nabla\bfu - p \divu ,
+\]
+hence
+\[
+\rho \frac{d e }{dt}  =  - p \divu - \nabla\cdot\bfq  + \Phi .
+\]
+
+The term $\Phi$ collects the result of viscosity and is termed
+the ``dissipation function'':
+\[
+\Phi = \tau' : \nabla\bfu .
+\]
+
+This term should always be positive if the Second Law is to hold:
+viscosity can only subtract energy from the system, never add it.
+Up until now our derivation has been generic. For a Newtonian fluid,
+however, one may go a bit further, and write:
+\begin{equation}
+  \Phi = \mu
+  \left[
+    % 2 \sum_i \left( \frac{\partial u_i}{\partial x_i}\right)^2
+    % \sum_i \left( \frac{\partial u_i}{\partial x_i}\right)^2
+    2 \sum_i \epsilon_{ii}^2 +
+    4  (\epsilon_{12}^2 + \epsilon_{13}^2 + \epsilon_{23}^2 )
+  \right]+
+  \lambda \divu^2 .\label{eq:Phi_Newtonian}
+\end{equation}
+
+This looks deceptively positive unconditionally. However, there is no
+reason $\lambda$ should be positive. It is a simple exercise to show
+that the conditions this term be positive are:
+\begin{equation}
+  \mu \ge 0 \qquad 3\lambda + 2\mu \ge 0 .\label{eq:mu_lambda_cond}
+\end{equation}
+
+TODO: exercise on this
+
+The first one comes as a relief, since a $\mu$ would be quite
+unphysical. The second limits the value of $\lambda$ to regions equal
+to, or above, $ - (2/3) \mu$. This latter term is precisely zero for
+``Stokesian'' fluids, as is obvious (since the corresponding term does
+not appear at all in the stress tensor for these hypothetical fluids.)
+
+\section{Exercises}
+
+\begin{enumerate}
+\item Check identity \ref{eq:nabla_tau_u}. Hint: use element notation.
+\item Show that the conditions in \ref{eq:mu_lambda_cond} are indeed
+  needed in order $\Phi$ in \ref{eq:Phi_Newtonian} be always
+  positive. (Hint: look for ``postitive-definite quadratic form''. The
+  expression for $\Phi$ can be expressed in such a way, and three
+  conditions are obtained for this positiveness. However, one of them
+  is $2\mu-\lambda \ge 0$, which is less restrictive than the other
+  two taken together, so only the two conditions quoted remain.)
+\end{enumerate}
+

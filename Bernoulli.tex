@@ -1,0 +1,160 @@
+The momentum equation \ref{eq:Euler_momentum} is still quite daunting
+due to its nonlinear term in the convective derivative.
+
+In order to make progress, it was Lamb's idea in 1895 to use the
+following identity for the vector product of any vector field and its
+curl:
+\[
+\bfu \times ( \nabla\times \bfu) =
+\frac12 \nabla u^2 - \bfu (\nabla \bfu )
+\]
+(in fact, the identity is somewhat more general, see exercise
+\ref{ex:vector_identity}).
+
+Introducing the name ``vorticity'' for the curl of the velocity field,
+\[
+\vort = \nabla\times\bfu ,
+\]
+we may write the momentum equation as
+\[
+\frac{\partial \bfu }{\partial t} +
+\frac12 \nabla u^2 - \bfu \times\vort =
+  - \frac{1}{\rho} \nabla p 
+  + \bfg .
+\]
+
+Our goal is to gather as many terms as we can inside a gradient, for
+reasons that will become clear soon. First, the gravitational
+acceleration is, by definition, $\bfg = -\nabla\varphi$, where
+$\varphi $ is the gravitational potential energy ($g z$ if the $z$
+axis is the vertical). Now, the pressure gradient over the density may
+be related to the gradient of pressure over density, thus:
+\[
+\nabla
+\left(
+\frac{p}{\rho}
+\right) =
+\frac{ \nabla p }{\rho} -
+\frac{ \nabla p }{\rho^2} \nabla \rho 
+\]
+Therefore,
+\[
+\frac{\partial \bfu }{\partial t} +
+ \nabla
+\left(
+\frac12 u^2 +
+\frac{p}{\rho} +
+\varphi
+\right)
+=
+  \bfu \times\vort +
+ \frac{ \nabla p }{\rho^2} \nabla \rho 
+\]
+
+Now, in steady flow we would have
+\[
+\nabla
+\left(
+\frac12 u^2 +
+\frac{p}{\rho} +
+\varphi
+\right)
+=
+  \bfu \times\vort +
+ \frac{ \nabla p }{\rho^2} \nabla \rho  .
+\]
+
+The term involving the vector product of the vorticity and the
+velocity is perpendicular to both. Hence, it vanishes upon a scalar
+multiplication with $\bfu$:
+\[
+\bfu\cdot
+\nabla
+\left(
+\frac12 u^2 +
+\frac{p}{\rho} +
+\varphi
+\right)
+=
+\frac{ \nabla p }{\rho^2} \bfu\cdot \nabla \rho  .
+\]
+ 
+In steady flow, the continuity equation is
+\[
+\bfu\cdot \nabla \rho  +
+\rho \nabla \cdot \bfu = 0 ,
+\]
+hence if the flow is incompressible (technically, divergence-free, as
+explained in section \ref{sec:}), $\bfu\cdot \nabla \rho $. I.e. the
+density does not change along streamlines. Then,
+\[
+\bfu\cdot
+\nabla
+\left(
+\frac12 u^2 +
+\frac{p}{\rho} +
+\varphi
+\right)
+=
+0 ,
+\]
+which states the fact that the quantity
+\[
+h = \frac12 u^2 + \frac{p}{\rho} + \varphi
+\]
+is constant along a given streamline. This result is known as
+Bernoulli's principle, and applies only to ideal, steady,
+incompressible flow. (There is a variant of it that applies to
+unsteady flow, as we will see in section \ref{sec:}.)
+%
+This combination is called ``the head'' and is customarily used in
+elementary applications of this result. Some of its direct
+applications are: the Venturi effect (by which the pressure decreases
+in zones with higher velocities), slow drainage of containers, syphons
+\ldots
+
+We will also see that in some cases, like in potential flow, the
+velocity field may be found independently of the pressure. This
+principle then yields the corresponding pressure from the velocity.
+
+%any field satisfies
+%\[
+%\frac{\partial \bfu }{\partial t} +
+%\]
+
+\section{Exercises}
+
+\begin{enumerate}
+\item \label{ex:vector_identity}) Prove that
+\[
+\bfu \times ( \nabla\times \bfq) =
+%\frac12
+\nabla_\bfq (\bfu\cdot\bfq) - \bfu \cdot \nabla \bfq ,
+\]
+for any two vector fields. By $\nabla_\bfq $ it is meant that the
+gradient is applied only on $\bfq$ (Feyman's subscript notation).
+Hint: the curl of a field is associated with a tensor with elements:
+\[
+\overline{( \nabla\times\bfq )_{ij}} =
+\left(
+\frac{\partial q_j}{\partial x_i} -
+\frac{\partial q_i}{\partial x_j}
+\right) \qquad
+\overline{( \nabla\times\bfq )_{ij}} =
+\sum_k \epsilon_{ijk}  ( \nabla\times\bfq )_k .
+\]
+In the latter, $\epsilon$ is a rank-three tensor, the totally
+antisymmetric tensor (also known as the Levi-Civita symbol).  If this
+seems mistifying, all that it is expressing is that e.g.  $
+(\nabla\times\bfq)_z= \partial q_x /\partial y - \partial q_y
+/\partial x$, et c\ae tera.
+
+This tensor appears also in the vector product:
+\[
+(\bfu\times\bfq)_i= \sum_{j,k} \epsilon_{ijk} u_j q_k .
+\]
+These two results make the demonstration quite simple. We will
+also be using these expressions in section \ref{sec:}, when
+we talk about rotations of a particle.
+
+\end{enumerate}

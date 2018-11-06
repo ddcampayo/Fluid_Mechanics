@@ -1,0 +1,201 @@
+\section{Poiseuille flow}
+
+\subsection{Planar flow}
+
+As with Couette flow, let us assume the only component
+of the velocity field is $u_x(y)$, a function of $y$ only.
+
+The steady 2D Navier-Stokes equations read
+\begin{align}
+  0 & =   - \frac{\partial p}{\partial x} +
+  \nu
+  \frac{\partial^2 u_x}{\partial y^2}
+   \\
+  0 &=   - \frac{\partial p}{\partial y} .
+\end{align}
+where $p$ is actually $p/\rho$. The second one stablishes that $p$ is
+a function of $x$ only. But in the first one, its derivative is
+related to a second derivative of a funcion of $y$ only. It follows
+that both equations should equal some constant:
+\[
+\frac{\partial p}{\partial x} =
+ \nu
+  \frac{\partial^2 u_x}{\partial y^2} = -c .
+\]
+I.e. $p= - c x$, plus a constant pressure which makes no
+difference. Notice the minus sign: we consider a pressure drop in
+the $x$ direction if $c > 0$.
+
+For the velocity, we must solve for
+\[
+  \frac{\partial^2 u_x}{\partial y^2} = -\frac{c}{\nu} ,
+\]
+given the boundary conditions $u_x(y=0)=u_x(y=L)=0$.
+
+The solution is
+\[
+u_x=\frac{c}{2\nu} y (L-y)
+\]
+
+The flow is
+\[
+Q= \frac{HL c L^2}{12\nu} ,
+\]
+and the mean velocity,
+\[
+\bar{u}= \frac{c L^2}{12\nu} ,
+\]
+
+Which let us write, more elegantly,
+\[
+u_x=6 \bar{u} \,  \frac{y}{L} \left( 1- \frac{y}{L}\right). 
+\]
+
+
+\subsection{Temperature}
+
+As in Couette planar flow, \ref{sec:}, the temperature equation
+reduces to
+\[
+0 =  k \frac{\partial^2 T}{\partial y^2} +
+\mu  \left( \frac{\partial u_y}{\partial x} \right)^2,
+\]
+or
+\[
+0 =  k \frac{\partial^2 T}{\partial y^2} +
+36 \mu \bar{u}^2 \left[
+  \frac{1}{L} \left( 1- 2 \frac{y}{L}  \right)
+  \right]^2 .
+\]
+
+Casting it into dimensionless form,
+\[
+0 =  k \frac{T_0}{ L^2} \frac{\partial^2 T^*}{\partial y^{*2}} +
+36 \frac{\mu \bar{u}^2}{L^2}  \left( 1- 2 y^*  \right)^2 ,
+\]
+or
+\[
+ \frac{\partial^2 T^*}{\partial y^{*2}} = 
+  - 36 \mathrm{Br} \left( 1- 2 y^*  \right)^2 ,
+\]
+where the  Brinkman number is again as in Eq. \ref{eq:}
+\[
+\mathrm{Br} =
+\frac{ \mu \bar{u}^2 }{ \kappa T_0 } .
+\]
+
+If we define $s = 2  y^* - 1$, then
+\[
+ 4 \frac{\partial^2 T^*}{\partial s^{2}} = 
+ - 36 \mathrm{Br} s^2,
+ \]
+ or
+\[
+ \frac{\partial^2 T^*}{\partial s^{2}} = 
+ - 9 \mathrm{Br} s^2.
+\]
+
+
+The final solution is then:
+\[
+T^* = 1 + \frac{T_1-T_0}{T_0} y^* +
+\frac34 \mathrm{Br}  \left( 1 - s^{4} \right) .
+\]
+The second term is seen to vanish at the two walls (where $s=\pm 1$),
+while providing the correct second derivative. In terms of $y^*$,
+\[
+T^* = 1 + \frac{T_1-T_0}{T_0} y^* +
+\frac34 \mathrm{Br}  \left[ 1 -  \left( 2  y^* - 1 \right)^{4} \right] .
+\]
+
+
+
+
+\subsection{Flow in circular pipes}
+
+The solution is
+\[
+u_x=\frac{c}{4\nu} \left( R^2 - r^2 \right) .
+\]
+
+
+The flow is
+\[
+Q= \frac{c \pi R^4}{8\nu} ,
+\]
+and the mean velocity,
+\[
+\bar{u}= \frac{c R^2}{8\nu} ,
+\]
+
+
+
+\subsection{Temperature}
+
+
+At variance with planar flows, \ref{sec:}, the temperature equation
+must be written in polar coordinates:
+\[
+0 =
+k
+\frac{1}{r} \frac{d}{dr} \left[
+  r \frac{dT}{dr} \right] +
+\mu  \left( \frac{d u_z}{d r} \right)^2,
+\]
+or
+\[
+0 = k
+\frac{1}{r} \frac{d}{dr}
+\left[
+  r \frac{dT}{dr}
+\right] +
+16 \mu  \bar{u}^2 \frac{r^2}{R^4}
+\]
+
+Casting it into dimensionless form,
+\[
+0 = k T_\mathrm{w}
+\frac{1}{R^2}
+\frac{1}{r^*} \frac{d}{dr^*}
+\left[
+  r^* \frac{dT^*}{dr^*}
+\right] +
+16 \mu  \bar{u}^2 \frac{1}{R^1} r^{*2},
+\]
+or
+\[
+\frac{1}{r^*} \frac{d}{dr^*}
+\left[
+  r^* \frac{dT^*}{dr^*}
+\right] =
+- 16 \mathrm{Br}  r^{*2},
+\]
+where the  Brinkman number is as in Eq. \ref{eq:}.
+In order to solve it, we change it to
+\[
+ \frac{d}{dr^*}
+\left[
+  r^* \frac{dT^*}{dr^*}
+\right] =
+ - 16 \mathrm{Br}  r^{*3},
+\]
+or
+\[
+ \frac{dT^*}{dr^*} =
+ - 4 \mathrm{Br}  r^{*3} + \frac{c}{r^*} .
+ \]
+ Then,
+\[
+T^* = - \mathrm{Br}  r^{*4} + c \log( r^* ) + d .
+ \]
+
+ The $log$ term has a singularity at $r^*=0$, so $c=0$. The other
+ constant has to be fixed in order to comply with the boundary
+ condition $T^*(r^*=1)=1$. The final answer is
+\[
+T^* =  1 + \mathrm{Br} \left( 1 - r^{*4} \right) ,
+\]
+or, bringing back the units for length and temperature:
+\[
+T =  T_\mathrm{w}  + \mathrm{Br} \left[ 1 - \left(\frac{r}{R}\right)^4 \right] ,
+\]

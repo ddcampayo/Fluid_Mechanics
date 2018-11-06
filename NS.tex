@@ -1,0 +1,425 @@
+\section{Stress tensor}
+
+Let us return again to our particle in order to analyze its movement
+when stress forces are applied onto its walls. The pressure force may
+be consider a special case of the latter, but stress forces may also
+have a shear component.
+
+Thus, the horizontal force will be given by, in part, by the
+contributions due to the walls at the left, back, and bottom
+\[
+\left. dF_x \right|_\text{l,bk,bm} =
+%- p         dy\, dz
+-  \tau_{xx} dy\, dz
+-  \tau_{yx} dx\, dz
+-  \tau_{zx} dx\, dy .
+\]
+The compression stress $\tau_{xx}$ is therefore quite similar to the
+pressure (see (Eq \ref{eq:}), and in fact will be seen to include a
+$-p$ term. The minus sign appears because normal stresses are
+historically defined as positive if pointing outside the particle
+(i.e. in the direction of the normal vector).
+%
+%where we include not only the pressure force, as before 
+%and a compression stress $\tau_{xx}$ quite similar to it,
+In addittion, two shear stress forces appear. One of them, $\tau_{yx}
+dx\, dz$ is the horizontal shear force on the back wall ($dx\, dz$
+actually equals $dx\, dy$, but it is clearer to write it this
+way). Similarly, $\tau_{zx} dx\, dy $ is the horizontal stress force
+at the bottom wall.
+
+Notice the convention for minus signs. First, the normal stress is
+$\tau_{xx} \parallel \bfn $. From it, $\tau_{xy} \parallel
+\bfe_z\times \tau_{xx} $, $\tau_{xz} \parallel \tau_{xx} \times \bfe_y
+$, respecting the $(x,y,z)$ cyclic order.
+
+To get the whole horizontal force, the contributions from the other
+three walls must be added up:
+\[
+\left. dF_x \right|_\text{r,ft,up} =
+%- p         dy\, dz
+  \tau_{xx}(x+dx,y   ,z   )  dy\, dz +
+  \tau_{yx}(x   ,y+dy,z   )  dx\, dz +
+  \tau_{zx}(x   ,y   ,z+dz)  dx\, dy .
+\]
+This time, the sign convention is positive. It the stresses are the
+same on those faces, the resultant force will then be zero (those
+forces may exert a net torque, but not a force). In general, they will
+be different on those faces, as made explitic on their arguments.
+
+Expanding in Taylor series, we get the following net horizontal force:
+\[
+ dF_x  =
+%-\frac{\partial p      }{\partial x}  dx\, dy\, dz
+% +
+ \left(\frac{\partial\tau_{xx}}{\partial x}  dx\right)\, dy\, dz
++\left(\frac{\partial\tau_{yx}}{\partial y}  dy\right)\, dx\, dz
++\left(\frac{\partial\tau_{zx}}{\partial z}  dz\right)\, dx\, dy .
+\]
+
+The volumetric horizontal force is then,
+\[
+f_x  =
+%-\frac{\partial p      }{\partial x}
+ %+
+ \frac{\partial\tau_{xx}}{\partial x}
++\frac{\partial\tau_{yx}}{\partial y}
++\frac{\partial\tau_{zx}}{\partial z} .
+\]
+
+With integer notation for Cartesian coordinates:
+\[
+ df_1  =
+%-\frac{\partial p      }{\partial x_1}
+ %+
+ \sum_{j=1,2,3}
+ \frac{\partial\tau_{j1}}{\partial x_j} .
+\]
+
+
+In general, for any component we will have:
+\[
+ df_i  =
+%-\frac{\partial p      }{\partial x_i}
+ %+
+ \sum_{j=1,2,3}
+  \frac{\partial\tau_{ji}}{\partial x_j} .
+\]
+
+In order to use vector notation, we have to introduce the
+divergence of a tensor:
+\[
+\nabla \cdot \tau = \sum_{j=1,2,3}
+  \frac{\partial}{\partial x_j}  \tau_{ji} ,
+\]
+ which results in a vector:
+\[
+ d\bff  =
+%-\nabla p
+ %+
+ \nabla \cdot \tau .
+\]
+%
+The tensor $\tau$ has components $\tau_{ij}$. There is also
+the matrix notation, by which
+\[
+\nabla \cdot \tau = \nabla^t  \tau ,
+\]
+where $\nabla^t$ is a transposed (row) vector operator, multiplying
+matrix $\tau$ from the left.
+
+The resulting Navier-Stokes equation is then,
+\[
+\rho \frac{d\bfu }{dt} = \nabla \cdot \tau   + \rho \bfg .
+\]
+
+
+
+\subsection{Newtonian fluids}
+
+The previous equation is still too general, and a connection between
+stress and strain is still needed. Here we consider the case in which
+there is a linear relationship between both, which involves the
+coefficient of viscosity.
+
+To begin with, let us consider a simple case in which a fluid is
+confined between two planes. One of them moves sideways with a certain
+speed $u_0$, while the other is kept fixed. After a certain transient,
+some force is needed in order to keep this shearing. The simplest
+expression is
+\[
+F= \mu A \frac{u_0}{L} .
+\]
+The force is proportional to the area and to the velocity difference
+between the planes. It is also inversely proportional to their
+separation, $L$ (this fact being the least obvious). Finally, a
+constant of proportionality is given by $\mu$, the viscosity
+coefficient, or simply ``the viscosity''. This constant may vary with
+temperature, density, pressure, but the point with Newtonian fluids is
+that it does not vary with the velocity field (or its
+derivatives). Later, in section \ref{sec:}, this flow will be solved
+as a solution of the Navier-Stokes equations, the Couette flow. There,
+it will be shown that the velocity is everywhere in the direction of
+the force exerted on the upper plane, let us call it $x$, and varies
+linearly between the planes, in the $y$ direction. Therefore, the only
+components of the strain rate tensor are $\epsilon_{xy} =
+\epsilon_{yx} = u_0 / ( 2 L )$. We therefore have
+\[
+\tau_{xy} = \mu  \epsilon_{xy} .
+\]
+
+With these in mind, let us look for a general relationship between
+$\tau$ and $\epsilon$. This is much easier if we go to the principal
+strain axes. These are the coordinates on which the strain rate is
+diagonal. Such coordinate system always exist, since the strain rate
+tensor is symmetric. Notice that in these system strains are not due to
+shear, only to dilations.
+
+A simple example would be to consider the flow $u_x = u_0 y / L$
+(again, Couette flow). In this case,
+\[
+\epsilon=
+\begin{pmatrix}
+  0           &   u_0/(2L)  \\
+   u_0/(2L)   &   0
+\end{pmatrix} .
+\]
+
+It is easy to find the two eigenvalues and associated eigenvectors of
+this matrix:
+\begin{align*}
+  \lambda_1=  u_0/(2L) \qquad &\bfv_1=(1/\sqrt{2}) \begin{pmatrix} 1 &  1 \end{pmatrix}^t \\
+  \lambda_1= -u_0/(2L) \qquad &\bfv_2=(1/\sqrt{2})  \begin{pmatrix} 1 &  -1 \end{pmatrix}^t \\
+\end{align*}
+Notice the first eigenvalue correnspond to a dilation along the $x=y$
+diagonal, while the second is a compression along the $x=-y$ one.
+
+The diagonal strain rate matrix is then:
+\[
+\tilde{\epsilon}=
+\begin{pmatrix}
+  u_0/(2L)   & 0 \\
+  0          & - u_0/(2L)
+\end{pmatrix} .
+\]
+
+It is crucial to realize that the stress tensor is also diagonal in
+this coordinate system. Otherwise, a pure dilation in one of the
+principal directions would cause a shear stress in some other
+direction. This does not mean, however, that the two tensors are
+simply proportional. Instead, we may posit, for the top-most element
+\[
+\tilde{\tau}_{xx}=
+- p + 
+C_1 \tilde{\epsilon}_{xx} +
+C_2 \tilde{\epsilon}_{yy} +
+C_3 \tilde{\epsilon}_{y} .
+\]
+We have added a $-p$ term that has to be there even when there is no
+movement. This is needed, since a diagonal stress tensor $\tau=-p\eye$
+produces the $-\nabla p$ term of hydrostatics (in Couette flow, $p$ is
+constant, and this term is not needed.)
+
+If isotropy is assumed, there should be no distinction between
+traverse directions $y$ and $z$. Therefore, $C_2=C_3$, and
+\[
+\tilde{\tau}_{xx}=
+- p + 
+C_1 \tilde{\epsilon}_{xx} +
+C_2 ( \tilde{\epsilon}_{yy} +  \tilde{\epsilon}_{y}  ) =
+- p + 
+K \tilde{\epsilon}_{xx} +
+C_2 ( \tilde{\epsilon}_{xx} + \tilde{\epsilon}_{yy} +  \tilde{\epsilon}_{y}  ) ,
+\]
+where the constant $K=C_1-C_2$. Notice the $C_2$ term is the
+divergence of the velocity. But, it is also the trace of the strain
+tensor, a quantity which is invariant under change of basis. We can
+now write:
+\[
+\tilde{\tau}_{xx}=
+- p + C_2 \nabla\cdot \bfu 
+K \tilde{\epsilon}_{xx} .
+\]
+
+There will be similar expressions for $\tilde{\tau}_{yy}$ and
+$\tilde{\tau}_{zz}$, but in them the coefficients must be the same ---
+otherwise isotropy will be violated. Taking all together,
+\[
+\tilde{\tau}=
+K \tilde{\epsilon}
++ ( - p + C_2 \nabla\cdot \bfu ) \eye.
+\]
+
+Now, we may go back to the original Cartesian system and find
+\[
+\tau=
+K \epsilon
++ ( - p + C_2 \nabla\cdot \bfu ) \eye.
+\]
+The stress tensor is then also symmetric, a fact that is required in
+order the particle be torsion-free (remember the fact that rotations
+have no stress associated.)
+
+A comparison with our previous result reveals $K=2\mu$. The constant
+$C_2$ is called, in the theory of elasticity ``the second Lam\'e
+coefficient'', and receives the symbol $\lambda$. Then,
+\[
+\tau=
+2 \mu \epsilon + ( - p + \lambda \nabla\cdot \bfu ) \eye.
+\]
+
+To make this explicit, this means that diagonal terms have the form
+\[
+\tau_{ii}=
+2 \mu \epsilon_{ii}  - p + \lambda \nabla\cdot \bfu ,
+\]
+while off-diagonal terms are
+\[
+\tau_{ij}=
+2 \mu \epsilon_{ij}
+\]
+
+(Why not always work in the system of principal axes? The answer is
+simple: principal axes vary from one particle to another, since they
+are defined by local values of velocity derivatives. The Cartesian
+coordinate system, or any such (cylindrical, polar\ldots) is the same
+for all particles.)
+
+The off-diagonal terms have a neat expression when the strain rate
+tensor is written in term of velocity derivatives:
+\[
+\tau_{ij}=
+\mu
+\left(
+\frac{\partial u_i}{\partial x_j} +
+\frac{\partial u_j}{\partial x_i}
+\right)
+\]
+
+The diagonal ones, however, are somewhat puzzling:
+\[
+\tau_{ii}=
+- p +
+2 \mu \frac{\partial u_i}{\partial x_i}  + \lambda \nabla\cdot \bfu .
+\]
+The pressure term is natural, but there are two extra dynamical terms.
+
+Let us define a mechanical pressure as minus one-third times the trace
+of the stress tensor:
+\[
+\bar{p}=
+-\frac13 \mathrm{Tr} \tau = 
+- p
++ (2 \mu  + \lambda ) \nabla\cdot \bfu .
+\]
+
+The result is that the mechanical pressure, defined in such a way, is
+different from the thermodynamic pressure in an incompressible fluid.
+There are several ways out of this puzzling result. One of them is to
+assume simply that the fluid is incompressible. This is of course
+entirely correct, but would limit the applicability of the theory to
+incompressible problems.
+
+Another approach is to boldly assume $2\mu+\lambda=0$. This step was
+taken by Stokes, and defines a ``Stokesian fluid''. On the other hand,
+there is no clear evidence of a real fluid that may satisfy such a
+relationship. Indeed, the few measures of $\lambda$ have show positive
+values (while $\mu$, as should be clear, is always positive). We
+should then keep in mind that in some flows when compressibility is
+important, mechanical pressure may differ from thermodynamical one.
+
+The Navier-Stokes equation for Newtonian liquids is finally:
+\[
+\rho \frac{d\bfu }{dt} =
+- \nabla p +
+2 \nabla \cdot ( \mu \epsilon)
++ \nabla [ \lambda ( \divu ) ]
++ \rho \bfg .
+\]
+
+\subsection{Incompressible, athermal case}
+
+If the fluid is incompressible, $\mu$ may still have a dependence on
+temperature. The temperature has its own equation, to be explained below,
+and the viscosity does depend on it quite strongly, as is evident when
+heating up oil. In problems where this dependence may be avoided, the
+equation above reduces to
+\[
+\rho \frac{d\bfu }{dt} =
+- \nabla p +
+2 \mu  \nabla \cdot \epsilon
++ \rho \bfg .
+\]
+
+Moreover, in the divergence of the stress tensor, the $i$-th term will be
+\begin{align*}
+(\nabla \cdot \epsilon)_i &=
+\sum_{j=1,2,3} 
+\frac{\partial}{\partial x_j} \tau_{ji} =
+\frac12
+\sum_{j=1,2,3} 
+\frac{\partial}{\partial x_j} 
+\left(
+\frac{\partial u_i}{\partial x_j} +
+\frac{\partial u_j}{\partial x_i}
+\right)
+  = \\
+  &=
+\frac12
+\left(
+\sum_{j=1,2,3} 
+\frac{\partial}{\partial x_j} 
+\frac{\partial u_i}{\partial x_j} +
+\underbrace{
+  \sum_{j=1,2,3} 
+  \frac{\partial}{\partial x_i} 
+  \frac{\partial u_j}{\partial x_j}}_{=0}
+\right)
+                            =
+                            \frac12
+\sum_{j=1,2,3} 
+\frac{\partial^2 u_i }{\partial x_j^2} ,
+\end{align*}
+since the underbraced term is zero due to incompressibility:
+\[
+\sum_{j=1,2,3} 
+\frac{\partial}{\partial x_j} 
+\frac{\partial u_j}{\partial x_i} =
+\frac{\partial}{\partial x_i} 
+\sum_{j=1,2,3} 
+\frac{\partial u_j}{\partial x_j} = 0 .
+\]
+
+The final momentum equation for an incompressible, athermal fluid, is then
+\[
+\rho \frac{d\bfu }{dt} =
+- \nabla p 
++ \mu \nabla^2 \bfu
++ \rho \bfg .
+\]
+This equation, in this particular form, is the beginning of a vast
+ammount of research in physics and applied mathematics.
+
+
+
+\section{Dimensionless variables: the Reynolds number}
+
+For the simplest, athermal
+incompressible case, the term due to viscosity
+\[
+\mu \nabla^2 \bfu = \mu \frac{u_0}{L^2} \nabla^{*2} \bfu^* ,
+\]
+where we cast the variables into reduced form, as explained in
+section \ref{sec:Euler_adim}.
+
+Recall that in order to arrive to \ref{eq:Euler_just_before_adim}, the
+whole equation was multipled by $L/(\rho_0 u_0^2)$. If we do that to our
+momentum equation, the result is
+\[
+\rho^* \frac{d\bfu^* }{dt^* } =
+-  \nabla^* p^*
++  \rho^* \bfg^* +
+\frac{\mu }{\rho_ 0 L u_0 } \nabla^{*2} \bfu^* .
+\]
+
+The term $\mu /( \rho_ 0 L u_0)$ must be dimensionless (as can be
+easily checked). It then represents a reduced viscosity, and should be
+taken as such: a number that defines whether viscosity is important or
+not in a given context.
+
+Historically, however, it is its inverse that has a name, the
+Reynolds' number:
+\begin{equation}
+  \mathbf{Re}= \frac{\rho_ 0 L u_0 }{\mu }.
+\end{equation}
+
+This number is therefore large when viscosity is small, and small when
+it is large. It may also be defined as the ratio of inertial forces and
+viscous forces:
+\begin{equation}
+  \mathbf{Re}= \frac{\rho_ 0 u^2_0 }{\mu u_0 / L }.
+\end{equation}
+Indeed, in the numerator $\rho_ 0 u^2_0$ is the typical strength of the
+pressure, and in the denominator $\mu u_0 / L $ is the typical
+strength of viscous stress forces.
+
