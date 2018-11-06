@@ -1,3 +1,5 @@
+\label{sec:particle}
+
 Let us focus again on a fluid particle, as we did on \ref{sec:}, but
 now focusing on how the particle itself distorts as a consequence of a
 velocity field.
@@ -124,9 +126,8 @@ rotations about the other two Cartesian axes, with the end result that
 The curl is therefore twice the rate of rotation of a fluid particle.
 
 
-An example
-
-Let us consider a uniform circular motion about the origin:
+As an example, let us consider a uniform circular motion about the
+origin:
 \[
 \bfr =
 \begin{cases}
@@ -153,7 +154,134 @@ If we compute the curl of this field, its only component is the $z$ one:
 
 Therefore, the curl indeed is twice the angular velocity.
 
+Finally, let us recall, from the definition of the tensor
+$\nabla \bfu$ of Eq. \ref{eq:nabla_u_def},
+\[
+\frac{d\Omega_{ij}}{dt} = \frac12
+\left[
+ (\nabla \bfu)_{ij} -
+ (\nabla \bfu)_{ji}
+\right] .
+\]
+where the cyclic convention $(i,j,k)$ is implied for the indices of
+$d\Omega_{ij}/ dt$ (see Exercise \ref{ex:} for a definition in terms
+of the Levi-Civita symbol.)
+
 
 \subsubsection{Strain}
 
+Similarly to the definition of rotation, let us define the strain as
+half the difference between angle $\beta$ and $\alpha$:
+\[
+d\Omega_z = \frac12
+\left(
+        \alpha - \beta
+\right) .
+\]
+Indeed, if both are equal we get a pure rotation, and no strain. If,
+however, they have the same magnitude but opposite sign, we have a pure
+strain and no rotation.
+
+This definition leads to
+\[
+\epsilon_{xy} = \frac12
+\left(
+  \frac{\partial v_y}{\partial x}  +
+  \frac{\partial v_x}{\partial y}
+\right) .
+\]
+
+Notice the notation: indices $xy$ implay a strain on that plane. In general,
+\[
+\epsilon_{ij} = \frac12
+\left(
+  \frac{\partial v_j}{\partial x_i}  +
+  \frac{\partial v_i}{\partial x_j}
+\right) .
+\]
+
+This defines off-diagonal terms of a tensor which is obviously
+symmetric. All together, three terms in 3D ($xy$, $xz$, and $yz$).
+
+Also, from the definition of the tensor $\nabla \bfu$ of
+Eq. \ref{eq:nabla_u_def},
+\[
+\epsilon_{ij} = \frac12
+\left[
+ (\nabla \bfu)_{ij} +
+ (\nabla \bfu)_{ji}
+\right] ,
+\]
+so that $\epsilon$ is the symmetrized version of the gradient of the
+velocity.
+
+We may also extend these definitions to the diagonal terms:
+\[
+  \epsilon_{ii} =   \frac{\partial v_i}{\partial x_i} ,
+\]
+which are not really strains, as we show next.
+
+\subsubsection{Dilation}
+
+We have derived before that the change on side $dx$ is
+\[
+dx' \approx  dx + \frac{\partial v_x}{\partial x} dx dt ,
+\]
+which features the diagonal components of the strain tensor just
+introduced. In general, for the $i$ Cartesian direction,
+\[
+dx_i' \approx dx_i + \epsilon_{ii} dx_i dt = dx_i
+\left(
+1+\epsilon_{ii} dt
+\right)
+\]
+
+If we consider the volume, its new value will be
+\[
+V'= dx' dy' dz'  \approx  \prod_i  dx_i \left( 1+\epsilon_{ii} dt \right)
+\approx \left(\prod_i  dx_i \right) \left( 1 + \sum_j  \epsilon_{jj} dt \right) ,
+\]
+where in the last expression we have neglected all higher order terms
+($dt^2$ or higher). Therefore, the new volume of a particle is
+\[
+V' = V \left( 1 + \sum_j  \epsilon_{jj} dt \right) .
+\]
+Its change is
+\[
+V'-V =  V \sum_j  \epsilon_{jj} dt .
+\]
+In the limit as $dt\to 0$,
+\[
+\frac{d V}{dt} = V \sum_j  \epsilon_{jj} dt .
+\]
+This clearly identifies the diagonal components of the strain tensor
+as those responsible for the relative rate of change of the volume.
+Moreover, due to its definition, the sum of all components (i.e. the
+trace of the tensor) is precisely the divergence of the velocity:
+\[
+\sum_j  \epsilon_{jj} = \nabla\cdot \bfu .
+\]
+
+We therefore arrive at the expression for the rate of change of a particle:
+\[
+\frac{d V}{dt} = V  \nabla\cdot \bfu .
+\]
+
+This is the expression that was lacking in our derivation in
+Section \ref{sec:continuity}. Indeed, if the mass of a particle is
+constant, it is trivial to recover the continuity equation for the
+density. The latter is $\rho=m/V$, therefore,
+\[
+\frac{d \rho }{dt} =
+\frac{d (m/V) }{dt} = \frac1V \underbrace{\frac{ dm }{dt}}_{=0} -
+m\frac1{V^2}  \frac{ dV }{dt } =
+- m\frac1{V}  \nabla\cdot \bfu  = -\rho \nabla\cdot \bfu ,
+\]
+which indeed is the right expression (the ``convergence'' Equation
+\ref{eq:convergence}.)
+
+This also shows that we are working on an Eulerian reference frame, so
+that it is total derivatives which feature. Indeed, $dm/dt=0$ for a
+particle, while mass may enter and leave a fixed (Lagrangian) zone in
+space.
 

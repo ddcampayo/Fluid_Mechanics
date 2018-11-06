@@ -1,6 +1,143 @@
 \section{Material derivative}
 
+When expressing our equations, it is important to distiguish between
+a partial time variation and the total one. This is mathematically
+encapsulated in the expression for the total variation of a function
+of three Cartesian coordinates plus time:
+\[
+\frac{d A(x,y,z,t) }{dt} =
+\frac{\partial A(x,y,z,t) }{\partial t} +
+\frac{\partial A(x,y,z,t) }{\partial x} \frac{dx }{dt} +
+\frac{\partial A(x,y,z,t) }{\partial y} \frac{dy }{dt} +
+\frac{\partial A(x,y,z,t) }{\partial z} \frac{dz }{dt} .
+\]
+
+The Cartesian components are not to be considered as independent of
+the time. Rather, their time derivatives are precisely the components
+of the velocity field:
+\[
+\frac{d A(x,y,z,t) }{dt} =
+\frac{\partial A(x,y,z,t) }{\partial t} +
+\frac{\partial A(x,y,z,t) }{\partial x} u_x +
+\frac{\partial A(x,y,z,t) }{\partial y} u_y +
+\frac{\partial A(x,y,z,t) }{\partial z} u_z .
+\]
+
+A way to write this expression more concisely is
+\[
+\frac{d A(x,y,z,t) }{dt} =
+\frac{\partial A }{\partial t} +
+\bfu \cdot \nabla A ,
+\]
+where the operator $\bfu \cdot \nabla$ is
+\[
+\bfu \cdot \nabla  =
+\sum_i u_i \frac{\partial  }{\partial x_i} ,
+\]
+which indeed looks like a scalar product of vector $\bfu$ and the
+vector operator $\nabla$.
+
+This total time derivative received very many names. Among the most
+popular we find ``material'', ``Eulerian'', ``convective'',
+``advective'' \ldots
+
+In any case, the consequence is that convection by the velocity field
+adds a new term. This has an important consequence for the change
+of the velocity field itself, which turns out to be non-linear. Indeed,
+for component $i$,
+\[
+\frac{d u_i }{dt} =
+\frac{\partial v_i }{\partial t} +
+\bfu \cdot \nabla u_i .
+\]
+The second, non-linear term is called the convective acceleration.
+When expressing this equality in vector form, it is important not
+to make the eror of writing
+\[
+\frac{d \bfu  }{dt} =
+\frac{\partial \bfu }{\partial t} +
+\bfu  ( \nabla \cdot \bfu } \qquad \text{(wrong!)} ,
+\]
+which would imply that incompressible fluids have no such extra
+acceleration. The correct expression is
+\[
+\frac{d \bfu  }{dt} =
+\frac{\partial \bfu }{\partial t} +
+(\bfu \cdot  \nabla ) \bfu  \qquad \text{(right)} .
+\]
+
+Another concise, but more obscure, way of writing it is
+\[
+\frac{d \bfu  }{dt} =
+\frac{\partial \bfu }{\partial t} +
+\bfu \cdot  ( \nabla  \bfu ) ,
+\]
+where now $\nabla  \bfu$ is to be interpreted as a tensor, with
+components
+\begin{equation}
+  \label{eq:nabla_u_def}
+  (\nabla  \bfu)_{ij} = \frac{\partial u_j}{\partial x_i} ,
+\end{equation}
+i.e. a direct product of the vector operator $\nabla$ and vector
+$\bfu$ (also known as the gradient of vector $bfu$.) The operation
+$\bfu \cdot ( \nabla \bfu )$ is then similar to a left multiplication
+of a matrix by a row vector, resulting in a column vector. This sort
+of tensors will be again considered in Section \ref{sec:particles}.
+Given these two possible interpretations, the acceleration is often
+written without any parentheses:
+\[
+\frac{d \bfu  }{dt} =
+\frac{\partial \bfu }{\partial t} +
+\bfu \cdot  \nabla  \bfu .
+\]
+
+
+Yet another expression involves the direct product of the velocity
+vector with itself:
+\[
+( \bfu \otimes \bfu )_{ij} := u_i u_j ,
+\]
+which lets us write
+\[
+\frac{d \bfu  }{dt} =
+\frac{\partial \bfu }{\partial t} +
+\frac12 \nabla \cdot ( \bfu \otimes \bfu ),  
+\]
+as may be easily checked. This last expression is useful to write down
+so-called ``conservation form'' of the equations, in which one desires
+an overall $\nabla$ operator acting on several expressions.
+
+
+\subsection{Continuity, revisited}
+\label{sec:continuity2}
+
+The continuity equation, Eq. \ref{eq:continuity} may be written as
+\[
+\frac{\partial \rho }{\partial t} +
+\rho \nabla \cdot \bfu +
+(\bfu \cdot \nabla) \rho = 0 ,
+\]
+or
+\[
+\frac{d \rho }{d t} = 
+ - \rho \nabla  \cdot \bfu .
+\]
+This later expression is called the ``convergence equation'' by Joe
+Monaghan: if $\nabla \cdot \bfu $ is the divergence, $ - \nabla \cdot
+\bfu $ could be called the convergence.
+
+We now see that incompressibility, defined as $\nabla \cdot \bfu = 0
+$, implies $d(\rho)/(dt) = 0$. This means that density is ``carried
+with the flow'', as explained in next session.
+
+
+
+\subsection{Physical meaning of the material derivative}
+
+
+
 \section{Pressure forces}
+
 
 \section{The momentum equation}
 
@@ -8,8 +145,45 @@
   \label{eq:Euler_momentum}
   \rho \frac{d\bfu }{dt} =
   - \nabla p 
-  + \rho \bfg 
+  + \rho \bfg .
 \end{equation}
+In Cartesian components:
+\begin{equation}
+  \label{eq:Euler_momentum_C}
+  \rho \frac{d u_i }{dt} =
+  - \frac{\partial p} {\partial x_i} 
+  + \rho g_i .
+\end{equation}
+
+It is well known that Newton's second law applied to mass times
+acceleration, or equivalently, to the variation of linear momentum
+(since the mass of a particle does not change). The reader may be
+therefore worried about this law being the right one.
+
+A direct application of the ideas in Section \ref{sec:continuity}
+would lead to this sort of equation for the change in the $i$-th
+component of the angular momentum:
+\[
+\frac{\partial (\rho u_i) } {\partial t} =
+- \nabla \cdot  ( \rho u_i \bfu )
+- \frac{\partial p} {\partial x_i} 
+  + \rho g_i .
+\]
+The happy answer is that both are equivalent, thanks to this handy
+identity, which applies to any field:
+\[
+\frac{d( \rho \bfu A)  }{d t} =
+\frac{\partial ( \rho \bfu  A ) }{\partial t} +
+(\bfu \cdot \nabla) (\rho \bfu A) =
+%
+\rho \frac{\partial  A  }{\partial t} +
+\rho (\bfu \cdot \nabla) A +
+
+\]
+
+ (and, therefore, to each of
+the Cartesian components of the velocity, then to the velocity itself):
+
 
 \section{Bernouilli's principle}
 
