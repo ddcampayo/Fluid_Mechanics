@@ -1,16 +1,15 @@
 \section{Material derivative}
 
-
 When expressing our equations, it is important to distiguish between
 a partial time variation and the total one. This is mathematically
 encapsulated in the expression for the total variation of a function
 of three Cartesian coordinates plus time:
 \[
 \frac{d A(x,y,z,t) }{dt} =
-\frac{\partial A(x,y,z,t) }{\partial t} +
-\frac{\partial A(x,y,z,t) }{\partial x} \frac{dx }{dt} +
-\frac{\partial A(x,y,z,t) }{\partial y} \frac{dy }{dt} +
-\frac{\partial A(x,y,z,t) }{\partial z} \frac{dz }{dt} .
+\frac{\partial A }{\partial t} +
+\frac{\partial A }{\partial x} \frac{dx }{dt} +
+\frac{\partial A }{\partial y} \frac{dy }{dt} +
+\frac{\partial A }{\partial z} \frac{dz }{dt} .
 \]
 
 The Cartesian components are not to be considered as independent of
@@ -18,15 +17,15 @@ the time. Rather, their time derivatives are precisely the components
 of the velocity field:
 \[
 \frac{d A(x,y,z,t) }{dt} =
-\frac{\partial A(x,y,z,t) }{\partial t} +
-\frac{\partial A(x,y,z,t) }{\partial x} u_x +
-\frac{\partial A(x,y,z,t) }{\partial y} u_y +
-\frac{\partial A(x,y,z,t) }{\partial z} u_z .
+\frac{\partial A }{\partial t} +
+\frac{\partial A }{\partial x} u_x +
+\frac{\partial A }{\partial y} u_y +
+\frac{\partial A }{\partial z} u_z .
 \]
 
 A way to write this expression more concisely is
 \[
-\frac{d A(x,y,z,t) }{dt} =
+\frac{d A }{dt} =
 \frac{\partial A }{\partial t} +
 \bfu \cdot \nabla A ,
 \]
@@ -40,7 +39,7 @@ vector operator $\nabla$.
 
 This total time derivative received very many names. Among the most
 popular we find ``material'', ``Eulerian'', ``convective'',
-``advective'' \ldots
+``advective'' \index{material derivative} \ldots
 
 In any case, the consequence is that convection by the velocity field
 adds a new term. This has an important consequence for the change
@@ -51,13 +50,14 @@ for component $i$,
 \frac{\partial v_i }{\partial t} +
 \bfu \cdot \nabla u_i .
 \]
-The second, non-linear term is called the convective acceleration.
-When expressing this equality in vector form, it is important not
-to make the eror of writing
+The second, non-linear term is called the convective
+acceleration\index{convective acceleration}. When expressing this
+equality in vector form, it is important not to make the eror of
+writing
 \[
 \frac{d \bfu  }{dt} =
 \frac{\partial \bfu }{\partial t} +
-\bfu  ( \nabla \cdot \bfu } \qquad \text{(wrong!)} ,
+\bfu  ( \nabla \cdot \bfu ) \qquad \text{(wrong!)} ,
 \]
 which would imply that incompressible fluids have no such extra
 acceleration. The correct expression is
@@ -99,11 +99,12 @@ vector with itself:
 ( \bfu \otimes \bfu )_{ij} := u_i u_j ,
 \]
 which lets us write
-\[
-\frac{d \bfu  }{dt} =
-\frac{\partial \bfu }{\partial t} +
-\frac12 \nabla \cdot ( \bfu \otimes \bfu ),  
-\]
+\begin{equation}
+  \label{eq:Euler_uu}
+    \frac{d \bfu  }{dt} =
+    \frac{\partial \bfu }{\partial t} +
+    \nabla \cdot ( \bfu \otimes \bfu ),  
+\end{equation}
 as may be easily checked. This last expression is useful to write down
 so-called ``conservation form'' of the equations, in which one desires
 an overall $\nabla$ operator acting on several expressions.
@@ -131,10 +132,11 @@ We now see that incompressibility, defined as $\nabla \cdot \bfu = 0
 $, implies $d(\rho)/(dt) = 0$. This means that density is ``carried
 with the flow'', as explained in next session.
 
-
-
 \subsection{Physical meaning of the material derivative}
 
+If we measure the value of a given field at a fixed point in space,
+its plot as a function of time has a first derivative which, by definition,
+is the partial time derivative.
 
 
 \section{Pressure forces}
@@ -144,9 +146,7 @@ with the flow'', as explained in next session.
 
 \begin{equation}
   \label{eq:Euler_momentum}
-  \rho \frac{d\bfu }{dt} =
-  - \nabla p 
-  + \rho \bfg .
+  \rho \frac{d\bfu }{dt} = - \nabla p + \rho \bfg .
 \end{equation}
 In Cartesian components:
 \begin{equation}
@@ -156,34 +156,75 @@ In Cartesian components:
   + \rho g_i .
 \end{equation}
 
+\subsection{Conservation form}
+
 It is well known that Newton's second law applied to mass times
 acceleration, or equivalently, to the variation of linear momentum
 (since the mass of a particle does not change). The reader may be
-therefore worried about this law being the right one.
-
-A direct application of the ideas in Section \ref{sec:continuity}
-would lead to this sort of equation for the change in the $i$-th
-component of the angular momentum:
+therefore worried about this law being the right one.  In fact, a
+direct application of the ideas in Section \ref{sec:continuity} would
+lead to this sort of equation for the change in the $i$-th component
+of the angular momentum:
 \[
 \frac{\partial (\rho u_i) } {\partial t} =
 - \nabla \cdot  ( \rho u_i \bfu )
 - \frac{\partial p} {\partial x_i} 
   + \rho g_i .
 \]
+In it, the change of linear momentum per volume is changed due to
+volumetric forces, and also due to convection of momentum. This can
+also be written in vector form:
+\[
+\frac{\partial  (\rho \bfu ) }{\partial t} +
+\nabla \cdot ( \rho \bfu \otimes \bfu ) =
+  - \nabla p 
+  + \rho \bfg ,
+\]
+which strongly resembles the expression of \ref{eq:Euler_uu}. The
+difference is that now the density $\rho$ is inside the time and
+space derivatives.
+
 The happy answer is that both are equivalent, thanks to this handy
 identity, which applies to any field:
 \[
-\frac{d( \rho \bfu A)  }{d t} =
-\frac{\partial ( \rho \bfu  A ) }{\partial t} +
-(\bfu \cdot \nabla) (\rho \bfu A) =
+\frac{\partial ( \rho  A ) }{\partial t} +
+\nabla  \cdot ( \rho \bfu A) =
 %
-\rho \frac{\partial  A  }{\partial t} +
-\rho (\bfu \cdot \nabla) A +
-
+A
+\underbrace{
+\left(
+\frac{\partial \rho }{\partial t} +
+\nabla  \cdot ( \rho \bfu ) 
+\right)}_{=0}  +
+\rho 
+\underbrace{
+\left(
+\frac{\partial A }{\partial t} +
+\bfu \cdot \nabla  A
+\right) }_{=dA/dt}  ,
 \]
+or
+\begin{equation}
+  \label{eq:conserv_to_total}
+  \frac{\partial ( \rho  A ) }{\partial t} +
+  \nabla  \cdot ( \rho \bfu A) =
+  \rho \frac{d  A }{d t} .
+\end{equation}
+This identity permits the conversion from the ``conservation''
+expression of any quantity $\rho A$ as a ``convective form'', $\rho
+dA/dt$. It is interesting that if $A$ is a constant, continity is
+recovered.
 
- (and, therefore, to each of
-the Cartesian components of the velocity, then to the velocity itself):
+Since this identity applies to each of the Cartesian components of the
+velocity, then it applies to the velocity itself.
+
+We may therefore write Euler's equation in conservation form:
+\[
+\frac{\partial  (\rho \bfu ) }{\partial t} +
+ \nabla \cdot ( \rho \bfu \otimes \bfu ) =
+ - \nabla p 
+ + \rho \bfg .
+\]
 
 
 \section{Bernouilli's principle}
