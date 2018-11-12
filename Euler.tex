@@ -136,26 +136,159 @@ with the flow'', as explained in next session.
 \subsection{Physical meaning of the material derivative}
 
 If we measure the value of a given field at a fixed point in space,
-its plot as a function of time has a first derivative which, by definition,
-is the partial time derivative.
+its plot as a function of time has a first derivative which, by
+definition, is the partial time derivative. If however, we measure
+its value as we move along with the flow, we will obtain its total
+derivative.
+
+A common example consideres temperature, partly because this is a
+quantity that humans can readily ``feel'', and which is routinely
+measured with thermometers. Imagine a thermometer probe inserted at
+some point along a stream. Its reading are approximately constant
+since the flow is steady. If a gate is opened upstream at the bottom
+of a reservoir, colder water will move downstream, and our temperature
+readings will drop.
+
+Imagine instead a thermometer inserted through a cork flowing with the
+flow. If a thermometer is released upstream, close to the reservoir,
+its readings will change little. This is true for the case before the
+gate opening, and for the case after the gate. In the later case, the
+reading will be lower, but constantly so. This later reading is
+approximately the total derivative $dT/dt$, while the previous is the
+partial $\partial T / \partial t$.
+
+Notice that we may have $dT/dt = 0$ even if $\partial T / \partial t
+\ne 0$, if
+\[
+\frac{\partial T }{ \partial t} = - \bfu \cdot \nabla T
+\qquad\to\qquad
+\frac{d T }{d t} = 0 .
+\]
+The first equation precisely describes the situation in which a change
+in the local value of $T$ is due only to convection. This is the
+case that closely resembles the reservour release experiment.
+
+Equivalently, we may have $\partial T / \partial t = 0$, but $dT/dt
+\ne 0$:
+\[
+\frac{d T }{d t} = \bfu \cdot \nabla T
+\qquad\to\qquad
+\frac{\partial T }{\partial t} = 0 ,
+\]
+which expresses the fact that a particle moving with the flow may
+experience changes in temperature even if this field is locally
+constant. This may apply to a flow in which a temperature gradient is
+established, from a cold region to a hotter one. Fluid going from one
+to the other will register this change in temperature even if
+locally the variation is null.
+
+We stress that this discussion applies to any field, even if vectorial
+(since it applies to each of its components, which are scalar).
 
 
-\section{Pressure forces}
 
+\section{External and pressure forces}
+
+Let us discuss possible forces acting upon a particle. They may be
+split into volume, or external, or surface. The first one includes all
+forces that are due to field that act upon the material of the
+particle as a whole. The most common ones are gravitational, and
+electromagnetic. We will not consider the latter ones for
+simplicity. Its study defines magnetohydrodynamics, and is relevant
+and interesting, but beyond the scope of these notes. We are left with
+gravity. If the scale of our problem is within some kilometers around
+the surface of the Earth, the force of gravity is constant and equal
+to $dm \bfg$, where $\bfg$ is a gravitational acceleration
+vector. This vector points ``down'' (usually, the $-z$ or $-y$
+direction, depending on our convention), and has a magnitude
+$g=\SI{9.8}{\meter\per\second\square}$. Its effect is given by
+Newton's Second law, according to which the net force on a particle
+with mass $dm$ is
+\[
+\bfF_\text{ext} = dm \bfg ,
+\]
+causing a volumetric force
+\[
+\bff_\text{ext} = \frac{\bfF_\text{ext}}{dV}= \rho \bfg .
+\]
+
+Surface forces may in turn may split into compression and stress
+forces. The latter are absent in an ideal fluid by definition, and we
+are left only with compression. This effect is caused by the best
+known surface force field: the pressure. Indeed, a pressure
+on the left wall of the particle will cause a horizontal force
+\[
+\left. F_{p,x} \right|_\text{l} =
+  p  dy\, dz .
+\]
+The net force is the pressure times the area, $dy\,dz$, and there is a
+minus sign because by definition pressure acts from outside to the
+inside. The total horizontal force will also have an influence from the
+right wall, which has a pressure $p'$ that may be different from $p$:
+\[
+F_{p,x} =  (p - p')  dy\, dz .
+\]
+Notice that the force is null if the pressure is equal. Also, thanks
+to our sign convention, if $p'<p$ we get a net horizontal force, which
+is in agreement with the concept of a pressure drop causing a force in
+the direction in which density is lower. Now, expanding in Taylor
+series,
+\[
+p' \approx p + \frac{\partial p }{ \partial x} dx ,
+\]
+so
+\[
+F_{p,x} =
+-  \frac{\partial p }{ \partial x}  dx\, dy\, dz =
+-  \frac{\partial p }{ \partial x}  dV .
+\]
+I.e., the volumetric force in the horizontal direction will be
+\[
+f_{p,x} = -  \frac{\partial p }{ \partial x} .
+\]
+
+Similar expressions will result for the $y$ and $z$ directions. All
+three may be encapsulated in vector form:
+\[
+\bff_p = - \nabla p .
+\]
+I.e. the volumetric pressure force is minus the gradient of the
+pressure.
+
+The total volumetric force is then
+\[
+\bff =  - \nabla p + \rho \bfg .
+\]
 
 \section{The momentum equation}
 
+A bold and quick way to reach Euler's momentum equation is to equate
+mass times acceleration with forces, in the spirit of Newton's Second
+law:
+\[
+dm \frac{d\bfu}{dt} = V \bff .
+\]
+Dividing by the volume,
+\[
+\rho \frac{d\bfu}{dt} = \bff .
+\]
+This is in fact correct, and leads to
 \begin{equation}
   \label{eq:Euler_momentum}
   \rho \frac{d\bfu }{dt} = - \nabla p + \rho \bfg .
 \end{equation}
-In Cartesian components:
+In Cartesian components, the equation reads
 \begin{equation}
   \label{eq:Euler_momentum_C}
   \rho \frac{d u_i }{dt} =
   - \frac{\partial p} {\partial x_i} 
   + \rho g_i .
 \end{equation}
+
+Notice, however that the derivation involves supposing that $dm$ may
+be taken out of the time derivative. This is because the mass of a
+moving particle does not change --- in Section \ref{sec:continuity3}
+we will see how this fact takes us to the correct continuity equation.
 
 \subsection{Conservation form}
 

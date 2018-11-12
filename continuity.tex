@@ -10,10 +10,118 @@ as small as we want.
 \section{The continuity equation}
 \label{sec:continuity}
 
+Let us consider a particle that is cubic in shape, with one of their
+corners at the origin and the three incident adges aligned with the
+Cartesian coordinates. This choice is completely general, given our
+freedom in defining a particle (as long as we make it ininitesimally
+small at the end), and in origin and axes for coordinates.
+
+There may be a mass influx though the left face of the particle due
+to advection (i.e. the existence of a velocity field). For a small
+time $dt$, it will be given by
+\[
+\left. d m \right|_\text{l} =
+\rho ( u_x \, dt) \, dy\, dz .
+\]
+Indeed, all the fluid material that a distance $\delta= u_x \, dt$
+away, or closer, will pass through the surface. The whole mass influx
+is therefore $\rho$ times $\delta dA$, where $dA=dy dz$ is the cross-
+sectional area. (Since the particle is cubic, $dx=dy=dz$, but it is
+clearer to use different symbols.)
+
+At the right wall, the mass change will be negative (if $v_x$ is positive
+there):
+\[
+\left. d m \right|_\text{r} =
+ -  \rho' ( u'_x \, dt) \, dy\, dz .
+\]
+
+The mass change due to the horizontal component of the velocity field is
+therefore
+\[
+\left. d m \right|_x =
+  \left[  \rho'  u'_x -  \rho  u_x \right] \, dt \, dy\, dz .
+\]
+
+Notice that we have allowed for the possibility that the combination
+$\rho u_x$ may be somewhat different at the left and right
+walls. Indeed, if they were equal, there would be no net mass change,
+since the mass that enters would equal that leaving. Nevertheless,
+since $dx$ is small, we may approximate the value at the right
+wall in a Taylor series:
+\[
+\rho'  u'_x \approx  \rho  u_x  +
+\frac{\partial  \rho  u_x}{\partial x} dx .
+\]
+Therefore,
+\[
+\left. d m \right|_x \approx
+-\frac{\partial  \rho  u_x}{\partial x} \, dt \, dx \, dy\, dz .
+\]
+Or,
+\[
+\frac1V \left. \frac{d m}{d t} \right|_x \approx
+-\frac{\partial  \rho  u_x}{\partial x}
+\]
+
+Since $dm/V=\rho$, the density of the particle, we may write, in the
+limit of $dt\to 0$,
+\[
+\left. \frac{\partial \rho}{\partial t} \right|_x =
+-\frac{\partial  \rho  u_x}{\partial x} .
+\]
+
+Notice the usage of the $\partial$ symbol: since the particle is
+fixed, with matter entering and leaving, this is the correct
+symbol. This is an ``Eulerian'' point of view --- a complementary,
+``Lagrangian'' view of the particle as moving with the flow will be
+discussed in \ref{sec:continuity2}.
+
+In order to get the total rate of change in density, we have to
+add up the other two directions. In doing so, we obtain
+\begin{equation}
+  \label{eq:continuity0}
+  \frac{\partial \rho}{\partial t} =
+  -\frac{\partial  \rho  u_x}{\partial x
+    -\frac{\partial  \rho  u_y}{\partial y}
+    -\frac{\partial  \rho  u_z}{\partial z}  =
+    -\nabla\cdot ( \rho  \bfu) .
+\end{equation}
+In the last equation the divergence of field $ \rho \bfu$ is
+seen to appear naturally.
+
+This is the correct expression, which is usually written as
 \begin{equation}
   \label{eq:continuity}
-  \frac{\partial \rho }{\partial t} +  \nabla \cdot (\rho \bfu ) = 0 
+  \frac{\partial \rho }{\partial t} +  \nabla \cdot (\rho \bfu ) = 0 .
 \end{equation}
+
+
+A more direct procedure to get it involves integrals, rather
+than differentials.
+
+By definition, mass is the integral of the density:
+\[
+d m = \int_V \rho d\bfr
+\]
+However, a mass flux $\rho\bfu$ may cause changes in it:
+\[
+d m = - \oint_{\partial V} \rho \bfu \cdot \bfn dS ,
+\]
+where $\partial V$ is the surface around volume $V$. The minus sign
+appears because the surface normal, $\bfn$ points from the inside
+toward the outside of the surface. We may transform the latter
+integral into a volume integral from Gauss' theorem:
+\[
+d m = - \int_V \nabla\cdot (\rho \bfu ) dV .
+\]
+Equating both changes,
+\[
+\int_V \rho d\bfr = - \int_V \nabla\cdot (\rho \bfu ) dV .
+\]
+Since the identity is valid for any volume $V$, the integrands may
+be equal. This fact leads to the same expression as before.
+
 
 \subsection{Incompressibility}
 
@@ -29,6 +137,18 @@ this equation.
 
 A technical issue is incompressibility is often defined as $\nabla
 \cdot \bfu = 0 $. This does \emph{not} imply that $\rho$ is constant,
-even though its reverse is true. What does imply is that $\rho$ is
-constant at every particle, or along streamlines, as will be discussed
-in \ref{sec:continuity2}.
+even though its reverse is true. Indeed, in this case:
+\[
+\frac{\partial \rho }{\partial t} +  \nabla \cdot (\rho \bfu ) =
+\frac{\partial \rho }{\partial t} +   \bfu \cdot \nabla \rho
++ \rho \underbrace{\nabla \cdot \bfu}_{=0} = 0
+\]
+
+\[
+\frac{\partial \rho }{\partial t} +   \bfu \cdot \nabla \rho = 0 .
+\]
+
+As will be discussed in \ref{sec:continuity2}, this means that the
+total (or ``convective'') time derivative of $\rho$ is zero. This
+implies that $\rho$ is constant at every moving particle, or along
+streamlines.
