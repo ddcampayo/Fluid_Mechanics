@@ -371,21 +371,21 @@ since the underbraced term is zero due to incompressibility:
 \]
 
 The final momentum equation for an incompressible, athermal fluid, is then
-\[
-\rho \frac{d\bfu }{dt} =
-- \nabla p 
-+ \mu \nabla^2 \bfu
-+ \rho \bfg .
-\]
+\begin{equation}
+  \label{eq:NS_usual}
+  \rho \frac{d\bfu }{dt} =
+  - \nabla p 
+  + \mu \nabla^2 \bfu
+  + \rho \bfg .
+\end{equation}
 This equation, in this particular form, is the beginning of a vast
 ammount of research in physics and applied mathematics.
 
 
-
 \section{Dimensionless variables: the Reynolds number}
 
-For the simplest, athermal
-incompressible case, the term due to viscosity
+For the simplest, athermal incompressible case, the term due to
+viscosity
 \[
 \mu \nabla^2 \bfu = \mu \frac{u_0}{L^2} \nabla^{*2} \bfu^* ,
 \]
@@ -422,4 +422,16 @@ viscous forces:
 Indeed, in the numerator $\rho_ 0 u^2_0$ is the typical strength of the
 pressure, and in the denominator $\mu u_0 / L $ is the typical
 strength of viscous stress forces.
+
+In many mathematical contexts, all dimensions are forfeited, and the
+momentum equation is simply written as
+\begin{equation}
+  \label{eq:NS_usual_reduced}
+  \frac{d\bfu }{dt} =
+  - \nabla p 
+  + \frac{1}{\mathbf{Re}} \nabla^2 \bfu
+  + \bfg .
+\end{equation}
+
+
 
