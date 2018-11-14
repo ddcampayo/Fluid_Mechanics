@@ -1,12 +1,11 @@
-\section{Sound waves}
 
 The existence of pressure and density waves, as solution of the Euler
 equations, is established in this section.
 
-Let us start with the Euler momentum equation, neglecting gravity
+Our set of equations includes the Euler momentum equation, neglecting
+gravity
 \[
-\frac{d \bfu }{\partial t}=
-- \frac{1}{\rho} \nabla p  .
+\frac{d \bfu }{\partial t}= - \frac{1}{\rho} \nabla p  .
 \]
 
 Continuity is also important: since we are expecting density waves,
@@ -17,190 +16,227 @@ equation is therefore:
 \rho}{\partial t} =0
 \]
 
-Now, let us suppose small pressure and density fluctuations about a
-constant background. I.e:
-\begin{align}
-\mathbf{u} & \approx \mathbf{u} \\
-p          & \approx p_0+\delta p \\
-\rho       & \approx \rho_0+\delta \rho .
-\end{align}
-The first equation means the velocity is to be considered small in
-some sense, but there is no average drift on top of which our waves
-may travel. Such a drift may be present if there are currents (water) or
-winds (air), and it is instructive to derive its effect. For the time
-being, we will neglect it.
-
-In order to close the equations, we need some relationship between
-variations in the density and variations in the pressure. This comes
-from thermodynamics. Indeed, the reference pressure and density are
-tied by an equation of state $p=p(\rho,T)$. E.g. at about
-$T=\SI{300}{\kelvin}$, and a pressure of $p=\SI{10^3}{\hecto\pascal}$,
-we know $\rho\approx\SI{1.2}{\kilo\gram\per\cubed\meter}$, since those
-are standard conditions. It is to be expected that a small increase in
-one of them should be proportional to a small increase in the other
-one. It is hard to assume otherwise, except when close to a phase
-transition. Let us write
+Finally, in order to close the equations, we need some relationship
+between variations in the density and variations in the pressure. This
+comes from thermodynamics. Indeed, the reference pressure and density
+are tied by an equation of state
 \[
-  \delta p \approx v^2 \delta \rho ,
+p=p(\rho,T) .\] For example, at about $T_0=\SI{300}{\kelvin}$, and a
+pressure of $p_0=\SI{1e3}{\hecto\pascal}$, we know
+$\rho_0\approx\SI{1.225}{\kilo\gram\per\cubed\meter}$, since those are
+so-called standard conditions.
+
+\section{Linearization}
+
+Now, we will assume small fluctuations about constant backgrounds. I.e:
+\begin{align}
+  \label{eq:sound_small_u}
+  \mathbf{u} & \approx \mathbf{u} \\
+  \label{eq:sound_small_rho}
+  \rho       & \approx \rho_0 + \rho' \\
+  \label{eq:sound_small_p}
+  p          & \approx p_0+ p' \approx p_0+ \kappa \rho'
+\end{align}
+Equation \ref{eq:sound_small_u} means the velocity is to be considered
+small in some sense, but there is no average drift on top of which our
+waves may travel. Such a drift may be present if there are currents
+(water) or winds (air), and it is instructive to derive its effect. We
+will neglect it here.
+
+In Equation \ref{eq:sound_small_p} implies that a small increase in
+density should cause a small increase in the pressure. It is hard to
+assume otherwise, except when close to a phase
+transition. Mathematically, this is a Taylor expansion:
+\[
+p \approx
+p_0 +
+\left. \frac{d p}{d\rho} \right|_{\rho_0} (\rho-\rho_0)
+\qquad\to\qquad
+p' \approx \left. \frac{d p}{d\rho} \right|_{\rho_0} \rho' .
 \]
-where the proportionality is $v^2$. The quantity $v$ has units of
-velocity.
+The proportionality is given by $\kappa$, defined as
+\begin{equation}
+  \label{eq:sound_kappa}
+  \kappa =  \left. \frac{d p}{d\rho} \right|_{\rho_0} 
+\end{equation}
 
 Then, neglecting second and higher order perturbation terms we may
 obtain linearized equations, involving only the velocity and the
 pressure:
+\begin{align}
+  \label{eq:sound_lin_cont}
+  \frac{\partial \bfu }{\partial t} & = - \frac{1}{\rho_0} \nabla p' \\
+  %
+  \rho_0 \kappa \nabla \cdot \mathbf{\rho u} +
+  \frac{\partial p'}{\partial t} =0 
+\end{align}
+The kinematic viscosity is defined as $ \nu=\mu/\rho_0$.%
+\index{kinematic viscosity}
+Notice the convective part of the material derivatives is neglected,
+since it is of higher order.
+
+If we differentiate with respect to space (by applying $ \nabla$) in
+the first equation, and with respect to time in the second, we can
+substract the two, and eliminate the velocity term. 
+The following equation for the pressure results:
+\[
+\frac{\partial^2 p' }{\partial t^2 }  = \kappa \nabla^2 p' ,
+\]
+which is the wave equation. Its solutions are waves, and their speed,
+the speed of sound, is $c^2 = \kappa $. Our first impulse should be to
+check whether our prediction of the speed of sound matches the known
+value for some standard situations. By far, the best known situation
+is the speed of sound in air in standar conditions. Since air is, to
+a good approximation, a perfect gas, then
+\[
+p V = n R T \qquad\to\qquad p  = \rho\frac{ R T}{m},
+\]
+where $m$ is the molar gas.
+
+Then,
+\[
+\kappa =  \left. \frac{d p}{d\rho} \right|_{\rho_0} =
+ \frac{ R T_0}{m} = \frac{ p_0 }{ \rho_0 } .
+\]
+The last equation saves us from checking up the value of $R$ and the
+molar mass of air (an effective value, since the air is a mixture of
+gases.)
+
+Our numerical result would then be
+\[
+c= \sqrt{\frac{ p_0 }{ \rho_0 }} =
+\sqrt{\frac%
+  { \SI{1e3}{\hecto\pascal} }%
+  {\SI{1.2}{\kilo\gram\per\cubed\meter}}} =
+\SI{290}{\meter\per\second} .
+\]
+
+This number, while not terribly wrong, is not equal to the speed of
+sound in standard conditions, which is about
+$\SI{343}{\meter\per\second}$. (A mnemonic rule is that it takes about
+three seconds for the air to cover one kilometer --- hence the
+practice of counting the time in seconds between lighning flash and
+thunder sound, and divide by three to estimate the distance to a
+lightning in a storm.)
+
+The mistake implicit in our calculations, which was present in the
+original derivation by Isaac Newton, was later corrected as our
+understanding in thermodynamics increased throughout the XIX
+century. The error is to perform the derivative $d p' / d\rho'$ at
+fixed temperature. We know now that the speed of sound sets the limit
+at which a thermodynamic process may be considered isothermal. For
+sound waves, the process is better modeled as
+adiabatic\index{adiabatic}.
+
+In adiabatic processes, each fluid particle is unable to tranfer
+energy to its surroundings, since the wave phenomenon is too
+fast. Without going into details (which may be found at any standard
+book on thermodynamics), the well-known law for an adiabatic process is
+\[
+p V^\gamma = \mathrm{ct} ,
+\]
+while in our previous, isothermal derivation, we had assumed $ p V =
+\mathrm{ct} $. The exponent $\gamma$ is the famous adiabatic exponent,
+which depends on the ideal gas being monoatomic or diatomic (in the
+standard temperature range, at least). The air is really neither,
+being a mixture, but most of its components (N$_2$ and $O_2$) are
+diatomic, so a good approximation to $\gamma$ is $7/5$, the diatomic
+value.
+
+We can manipulate the adiabatic relationship this way:
+\[
+p V^\gamma = \mathrm{ct} \qquad\to\qquad
+p V^\gamma = \mathrm{ct}_2 m^\gamma \qquad\to\qquad
+p = \mathrm{ct}_2 \rho^\gamma ,
+\]
+where $\mathrm{ct}_2$ is some other constant, and we introduce
+$m^\gamma$ because the mass of a particle, $m$, is constant (as we
+will ellaborate again later, see e.g. Section \ref{sec:continuity3} .)
+By the shortcut of applying logarithms we readily find our $\kappa$:
+\[
+\log p = \mathrm{ct}_3 + \gamma \log \rho  \qquad\to\qquad
+\frac{1}{ p }
+\frac{d p}{d\rho}=  \gamma \frac{1}{\rho} ,
+\]
+i.e.
+\[
+\kappa = \gamma \frac{p_0}{\rho_0} .
+\]
+Our new numerical result is the same as before, but with
+an extra $\sqrt{7/5}$ factor, a $14\%$ increase approximately.
+Finally:
+\[
+c= \sqrt{\frac{\gamma p_0 }{ \rho_0 }} =
+\sqrt{\frac%
+  { (7/5)  \SI{1e3}{\hecto\pascal} }%
+  {\SI{1.2}{\kilo\gram\per\cubed\meter}}} =
+\SI{330}{\meter\per\second} ,
+\]
+a value much closer to the real value of $\SI{343}{\meter\per\second} $.
+
+Let us finish by analyzing a simple sound wave. Our wave is harmonic:
+it has a well defined frequency $f$, and therefore angular frequency
+$\omega=2\pi f$. Of course, the word ``harmonic'' stems from our
+knowlodge of sound waves, hence ``harmonic analysis'', and so on (but,
+the equivalent concept in optics is ``monochromatic''.) These sort of
+waves sound ``pure'' (also, quite dull) and may be obtained from
+tuning forks or, in our days, synthetisers. It is also planar, since
+it depends only on $x$ --- no such waves exist, but this is a rather
+good approximation for small regions far away from the sound source.
+Its mathematical expression is
+\[
+\rho = \rho_0 +  \rho_A \cos[ k ( x  - \omega/k  t) ]
+= \rho_0 \rho_A \cos(k x  - \omega t) .
+\]
+It is traveling since, as shown in the first equality, it is a
+function of the form $f(x-ct)$. Also, $c= \omega/k$, which fixes the
+relationship $\omega = c k$. Since $\omega$, the angular frequency, is
+proportional to $k$, the wave number, this wave is non-dispersive: the
+speed of sound is the same for all wave numbers. The wave number is
+related to the wave-length, $k=2\pi/\lambda$, therefore $f \lambda =
+c$. The relationship between the length of a wave and its frequency is
+of course very relevant for musical instrument makers and architecture
+of buildings with musical interest (concert halls, recording studios.)
+
+The amplitude of the density modulation is $\rho_A$, and $\rho_A \ltt
+\rho_0$ since modulations are small.
+
+The corresponding pressure modulation is
+\[
+p =  p_0 + \rho_A c^2  \cos(k x  - \omega t) .
+\]
+The number $ \rho_A c^2 $ is much ``larger'' than $\rho_A$, but that
+should not bother us: a large density modulation of, say $\rho_A=
+{\SI{0.1}{\kilo\gram\per\cubed\meter}}$ (which means a modulation of
+the air density of approximately $10\%$ about its unperturbed value)
+translates into about ${\SI{140}{\hecto\pascal}}$, which is a $14\%$
+pressure modulation, more or less.
+
+Finally, the velocity may be recovered from \ref{eq:sound_lin_cont}. The
+solution to it is
+\[
+\bfu = u_0  \cos(k x  - \omega t) \bfe_x .
+\]
+It is therefore a purely longitudinal wave, since the particles move
+in the direction of wave propagation, $x$ (at variance with planar
+light waves in vacuum, which is purely transversal).
+
+The value of $u_0$ is set by the requirement that $\bfu$ is indeed a
+solution:
+\[
+\omega \rho_A - \rho_0 u_0 k = 0 \qquad\to\qquad
+u_0 = c \frac{\rho_A}{\rho_0} .
+\]
+
+The velocity of the particles is therefore related to the speed of
+sound $c$, but lower than it, since the ratio $\rho_A / \rho_0$ (of
+about $0.1$ in the example above) must be small for our approximations
+to remain valid. Also, all three fields, pressure, density, and
+velocity are in phase. The speed is moving to the right, and the zones
+with high pressure and density move to the right, while the ones with
+low pressure and density move to the left. If the waved moved to the
+left, the sign of $u_0$ would change, and the situation would be the
+opposite.
 
 
-\frac{\partial }{\partial t} \mathbf{u} = - \frac{1}{\rho_0} \nabla
-p + \nu \nabla^2 \mathbf{u} + \left(\frac{\lambda}{\rho_0}+\nu\right)
-\nabla (\nabla\cdot\mathbf{u}) \\
-\rho_0 c^2 \nabla \cdot \mathbf{\rho u} + \frac{\partial p}{\partial t} =0 \]
-
-
-Here, we have dropped the "$ \delta$s" (it's confusing, but the expressions are so much cleaner). The kinematic viscosity is defined as $ \nu=\mu/\rho_0$.
-
-If we differentiate with respect to time in the first, and with respect to space (applying $ \nabla$) in the second, we can eliminate the pressure term $ \nabla(\partial p/\partial t)$ (I know, exchanging both derivatives, which makes mathematicians nervous.) The following equation for the velocity results:
-
-$ \frac{\partial^2 }{\partial t^2 } \mathbf{u} =c^2\nabla (\nabla\cdot\mathbf{u})  + \nu  \nabla^2\frac{\partial\mathbf{u}}{\partial t}  + \left(\frac{\lambda}{\rho_0}+\nu\right) \nabla (\nabla\cdot \frac{\partial\mathbf{u}}{\partial t}   )  .$
-
-Clearly, just a wave equation if there was no viscosity. Let's try a wave solution of the form
-
-$ \mathbf{u} = \mathbf{u}_0 e^{i(\omega t - \beta x)} .$
-
-Here, $ \omega=2\pi f$ is the angular frequency of the sound wave, but  $ \beta$ may be a complex number. If we find (as we will)
-
-$  \beta =  k - \alpha i ,$
-
-that would mean
-
-$ \mathbf{u} = \mathbf{u}_0e^{- \alpha x} e^{i(\omega t - k x)} ,$
-
-which clearly identifies $ \omega=2\pi /\lambda$ as the (real) wave-number for a wave-lenght $ \lambda$, and $ \alpha=1 /L $, as a <a href="https://en.wikipedia.org/wiki/Stokes%27_law_of_sound_attenuation">sound attenuation coefficient</a>, with $ L $ the penetration length.
-
-Now, second time derivatives just yield
-
-$ \frac{\partial^2 }{\partial t^2 } \mathbf{u} = -\alpha^2 \mathbf{u}$
-
-But, it is quite interesting that these two second space derivatives are not quite the same:
-
-$ \nabla^2 \mathbf{u} =  -k^2 \mathbf{u}$
-
-$ \nabla (\nabla\cdot \mathbf{u} ) = -k^2 (\mathbf{u}\cdot\mathbf{i})\mathbf{i} ,$
-
-where $ \mathbf{i} $ is the unit vector in the <em>x</em> direction. Clearly, the second version of the derivative produces a longitudinal wave, with a vector component just along the direction of propagation!
-<h3><strong>Transverse waves</strong></h3>
-I know, sound waves are longitudinal. But, what happens if we plug these derivatives for the <em>y</em> Cartesian component. Well:
-
-$ -\omega^2 = - i \nu \omega \beta^2,$
-
-or
-
-$ \beta^2 = \frac{\omega}{i \nu} = - \frac{\omega i}{\nu} .$
-
-Now, this is a very classic complex analysis problem. Recall $  -i=e^{3\pi/2+2\pi} $ You do need the $ 2\pi$ to get the two solutions. On of the solutions has the signs reversed, and corresponds to a wave propagating and attenuating in the -<em>x</em> direction. The one we are looking for is:
-
-$ \beta =\sqrt{ \frac{\omega}{ \nu}}e^{ 7 \pi/4}.$
-
-Therefore
-
-$ k=\alpha =\sqrt{ \frac{\omega}{ 2 \nu}}.$
-
-This is an interesting wave, since the attenuation coefficient is equal to the wave number. It looks like a simple function: $ e^{-x}\sin(x)$, which would be called simplistic by a physicist. If you plot it you'll see it decays very fast, with just one maximum of minimum of importance. (You can just type "e^-x*cos(x) from 0 to 10" in google, it will plot it!). So, yes, sound waves are basically longitudinal, since their transverse components get attenuated very fast. How fast? As we said before, the attenuation length is the inverse of $ \alpha$, so $ L=\sqrt{2\nu/\omega}$. This means that for everyday "sound", i.e. audible frequencies, that length is quite small. With the numerical data in the Table, that length will be only be about 0.7 mm for a very low frequency of 10 Hz (just below the hearing range), and will decrease as the inverse of the square root of the frequency.
-<table style="width:100%;">
-<tbody>
-<tr>
-<td></td>
-<td>$ c$ (m/s)</td>
-<td>$ \nu$ (m$ {}^2$/s)</td>
-<td>$ \zeta/\rho_0$ (m$ {}^2$/s)</td>
-<td>$ f_c$ (GHz)</td>
-</tr>
-<tr>
-<td>water</td>
-<td>1480</td>
-<td>$ 1.0 \times 10^{-6}$</td>
-<td>$ 3.1 \times 10^{-6}$</td>
-<td>$ 79$</td>
-</tr>
-<tr>
-<td>air</td>
-<td>340</td>
-<td>$ 1.48 \times 10^{-5}$</td>
-<td>$ 0.5 \times 10^{-5}$ ?</td>
-<td>$ 0.7$</td>
-</tr>
-</tbody>
-</table>
-<p style="padding-left:30px;"><strong>Table</strong>: Numerical values for two important substances. Question marks are speculative, since in Cramer air is said to have a negligible bulk viscosity... but in a graph this quantity's value is seen to be about half the shear viscosity value, and air is mostly nitrogen.</p>
-
-<h3><strong>Longitudinal waves</strong></h3>
-Plugging the derivatives for the <em>x</em> Cartesian component:
-
-$ -\omega^2 = - c^2\beta^2 - i (4\nu/3+\zeta/\rho_0)  \omega \beta^2.$
-
-We see that the viscosity now features the bulk viscosity, as seems fitting for a longitudinal disturbance, which involves compression. Also, a new important term appears. If viscosity were negligible, the solution is just
-
-$  \omega =  c \beta , $
-
-the usual dispersion relation for sound. In general, though:
-
-$ \beta^2 = \frac{\omega^2}{c^2+i(4\nu/3+\zeta/\rho_0)\omega}=\frac{\omega^2}{c^2}\frac{1}{1+ i\omega/\omega_c},$
-
-where we define the important crossover angular frequency
-
-$ \omega_c := \frac{c^2}{4\nu/3+\zeta/\rho_0}.$
-
-Numerical values can be found in the table (we provide the linear frequency). The value is really high for hearing range, which goes up to about 20 kHz for humans, 160kHz for porpoises, which hold the record. Medical ultrasound goes as high as 16 MHz only, and only acoustic microscopy reaches a few GHz, the range at which our value for air sits.
-<h4>Low frequencies</h4>
-At frequencies much below the crossover frequency, we may expand the term in the denominator in a Taylor series, then again for the square root. The end result is
-
-$ \beta = \frac{\omega}{c} (1-i   \omega/(2 \omega_c)).$
-
- 
-
-Therefore the wave number is
-
-$ \beta = \frac{\omega}{c},$
-
-as if there were no viscosity. The attenuation coefficient is
-
-$ \alpha = \frac{\omega^2}{2 c\omega_c}=\frac{\omega^2}{2 c^3}(4\nu/3+\zeta/\rho_0). $
-
-It therefore grows as the square of the frequency.  This agrees with the expression in <a href="http://Stokes' law of sound attenuation">wikipedia</a> (but for a factor of two in the general formula, which I have just corrected - let's see if it stays). This would mean that for that very high porpoise's pitch at 160Hz the attenuation length would be about 1.5 kilometers (in water, of course), which may be important for long-range communication of these animals. For medical ultrasound at 16MHz this length is 14cm, which can clearly have an impact for human tissues (I am not sure if this attenuation may be used to our advantage). For the human bodies I have used water values, which is a fair approximation.
-<h4>High frequencies</h4>
-At frequencies much higher than the crossover, we may neglect the "1" in the denominator, to obtain
-
-$ \beta^2 = \frac{\omega\omega_c}{i c^2} .$
-
-Now, this looks familiar, especially if we substitute the crossover frequency:
-
-$ \beta^2 = \frac{\omega}{i(4\nu/3+\zeta/\rho_0)} .$
-
-Basically, the same expression as for transverse waves, with a different combination of viscosities. The conclusion is similar:
-
-$ k=\alpha =\sqrt{ \frac{\omega}{ 2(4\nu/3+\zeta/\rho_0)}},$
-
-and the resulting waves are heavily attenuated.
-<h4></h4>
-<h4>The crossover</h4>
-A fast check on the above approximations is to see what happens when the frequency is exactly the crossover frequency. At this point, the growth of the attenuation coefficient as the square of frequency crosses over to a growth as the square root. This would mean a bend in a log-log plot, between two straight lines with different slopes.
-
-The extrapolation of the low frequency expression yields
-
-$ \alpha_c\approx \omega_c/(2 c) , $
-
-whereas the high frequency expression yields
-
-$ \alpha_c\approx \omega_c/(\sqrt{2} c) , $
-
-not so different at all.
-
-The exact expression can be shown to be, after some complex algebra,
-
-$ \alpha_c\approx \omega_c \sin(\pi/8) / (2^{1/4} c) , $
-
-a value just a bit below the other two. This means the approximations remain quite fair up to the limit of their respective ranges.
-
-By the way, for water this value corresponds to an attenuation length of about 58 nm, which is really short. For air, it is about 1.5 micrometers, the size of a really small cell.
-
- 
+\section{Mach's number and compressibility}
