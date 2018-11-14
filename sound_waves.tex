@@ -1,0 +1,206 @@
+\section{Sound waves}
+
+The existence of pressure and density waves, as solution of the Euler
+equations, is established in this section.
+
+Let us start with the Euler momentum equation, neglecting gravity
+\[
+\frac{d \bfu }{\partial t}=
+- \frac{1}{\rho} \nabla p  .
+\]
+
+Continuity is also important: since we are expecting density waves,
+this quantity should not be considered to be constant. The full
+equation is therefore:
+\[
+\nabla \cdot \mathbf{\rho u} + \frac{\partial
+\rho}{\partial t} =0
+\]
+
+Now, let us suppose small pressure and density fluctuations about a
+constant background. I.e:
+\begin{align}
+\mathbf{u} & \approx \mathbf{u} \\
+p          & \approx p_0+\delta p \\
+\rho       & \approx \rho_0+\delta \rho .
+\end{align}
+The first equation means the velocity is to be considered small in
+some sense, but there is no average drift on top of which our waves
+may travel. Such a drift may be present if there are currents (water) or
+winds (air), and it is instructive to derive its effect. For the time
+being, we will neglect it.
+
+In order to close the equations, we need some relationship between
+variations in the density and variations in the pressure. This comes
+from thermodynamics. Indeed, the reference pressure and density are
+tied by an equation of state $p=p(\rho,T)$. E.g. at about
+$T=\SI{300}{\kelvin}$, and a pressure of $p=\SI{10^3}{\hecto\pascal}$,
+we know $\rho\approx\SI{1.2}{\kilo\gram\per\cubed\meter}$, since those
+are standard conditions. It is to be expected that a small increase in
+one of them should be proportional to a small increase in the other
+one. It is hard to assume otherwise, except when close to a phase
+transition. Let us write
+\[
+  \delta p \approx v^2 \delta \rho ,
+\]
+where the proportionality is $v^2$. The quantity $v$ has units of
+velocity.
+
+Then, neglecting second and higher order perturbation terms we may
+obtain linearized equations, involving only the velocity and the
+pressure:
+
+
+\frac{\partial }{\partial t} \mathbf{u} = - \frac{1}{\rho_0} \nabla
+p + \nu \nabla^2 \mathbf{u} + \left(\frac{\lambda}{\rho_0}+\nu\right)
+\nabla (\nabla\cdot\mathbf{u}) \\
+\rho_0 c^2 \nabla \cdot \mathbf{\rho u} + \frac{\partial p}{\partial t} =0 \]
+
+
+Here, we have dropped the "$ \delta$s" (it's confusing, but the expressions are so much cleaner). The kinematic viscosity is defined as $ \nu=\mu/\rho_0$.
+
+If we differentiate with respect to time in the first, and with respect to space (applying $ \nabla$) in the second, we can eliminate the pressure term $ \nabla(\partial p/\partial t)$ (I know, exchanging both derivatives, which makes mathematicians nervous.) The following equation for the velocity results:
+
+$ \frac{\partial^2 }{\partial t^2 } \mathbf{u} =c^2\nabla (\nabla\cdot\mathbf{u})  + \nu  \nabla^2\frac{\partial\mathbf{u}}{\partial t}  + \left(\frac{\lambda}{\rho_0}+\nu\right) \nabla (\nabla\cdot \frac{\partial\mathbf{u}}{\partial t}   )  .$
+
+Clearly, just a wave equation if there was no viscosity. Let's try a wave solution of the form
+
+$ \mathbf{u} = \mathbf{u}_0 e^{i(\omega t - \beta x)} .$
+
+Here, $ \omega=2\pi f$ is the angular frequency of the sound wave, but  $ \beta$ may be a complex number. If we find (as we will)
+
+$  \beta =  k - \alpha i ,$
+
+that would mean
+
+$ \mathbf{u} = \mathbf{u}_0e^{- \alpha x} e^{i(\omega t - k x)} ,$
+
+which clearly identifies $ \omega=2\pi /\lambda$ as the (real) wave-number for a wave-lenght $ \lambda$, and $ \alpha=1 /L $, as a <a href="https://en.wikipedia.org/wiki/Stokes%27_law_of_sound_attenuation">sound attenuation coefficient</a>, with $ L $ the penetration length.
+
+Now, second time derivatives just yield
+
+$ \frac{\partial^2 }{\partial t^2 } \mathbf{u} = -\alpha^2 \mathbf{u}$
+
+But, it is quite interesting that these two second space derivatives are not quite the same:
+
+$ \nabla^2 \mathbf{u} =  -k^2 \mathbf{u}$
+
+$ \nabla (\nabla\cdot \mathbf{u} ) = -k^2 (\mathbf{u}\cdot\mathbf{i})\mathbf{i} ,$
+
+where $ \mathbf{i} $ is the unit vector in the <em>x</em> direction. Clearly, the second version of the derivative produces a longitudinal wave, with a vector component just along the direction of propagation!
+<h3><strong>Transverse waves</strong></h3>
+I know, sound waves are longitudinal. But, what happens if we plug these derivatives for the <em>y</em> Cartesian component. Well:
+
+$ -\omega^2 = - i \nu \omega \beta^2,$
+
+or
+
+$ \beta^2 = \frac{\omega}{i \nu} = - \frac{\omega i}{\nu} .$
+
+Now, this is a very classic complex analysis problem. Recall $  -i=e^{3\pi/2+2\pi} $ You do need the $ 2\pi$ to get the two solutions. On of the solutions has the signs reversed, and corresponds to a wave propagating and attenuating in the -<em>x</em> direction. The one we are looking for is:
+
+$ \beta =\sqrt{ \frac{\omega}{ \nu}}e^{ 7 \pi/4}.$
+
+Therefore
+
+$ k=\alpha =\sqrt{ \frac{\omega}{ 2 \nu}}.$
+
+This is an interesting wave, since the attenuation coefficient is equal to the wave number. It looks like a simple function: $ e^{-x}\sin(x)$, which would be called simplistic by a physicist. If you plot it you'll see it decays very fast, with just one maximum of minimum of importance. (You can just type "e^-x*cos(x) from 0 to 10" in google, it will plot it!). So, yes, sound waves are basically longitudinal, since their transverse components get attenuated very fast. How fast? As we said before, the attenuation length is the inverse of $ \alpha$, so $ L=\sqrt{2\nu/\omega}$. This means that for everyday "sound", i.e. audible frequencies, that length is quite small. With the numerical data in the Table, that length will be only be about 0.7 mm for a very low frequency of 10 Hz (just below the hearing range), and will decrease as the inverse of the square root of the frequency.
+<table style="width:100%;">
+<tbody>
+<tr>
+<td></td>
+<td>$ c$ (m/s)</td>
+<td>$ \nu$ (m$ {}^2$/s)</td>
+<td>$ \zeta/\rho_0$ (m$ {}^2$/s)</td>
+<td>$ f_c$ (GHz)</td>
+</tr>
+<tr>
+<td>water</td>
+<td>1480</td>
+<td>$ 1.0 \times 10^{-6}$</td>
+<td>$ 3.1 \times 10^{-6}$</td>
+<td>$ 79$</td>
+</tr>
+<tr>
+<td>air</td>
+<td>340</td>
+<td>$ 1.48 \times 10^{-5}$</td>
+<td>$ 0.5 \times 10^{-5}$ ?</td>
+<td>$ 0.7$</td>
+</tr>
+</tbody>
+</table>
+<p style="padding-left:30px;"><strong>Table</strong>: Numerical values for two important substances. Question marks are speculative, since in Cramer air is said to have a negligible bulk viscosity... but in a graph this quantity's value is seen to be about half the shear viscosity value, and air is mostly nitrogen.</p>
+
+<h3><strong>Longitudinal waves</strong></h3>
+Plugging the derivatives for the <em>x</em> Cartesian component:
+
+$ -\omega^2 = - c^2\beta^2 - i (4\nu/3+\zeta/\rho_0)  \omega \beta^2.$
+
+We see that the viscosity now features the bulk viscosity, as seems fitting for a longitudinal disturbance, which involves compression. Also, a new important term appears. If viscosity were negligible, the solution is just
+
+$  \omega =  c \beta , $
+
+the usual dispersion relation for sound. In general, though:
+
+$ \beta^2 = \frac{\omega^2}{c^2+i(4\nu/3+\zeta/\rho_0)\omega}=\frac{\omega^2}{c^2}\frac{1}{1+ i\omega/\omega_c},$
+
+where we define the important crossover angular frequency
+
+$ \omega_c := \frac{c^2}{4\nu/3+\zeta/\rho_0}.$
+
+Numerical values can be found in the table (we provide the linear frequency). The value is really high for hearing range, which goes up to about 20 kHz for humans, 160kHz for porpoises, which hold the record. Medical ultrasound goes as high as 16 MHz only, and only acoustic microscopy reaches a few GHz, the range at which our value for air sits.
+<h4>Low frequencies</h4>
+At frequencies much below the crossover frequency, we may expand the term in the denominator in a Taylor series, then again for the square root. The end result is
+
+$ \beta = \frac{\omega}{c} (1-i   \omega/(2 \omega_c)).$
+
+ 
+
+Therefore the wave number is
+
+$ \beta = \frac{\omega}{c},$
+
+as if there were no viscosity. The attenuation coefficient is
+
+$ \alpha = \frac{\omega^2}{2 c\omega_c}=\frac{\omega^2}{2 c^3}(4\nu/3+\zeta/\rho_0). $
+
+It therefore grows as the square of the frequency.  This agrees with the expression in <a href="http://Stokes' law of sound attenuation">wikipedia</a> (but for a factor of two in the general formula, which I have just corrected - let's see if it stays). This would mean that for that very high porpoise's pitch at 160Hz the attenuation length would be about 1.5 kilometers (in water, of course), which may be important for long-range communication of these animals. For medical ultrasound at 16MHz this length is 14cm, which can clearly have an impact for human tissues (I am not sure if this attenuation may be used to our advantage). For the human bodies I have used water values, which is a fair approximation.
+<h4>High frequencies</h4>
+At frequencies much higher than the crossover, we may neglect the "1" in the denominator, to obtain
+
+$ \beta^2 = \frac{\omega\omega_c}{i c^2} .$
+
+Now, this looks familiar, especially if we substitute the crossover frequency:
+
+$ \beta^2 = \frac{\omega}{i(4\nu/3+\zeta/\rho_0)} .$
+
+Basically, the same expression as for transverse waves, with a different combination of viscosities. The conclusion is similar:
+
+$ k=\alpha =\sqrt{ \frac{\omega}{ 2(4\nu/3+\zeta/\rho_0)}},$
+
+and the resulting waves are heavily attenuated.
+<h4></h4>
+<h4>The crossover</h4>
+A fast check on the above approximations is to see what happens when the frequency is exactly the crossover frequency. At this point, the growth of the attenuation coefficient as the square of frequency crosses over to a growth as the square root. This would mean a bend in a log-log plot, between two straight lines with different slopes.
+
+The extrapolation of the low frequency expression yields
+
+$ \alpha_c\approx \omega_c/(2 c) , $
+
+whereas the high frequency expression yields
+
+$ \alpha_c\approx \omega_c/(\sqrt{2} c) , $
+
+not so different at all.
+
+The exact expression can be shown to be, after some complex algebra,
+
+$ \alpha_c\approx \omega_c \sin(\pi/8) / (2^{1/4} c) , $
+
+a value just a bit below the other two. This means the approximations remain quite fair up to the limit of their respective ranges.
+
+By the way, for water this value corresponds to an attenuation length of about 58 nm, which is really short. For air, it is about 1.5 micrometers, the size of a really small cell.
+
+ 
