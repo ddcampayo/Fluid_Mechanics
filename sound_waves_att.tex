@@ -1,81 +1,87 @@
 \section{Attenuation of sound waves}
+\label{sec:sound_waves_att}
 
 This section contains a simple discussion of the role of viscosity in
 the attenuation of sound waves. Original work is by Stokes, 1845.
 
 Let us start with the Navier-Stokes momentum equation
+\ref{eq:NS_Newtonian},
+which we linearize by are disregarding high
+order deviations from equilibrium values:
+\begin{align}
+  & \frac{\partial\rho' }{\partial t}  + \rho_0 \divu =0 \\
+  & \label{eq:NS_Newtonian_const_visc}
+    \rho_0 \frac{\partial \bfu }{\partial t} =
+    - c^2 \nabla \rho' + \mu \nabla^2 \bfu
+    + ( \mu + \lambda ) \nabla\cdot ( \divu ) .
+\end{align}
+The same assumptions as those in
+Eqs. \ref{eq:sound_small_u}-\ref{eq:sound_small_p} have been made.
+Also, we write $\kappa = c^2$ for the proportinality of pressure
+modulations with density modulations, where $c$ is the sound speed
+when viscosity is neglected.
+
+The two viscosity coefficients are at their equilibrium values, since
+any departure would entail higher order terms (they always multiply
+the velocity). The subscript ``$_0$'' is not written on them for
+simplicity.
+
+Eq. \ref{eq:NS_Newtonian_const_visc} may seem different from previous
+expressions, but it is the correct one when $\mu$ is constant, but
+incompressibility does not hold. In this case, the term in
+\ref{eq:epsilon_term_with_divergence} is not zero, but rather gives
+rise to a $\mu \nabla\cdot ( \divu )$ term.
+
+Our systems is not as simple as the one in Section
+\ref{sec:sound_waves}, where the continuity and momentum equations
+where equally simple. There, we could easily eliminate either the
+velocity or the density from our equations in order to get a single
+equation for the other field. Now, the continuity equation is the
+same, but the one for momentum one is much more involved. This leaves
+us with eliminating the density as the only viable scheme.
+
+If we apply the gradient operator to continuity, and differentiate
+with respect to space in momentum, we arrive to this equation for
+the velocity only:
 \[
-\frac{d \bfu }{\partial t}=
-- \frac{1}{\rho} \nabla p +
-\frac{\mu}{\rho} \nabla^2 \mathbf{u} +
-\left(\frac{\lambda+\mu}{\rho}\right) \nabla (\nabla\cdot\mathbf{u}).
+  \frac{\partial^2 }{\partial t^2 } \mathbf{u} =
+  c^2\nabla^2 \bfu + \nu \nabla^2\frac{\partial\bfu}{\partial t} +
+  \zeta \nabla (\nabla\cdot \frac{\partial\bfu}{\partial t} ) ,
 \]
-Let the combination $ \zeta = \lambda + (2/3) \mu$.
-%
-All viscosities are assumed to be constant, which seems a reasonable
- assumption, since we are going to assume small departures about
- equilibrium values.
+where $\nu=\mu/\rho_0$, the usual kinematic viscosity, and we define
+an additional kinematic bulk viscosity $\zeta=(\mu+\lambda)/\rho_0$.
 
+Clearly, this reduces to our previous sound wave equation if there was
+no viscosity.
 
-Now, let us suppose small pressure and density fluctuations about a
-constant background. I.e: $ \mathbf{u} \approx \mathbf{u} \qquad
-p\approx p_0+\delta p \qquad \rho\approx \rho_0+\delta \rho .$
+Let us try a harmonic wave solution of the form
+\[
+  \bfu = \bfu_0 e^{i(\omega t - \beta x)} .
+\]
 
-The first equation means the medium onto which sounds travel is not
-moving (should be modified for e.g. wind). In this case, the
-fluctuations in pressure and density, being small, should be related
-by a constant which, with some foresight, we will call $ c^2$: $
-\delta p \approx c^2 \delta \rho .$
-
-The viscosities were already assumed to have small variations about
-their equilibrium values. Then, neglecting second and higher order
-perturbation terms we obtain linearized equations, involving only the
-velocity and the pressure (not the density):
-
-\[ \frac{\partial }{\partial t} \mathbf{u} = - \frac{1}{\rho_0} \nabla
-p + \nu \nabla^2 \mathbf{u} + \left(\frac{\lambda}{\rho_0}+\nu\right)
-\nabla (\nabla\cdot\mathbf{u}) \]
-
-\[ \rho_0 c^2 \nabla \cdot \mathbf{\rho u} + \frac{\partial p}{\partial
-  t} =0 \]
-
-Here, we have dropped the "$ \delta$s" (it's confusing, but the
-expressions are so much cleaner). The kinematic viscosity is defined
-as $ \nu=\mu/\rho_0$.
-
-If we differentiate with respect to time in the first, and with
-respect to space (applying $ \nabla$) in the second, we can eliminate
-the pressure term $ \nabla(\partial p/\partial t)$ (I know, exchanging
-both derivatives, which makes mathematicians nervous.) The following
-equation for the velocity results:
-
-\[ \frac{\partial^2 }{\partial t^2 } \mathbf{u} =c^2\nabla
-(\nabla\cdot\mathbf{u}) + \nu
-\nabla^2\frac{\partial\mathbf{u}}{\partial t} +
-\left(\frac{\lambda}{\rho_0}+\nu\right) \nabla (\nabla\cdot
-\frac{\partial\mathbf{u}}{\partial t} ) .\]
-
-Clearly, just a wave equation if there was no viscosity. Let's try a
-wave solution of the form
-
-\[ \mathbf{u} = \mathbf{u}_0 e^{i(\omega t - \beta x)} .\]
-
-Here, $ \omega=2\pi f$ is the angular frequency of the sound wave, but
-$ \beta$ may be a complex number. If we find (as we will)
-
-\[ \beta = k - \alpha i ,\]
-
-that would mean
-
-\[ \mathbf{u} = \mathbf{u}_0e^{- \alpha x} e^{i(\omega t - k x)} ,\]
-
+Notice the usage of complex exponentials, which is common in wave
+physics. Of course, the actual solution is real, so usually the real
+part of the complex solution is kept (sometimes it is the imaginary,
+which is equally valid). The flexibility comes partly from the fact
+that $\mathbf{u}_0$ could be complex, which would represent a phase.
+In our case, this is not important, but rather the possibility that
+$\beta$ may be complex. In this case, its values encapsulates both a
+real wave number and an spatial decay. Indeed, if
+\[
+  \beta = k - \alpha i ,
+\]
+then
+\[
+  \bfu = \bfu_0e^{- \alpha x} e^{i(\omega t - k x)} ,
+\]
 which clearly identifies $ \omega=2\pi /\lambda$ as the (real)
 wave-number for a wave-lenght $ \lambda$, and $ \alpha=1 /L $, as a
 sound attenuation coefficient, with $ L $ the penetration length.
 
 Now, second time derivatives just yield
-
-\[ \frac{\partial^2 }{\partial t^2 } \mathbf{u} = -\alpha^2 \mathbf{u}\]
+\[
+  \frac{\partial^2  }{\partial t^2 } \mathbf{u} = -\alpha^2 \mathbf{u}
+\]
 
 But, it is quite interesting that these two second space derivatives
 are not quite the same:

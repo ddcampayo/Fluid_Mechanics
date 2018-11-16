@@ -242,7 +242,8 @@ have no stress associated.)
 
 A comparison with our previous result reveals $K=2\mu$. The constant
 $C_2$ is called, in the theory of elasticity ``the second Lam\'e
-coefficient'', and receives the symbol $\lambda$. Then,
+coefficient'', and receives the symbol $\lambda$ (it is also called
+the ``second viscosity coefficient'', $\mu$ being the first.) Then,
 \[
 \tau=
 2 \mu \epsilon + ( - p + \lambda \nabla\cdot \bfu ) \eye.
@@ -289,8 +290,8 @@ of the stress tensor:
 \[
 \bar{p}=
 -\frac13 \mathrm{Tr} \tau = 
-- p
-+ (2 \mu  + \lambda ) \nabla\cdot \bfu .
+ p
+- \left( \frac23 \mu  + \lambda \right) \nabla\cdot \bfu .
 \]
 
 The result is that the mechanical pressure, defined in such a way, is
@@ -300,22 +301,25 @@ assume simply that the fluid is incompressible. This is of course
 entirely correct, but would limit the applicability of the theory to
 incompressible problems.
 
-Another approach is to boldly assume $2\mu+\lambda=0$. This step was
-taken by Stokes, and defines a ``Stokesian fluid''. On the other hand,
-there is no clear evidence of a real fluid that may satisfy such a
-relationship. Indeed, the few measures of $\lambda$ have show positive
-values (while $\mu$, as should be clear, is always positive). We
-should then keep in mind that in some flows when compressibility is
-important, mechanical pressure may differ from thermodynamical one.
+Another approach is to boldly assume $( 2/3 ) \mu+\lambda=0$. This
+step was taken by Stokes, and defines a ``Stokesian fluid''. On the
+other hand, there is no clear evidence of a real fluid that may
+satisfy such a relationship. Indeed, the few measures of $\lambda$
+have show positive values (while $\mu$, as should be clear, is always
+positive). We should then keep in mind that in some flows when
+compressibility is important, mechanical pressure may differ from
+thermodynamical one. One such example is the attenuation of sound
+waves, explained in Section \ref{sec:sound_waves_att}.
 
 The Navier-Stokes equation for Newtonian liquids is finally:
-\[
-\rho \frac{d\bfu }{dt} =
-- \nabla p +
-2 \nabla \cdot ( \mu \epsilon)
-+ \nabla [ \lambda ( \divu ) ]
-+ \rho \bfg .
-\]
+\begin{equation}
+  \label{eq:NS_Newtonian}
+  \rho \frac{d\bfu }{dt} =
+  - \nabla p +
+  2 \nabla \cdot ( \mu \epsilon)
+  + \nabla [ \lambda ( \divu ) ]
+  + \rho \bfg .
+\end{equation}
 
 \subsection{Incompressible, athermal case}
 
@@ -361,14 +365,16 @@ Moreover, in the divergence of the stress tensor, the $i$-th term will be
 \frac{\partial^2 u_i }{\partial x_j^2} ,
 \end{align*}
 since the underbraced term is zero due to incompressibility:
-\[
-\sum_{j=1,2,3} 
-\frac{\partial}{\partial x_j} 
-\frac{\partial u_j}{\partial x_i} =
-\frac{\partial}{\partial x_i} 
-\sum_{j=1,2,3} 
-\frac{\partial u_j}{\partial x_j} = 0 .
-\]
+\begin{equation}
+  \label{eq:epsilon_term_with_divergence}
+  \sum_{j=1,2,3} 
+  \frac{\partial}{\partial x_j} 
+  \frac{\partial u_j}{\partial x_i} =
+  \frac{\partial}{\partial x_i} 
+  \sum_{j=1,2,3} 
+  \frac{\partial u_j}{\partial x_j} = 0 .
+\end{equation}
+
 
 The final momentum equation for an incompressible, athermal fluid, is then
 \begin{equation}

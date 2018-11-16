@@ -44,25 +44,25 @@
 \contentsline {subsection}{\numberline {9.2.1}Newtonian fluids}{61}
 \contentsline {subsection}{\numberline {9.2.2}Incompressible, athermal case}{63}
 \contentsline {section}{\numberline {9.3}Dimensionless variables: the Reynolds number}{64}
-\contentsline {chapter}{\numberline {10}The energy equation}{65}
-\contentsline {section}{\numberline {10.1}Exercises}{67}
-\contentsline {chapter}{\numberline {11}Simple solutions to the NS equations}{69}
-\contentsline {section}{\numberline {11.1}Couette flow}{69}
-\contentsline {subsection}{\numberline {11.1.1}Start-up of Couette flow}{70}
-\contentsline {subsection}{\numberline {11.1.2}Temperature}{72}
-\contentsline {section}{\numberline {11.2}Poiseuille flow}{73}
-\contentsline {subsection}{\numberline {11.2.1}Planar flow}{73}
-\contentsline {subsection}{\numberline {11.2.2}Temperature}{73}
-\contentsline {subsection}{\numberline {11.2.3}Flow in circular pipes}{74}
-\contentsline {subsection}{\numberline {11.2.4}Temperature}{74}
-\contentsline {section}{\numberline {11.3}Taylor-Green vortices}{75}
-\contentsline {subsection}{\numberline {11.3.1}Reduced units}{76}
-\contentsline {section}{\numberline {11.4}Attenuation of sound waves}{76}
-\contentsline {section}{\numberline {11.5}Exercises}{80}
-\contentsline {chapter}{\numberline {12}The overdamped limit}{81}
-\contentsline {subsection}{\numberline {12.0.1}Kolmogorov flow}{81}
-\contentsline {section}{\numberline {12.1}General solution}{83}
-\contentsline {subsection}{\numberline {12.1.1}Creeping flow past objects}{86}
-\contentsline {chapter}{\numberline {13}The viscous boundary layer}{87}
-\contentsline {section}{\numberline {13.1}Stagnation flow}{87}
-\contentsline {chapter}{\numberline {14}Turbulence}{93}
+\contentsline {chapter}{\numberline {10}The energy equation}{67}
+\contentsline {section}{\numberline {10.1}Exercises}{69}
+\contentsline {chapter}{\numberline {11}Simple solutions to the NS equations}{71}
+\contentsline {section}{\numberline {11.1}Couette flow}{71}
+\contentsline {subsection}{\numberline {11.1.1}Start-up of Couette flow}{72}
+\contentsline {subsection}{\numberline {11.1.2}Temperature}{74}
+\contentsline {section}{\numberline {11.2}Poiseuille flow}{75}
+\contentsline {subsection}{\numberline {11.2.1}Planar flow}{75}
+\contentsline {subsection}{\numberline {11.2.2}Temperature}{75}
+\contentsline {subsection}{\numberline {11.2.3}Flow in circular pipes}{76}
+\contentsline {subsection}{\numberline {11.2.4}Temperature}{76}
+\contentsline {section}{\numberline {11.3}Taylor-Green vortices}{77}
+\contentsline {subsection}{\numberline {11.3.1}Reduced units}{78}
+\contentsline {section}{\numberline {11.4}Attenuation of sound waves}{78}
+\contentsline {section}{\numberline {11.5}Exercises}{82}
+\contentsline {chapter}{\numberline {12}The overdamped limit}{83}
+\contentsline {subsection}{\numberline {12.0.1}Kolmogorov flow}{83}
+\contentsline {section}{\numberline {12.1}General solution}{85}
+\contentsline {subsection}{\numberline {12.1.1}Creeping flow past objects}{88}
+\contentsline {chapter}{\numberline {13}The viscous boundary layer}{89}
+\contentsline {section}{\numberline {13.1}Stagnation flow}{89}
+\contentsline {chapter}{\numberline {14}Turbulence}{95}
