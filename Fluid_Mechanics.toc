@@ -58,11 +58,16 @@
 \contentsline {section}{\numberline {11.3}Taylor-Green vortices}{77}
 \contentsline {subsection}{\numberline {11.3.1}Reduced units}{78}
 \contentsline {section}{\numberline {11.4}Attenuation of sound waves}{78}
-\contentsline {section}{\numberline {11.5}Exercises}{82}
-\contentsline {chapter}{\numberline {12}The overdamped limit}{83}
-\contentsline {subsection}{\numberline {12.0.1}Kolmogorov flow}{83}
-\contentsline {section}{\numberline {12.1}General solution}{85}
-\contentsline {subsection}{\numberline {12.1.1}Creeping flow past objects}{88}
-\contentsline {chapter}{\numberline {13}The viscous boundary layer}{89}
-\contentsline {section}{\numberline {13.1}Stagnation flow}{89}
-\contentsline {chapter}{\numberline {14}Turbulence}{95}
+\contentsline {subsection}{\numberline {11.4.1}Longitudinal waves}{80}
+\contentsline {subsubsection}{Low frequencies}{81}
+\contentsline {subsubsection}{High frequencies}{81}
+\contentsline {subsubsection}{At the crossover frequency}{82}
+\contentsline {subsection}{\numberline {11.4.2}Transverse waves}{83}
+\contentsline {section}{\numberline {11.5}Exercises}{83}
+\contentsline {chapter}{\numberline {12}The overdamped limit}{85}
+\contentsline {subsection}{\numberline {12.0.1}Kolmogorov flow}{85}
+\contentsline {section}{\numberline {12.1}General solution}{87}
+\contentsline {subsection}{\numberline {12.1.1}Creeping flow past objects}{90}
+\contentsline {chapter}{\numberline {13}The viscous boundary layer}{91}
+\contentsline {section}{\numberline {13.1}Stagnation flow}{91}
+\contentsline {chapter}{\numberline {14}Turbulence}{97}
