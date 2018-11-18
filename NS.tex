@@ -294,6 +294,13 @@ of the stress tensor:
 - \left( \frac23 \mu  + \lambda \right) \nabla\cdot \bfu .
 \]
 
+Defining volume pressure $\eta:=\frac23 \mu  + \lambda$,
+\[
+  \bar{p}=
+  p - \eta \nabla\cdot \bfu .
+\]
+
+
 The result is that the mechanical pressure, defined in such a way, is
 different from the thermodynamic pressure in an incompressible fluid.
 There are several ways out of this puzzling result. One of them is to
@@ -321,62 +328,101 @@ The Navier-Stokes equation for Newtonian liquids is finally:
   + \rho \bfg .
 \end{equation}
 
-\subsection{Incompressible, athermal case}
+\subsection{Particular instances}
 
-If the fluid is incompressible, $\mu$ may still have a dependence on
-temperature. The temperature has its own equation, to be explained below,
-and the viscosity does depend on it quite strongly, as is evident when
-heating up oil. In problems where this dependence may be avoided, the
-equation above reduces to
+We here consider instancies in which Eq. \ref{eq:NS_Newtonian} for
+Newtonian liquid is further simplified.
+
+
+\subsubsection{Athermal case}
+
+It may happen that the viscosity coefficients do not vary, when the
+variations on the other fields are not too great. In particular,
+viscosity depends on temperature quite strongly, as is evident when
+heating up oil. The temperature has its own equation, to be explained
+in the next chapter. In this case, Eq. \ref{eq:NS_Newtonian} may be
+written as
+\begin{equation*}
+  \rho \frac{d\bfu }{dt} =
+  - \nabla p +
+   2 \mu \nabla \cdot  \epsilon
+  + \lambda \nabla ( \divu ) )
+  + \rho \bfg .
+\end{equation*}
+
+Recalling the definition of the strain tensor $\epsilon$ \ref{eq:},
+\begin{equation*}
+  \rho \frac{d\bfu }{dt} =
+  - \nabla p +
+  \mu \nabla \cdot  ( \nabla\bfu + \nabla\bfu^t )
+  + \lambda \nabla ( \divu ) )
+  + \rho \bfg .
+\end{equation*}
+
+Alternatively, the volume viscosity may be introduced, and
+the equation rearranged to read
+\begin{equation*}
+  \rho \frac{d\bfu }{dt} =
+  - \nabla p 
+  + \mu \left(  \nabla\bfu + \nabla\bfu^t  - \frac23 \nabla ( \divu ) \right)
+  +  \eta \nabla ( \divu ) )
+  + \rho \bfg ,
+\end{equation*}
+which is rather elegant, since the term multiplied by $\mu$ describes
+pure shear flow.
+%symmetric, traceless tensor. For any tensor $T$, this operation
+%constist of a symmetrization, $T+T^t$, and then substracting the
+%trace, $T+T'-2\mathbf{Tr}(T)$. The trace of
+
+Now, $\nabla \cdot  \nabla\bfu = \nabla^2 \bfu$, as can be demonstrated
+since the $i$-th component of the resulting vector is
 \[
-\rho \frac{d\bfu }{dt} =
-- \nabla p +
-2 \mu  \nabla \cdot \epsilon
-+ \rho \bfg .
+(\nabla \cdot \nabla\bfu )_i =
+\sum_{j=1,2,3} 
+\frac{\partial}{\partial x_j} 
+\frac{\partial u_i}{\partial x_j}
+=
+\sum_{j=1,2,3} 
+\frac{\partial^2 }{\partial x_j^2} 
+u_i = \nabla^2 u_i .
 \]
 
-Moreover, in the divergence of the stress tensor, the $i$-th term will be
-\begin{align*}
-(\nabla \cdot \epsilon)_i &=
-\sum_{j=1,2,3} 
-\frac{\partial}{\partial x_j} \tau_{ji} =
-\frac12
+However, $\nabla \cdot  \nabla\bfu^t = \nabla  \divu$:
+\[
+(\nabla \cdot \nabla\bfu^t )_i =
 \sum_{j=1,2,3} 
 \frac{\partial}{\partial x_j} 
-\left(
-\frac{\partial u_i}{\partial x_j} +
 \frac{\partial u_j}{\partial x_i}
-\right)
-  = \\
-  &=
-\frac12
-\left(
+=
+\frac{\partial}{\partial x_i} 
 \sum_{j=1,2,3} 
-\frac{\partial}{\partial x_j} 
-\frac{\partial u_i}{\partial x_j} +
-\underbrace{
-  \sum_{j=1,2,3} 
-  \frac{\partial}{\partial x_i} 
-  \frac{\partial u_j}{\partial x_j}}_{=0}
-\right)
-                            =
-                            \frac12
-\sum_{j=1,2,3} 
-\frac{\partial^2 u_i }{\partial x_j^2} ,
-\end{align*}
-since the underbraced term is zero due to incompressibility:
+\frac{\partial u_j }{\partial x_j} 
+= (\nabla  \divu)_i .
+\]
+
+This means the NS equation can be written, in this limit,
+as
 \begin{equation}
-  \label{eq:epsilon_term_with_divergence}
-  \sum_{j=1,2,3} 
-  \frac{\partial}{\partial x_j} 
-  \frac{\partial u_j}{\partial x_i} =
-  \frac{\partial}{\partial x_i} 
-  \sum_{j=1,2,3} 
-  \frac{\partial u_j}{\partial x_j} = 0 .
+  \label{eq:NS_const_viscs}
+  \rho \frac{d\bfu }{dt} =
+  - \nabla p +
+   \mu \nabla^2  \bfu
+  + ( \lambda  + \mu) \nabla ( \divu ) )
+  + \rho \bfg .
 \end{equation}
 
 
-The final momentum equation for an incompressible, athermal fluid, is then
+
+
+
+\subsubsection{Incompressible, athermal case}
+
+If, in addition to constant viscosity coefficients, the flow is
+incompressible, the terms with $\divu$ in the previous section may be
+neglected.
+
+The final momentum equation for an incompressible, athermal fluid, is
+then
 \begin{equation}
   \label{eq:NS_usual}
   \rho \frac{d\bfu }{dt} =
@@ -386,6 +432,10 @@ The final momentum equation for an incompressible, athermal fluid, is then
 \end{equation}
 This equation, in this particular form, is the beginning of a vast
 ammount of research in physics and applied mathematics.
+
+
+
+
 
 
 \section{Dimensionless variables: the Reynolds number}

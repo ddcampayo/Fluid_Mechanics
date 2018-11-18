@@ -42,7 +42,9 @@
 \contentsline {subsection}{\numberline {9.1.1}Continuity, re-revisited}{59}
 \contentsline {section}{\numberline {9.2}Stress tensor}{59}
 \contentsline {subsection}{\numberline {9.2.1}Newtonian fluids}{61}
-\contentsline {subsection}{\numberline {9.2.2}Incompressible, athermal case}{63}
+\contentsline {subsection}{\numberline {9.2.2}Particular instances}{63}
+\contentsline {subsubsection}{Athermal case}{63}
+\contentsline {subsubsection}{Incompressible, athermal case}{64}
 \contentsline {section}{\numberline {9.3}Dimensionless variables: the Reynolds number}{64}
 \contentsline {chapter}{\numberline {10}The energy equation}{67}
 \contentsline {section}{\numberline {10.1}Exercises}{69}

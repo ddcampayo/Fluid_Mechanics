@@ -1,13 +1,17 @@
+
 \section{Attenuation of sound waves}
 \label{sec:sound_waves_att}
 
 This section contains a simple discussion of the role of viscosity in
 the attenuation of sound waves. Original work is by Stokes, 1845.
 
-Let us start with the Navier-Stokes momentum equation
-\ref{eq:NS_Newtonian},
-which we linearize by are disregarding high
-order deviations from equilibrium values:
+Let us start with the Navier-Stokes momentum equation, which will be
+linearized by disregarding high-order deviations from equilibrium
+values. The two viscosity coefficients always multiply the velocity
+terms. Therefore, they are at to be taken at their equilibrium values,
+since any departure would entail higher order terms. This points out
+\ref{eq:NS_const_viscs} as our starting point. After linearizing, the
+two equations are continuity and momentum.
 \begin{align}
   & \frac{\partial\rho' }{\partial t}  + \rho_0 \divu =0 \\
   & \label{eq:NS_Newtonian_const_visc}
@@ -19,12 +23,8 @@ The same assumptions as those in
 Eqs. \ref{eq:sound_small_u}-\ref{eq:sound_small_p} have been made.
 Also, we write $\kappa = c^2$ for the proportinality of pressure
 modulations with density modulations, where $c$ is the sound speed
-when viscosity is neglected.
-
-The two viscosity coefficients are at their equilibrium values, since
-any departure would entail higher order terms (they always multiply
-the velocity). The subscript ``$_0$'' is not written on them for
-simplicity.
+when viscosity is neglected. The subscript ``$_0$'' is not written for
+the viscosity coefficients for simplicity.
 
 Eq. \ref{eq:NS_Newtonian_const_visc} may seem different from previous
 expressions, but it is the correct one when $\mu$ is constant, but
@@ -190,10 +190,13 @@ The attenuation coefficient is
 \[ \alpha = \frac{\omega^2}{2 c\omega_c}=
 \frac{\omega^2}{2 c^3}(\nu+\zeta). \]
 %
-It therefore grows as the square of the frequency.  This agrees with
-the expression in ``Stokes' law of sound'' \cite{kp:SloS}
-(but for a factor of two in the general formula, which I have just
-corrected - let's see if it stays).  \index{Stokes' law of sound}.
+It therefore grows as the square of the frequency.  This agrees is
+called ``Stokes' law of sound'' \index{Stokes' law of sound}. Notice
+that the alternative form is often found \cite{kp:SloS}
+\[
+  \alpha =  \frac{\omega^2}{\rho_0 c^3}((2/3) \mu+\eta /2 ),
+\]
+with $\eta= (2/3) \mu + \lambda$ the volume compressiblity.
 
 This means that for that the highest sound in a porpoise's range, at
 $\SI{160}{\kilo\hertz}$ the attenuation length would be about
