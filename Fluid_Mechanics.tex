@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt,draft]{book}
+\documentclass[a4paper,10pt]{book}
 \usepackage{graphicx} %\usepackage[utf8]{inputenc}
 % center all figures:
 \makeatletter
@@ -11,6 +11,7 @@
 
 \makeindex
 
+\usepackage[square,sort,comma,numbers]{natbib}
 
 \usepackage{amsmath}
 \usepackage{bm}
@@ -53,12 +54,19 @@
 \include{chapter_viscous}
 %\input{etc}
 
+\nocite{*}
+
+\bibliographystyle{plainnat}
+
+\bibliography{fluid_mechanics}
+
 \printindex
 
 \begin{appendix}
    \listoffigures
    \listoftables
 \end{appendix}
+
 
 
 
