@@ -103,9 +103,9 @@ divergence of a tensor:
 The tensor $\tau$ has components $\tau_{ij}$. There is also
 the matrix notation, by which
 \[
-\nabla \cdot \tau = \nabla^t  \tau ,
+\nabla \cdot \tau = \nabla\tran  \tau ,
 \]
-where $\nabla^t$ is a transposed (row) vector operator, multiplying
+where $\nabla\tran$ is a transposed (row) vector operator, multiplying
 matrix $\tau$ from the left.
 
 The resulting Navier-Stokes equation is then,
@@ -168,8 +168,8 @@ A simple example would be to consider the flow $u_x = u_0 y / L$
 It is easy to find the two eigenvalues and associated eigenvectors of
 this matrix:
 \begin{align*}
-  \lambda_1=  u_0/(2L) \qquad &\bfv_1=(1/\sqrt{2}) \begin{pmatrix} 1 &  1 \end{pmatrix}^t \\
-  \lambda_1= -u_0/(2L) \qquad &\bfv_2=(1/\sqrt{2})  \begin{pmatrix} 1 &  -1 \end{pmatrix}^t \\
+  \lambda_1=  u_0/(2L) \qquad &\bfv_1=(1/\sqrt{2}) \begin{pmatrix} 1 &  1 \end{pmatrix}\tran \\
+  \lambda_1= -u_0/(2L) \qquad &\bfv_2=(1/\sqrt{2})  \begin{pmatrix} 1 &  -1 \end{pmatrix}\tran \\
 \end{align*}
 Notice the first eigenvalue correnspond to a dilation along the $x=y$
 diagonal, while the second is a compression along the $x=-y$ one.
@@ -289,17 +289,21 @@ Let us define a mechanical pressure as minus one-third times the trace
 of the stress tensor:
 \[
 \bar{p}=
--\frac13 \mathrm{Tr} \tau = 
+-\frac13 \Tr \tau  = 
  p
 - \left( \frac23 \mu  + \lambda \right) \nabla\cdot \bfu .
 \]
 
-Defining volume pressure $\eta:=\frac23 \mu  + \lambda$,
+Defining volume pressure
+\begin{equation}
+  \label{eq:vol_visc_definition}
+  \eta:=\frac23 \mu  + \lambda,
+\end{equation}
+we may write the mechanical pressure as
 \[
   \bar{p}=
   p - \eta \nabla\cdot \bfu .
 \]
-
 
 The result is that the mechanical pressure, defined in such a way, is
 different from the thermodynamic pressure in an incompressible fluid.
@@ -328,6 +332,42 @@ The Navier-Stokes equation for Newtonian liquids is finally:
   + \rho \bfg .
 \end{equation}
 
+
+\subsubsection{Pure shear and compression}
+
+Recalling the definition of the strain tensor $\epsilon$
+in Eq. \ref{eq:epsilon_as_grad_u}, the viscous force may be written as
+\begin{equation*}
+  \bff_\mathrm{v}=
+  \nabla \cdot \left[ \mu  \left( \nabla\bfu + \nabla\bfu\tran \right) \right] +
+  \nabla \cdot \left[ \lambda (\divu) \eye \right] ,
+\end{equation*}
+where $\nabla \cdot \left[ A \eye \right] $ is just another way to
+write $\nabla A$, for any scalar field $A$.
+
+
+If the volume viscosity of Eq. \ref{eq:vol_visc_definition} is
+introduced, the equation may be rearranged to read
+\begin{equation}
+  \label{eq:pure_stress_pure_compression}
+  \bff_\mathrm{v}=
+  \nabla \cdot \left[ \mu  \left(
+      \nabla\bfu + \nabla\bfu\tran  - \frac23 (\divu)  \eye
+    \right)
+  \right] +
+  \nabla \cdot \left[ \eta (\divu) \eye \right] .
+\end{equation}
+This expression is rather elegant, since the term multiplied by $\mu$
+describes pure shear flow, with no compression effects, and the term
+with $\eta$, pure compression.
+
+This is easily demonstrated, since
+\[
+  \Tr  \nabla\bfu = \divu \qquad\implies\qquad \Tr \left( \nabla\bfu -\frac13 (\divu) \eye \right) = 0 .
+\]
+The same goes for $ \nabla\bfu\tran$, hence the $2/3$ factor.
+
+
 \subsection{Particular instances}
 
 We here consider instancies in which Eq. \ref{eq:NS_Newtonian} for
@@ -350,30 +390,6 @@ written as
   + \rho \bfg .
 \end{equation*}
 
-Recalling the definition of the strain tensor $\epsilon$ \ref{eq:},
-\begin{equation*}
-  \rho \frac{d\bfu }{dt} =
-  - \nabla p +
-  \mu \nabla \cdot  ( \nabla\bfu + \nabla\bfu^t )
-  + \lambda \nabla ( \divu ) )
-  + \rho \bfg .
-\end{equation*}
-
-Alternatively, the volume viscosity may be introduced, and
-the equation rearranged to read
-\begin{equation*}
-  \rho \frac{d\bfu }{dt} =
-  - \nabla p 
-  + \mu \left(  \nabla\bfu + \nabla\bfu^t  - \frac23 \nabla ( \divu ) \right)
-  +  \eta \nabla ( \divu ) )
-  + \rho \bfg ,
-\end{equation*}
-which is rather elegant, since the term multiplied by $\mu$ describes
-pure shear flow.
-%symmetric, traceless tensor. For any tensor $T$, this operation
-%constist of a symmetrization, $T+T^t$, and then substracting the
-%trace, $T+T'-2\mathbf{Tr}(T)$. The trace of
-
 Now, $\nabla \cdot  \nabla\bfu = \nabla^2 \bfu$, as can be demonstrated
 since the $i$-th component of the resulting vector is
 \[
@@ -387,9 +403,9 @@ since the $i$-th component of the resulting vector is
 u_i = \nabla^2 u_i .
 \]
 
-However, $\nabla \cdot  \nabla\bfu^t = \nabla  \divu$:
+However, $\nabla \cdot  \nabla\bfu\tran = \nabla  (\divu)$:
 \[
-(\nabla \cdot \nabla\bfu^t )_i =
+(\nabla \cdot \nabla\bfu\tran )_i =
 \sum_{j=1,2,3} 
 \frac{\partial}{\partial x_j} 
 \frac{\partial u_j}{\partial x_i}
@@ -397,7 +413,7 @@ However, $\nabla \cdot  \nabla\bfu^t = \nabla  \divu$:
 \frac{\partial}{\partial x_i} 
 \sum_{j=1,2,3} 
 \frac{\partial u_j }{\partial x_j} 
-= (\nabla  \divu)_i .
+= (\nabla  (\divu))_i .
 \]
 
 This means the NS equation can be written, in this limit,
@@ -417,7 +433,7 @@ as
 
 \subsubsection{Incompressible, athermal case}
 
-If, in addition to constant viscosity coefficients, the flow is
+If, in addition to having constant viscosity coefficients, the flow is
 incompressible, the terms with $\divu$ in the previous section may be
 neglected.
 
@@ -432,7 +448,6 @@ then
 \end{equation}
 This equation, in this particular form, is the beginning of a vast
 ammount of research in physics and applied mathematics.
-
 
 
 

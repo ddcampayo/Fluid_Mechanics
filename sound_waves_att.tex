@@ -1,4 +1,3 @@
-
 \section{Attenuation of sound waves}
 \label{sec:sound_waves_att}
 
@@ -10,14 +9,19 @@ linearized by disregarding high-order deviations from equilibrium
 values. The two viscosity coefficients always multiply the velocity
 terms. Therefore, they are at to be taken at their equilibrium values,
 since any departure would entail higher order terms. This points out
-\ref{eq:NS_const_viscs} as our starting point. After linearizing, the
-two equations are continuity and momentum.
+\ref{eq:NS_const_viscs} as our starting point --- even if this case
+is not athermal, the fact that the variation of the viscosity
+coefficients is neglected leads to the same equation.
+
+
+After linearizing, the two relevant equations are continuity and
+momentum:
 \begin{align}
   & \frac{\partial\rho' }{\partial t}  + \rho_0 \divu =0 \\
   & \label{eq:NS_Newtonian_const_visc}
     \rho_0 \frac{\partial \bfu }{\partial t} =
     - c^2 \nabla \rho' + \mu \nabla^2 \bfu
-    + ( \mu + \lambda ) \nabla\cdot ( \divu ) .
+    + ( \mu + \lambda ) \nabla ( \divu ) .
 \end{align}
 The same assumptions as those in
 Eqs. \ref{eq:sound_small_u}-\ref{eq:sound_small_p} have been made.
@@ -46,7 +50,7 @@ the velocity only:
 \begin{equation}
   \label{eq:sound_att_Fourier}
   \frac{\partial^2 }{\partial t^2 } \mathbf{u} =
-  c^2\nabla^2 \bfu + \nu \nabla^2\frac{\partial\bfu}{\partial t} +
+  c^2\nabla \cdot (\divu) + \nu \nabla^2\frac{\partial\bfu}{\partial t} +
   \zeta \nabla (\nabla\cdot \frac{\partial\bfu}{\partial t} ) ,
 \end{equation}
 where $\nu=\mu/\rho_0$, the usual kinematic viscosity, and we define
@@ -102,10 +106,12 @@ not the same. The Laplacian is
 \]
 while the gradient of the divergence is
 \[
-\nabla (\nabla\cdot \bfu ) = -\beta^2 u_{0x} \bhe_x.
+\nabla (\nabla\cdot \bfu ) = -\beta^2 u_x \bhe_x,
 \]
+where $u_x= \bfu\cdot \bhe_x$ is the longitudinal component of the
+sound wave.
 %
-The latter then acts only on longitudinal waves: tranverse wave are
+The latter then acts only on longitudinal waves: tranverse waves are
 inherently divergence-free, since depend on one coordinate but point
 toward a perpendicular direction (as in Couette and Poiseuille flows).
 Let us consider them separately.
@@ -118,9 +124,16 @@ Eq. \ref{eq:NS_Newtonian_const_visc} yields
 \begin{equation}
   -\omega^2 = - c^2\beta^2 + i (\nu+\zeta)  \omega \beta^2 .
 \end{equation}
-The expression includes both the shear and the volume bulk viscosity,
-as seems fitting for a longitudinal disturbance, which involves
-compression. If viscosities are negligible, the solution is just
+The expression includes the volume bulk viscosity, as seems fitting
+for a longitudinal disturbance, which involves compression.  The
+appearance of the shear viscosity may come as a surprise, but the
+tensor $\mu$ term in Eq. \ref{eq:pure_stress_pure_compression},
+despite being traceless, nevertheless has a non-zero divergence, as
+can be easily checked (see Exercise \ref{ex:div_of_traceless}.)  This
+means this wave does not consist of pure compression, in spite of its
+appearance: it is also a shear wave.
+
+If viscosities were negligible, the solution is just
 \[
 \omega =  c \beta ,
 \]
@@ -131,12 +144,12 @@ Sec. \ref{sec:sound_waves}. In general, though:
   \label{eq:waves_att_dispersion}
   \beta^2 =
   \frac{\omega^2}{c^2 - i(\nu+\zeta)\omega}=
-  \frac{\omega^2}{c^2}\frac{1}{1 -  i\omega/\omega_c},
+  \frac{\omega^2}{c^2}\frac{1}{1 -  i\omega/\omega_\mathrm{c}},
 \end{equation}
 where we define the crossover angular frequency \index{crossover
   angular frequency}
 \[
-\omega_c := \frac{c^2}{\nu + \zeta }.
+  \omega_\mathrm{c} := \frac{c^2}{\nu + \zeta }.
 \]
 
 This is the frequency above which the viscosity begins to be relevant.
@@ -162,7 +175,7 @@ air.
 \begin{table}
 \begin{tabular}{|c|c|c|c|c|}
   \hline
-    & $ c$ (m/s) &  $ \nu$ (m$^2$/s) & $\zeta$ (m$^2$/s) & $ f_c$ (GHz)\\
+    & $ c$ (m/s) &  $ \nu$ (m$^2$/s) & $\zeta$ (m$^2$/s) & $ f_\mathrm{c}$ (GHz)\\
   \hline
   \hline
   water & $1480$& $ 1.0 \times 10^{-6}$ & $ 3.1 \times 10^{-6}$ & $79$ \\
@@ -178,6 +191,13 @@ air.
  \label{tbl:sound_att}}
 \end{table}
 
+It is somewhat tedious to find the real and imaginary parts of $\beta$
+from Eq. \ref{eq:waves_att_dispersion}. The resulting expressions are,
+moreover, not very iluminating except at low and high frequencies
+(with respect to $\omega_\mathrm{c}$). We find it better then to study
+these two limits from approximations to
+Eq. \ref{eq:waves_att_dispersion}, and refer the reader to a general
+solution as an Exercise (number \ref{ex:sound_att}.)
 
 \subsubsection{Low frequencies}
 
@@ -186,7 +206,7 @@ At frequencies much below the crossover frequency, we may expand the
 term in the denominator in a Taylor series, then again for the square
 root. The end result is
 \[
-\beta = \frac{\omega}{c} \left(1 + i   \frac{\omega}{2 \omega_c}\right).
+\beta = \frac{\omega}{c} \left(1 + i   \frac{\omega}{2 \omega_\mathrm{c}}\right).
 \]
 %
 Therefore, the wave number is
@@ -196,7 +216,7 @@ Therefore, the wave number is
 as if there were no viscosity.
 
 The attenuation coefficient is
-\[ \alpha = \frac{\omega^2}{2 c\omega_c}=
+\[ \alpha = \frac{\omega^2}{2 c\omega_\mathrm{c}}=
 \frac{\omega^2}{2 c^3}(\nu+\zeta). \]
 %
 It therefore grows as the square of the frequency.  This agrees is
@@ -223,7 +243,7 @@ cause unwanted heating.
 At frequencies much higher than the crossover, we may neglect the
 ``1'' in the denominator of \ref{eq:waves_att_dispersion}, to obtain
 \[
-\beta^2 = \frac{i \omega\omega_c}{c^2} .
+\beta^2 = \frac{i \omega\omega_\mathrm{c}}{c^2} .
 \]
 If we substitute the crossover frequency:
 \[
@@ -265,18 +285,18 @@ is shown in Figure \ref{fig:loglog}.
 
 The extrapolation of the low frequency expression yields
 \[
-\alpha_c\approx \frac{\omega_c}{2 c} ,
+\alpha_\mathrm{c}\approx \frac{\omega_\mathrm{c}}{2 c} ,
 \]
 
 whereas the high frequency expression yields
 \[
-\alpha_c\approx \frac{\omega_c}{\sqrt{2} c} ,
+\alpha_\mathrm{c}\approx \frac{\omega_\mathrm{c}}{\sqrt{2} c} ,
 \]
 which are similar.
 
 The exact expression can be shown to be, after some involved algebra,
 \[
-\alpha_c =\frac{ \sin(\pi/8) \omega_c }{ (2^{1/4} c } ,
+\alpha_\mathrm{c} =\frac{ \sin(\pi/8) \omega_\mathrm{c} }{ (2^{1/4} c } ,
 \]
 a value just a bit below the other two. This means the approximations
 remain quite fair up to the limit of their respective ranges.
@@ -288,7 +308,7 @@ about \SI{1.5}{\micro\meter}, the size of a really small cell.
 
 \subsection{Transverse waves}
 
-We tend to think, sound waves are longitudinal. We here discuss how
+We tend to think sound waves are longitudinal. We here discuss how
 they may have a transverse component, but it is dampened at al
 frequencies.
 
@@ -301,8 +321,9 @@ or
 \[
 \beta^2 = \frac{i \omega}{\nu}.
 \]
-Only $\nu$ is involved, which is fitting: transverse waves involve
-only shear, not compression.
+Only $\nu$ is involved, which is sensible: transverse waves do involve
+only shear, not compression (at variance with longitudinal waves,
+which involve both.)
 
 The expression is very similar to the one for longitudinal waves at
 high frequencies, only this one is valid at \emph{all} frequencies.
@@ -325,4 +346,32 @@ frequency.
 
 
 
+\section{Exercises}
+\begin{enumerate}
+\item  \label{ex:div_of_traceless} Show that ``pure-stress'' term
+  \[
+   \mu \nabla \cdot \left[ \left(
+        \nabla\bfu + \nabla\bfu\tran  - \frac23 (\divu)  \eye
+      \right)
+    \right] = -\frac43 \mu \beta^2 \bfu
+  \]
 
+\item Find the general solution of Eq. \ref{eq:waves_att_dispersion}
+  for the real and imaginary parts of $\beta$. Hint: use reduced
+  quantities $\beta'= c\beta/\omega $,
+  $\omega'=\omega/\omega_\mathrm{c}$, in terms of which the equation
+  reads simpler:
+  \[
+    \beta'^2 = \frac{1}{1-i \omega'} .
+  \]
+  Then, write $\beta=k+i \alpha$, find its square, and equate real and
+  complex parts of both sides of the equation.
+  The solution is
+  \[
+    \begin{align}
+      2\alpha'^2 &=\frac {1}{\sqrt{1+\omega'^{2}}} - \frac {1}{1+\omega'^{2}} \\
+      2k'^2     &=\frac {1}{\sqrt{1+\omega'^{2}}} + \frac {1}{1+\omega'^{2}}
+    \end{align}
+  \]
+  
+\end{enumerate}

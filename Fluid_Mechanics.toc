@@ -42,10 +42,11 @@
 \contentsline {subsection}{\numberline {9.1.1}Continuity, re-revisited}{59}
 \contentsline {section}{\numberline {9.2}Stress tensor}{59}
 \contentsline {subsection}{\numberline {9.2.1}Newtonian fluids}{61}
-\contentsline {subsection}{\numberline {9.2.2}Particular instances}{63}
-\contentsline {subsubsection}{Athermal case}{63}
-\contentsline {subsubsection}{Incompressible, athermal case}{64}
-\contentsline {section}{\numberline {9.3}Dimensionless variables: the Reynolds number}{64}
+\contentsline {subsubsection}{Pure shear and compression}{63}
+\contentsline {subsection}{\numberline {9.2.2}Particular instances}{64}
+\contentsline {subsubsection}{Athermal case}{64}
+\contentsline {subsubsection}{Incompressible, athermal case}{65}
+\contentsline {section}{\numberline {9.3}Dimensionless variables: the Reynolds number}{65}
 \contentsline {chapter}{\numberline {10}The energy equation}{67}
 \contentsline {section}{\numberline {10.1}Exercises}{69}
 \contentsline {chapter}{\numberline {11}Simple solutions to the NS equations}{71}
@@ -61,11 +62,12 @@
 \contentsline {subsection}{\numberline {11.3.1}Reduced units}{78}
 \contentsline {section}{\numberline {11.4}Attenuation of sound waves}{78}
 \contentsline {subsection}{\numberline {11.4.1}Longitudinal waves}{80}
-\contentsline {subsubsection}{Low frequencies}{82}
+\contentsline {subsubsection}{Low frequencies}{81}
 \contentsline {subsubsection}{High frequencies}{82}
 \contentsline {subsubsection}{At the crossover frequency}{83}
 \contentsline {subsection}{\numberline {11.4.2}Transverse waves}{83}
 \contentsline {section}{\numberline {11.5}Exercises}{84}
+\contentsline {section}{\numberline {11.6}Exercises}{84}
 \contentsline {chapter}{\numberline {12}The overdamped limit}{85}
 \contentsline {subsection}{\numberline {12.0.1}Kolmogorov flow}{85}
 \contentsline {section}{\numberline {12.1}General solution}{87}
