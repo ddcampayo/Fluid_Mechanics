@@ -51,10 +51,11 @@ the velocity only:
   \label{eq:sound_att_Fourier}
   \frac{\partial^2 }{\partial t^2 } \mathbf{u} =
   c^2\nabla \cdot (\divu) + \nu \nabla^2\frac{\partial\bfu}{\partial t} +
-  \zeta \nabla (\nabla\cdot \frac{\partial\bfu}{\partial t} ) ,
+  (\zeta - \nu) \nabla (\nabla\cdot \frac{\partial\bfu}{\partial t} ) ,
 \end{equation}
-where $\nu=\mu/\rho_0$, the usual kinematic viscosity, and we define
-an additional kinematic bulk viscosity $\zeta=(\mu+\lambda)/\rho_0$.
+where $\nu=\mu/\rho_0$, the usual kinematic viscosity, and we define,
+for future convenience, an additional kinematic viscosity
+$\zeta=2 \nu+\lambda/\rho_0$.
 
 Clearly, this reduces to our previous sound wave equation if there was
 no viscosity.
@@ -122,11 +123,14 @@ In this case, insertion of the wave form \ref{eq:wave_form_visc} into
 Eq. \ref{eq:NS_Newtonian_const_visc} yields
 
 \begin{equation}
-  -\omega^2 = - c^2\beta^2 + i (\nu+\zeta)  \omega \beta^2 .
+  -\omega^2 = - c^2\beta^2 + i \zeta  \omega \beta^2 .
 \end{equation}
 The expression includes the volume bulk viscosity, as seems fitting
 for a longitudinal disturbance, which involves compression.  The
-appearance of the shear viscosity may come as a surprise, but the
+appearance of the shear viscosity may come as a surprise \footnote{%
+  To be precise, the fact that $\eta$, the volume viscosity, is not
+  the only viscosity coefficient that appears, this beign a bit
+  obscured by our usage of $\zeta$ instead of $\mu$ and $\eta$.}  The
 tensor $\mu$ term in Eq. \ref{eq:pure_stress_pure_compression},
 despite being traceless, nevertheless has a non-zero divergence, as
 can be easily checked.  This means this wave does not consist of pure
@@ -144,13 +148,13 @@ Sec. \ref{sec:sound_waves}. In general, though:
 \begin{equation}
   \label{eq:waves_att_dispersion}
   \beta^2 =
-  \frac{\omega^2}{c^2 - i(\nu+\zeta)\omega}=
+  \frac{\omega^2}{c^2 - i \zeta\omega}=
   \frac{\omega^2}{c^2}\frac{1}{1 -  i\omega/\omega_\mathrm{c}},
 \end{equation}
 where we define the crossover angular frequency \index{crossover
   angular frequency}
 \[
-  \omega_\mathrm{c} := \frac{c^2}{\nu + \zeta }.
+  \omega_\mathrm{c} := \frac{c^2}{ \zeta }.
 \]
 
 This is the frequency above which the viscosity begins to be relevant.
@@ -176,12 +180,12 @@ air.
 \begin{table}
 \begin{tabular}{|c|c|c|c|c|}
   \hline
-    & $ c$ (m/s) &  $ \nu$ (m$^2$/s) & $\zeta$ (m$^2$/s) & $ f_\mathrm{c}$ (GHz)\\
+    & $ c$ (m/s) &  $ \nu$ (m$^2$/s) & $\lambda$ (m$^2$/s) & $ f_\mathrm{c}$ (GHz)\\
   \hline
   \hline
-  water & $1480$& $ 1.0 \times 10^{-6}$ & $ 3.1 \times 10^{-6}$ & $79$ \\
+  water (15$^\circ$C) & $1480$& $ 1.13 \times 10^{-6}$ & $ 3.1 \times 10^{-6}$ & $68$ \\
   \hline
-  air & $340$   & $ 1.48\times 10^{-5}$ & $ 5 \times 10^{-6}$ ? & $0.7$ \\
+  air & $340$   & $ 1.48\times 10^{-5}$ & $ 5 \times 10^{-6}$ ? & $0.5$ \\
   \hline
 \end{tabular}
 \caption{Numerical values for two important substances. Values with
@@ -234,7 +238,7 @@ line at low frequencies in Figure \ref{fig:sound_wave_att}).
 
 The attenuation coefficient is
 \[ \alpha = \frac{\omega^2}{2 c\omega_\mathrm{c}}=
-\frac{\omega^2}{2 c^3}(\nu+\zeta). \]
+\frac{ \zeta \omega^2 }{2 c^3}. \]
 %
 It therefore grows as the square of the frequency (red dotted blue
 line at low frequencies in Figure \ref{fig:sound_wave_att}).  This
@@ -243,20 +247,20 @@ agrees is called ``Stokes' law of sound'' \index{Stokes' law of
 \cite{kp:SloS}
 \[
   \alpha =  \frac{\omega^2}{\rho_0 c^3}
-  \left( \frac23 \mu+ \frac12 \eta /2 \right),
+  \left( \frac23 \mu+ \frac12 \eta  \right),
 \]
 with $\eta= (2/3) \mu + \lambda$ the volume compressiblity.
 
 This means that for that the highest sound in a porpoise's range, at
 $\SI{160}{\kilo\hertz}$ the attenuation length would be about
-$\SI{1.5}{\kilo\meter}$ (in water, of course). This may be important
-for the long-range communication of these animals. For medical
-ultrasound at $\SI{16}{\mega\hertz}$ this length is
-$\SI{14}{\centi\meter}$, with water values (a fair approximation for
-the human body.) This can have an impact for human tissues, in the
-sense that in a distance of some tens of centimeters the energy of the
-ultrasound waves is dissipated inside the body of the patient, and may
-cause unwanted heating.
+$\SI{8}{\kilo\meter}$ (in water, of course). This may be important for
+the long-range communication of these animals. For medical ultrasound
+at $\SI{16}{\mega\hertz}$ this length is
+$\approx\SI{80}{\centi\meter}$, with water values (a fair
+approximation for the human body.) This can have an impact for human
+tissues, in the sense that in a distance of some tens of centimeters
+the energy of the ultrasound waves is dissipated inside the body of
+the patient, and may cause unwanted heating.
 
 \subsubsection{High frequencies}
 
@@ -267,16 +271,16 @@ At frequencies much higher than the crossover, we may neglect the
 \]
 If we substitute the crossover frequency:
 \[
-\beta^2 = \frac{\omega}{i(\nu+\zeta)} =\frac{i \omega}{\nu+\zeta} 
+\beta^2 = \frac{\omega}{i \zeta} =\frac{i \omega}{\zeta} 
 \]
 Recalling $i = e^{(pi/2)i} $, the solution is
 \[
-\beta =\sqrt{ \frac{\omega}{ \nu + \zeta }} e^{(\pi/4)i}.
+\beta =\sqrt{ \frac{\omega}{ \zeta }} e^{(\pi/4)i}.
 \]
 
 Therefore
 \[
-k=\alpha =\sqrt{\frac{\omega}{ 2 (\nu+ \zeta}}.
+k=\alpha =\sqrt{\frac{\omega}{ 2 \zeta}}.
 \]
 
 This is an interesting result, since the attenuation coefficient is
@@ -285,7 +289,7 @@ Figure \ref{fig:sound_wave_att}).
 
 The attenuation length is
 \[
-\ell= \frac{1}{\alpha}=\sqrt{\frac{ 2 (\nu+ \zeta)}{\omega}}
+\ell= \frac{1}{\alpha}=\sqrt{\frac{ 2 \zeta}{\omega}}
 \]
 The function looks therefore like a simple function
 \[
@@ -325,9 +329,9 @@ a value just a bit below the other two. This means the approximations
 remain quite fair up to the limit of their respective ranges.
 
 By the way, for water this value corresponds to an attenuation length
-of about \SI{58}{\nano\meter}, which is really short. For air, it is
-about \SI{1.5}{\micro\meter}, the size of a really small cell.
-
+of about \SI{10}{\nano\meter}, which is a really short length, in the
+atomic range. For air, it is about \SI{0.3}{\micro\meter}, the size of
+a very small cell.
 
 \subsection{Transverse waves}
 
@@ -362,7 +366,7 @@ difference that the decay length is
 
 For frequencies of ordinary ``sound'', i.e. audible frequencies, that
 length is quite small. With the numerical data in the Table, that
-length is only about \SI{0.7}{\milli\meter} for aire, at a very low
+length is only about \SI{0.7}{\milli\meter} for air, at a very low
 frequency of \SI{10}{\hertz} (just below the lower hearing threshold),
 and will decrease further as the inverse of the square root of the
 frequency.
