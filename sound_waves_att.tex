@@ -64,10 +64,10 @@ Let us try a harmonic wave solution of the form
   \label{eq:wave_form_visc}
   \bfu = \Re\left[ \bfu_0 e^{i( \beta x - \omega t)} \right].
 \end{equation}
-Now $\bfu_0$ is a fixed amplitude vector, which may be parallel to
-$\bhe$ in a longitudinal sound wave, but may also be perpendicular to
-it, for a traverse wave. In general, of course, a wave may be a
-combination of both.
+Now $\bfu_0$ is a fixed amplitude and polarization vector, which may
+be parallel to $\bhe$ in a longitudinal sound wave, but may also be
+perpendicular to it, for a traverse wave. In general, of course, a
+wave may be a combination of both.
 
 Notice the usage of complex exponentials, which is common in wave
 physics. Of course, the actual solution is real, so usually the real
@@ -129,9 +129,10 @@ for a longitudinal disturbance, which involves compression.  The
 appearance of the shear viscosity may come as a surprise, but the
 tensor $\mu$ term in Eq. \ref{eq:pure_stress_pure_compression},
 despite being traceless, nevertheless has a non-zero divergence, as
-can be easily checked (see Exercise \ref{ex:div_of_traceless}.)  This
-means this wave does not consist of pure compression, in spite of its
-appearance: it is also a shear wave.
+can be easily checked.  This means this wave does not consist of pure
+compression, in spite of its appearance: it is also a shear wave (see
+Exercises \ref{ex:shear_in_wave} and \ref{ex:div_of_traceless}.)
+
 
 If viscosities were negligible, the solution is just
 \[
@@ -192,12 +193,27 @@ air.
 \end{table}
 
 It is somewhat tedious to find the real and imaginary parts of $\beta$
-from Eq. \ref{eq:waves_att_dispersion}. The resulting expressions are,
+from Eq. \ref{eq:waves_att_dispersion} (the general solution is shown
+in Figure \ref{fig:sound_wave_att}.)  The resulting expressions are,
 moreover, not very iluminating except at low and high frequencies
 (with respect to $\omega_\mathrm{c}$). We find it better then to study
 these two limits from approximations to
 Eq. \ref{eq:waves_att_dispersion}, and refer the reader to a general
 solution as an Exercise (number \ref{ex:sound_att}.)
+
+
+\begin{figure}
+  \centering
+  \begin{minipage}{0.7\textwidth}
+      \includegraphics[width=\textwidth]{figures/sound_wave_att}
+  \end{minipage}
+  \caption{Plot of reduced wave-vector, $k c /\omega_\mathrm{c}$ (blue), and
+    attenuation coefficient, $\alpha c /\omega_\mathrm{c}$ (red), as functions
+    of reduced frecuency $\omega /\omega_\mathrm{c}$. Dotted lines are
+    assymptotic regimes at low and high frequencies.
+    \label{fig:sound_wave_att}}
+\end{figure}
+
 
 \subsubsection{Low frequencies}
 
@@ -213,17 +229,21 @@ Therefore, the wave number is
 \[
 \beta = \frac{\omega}{c},
 \]
-as if there were no viscosity.
+as if there were no viscosity (this corresponds to the dotted blue
+line at low frequencies in Figure \ref{fig:sound_wave_att}).
 
 The attenuation coefficient is
 \[ \alpha = \frac{\omega^2}{2 c\omega_\mathrm{c}}=
 \frac{\omega^2}{2 c^3}(\nu+\zeta). \]
 %
-It therefore grows as the square of the frequency.  This agrees is
-called ``Stokes' law of sound'' \index{Stokes' law of sound}. Notice
-that the alternative form is often found \cite{kp:SloS}
+It therefore grows as the square of the frequency (red dotted blue
+line at low frequencies in Figure \ref{fig:sound_wave_att}).  This
+agrees is called ``Stokes' law of sound'' \index{Stokes' law of
+  sound}. Notice that the alternative form is often found
+\cite{kp:SloS}
 \[
-  \alpha =  \frac{\omega^2}{\rho_0 c^3}((2/3) \mu+\eta /2 ),
+  \alpha =  \frac{\omega^2}{\rho_0 c^3}
+  \left( \frac23 \mu+ \frac12 \eta /2 \right),
 \]
 with $\eta= (2/3) \mu + \lambda$ the volume compressiblity.
 
@@ -260,7 +280,10 @@ k=\alpha =\sqrt{\frac{\omega}{ 2 (\nu+ \zeta}}.
 \]
 
 This is an interesting result, since the attenuation coefficient is
-equal to the wave number. The attenuation length is
+equal to the wave number (dotted black line at high frequencies in
+Figure \ref{fig:sound_wave_att}).
+
+The attenuation length is
 \[
 \ell= \frac{1}{\alpha}=\sqrt{\frac{ 2 (\nu+ \zeta)}{\omega}}
 \]
@@ -348,12 +371,26 @@ frequency.
 
 \section{Exercises}
 \begin{enumerate}
-\item  \label{ex:div_of_traceless} Show that ``pure-stress'' term
+
+\item \label{ex:shear_in_wave} Write down the pure-shear stress tensor
+  (see also Eq. \ref{eq:pure_stress_pure_compression}):
   \[
-   \mu \nabla \cdot \left[ \left(
+    \tau_\mathrm{ps} :=
+    \mu  \left[
+      \left(
         \nabla\bfu + \nabla\bfu\tran  - \frac23 (\divu)  \eye
       \right)
-    \right] = -\frac43 \mu \beta^2 \bfu
+    \right] 
+  \]
+  for our linear wave \label{eq:wave_form_visc} in the case it is
+  longitudinal. Show that it is traceless (which it must, by
+  definition), but non-zero. This latter fact indicates that our wave
+  is not purely compressive in nature.
+ 
+\item \label{ex:div_of_traceless} Show that the volumetric force due
+  to the previous pure-stress is
+  \[
+   \mu \nabla \cdot  \tau_\mathrm{ps}  = -\frac43 \mu \beta^2 \bfu
   \]
 
 \item Find the general solution of Eq. \ref{eq:waves_att_dispersion}
@@ -364,14 +401,12 @@ frequency.
   \[
     \beta'^2 = \frac{1}{1-i \omega'} .
   \]
-  Then, write $\beta=k+i \alpha$, find its square, and equate real and
-  complex parts of both sides of the equation.
-  The solution is
-  \[
-    \begin{align}
-      2\alpha'^2 &=\frac {1}{\sqrt{1+\omega'^{2}}} - \frac {1}{1+\omega'^{2}} \\
-      2k'^2     &=\frac {1}{\sqrt{1+\omega'^{2}}} + \frac {1}{1+\omega'^{2}}
-    \end{align}
-  \]
+  Then, write $\beta'=k'+i \alpha'$, find its square, and equate real
+  and complex parts on both sides of the equation.  The solution is
+  \begin{align*}
+    2\alpha'^2 &=\frac {1}{\sqrt{1+\omega'^{2}}} - \frac {1}{1+\omega'^{2}} \\
+    2k'^2     &=\frac {1}{\sqrt{1+\omega'^{2}}} + \frac {1}{1+\omega'^{2}}
+  \end{align*}
+
   
 \end{enumerate}
