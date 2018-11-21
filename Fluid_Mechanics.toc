@@ -1,77 +1,79 @@
-\contentsline {chapter}{\numberline {1}Introduction}{7}
-\contentsline {section}{\numberline {1.1}Notation}{7}
-\contentsline {part}{I\hspace {1em}Ideal fluids}{9}
-\contentsline {chapter}{\numberline {2}Continuity of mass}{11}
-\contentsline {section}{\numberline {2.1}The concept of particle}{11}
-\contentsline {section}{\numberline {2.2}The continuity equation}{11}
-\contentsline {subsection}{\numberline {2.2.1}Incompressibility}{13}
-\contentsline {chapter}{\numberline {3}Euler's equations}{15}
-\contentsline {section}{\numberline {3.1}Material derivative}{15}
-\contentsline {subsection}{\numberline {3.1.1}Continuity, revisited}{16}
-\contentsline {subsection}{\numberline {3.1.2}Physical meaning of the material derivative}{17}
-\contentsline {section}{\numberline {3.2}External and pressure forces}{17}
-\contentsline {section}{\numberline {3.3}The momentum equation}{19}
-\contentsline {subsection}{\numberline {3.3.1}Conservation form}{19}
-\contentsline {section}{\numberline {3.4}Bernouilli's principle}{20}
-\contentsline {section}{\numberline {3.5}Exercises}{21}
-\contentsline {section}{\numberline {3.6}Dimensionless variables}{22}
-\contentsline {chapter}{\numberline {4}Hydrostatics}{25}
-\contentsline {section}{\numberline {4.1}Incompressible fluids}{25}
-\contentsline {section}{\numberline {4.2}Compressible fluids}{25}
-\contentsline {chapter}{\numberline {5}Sound waves}{27}
-\contentsline {section}{\numberline {5.1}Linearization}{27}
-\contentsline {section}{\numberline {5.2}Mach's number and compressibility}{30}
-\contentsline {chapter}{\numberline {6}Potential flow}{31}
-\contentsline {section}{\numberline {6.1}Flow past a cylinder}{31}
-\contentsline {subsection}{\numberline {6.1.1}Velocity field}{33}
-\contentsline {subsection}{\numberline {6.1.2}Streamlines}{36}
-\contentsline {subsection}{\numberline {6.1.3}Circulation and lift}{37}
-\contentsline {subsection}{\numberline {6.1.4}Exercises}{40}
-\contentsline {chapter}{\numberline {7}Gravity waves}{43}
-\contentsline {section}{\numberline {7.1}Gravity waves}{43}
-\contentsline {subsection}{\numberline {7.1.1}Shallow water}{46}
-\contentsline {subsection}{\numberline {7.1.2}Deep water}{47}
-\contentsline {chapter}{\numberline {8}Work and energy}{49}
-\contentsline {subsection}{\numberline {8.0.1}Heat flux}{51}
-\contentsline {part}{II\hspace {1em}Real fluids}{53}
-\contentsline {chapter}{\numberline {9}Navier-Stokes equations}{55}
-\contentsline {section}{\numberline {9.1}Kinematics of a particle}{55}
-\contentsline {subsubsection}{Rotation}{55}
-\contentsline {subsubsection}{Strain}{57}
-\contentsline {subsubsection}{Dilation}{58}
-\contentsline {subsection}{\numberline {9.1.1}Continuity, re-revisited}{59}
-\contentsline {section}{\numberline {9.2}Stress tensor}{59}
-\contentsline {subsection}{\numberline {9.2.1}Newtonian fluids}{61}
-\contentsline {subsubsection}{Pure shear and compression}{63}
-\contentsline {subsection}{\numberline {9.2.2}Particular instances}{64}
-\contentsline {subsubsection}{Athermal case}{64}
-\contentsline {subsubsection}{Incompressible, athermal case}{65}
-\contentsline {section}{\numberline {9.3}Dimensionless variables: the Reynolds number}{65}
-\contentsline {chapter}{\numberline {10}The energy equation}{67}
-\contentsline {section}{\numberline {10.1}Exercises}{69}
-\contentsline {chapter}{\numberline {11}Simple solutions to the NS equations}{71}
-\contentsline {section}{\numberline {11.1}Couette flow}{71}
-\contentsline {subsection}{\numberline {11.1.1}Start-up of Couette flow}{72}
-\contentsline {subsection}{\numberline {11.1.2}Temperature}{74}
-\contentsline {section}{\numberline {11.2}Poiseuille flow}{75}
-\contentsline {subsection}{\numberline {11.2.1}Planar flow}{75}
-\contentsline {subsection}{\numberline {11.2.2}Temperature}{75}
-\contentsline {subsection}{\numberline {11.2.3}Flow in circular pipes}{76}
-\contentsline {subsection}{\numberline {11.2.4}Temperature}{76}
-\contentsline {section}{\numberline {11.3}Taylor-Green vortices}{77}
-\contentsline {subsection}{\numberline {11.3.1}Reduced units}{78}
-\contentsline {section}{\numberline {11.4}Attenuation of sound waves}{78}
-\contentsline {subsection}{\numberline {11.4.1}Longitudinal waves}{80}
-\contentsline {subsubsection}{Low frequencies}{81}
-\contentsline {subsubsection}{High frequencies}{83}
-\contentsline {subsubsection}{At the crossover frequency}{83}
-\contentsline {subsection}{\numberline {11.4.2}Transverse waves}{84}
-\contentsline {section}{\numberline {11.5}Exercises}{84}
-\contentsline {section}{\numberline {11.6}Exercises}{85}
-\contentsline {chapter}{\numberline {12}The overdamped limit}{87}
-\contentsline {subsection}{\numberline {12.0.1}Kolmogorov flow}{87}
-\contentsline {section}{\numberline {12.1}General solution}{89}
-\contentsline {subsection}{\numberline {12.1.1}Creeping flow past objects}{92}
-\contentsline {chapter}{\numberline {13}The viscous boundary layer}{93}
-\contentsline {section}{\numberline {13.1}Stagnation flow}{93}
-\contentsline {chapter}{\numberline {14}Turbulence}{99}
+\babel@toc {english}{}
+\contentsline {chapter}{Symbols}{7}{section*.2}
+\contentsline {chapter}{\numberline {1}Introduction}{13}{chapter.1}
+\contentsline {section}{\numberline {1.1}Notation}{13}{section.1.1}
+\contentsline {part}{{\fontencoding {T1}\selectfont I}\hspace {1em}Ideal fluids}{15}{part.1}
+\contentsline {chapter}{\numberline {2}Continuity of mass}{17}{chapter.2}
+\contentsline {section}{\numberline {2.1}The concept of particle}{17}{section.2.1}
+\contentsline {section}{\numberline {2.2}The continuity equation}{17}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Incompressibility}{19}{subsection.2.2.1}
+\contentsline {chapter}{\numberline {3}Euler's equations}{21}{chapter.3}
+\contentsline {section}{\numberline {3.1}Material derivative}{21}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Continuity, revisited}{22}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Physical meaning of the material derivative}{23}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}External and pressure forces}{23}{section.3.2}
+\contentsline {section}{\numberline {3.3}The momentum equation}{25}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Conservation form}{25}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}Bernouilli's principle}{26}{section.3.4}
+\contentsline {section}{\numberline {3.5}Exercises}{27}{section.3.5}
+\contentsline {section}{\numberline {3.6}Dimensionless variables}{28}{section.3.6}
+\contentsline {chapter}{\numberline {4}Hydrostatics}{31}{chapter.4}
+\contentsline {section}{\numberline {4.1}Incompressible fluids}{31}{section.4.1}
+\contentsline {section}{\numberline {4.2}Compressible fluids}{31}{section.4.2}
+\contentsline {chapter}{\numberline {5}Sound waves}{33}{chapter.5}
+\contentsline {section}{\numberline {5.1}Linearization}{33}{section.5.1}
+\contentsline {section}{\numberline {5.2}Mach's number and compressibility}{36}{section.5.2}
+\contentsline {chapter}{\numberline {6}Potential flow}{37}{chapter.6}
+\contentsline {section}{\numberline {6.1}Flow past a cylinder}{37}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Velocity field}{39}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Streamlines}{42}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Circulation and lift}{43}{subsection.6.1.3}
+\contentsline {subsection}{\numberline {6.1.4}Exercises}{46}{subsection.6.1.4}
+\contentsline {chapter}{\numberline {7}Gravity waves}{49}{chapter.7}
+\contentsline {section}{\numberline {7.1}Gravity waves}{49}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Shallow water}{52}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Deep water}{53}{subsection.7.1.2}
+\contentsline {chapter}{\numberline {8}Work and energy}{55}{chapter.8}
+\contentsline {subsection}{\numberline {8.0.1}Heat flux}{57}{subsection.8.0.1}
+\contentsline {part}{{\fontencoding {T1}\selectfont II}\hspace {1em}Real fluids}{59}{part.2}
+\contentsline {chapter}{\numberline {9}Navier-Stokes equations}{61}{chapter.9}
+\contentsline {section}{\numberline {9.1}Kinematics of a particle}{61}{section.9.1}
+\contentsline {subsubsection}{Rotation}{61}{section*.6}
+\contentsline {subsubsection}{Strain}{63}{section*.7}
+\contentsline {subsubsection}{Dilation}{64}{section*.8}
+\contentsline {subsection}{\numberline {9.1.1}Continuity, re-revisited}{65}{subsection.9.1.1}
+\contentsline {section}{\numberline {9.2}Stress tensor}{65}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}Newtonian fluids}{67}{subsection.9.2.1}
+\contentsline {subsubsection}{Pure shear and compression}{69}{section*.9}
+\contentsline {subsection}{\numberline {9.2.2}Particular instances}{70}{subsection.9.2.2}
+\contentsline {subsubsection}{Athermal case}{70}{section*.10}
+\contentsline {subsubsection}{Incompressible, athermal case}{71}{section*.11}
+\contentsline {section}{\numberline {9.3}Dimensionless variables: the Reynolds number}{71}{section.9.3}
+\contentsline {chapter}{\numberline {10}The energy equation}{73}{chapter.10}
+\contentsline {section}{\numberline {10.1}Exercises}{75}{section.10.1}
+\contentsline {chapter}{\numberline {11}Simple solutions to the NS equations}{77}{chapter.11}
+\contentsline {section}{\numberline {11.1}Couette flow}{77}{section.11.1}
+\contentsline {subsection}{\numberline {11.1.1}Start-up of Couette flow}{78}{subsection.11.1.1}
+\contentsline {subsection}{\numberline {11.1.2}Temperature}{80}{subsection.11.1.2}
+\contentsline {section}{\numberline {11.2}Poiseuille flow}{81}{section.11.2}
+\contentsline {subsection}{\numberline {11.2.1}Planar flow}{81}{subsection.11.2.1}
+\contentsline {subsection}{\numberline {11.2.2}Temperature}{81}{subsection.11.2.2}
+\contentsline {subsection}{\numberline {11.2.3}Flow in circular pipes}{82}{subsection.11.2.3}
+\contentsline {subsection}{\numberline {11.2.4}Temperature}{82}{subsection.11.2.4}
+\contentsline {section}{\numberline {11.3}Taylor-Green vortices}{83}{section.11.3}
+\contentsline {subsection}{\numberline {11.3.1}Reduced units}{84}{subsection.11.3.1}
+\contentsline {section}{\numberline {11.4}Attenuation of sound waves}{84}{section.11.4}
+\contentsline {subsection}{\numberline {11.4.1}Longitudinal waves}{86}{subsection.11.4.1}
+\contentsline {subsubsection}{Low frequencies}{87}{section*.12}
+\contentsline {subsubsection}{High frequencies}{89}{section*.13}
+\contentsline {subsubsection}{At the crossover frequency}{89}{section*.14}
+\contentsline {subsection}{\numberline {11.4.2}Transverse waves}{90}{subsection.11.4.2}
+\contentsline {section}{\numberline {11.5}Exercises}{90}{section.11.5}
+\contentsline {section}{\numberline {11.6}Exercises}{91}{section.11.6}
+\contentsline {chapter}{\numberline {12}The overdamped limit}{93}{chapter.12}
+\contentsline {subsection}{\numberline {12.0.1}Kolmogorov flow}{93}{subsection.12.0.1}
+\contentsline {section}{\numberline {12.1}General solution}{95}{section.12.1}
+\contentsline {subsection}{\numberline {12.1.1}Creeping flow past objects}{98}{subsection.12.1.1}
+\contentsline {chapter}{\numberline {13}The viscous boundary layer}{99}{chapter.13}
+\contentsline {section}{\numberline {13.1}Stagnation flow}{99}{section.13.1}
+\contentsline {chapter}{\numberline {14}Turbulence}{105}{chapter.14}
