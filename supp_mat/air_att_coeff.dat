@@ -1,0 +1,13 @@
+#   From
+# L. Jakevičius, A. Demčenko
+#“Ultrasound attenuation dependence on air temperature in closed chambers.”
+# ISSN 1392-2114 ULTRAGARSAS (ULTRASOUND), Vol. 63, No.1, 2008. 
+# (2008).
+# Fig. 3, mean value taken (~ sigma_2, 40% rel. humidity)
+#   f(kHz)     alpha (dB/m)
+
+      50         1.5
+     100         2.5
+     200         8
+     500         42
+    1000         164

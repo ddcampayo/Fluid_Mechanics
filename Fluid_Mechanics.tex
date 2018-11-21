@@ -24,8 +24,17 @@
 
 \usepackage{showlabels}
 
+% \usepackage[greek.polutoniko, spanish]{babel}
+\usepackage[greek.polutoniko, english]{babel}
+
+
 %% defs.-
 \input{defs}
+
+\usepackage[colorlinks]{hyperref}
+
+\input{glossary}
+
 
 \begin{document}
 
@@ -33,9 +42,16 @@
 
 \tableofcontents
 
+%\printglossary[type=symbols,style=long,title={List of Symbols}]
+\printunsrtglossary[type=symbols,style=long]
+
 \include{intro}
 
 \include{chapter_inviscid}
+
+%\chapter{Sample}
+%Reference symbols: $\gls{x}$, $\gls{v}$, $\gls{a}$, $\gls{t}$, $\gls{F}$.
+
 \include{chapter_viscous}
 %\input{etc}
 
