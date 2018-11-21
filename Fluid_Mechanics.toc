@@ -12,9 +12,10 @@
 \contentsline {section}{\numberline {3.2}External and pressure forces}{17}
 \contentsline {section}{\numberline {3.3}The momentum equation}{19}
 \contentsline {subsection}{\numberline {3.3.1}Conservation form}{19}
-\contentsline {section}{\numberline {3.4}Bernouilli's principle}{20}
-\contentsline {section}{\numberline {3.5}Exercises}{21}
-\contentsline {section}{\numberline {3.6}Dimensionless variables}{22}
+\contentsline {section}{\numberline {3.4}Vorticity}{20}
+\contentsline {section}{\numberline {3.5}Bernouilli's principle}{21}
+\contentsline {section}{\numberline {3.6}Exercises}{22}
+\contentsline {section}{\numberline {3.7}Dimensionless variables}{22}
 \contentsline {chapter}{\numberline {4}Hydrostatics}{25}
 \contentsline {section}{\numberline {4.1}Incompressible fluids}{25}
 \contentsline {section}{\numberline {4.2}Compressible fluids}{25}

@@ -1,0 +1,150 @@
+While certainly not as involved as dynamics, the static case of the
+equations of fluid mechanics is nevertheless interesting. This secion
+applies even to real fluids (with viscosity), because stresses are
+constant on them (otherwise, a viscous force would arise that would
+cause a motion.)
+
+In equilibrium, all time derivatives (both partial, and material)
+are zero, and the Euler momentum Equation \ref{eq:Euler_momentum}
+reduces to
+\begin{equation}
+  \label{eq:hidrostatics}
+  \nabla p = \rho \bfg .
+\end{equation}
+
+
+\section{Incompressible fluids}
+
+The simplest case is when the density is constant. In this case,
+\[
+\nabla p = \rho \bfg \qquad\implies\qquad
+p= p_0 + \rho \bfg \cdot \bfr ,
+\]
+Since,
+\[
+\nabla (\bfg \cdot \bfr) =
+\nabla ( - g z ) = -g \bhe_z = \bfg ,
+\]
+where we assume the acceleration of gravity points toward negative
+values of the $z$ coordinate: $\bfg = -g \bhe_z$.
+
+Of course, the expression for the pressure in terms of $\bfg \cdot
+\bfr $ is general and does not depend on our choice of Cartesian
+axes. Nevertheless, it is usually written in function of the
+``depth'', this being $h=-z$ in our choice (in general, the depth is
+the coordinate at which we go against gravity). This means,
+\[
+p= p_0 + \rho g h.
+\]
+
+This means that pressure should increase as we go deeper. This can be
+deduced from much simpler grounds, computing the pressure difference
+between two parallel sides of a prismatic object immersed in a
+fluid. This pressure difference translates into a net vertical force
+that must balance the force due to gravity. The same conclusion is
+reached. This is the standard way to derive the law of floating bodies
+(Archimedes' law), also for the case of partly-floating boadies
+(icebergs, boats\ldots).
+
+The pressure features a reference pressure which should be provided in
+order to fix the absolute value of the pressure. This reference is in
+principle not important. Indeed, in most application ``pressure''
+actually refers to excess pressure over atmospheric pressure, i.e.
+manometric pressure. \index{manometric pressure} Notice also that it
+is only gradients of the pressure which are relevant, never the value
+itself. Exceptions arise when thermodynamics is relevant --- e.g. a
+pressure can never be negative.
+
+A usual case in which the pressure is known is at a liquid free
+surface, most commonly, the water-air surface. There, the pressure is
+the atmospheric pressure (which depends on the weather), and the
+liquid must have that same pressure (otherwise the interface is not in
+mechanical equilibrium). This means that the pressure increases
+linearly as we dive deeper into the water. The increase is given by
+$\rho g h$. If we write $\rho g  =: p_0  / L $, the law becomes
+\[
+p= p_0 \left( 1 + \frac{h}{L} \right) ,
+\]
+so that the pressure increases two-fold at $h=L$, three-fold at
+$h=2L$, etc. For water, this value is $L= p_0 / (\rho g h ) =
+\SI{10.3}{\meter}$. This is a well-known result for scuba divers:
+expect an increase of one atmosphere every $\SI{10}{\meter}$,
+approximately.
+
+Of course, this simple result is only true for constant density. In
+actual fact, sea water has density variations, due not so much to
+compression, or temperature (which is quite constant, at about
+$\SI{4}{\celsius}$, at which the density is greater), but due to
+salinity. Nevertheless, if we neglect those factors, we may get an
+estimation of the greatest pressure attained in oceans of our planet.
+At the end of the Marianas Trench, $h\approx\SI{11}{\kilo\meter}$, and
+$p\approx 1060 p_0$, about $1000$ atmospheres. This is a good match to
+the measured value of $1090 p_0$. A refined calculation involving the
+compressibility of water shows that at this pressure water is about
+$5\%$ denser than at standard conditions, a measurable change if still
+small.
+
+
+
+\section{Compressible fluids}
+
+If compressibility is taken into account, there will be a relationship
+between pressure and density at least (in a more realistic picture,
+temperature also has to be included). We will limit our discussion to
+one of the most common examples: ideal gases. The expremelly well know
+relationship may be rewritten in order to include the mass density:
+\begin{equation}
+  \label{eq:ideal_gas_EOS}
+  p V = n R T \qquad\implies\qquad p = \rho\frac{ R T}{m},
+\end{equation}
+where $m$ is the molar gas. In many cases, the temperature is not
+constant, but we will assume it to be so for simplicity.
+
+In this case,
+\[
+\nabla p = \rho \bfg \qquad\implies\qquad
+\frac{\partial p}{\partial z} = -g \rho .
+\]
+Since gravity is parallel to the $z$ axis (in our convention), $p$ can
+only vary in this direction. The opposite is interesting: a horizontal
+variation in pressure can never reach equilibrium
+\cite{landau2013fluid}.
+
+With our equation of state,
+\[
+\frac{ R T}{m} \frac{\partial \rho}{\partial z} = -g \rho ,
+\]
+or
+\[
+\frac{\partial \rho}{\partial z} = -\frac{1}{L} \rho ,
+\]
+where the height scale is seen to be given by $L:=RT/(gm)$. Since
+$RT/m= p_0/\rho_0$ at some known values of $p_0$ and $\rho_0$, we may
+find it more convenient to write $p_0/(g \rho_0)$. Of course, our
+known values are $p_0=\SI{1010}{\hecto\pascal}$ and
+$\rho_0=\SI{1.22}{\kilo\gram\per\meter\cubed}$, standard air
+conditions. The result is $L=\SI{8.47}{\kilo\meter}$. This tells us
+that air has constant density and pressure at human scales (at a given
+time, we know weather changes it), and variations are observed only at
+high altitudes. The solution to the equation above is
+\begin{align*}
+  \rho &= \rho_0 e^{-x/L} \\
+  p &= p_0 e^{-x/L}
+\end{align*}
+
+Even if our approximation of constant temperature is surely wrong, it
+is not too wrong for the troposphere, where these variations are not
+strong (remember this is absolute temperature, where a
+$\SI{30}{\celsius}$ change is still around a $10\%$ variation.) We are
+also ignoring other factors, such as air humidity.  In spite of this,
+we can boldly estimate the pressure and density at the top of Mount
+Everest to be about $\exp( - 8.848 / 8.47 ) \approx 35 \%$ lower than
+at sea level (it is quite a coincidence that $L$ is so close to the
+elevation of this mountain.) Indeed, typical readings indicate
+pressures of about $\SI{400}{\pascal}$, with temperatures of
+$\SI{-17}{\celsius}$ (not so very far below the standard value), and a
+relative humidity of $40\%$. At the highest point at which our
+approximation is valid, the tropopause,
+$z\approx\SI{17}{\kilo\meter}$, and we find a reduction of about
+$13\%$.
+

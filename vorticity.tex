@@ -1,0 +1,52 @@
+\section{Vorticity}
+
+The momentum equation \ref{eq:Euler_momentum} is still quite daunting
+due to its nonlinear term in the convective derivative.
+
+In order to make progress, it was Lamb's idea in 1895 to use the
+following identity for the vector product of any vector field and its
+curl:
+\[
+\bfu \times ( \nabla\times \bfu) =
+\frac12 \nabla u^2 - \bfu (\nabla \bfu )
+\]
+(in fact, the identity is somewhat more general, see exercise
+\ref{ex:vector_identity}).
+
+Introducing the name ``vorticity'' for the curl of the velocity field,
+\[
+\vort = \nabla\times\bfu ,
+\]
+we may write the momentum equation as
+\begin{equation}
+  \label{eq:Euler_momentum_w_vort}
+  \frac{\partial \bfu }{\partial t} +
+  \frac12 \nabla u^2 - \bfu \times\vort =
+  - \frac{1}{\rho} \nabla p 
+  + \bfg .
+\end{equation}
+
+Now, recalling that the curl of a gradient is always zero,
+we may apply the curl operator to the whole equation, to get
+\[
+\frac{\partial \vort }{\partial t} =
+\nabla\times(\bfu\times\vort) .
+\]
+This is a very remarkable equation, involving only the velocity
+and its curl. Indeed, there is a class of numerical methods,
+called ``vortex methods'' in which this simplification is employed.
+In many applications, however, its usefulness is limited. For
+example, boundary conditions may be difficult to define for these terms.
+
+There is, however, an important consequence of this equation: if a
+given flow is curl-free at some instant, it must \emph{remain} so
+at every other time (both future, and past). This is because the equation
+is first order in time, and a null right-hand side translates into
+a null change. We will see later that when viscosity is introduced,
+a diffusion term appears which is second order in space. This term
+is, in many cases, responsible for the generation of vorticity.
+In the clearest instance, the no-slip boundary condition close
+to solid walls, by which the velocity must be zero there, creates
+zones of vorticity generation. That boundary condition cannot be
+enforced within the Euler framework, because it only features first order
+spatial derivatives of the velocity.

@@ -1,34 +1,13 @@
-The momentum equation \ref{eq:Euler_momentum} is still quite daunting
-due to its nonlinear term in the convective derivative.
+\section{Bernouilli's principle}
 
-In order to make progress, it was Lamb's idea in 1895 to use the
-following identity for the vector product of any vector field and its
-curl:
-\[
-\bfu \times ( \nabla\times \bfu) =
-\frac12 \nabla u^2 - \bfu (\nabla \bfu )
-\]
-(in fact, the identity is somewhat more general, see exercise
-\ref{ex:vector_identity}).
-
-Introducing the name ``vorticity'' for the curl of the velocity field,
-\[
-\vort = \nabla\times\bfu ,
-\]
-we may write the momentum equation as
-\[
-\frac{\partial \bfu }{\partial t} +
-\frac12 \nabla u^2 - \bfu \times\vort =
-  - \frac{1}{\rho} \nabla p 
-  + \bfg .
-\]
-
-Our goal is to gather as many terms as we can inside a gradient, for
-reasons that will become clear soon. First, the gravitational
-acceleration is, by definition, $\bfg = -\nabla\varphi$, where
-$\varphi $ is the gravitational potential energy ($g z$ if the $z$
-axis is the vertical). Now, the pressure gradient over the density may
-be related to the gradient of pressure over density, thus:
+Let us approach Eq. \ref{eq:Euler_momentum_w_vort} in a completely
+different manner. Instead of getting rid of the gradients, let us
+express as many terms as we can as gradients, for reasons that will
+become clear soon. First, the gravitational acceleration is, by
+definition, $\bfg = -\nabla\varphi$, where $\varphi $ is the
+gravitational potential energy ($g z$ if the $z$ axis is the
+vertical). Now, the pressure gradient over the density may be related
+to the gradient of pressure over density, thus:
 \[
 \nabla
 \left(
