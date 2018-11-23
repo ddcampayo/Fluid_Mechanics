@@ -1,6 +1,59 @@
-\section{Gravity waves from the Lagrangian formalism}
+\section{Lagrangian formalism}
 
-Let us assume a wave train that only depends on the $x$ component
+There is an alternative description of an ideal incompressible fluid
+that is interesting, and may be useful (e.g. it will be used for
+capillary waves in the next Section.) \cite{whitham2011linear}
+
+It describes the system by a single scalar quantity called the
+Lagrangian:
+\[
+  {\cal L} := \int \left( T - U \right) d\bfr ,
+\]
+where the integral extends to the whole volume of the fluid, $T$ is
+the total kinetic energy, and $U$ the potential energy:
+\begin{align}
+  T &= \frac12 \int u^2 d\bfr \\
+  U &=  \int (\rho \varphi) d\bfr 
+\end{align}
+
+For the simple case of gravity, the latter is simply given by
+\begin{equation}
+  U =    \int ( \rho g z ) d\bfr .
+\end{equation}
+
+It can be demonstrated that the extremization of the Lagrangian, as a
+\emph{functional} of the velocity field yields the Euler equation. One
+technical detail is the role of the pressure. This arises from
+enforcing incompressibility. The actual functional that is considered
+is actually
+\[
+{\cal F} = {\cal L} - \int p \divu d\bfr .
+\]
+
+Another fine point is regarding the appeareance of the material time
+derivative, and not just the partial one. All this fine points are
+beyond the scope of these lectures, and are not important for the time
+being.
+
+If the flow is potential, the kinetic energy can be written as
+\begin{equation}
+  T &= \frac12 \int \left| \nabla\phi \right|^2 d\bfr ,
+\end{equation}
+a form that is appreciated in physics, where these sort of square
+gradient theories are widely studied. (They are often called
+``London-Linzburg-Landau'' theories, or a subset of those names, but
+they begun, it seems, with van der Waals' seminal theory for the
+liquid-vapor interface.)
+
+\section{Capillary waves}
+
+Let us assume, as we did previously, a description of the interface as
+in Eq. \label{eq:waves_elevation}, and boundary conditions as in
+Eq. \ref{eq:waves_bc}. We will be actually considering the deep water
+limit only, for simplicity. (Actually,
+
+
+a wave train that only depends on the $x$ component
 (i.e. waves are very long in the $y$ direction):
 \[
 \eta = a \cos(kx -\omega t) .

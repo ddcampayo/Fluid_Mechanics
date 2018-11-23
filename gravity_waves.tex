@@ -19,9 +19,10 @@ The mathematical treatment of this problem is, in general, very
 involved. This is mostly due to the presence of a free surface: the
 water-air interface. Mathematically, its location is described by a
 height function $\eta$:
-\[
-z=\eta  \qquad  \eta=\eta(x,y,t) 
-\]
+\begin{equation}
+  \label{eq:waves_elevation}
+  z=\eta  \qquad  \eta=\eta(x,y,t) 
+\end{equation}
 (if no overhangs are present). The fluid velocity is to be solved for
 a domain between this surface at the ocean bottom, which is supposed
 to be flat and at a height $z=-h$ (thus, $z=0$ is taken to be the
@@ -29,7 +30,8 @@ surface when no waves occur.)
 
 We have the following boundary conditions for the velocity:
 \begin{align}
-%  p&=0 \\
+  % p&=0 \\
+  \label{eq:waves_bc}
   u_z(z=-h) &= 0 \\
   u_z(z=0) &=  \frac{\partial \eta}{\partial t}
 \end{align}
