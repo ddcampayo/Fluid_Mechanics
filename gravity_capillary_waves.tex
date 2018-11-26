@@ -1,13 +1,12 @@
-\section{Lagrangian formalism}
+\section{Gravity waves from energy}
 
-There is an alternative description of an ideal incompressible fluid
-that is interesting, and may be useful (e.g. it will be used for
-capillary waves in the next Section.) \cite{whitham2011linear}
+There is an alternative derivation of the dispersion relation which is
+interesting, and will be useful when the role of surface tension is
+discussed in the next Section. \cite{whitham2011linear}
 
-It describes the system by a single scalar quantity called the
-Lagrangian:
+It begins by considering the energy of the whole system:
 \[
-  {\cal L} := \int \left( T - U \right) d\bfr ,
+  E := \int \left( T + U \right) d\bfr ,
 \]
 where the integral extends to the whole volume of the fluid, $T$ is
 the total kinetic energy, and $U$ the potential energy:
@@ -21,23 +20,10 @@ For the simple case of gravity, the latter is simply given by
   U =    \int ( \rho g z ) d\bfr .
 \end{equation}
 
-It can be demonstrated that the extremization of the Lagrangian, as a
-\emph{functional} of the velocity field yields the Euler equation. One
-technical detail is the role of the pressure. This arises from
-enforcing incompressibility. The actual functional that is considered
-is actually
-\[
-{\cal F} = {\cal L} - \int p \divu d\bfr .
-\]
-
-Another fine point is regarding the appeareance of the material time
-derivative, and not just the partial one. All this fine points are
-beyond the scope of these lectures, and are not important for the time
-being.
 
 If the flow is potential, the kinetic energy can be written as
 \begin{equation}
-  T &= \frac12 \int \left| \nabla\phi \right|^2 d\bfr ,
+  T = \frac12 \int \left| \nabla\phi \right|^2 d\bfr ,
 \end{equation}
 a form that is appreciated in physics, where these sort of square
 gradient theories are widely studied. (They are often called
@@ -45,9 +31,94 @@ gradient theories are widely studied. (They are often called
 they begun, it seems, with van der Waals' seminal theory for the
 liquid-vapor interface.)
 
+Let us consider explicitely an upper phase (``air'') of density
+$\rho'$ and a lower one (``water'') with density $\rho'$ (all primed
+variables refer to the upper phase in this section). They are
+separated by the interfacial surface at $z=\eta(x,y)$, but we will
+suppose that the surface fluctuates around a well-defined position,
+which we will take, for convenience, as $z=0$. The total potential
+energy is then
+\[
+U=
+\iint dx dy   \int_{-H}^\eta  dz  ( \rho g z)
+\iint dx dy   \int_\eta^{H'}  dz  ( \rho' g z)  ,
+\]
+where we suppose the bottom is at $z=-H$ and the air ends at $z=H'$. These
+limits are not important, since we will consider later the limit
+in which both are very large.
+
+We may split the two integrals at $z=0$, the equilibrium surface:
+\begin{align*}
+  \iint dx dy   \int_{-H}^\eta  dz   &= 
+                                       \iint dx dy   \int_{-H}^0  dz   +
+                                       \iint dx dy   \int_{0}^\eta  dz   \\
+  \iint dx dy   \int_\eta^{H'}  dz    &=
+                                        \iint dx dy   \int_\eta^{0}  dz 
+                                        \iint dx dy   \int_0^{H'}  dz  
+\end{align*}
+
+But, since two of those four integrals have fixed integration limits,
+they will contribute a constant energy, so we may ignore them and just
+write
+\begin{align*}
+  U &=\iint dx dy   \int_{0}^\eta  \rho g z  dz   -
+  \iint dx dy   \int_\eta^{0} \rho' g z dz = \\
+  & g  (\rho-\rho')  \iint dx dy   \int_0^{\eta} z  dz =
+  \frac 12 g  (\rho-\rho')  \iint dx dy \eta^2 .
+\end{align*}
+
+It is natural that the potential energy is due to fluctiations of the
+surface. However, the kinetic energy, which involves the motion of the
+upper and lower fluid masses, can also be cast as a surface integral.
+We may use the divergence (Gauss') theorem for this purpose. In order
+to express the kinetic energy integrand as a divergence, we may write
+\[
+  \nabla\cdot [ \phi (\nabla \phi) ]  =
+  |\nabla \phi|^2 +
+  \phi \nabla^2 \phi .
+\]
+But the last term is null due to incompressibility. The same applies
+to $\phi'$. This means the kinetic energy of the denser fluid can be
+written as
+\[
+  T_1 = \frac12 \int \nabla\cdot [ \phi (\nabla \phi) ] d\bfr \approx
+  \frac12 \iint dx dy \phi (\nabla \phi) \bfe_z
+\]
+In this expression, we have applied Gauss theorem, and approximated
+the true normal to the surface with its equilibrium value $\bhe_z$.
+In other words,
+\[
+  T_1 = 
+  \frac12 \iint dx dy   \phi \frac{\partial \phi}{\partial z} 
+\]
+Adding the upper fluid, the total kinetic energy is
+\[
+  T = 
+  \frac12 \iint dx dy
+  \left(
+    \phi \frac{\partial \phi}{\partial z}
+    -
+    \phi' \frac{\partial \phi'}{\partial z}
+  \right) ,
+\]
+because the outward-pointing normal of the upper phase is
+approximated by $-\bhe_z$.
+
+The appearance of those partial derivatives in the vertical direction
+is appealing, because they are to be made equal to the vertical
+velocity of the surface, according to boundary condition
+\ref{eq:waves_bc2}.
+
 \section{Capillary waves}
 
-Let us assume, as we did previously, a description of the interface as
+Only the deep-water limit. Notice that, while this limit was bound to
+be violated sooner or later for long gravity waves (when their
+wave-length begins to be comparable to the water depth), capillary
+waves will eventually approach this limit at small wave-lengths.
+
+
+
+  Let us assume, as we did previously, a description of the interface as
 in Eq. \label{eq:waves_elevation}, and boundary conditions as in
 Eq. \ref{eq:waves_bc}. We will be actually considering the deep water
 limit only, for simplicity. (Actually,
@@ -280,34 +351,4 @@ grows larger and larger with the wavelength, but as we have seen in
 the previous section, as the wavelength becomes comparable to the
 depth there will be a crossover to some finite velocity.
 
-Only the deep-water limit. Notice that, while this limit was bound to
-be violated sooner or later for long gravity waves (when their
-wave-length begins to be comparable to the water depth), capillary
-waves will eventually approach this limit at small wave-lengths.
-
-Let us consider explicitely an upper phase (``air'') of density
-$\rho'$ and a lower one (``water'') with density $\rho'$ (all primed
-variables refer to the upper phase in this section). They are
-separated by the interfacial surface at $z=\eta(x,y)$, but we will
-suppose that the surface fluctuates around a well-defined position,
-which we will take, for convenience, as $z=0$. The total potential
-energy is then
-\[
-U=
-\iint dx dy   \int_{-H}^\eta  dz  ( \rho g z)
-\iint dx dy   \int_\eta^{H'}  dz  ( \rho' g z)  ,
-\]
-where we suppose the bottom is at $z=-H$ and the air ends at $z=H'$. These
-limits are not important, since we will consider later the limit
-in which both are very large.
-
-We may split the two integrals at $z=0$, the equilibrium surface:
-\begin{align*}
-\iint dx dy   \int_{-H}^\eta  dz   &= 
-\iint dx dy   \int_{-H}^0  dz   +
-\iint dx dy   \int_{0}^\eta  dz   \\
-\iint dx dy   \int_\eta^{H'}  dz    &=
-\iint dx dy   \int_\0^{H'}  dz  -
-\iint dx dy   \int_\eta^{H'}  dz 
-\begin{align*}
 
