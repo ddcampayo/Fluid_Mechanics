@@ -21,12 +21,13 @@ water-air interface. Mathematically, its location is described by a
 height function $\eta$:
 \begin{equation}
   \label{eq:waves_elevation}
-  z=\eta  \qquad  \eta=\eta(x,y,t) 
+  z=\eta  \qquad  \eta=\eta(x,y,t) ,
 \end{equation}
-(if no overhangs are present). The fluid velocity is to be solved for
-a domain between this surface at the ocean bottom, which is supposed
-to be flat and at a height $z=-h$ (thus, $z=0$ is taken to be the
-surface when no waves occur.)
+which is valid if no overhangs are present (this is known as a ``Monge
+representation''). The fluid velocity is to be solved for a domain
+between this surface at the ocean bottom, which is supposed to be flat
+and at a height $z=-h$ (thus, $z=0$ is taken to be the surface when no
+waves occur.)
 
 We have the following boundary conditions for the velocity:
 \begin{align}
@@ -54,9 +55,12 @@ case.
 
 Let us assume a wave train that only depends on the $x$ component
 (i.e. waves are very long in the $y$ direction):
-\[
-\eta = a \cos(kx -\omega t) .
-\]
+
+\begin{equation}
+  \label{eq:wave_on_x}
+  \eta = a \cos(kx -\omega t) .
+\end{equation}
+%
 The amplitude $a$, is taken to be small (in the sense $a\ll \lambda$,
 and $a\ll h$).
 
@@ -129,9 +133,10 @@ a_1 = \frac{a \omega}{ k \sinh(hk)  } .
 \]
 This is indeed the only value for which $g'(0)= a \omega $. The
 potential is then
-\[
-\phi = \frac{a \omega  \cosh(k(z+h)) }{ k \sinh(hk)  }  \sin(kx -\omega t ) .
-\]
+\begin{equation}
+  \label{eq:wave_potential}
+  \phi = \frac{a \omega  \cosh(k(z+h)) }{ k \sinh( kh )  }  \sin(kx -\omega t ) .
+\end{equation}
 
 From it, the velocity components may be found. These will have a term
 featuring $\sin(kx -\omega t )$, a common expression for a traveling
@@ -202,12 +207,34 @@ The result is the following dispersion relation:
 \[
 \omega^2= g k \tanh(k h)
 \]
-
 This is a surprising result, despite being obviously dimensionally
-correct, whith the two lengths in the problem, $\lambda=2\pi/k$ and $h$
-providing the relevant lenght scales.
+correct, whith the two lengths in the problem, $\lambda=2\pi/k$ and
+$h$ providing the relevant lenght scales.
 
-We may distinguish two limits.
+
+
+As a result, the phase velocity is then
+\[
+  c= \frac{\omega}{k} = \sqrt{ \frac{g}{k}  \tanh(k h) } ,
+\]
+while the group velocity, after some algebra is found to be
+\[
+  c_\mathrm{gr} := \frac{d\omega}{dk} =
+  \frac{c}{2}
+  \left(
+    1 + kh \frac{1- \tanh^{2}(kh)}{\tanh(k h)}
+  \right)
+\]
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/gravity_waves_disp}
+  \caption{Dispersion relationship for gravity waves as a function of
+    reduced wave-vector $kh$. \label{fig:gravity_waves_disp}}
+\end{figure}
+
+These two velocities are shown in \ref{fig:gravity_waves_disp}}. We
+may distinguish two limits, which we discuss separately.
 
 \subsection{Shallow water}
 If the bottom is small, compared to the wavelength $\lambda$, then
@@ -224,11 +251,16 @@ c =  \frac{\omega}{k} = \sqrt{ g h }  .
 \]
 The group velocity is of course equal to the phase velocity:
 \[
-c_\mathrm{g} =\frac{d\omega}{dk} = \sqrt{ g h } = c.
+c_\mathrm{g} := \frac{d\omega}{dk} = \sqrt{ g h } = c.
 \]
 
 The relevant length in this limit is the depth $h$, which provides the
 correct dimensions to get a velocity.
+
+
+
+
+
 
 Notice ``shallow'' is defined in relation to the wavelength. A seismic
 wave may be excited at the deep sea by a geological process that may
@@ -249,9 +281,11 @@ measurements of these dramatic events.
 If the bottom is deep, compared to the wavelength $\lambda$, then $kh
 = 2\pi h / \lambda $ is a large number, and its hyperbolic tangent is
 very nearly $1$. In this limit,
-\[
-\omega^2 \approx g  k \qquad \implies \qquad \omega= \sqrt{g k} .
-\]
+\begin{equation}
+  \label{eq:water_disp_deep}
+  \omega^2 \approx g  k \qquad \implies \qquad \omega= \sqrt{g k} .
+\end{equation}
+
 These waves are highly dispersive, since their phase velocity depends
 on the wavelength:
 \[

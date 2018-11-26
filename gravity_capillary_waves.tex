@@ -11,7 +11,7 @@ It begins by considering the energy of the whole system:
 where the integral extends to the whole volume of the fluid, $T$ is
 the total kinetic energy, and $U$ the potential energy:
 \begin{align}
-  T &= \frac12 \int u^2 d\bfr \\
+  T &= \frac12 \int ( \rho u^2 ) d\bfr \\
   U &=  \int (\rho \varphi) d\bfr 
 \end{align}
 
@@ -23,7 +23,7 @@ For the simple case of gravity, the latter is simply given by
 
 If the flow is potential, the kinetic energy can be written as
 \begin{equation}
-  T = \frac12 \int \left| \nabla\phi \right|^2 d\bfr ,
+  T = \frac12 \rho \int \left| \nabla\phi \right|^2 d\bfr ,
 \end{equation}
 a form that is appreciated in physics, where these sort of square
 gradient theories are widely studied. (They are often called
@@ -31,13 +31,13 @@ gradient theories are widely studied. (They are often called
 they begun, it seems, with van der Waals' seminal theory for the
 liquid-vapor interface.)
 
-Let us consider explicitely an upper phase (``air'') of density
-$\rho'$ and a lower one (``water'') with density $\rho'$ (all primed
-variables refer to the upper phase in this section). They are
-separated by the interfacial surface at $z=\eta(x,y)$, but we will
-suppose that the surface fluctuates around a well-defined position,
-which we will take, for convenience, as $z=0$. The total potential
-energy is then
+In order to add more content ot our previous results, let us here
+consider both an upper phase (``air'') of density $\rho'$ and a lower
+one (``water'') with density $\rho$ (all primed variables refer to the
+upper phase in this section). They are separated by the interfacial
+surface at $z=\eta(x,y)$, but we will suppose that the surface
+fluctuates around a well-defined position, which we will take, for
+convenience, as $z=0$. The total potential energy is then
 \[
 U=
 \iint dx dy   \int_{-H}^\eta  dz  ( \rho g z)
@@ -81,14 +81,14 @@ But the last term is null due to incompressibility. The same applies
 to $\phi'$. This means the kinetic energy of the denser fluid can be
 written as
 \[
-  T_1 = \frac12 \int \nabla\cdot [ \phi (\nabla \phi) ] d\bfr \approx
+  T_1 = \frac12 \rho \int \nabla\cdot [ \phi (\nabla \phi) ] d\bfr \approx
   \frac12 \iint dx dy \phi (\nabla \phi) \bfe_z
 \]
 In this expression, we have applied Gauss theorem, and approximated
 the true normal to the surface with its equilibrium value $\bhe_z$.
 In other words,
 \[
-  T_1 = 
+  T_1 = \rho 
   \frac12 \iint dx dy   \phi \frac{\partial \phi}{\partial z} 
 \]
 Adding the upper fluid, the total kinetic energy is
@@ -96,259 +96,294 @@ Adding the upper fluid, the total kinetic energy is
   T = 
   \frac12 \iint dx dy
   \left(
-    \phi \frac{\partial \phi}{\partial z}
+    \rho \phi \frac{\partial \phi }{\partial z}
     -
-    \phi' \frac{\partial \phi'}{\partial z}
+    \rho'\phi'\frac{\partial \phi'}{\partial z}
   \right) ,
 \]
 because the outward-pointing normal of the upper phase is
 approximated by $-\bhe_z$.
-
 The appearance of those partial derivatives in the vertical direction
 is appealing, because they are to be made equal to the vertical
 velocity of the surface, according to boundary condition
 \ref{eq:waves_bc2}.
+%
+Assuming a planar wave as in \ref{eq:wave_on_x}, and with our solution
+for the potential in \ref{eq:wave_potential}, the necessary ingredients
+are readily found:
+\begin{align*}
+  \frac{\partial \phi }{\partial z} &= \frac{\partial \eta }{\partial t}=
+                                      a \omega \sin(kx -\omega t)  \\
+  \phi(0) &= \frac{a \omega  }{ k }  \tanh(kh) \sin(kx -\omega t ) .
+\end{align*}
+For the upper phase, the appropriate potential is easily seen to be
+\[
+  \phi' = - \frac{a \omega  \cosh(k( h' - z )) }{ k \sinh( kh' )  } \sin(kx -\omega t ) ,
+\]
+since it must decay in the $z$ direction, satisfy the boundary
+condition at $z=h'$, and the kinematic condition at the interface.
+
+From now on, we will take the deep-water limit, leaving the general
+case as an exercise to the reader. In this limit, the potentials approach
+\[
+  \phi(0)  = - \phi'(0) \to \frac{a \omega  }{ k }   \sin(kx -\omega t ) ,
+\]
+and the kinetic energy is
+\[
+  T = 
+  \frac12 (\rho+\rho')     \frac{ (a \omega)^2  }{ k }
+  \iint dx dy   \sin^2(kx -\omega t ) .
+\]
+
+For the same planar wave, the potential energy is
+\[
+  U = 
+  \frac12 g (\rho-\rho') a^2  
+  \iint dx dy   \cos^2(kx -\omega t ) .
+\]
+
+Now, the integral may be carried out: the $y$ integration yields
+$L_y$, the length of the system in that direction, and on $x$ we may
+have $N = L_x /\lambda $ total repetitions of the same wave, each one
+of them we can integrate:
+\begin{align*}
+&  \iint dx dy   \cos^2(kx -\omega t ) =   \iint dx dy   \sin^2(kx -\omega t ) = \\
+&  L_y N  \iint_0^\lambda dx   \cos^2(kx -\omega t ) =
+  \frac12 L_y N \lambda = \frac12 A,
+\end{align*}
+where $A=L_x L_y$ is the total interfacial area.
+
+This means both energies per surface area are
+\[
+  \frac{U}{A} = \frac14 g (\rho-\rho') a^2 \qquad
+  \frac{T}{A} = \frac14 (\rho+\rho') \frac{ (a \omega)^2  }{ k } .
+\]
+
+The dispersion relation \ref{eq:water_disp_deep} is recovered (for
+$\rho'=0$) if both energies are made equal. This is a tipical
+requirement for oscillatory motion in physics, often called
+``equipartition'' (not to be confused with a similar concept
+in statistical mechanics). Its most well-known instance is the
+harmonic oscillator.
+
+A more formal justification comes from the Lagrangian%
+\index{Lagrangian}.  This quantity (not to be confused with the
+Lagrangian framework, or the Lagrangian derivative) is defined as
+\[
+  L = T - E .
+\]
+
+In classical mechanics, extremization of this quantity results in
+the proper equations of motion. In our case,
+\[
+  \frac{L}{A} = \frac14 a^2
+  \left(
+    (\rho+\rho') \frac{ \omega^2  }{ k } -
+    g (\rho-\rho')
+  \right) .
+\]
+
+Extremization means that the partial derivatives of the Lagrangian
+with respect to the parameters must be zero (technically, the
+Lagrangian is not at a minimum or maximum, but at a saddle point).  In
+our case, the only parameter is the amplitude, $a$, so
+\[
+\frac{\partial L}{\partial a} \implies 
+    (\rho+\rho') \frac{ \omega^2  }{ k } -
+    g (\rho-\rho') .
+\]
+This also implies $T=U$.
+
+Hence, our previous deep-water dispersion relation
+\ref{eq:water_disp_deep} is now modified to
+\[
+\omega^2  =    g  k \frac{\rho-\rho'}{\rho + \rho'}
+\]
+
+The combination $(\rho-\rho')/(\rho + \rho')$ is called the Atwood
+number, and is closely $1$ when the denser fluid is much heavier than
+the lighter one.
+
 
 \section{Capillary waves}
 
-Only the deep-water limit. Notice that, while this limit was bound to
-be violated sooner or later for long gravity waves (when their
-wave-length begins to be comparable to the water depth), capillary
-waves will eventually approach this limit at small wave-lengths.
+The previous method can readilly accomodate capillary
+waves\index{capillary waves}, also known as
+``ripples''\index{ripples}. These are small waves that are dominated
+by surface tension, not gravity. This is the dominant force at small
+scales, and we will get an exact expression for the crossover lenght
+below which this holds. Again, only the deep-water limit will be
+considered.. Notice that, while this limit was bound to be violated
+sooner or later for long gravity waves (when their wave-length begins
+to be comparable to the water depth), capillary waves will eventually
+comply with this limit at small wave-lengths.
 
 
-
-  Let us assume, as we did previously, a description of the interface as
-in Eq. \label{eq:waves_elevation}, and boundary conditions as in
-Eq. \ref{eq:waves_bc}. We will be actually considering the deep water
-limit only, for simplicity. (Actually,
-
-
-a wave train that only depends on the $x$ component
-(i.e. waves are very long in the $y$ direction):
+The surface tension causes a cost in modifying an interface from its
+equilibrium value:
 \[
-\eta = a \cos(kx -\omega t) .
+U_\mathrm{st} = \sigma (A - A_0),
 \]
-The amplitude $a$, is taken to be small (in the sense $a\ll \lambda$,
-and $a\ll h$).
+where $\sigma$ is the surface tension, with units of energy per area.
 
-Given the assumptions above, the flow may be treated as a potential
-flow, and moreover the only relevant coordinates will be $x$ and
-$z$. However, the fields will be time-dependent in this problem,
-e.g. $\phi=\phi(x,z,t)$.
-
-
-The kinematic condition  implies
+The area of a distorted surface in the Monge representation is given by
 \[
-\left. \frac{\partial \phi}{\partial z}\right|_{z=\eta} =
-\frac{\partial \eta}{\partial t} .
+  A = \iint dx dy \sqrt{
+    1 +
+    \left( \frac{\partial \eta}{\partial x} \right)^2 +
+    \left( \frac{\partial \eta}{\partial y} \right)^2
+  } .
 \]
-This is still a difficult expression, so we will approximate it by
+When fluctuation are not great, the cumbersome square root may
+be expanded in Fourier series, and we find:
+
+\begin{align*}
+  A & \approx \iint dx dy 
+  \left(
+    1 + \frac12 \left[
+      \left( \frac{\partial \eta}{\partial x} \right)^2 +
+      \left( \frac{\partial \eta}{\partial y} \right)^2
+    \right]
+      \right) = \\
+  &= A_0 + \frac12
+  \iint dx dy 
+  \left(
+      \left( \frac{\partial \eta}{\partial x} \right)^2 +
+      \left( \frac{\partial \eta}{\partial y} \right)^2
+    \right)  
+\end{align*}
+
+For our perturbation \ref{eq:wave_on_x} we have,
 \[
-\left. \frac{\partial \phi}{\partial z}\right|_{z=0} =
-\frac{\partial \eta}{\partial t} .
+U_\mathrm{st} = \frac12   \sigma  
+  \iint dx dy 
+  \left( \frac{\partial \eta}{\partial x} \right)^2  =
+  \frac14 \sigma A (a k)^2 ,
 \]
-(The difference between the two spactial derivatives may be quatified
-by a Fourier expansion, in which the neglected terms are seen to be
-higher order in $a$).
+where we have performed the same integration as in the
+previous section.
 
-Let us consider the ansatz
+Our Lagrangian is now
 \[
-\phi = g(z) \sin(kx -\omega t ) .
+  \frac{L}{A} = \frac14 a^2
+  \left(
+    \sigma  k^2 + 
+    (\rho+\rho') \frac{ \omega^2  }{ k } -
+    g (\rho-\rho')
+  \right) .
 \]
-The kinematic condition then translates into $g'(0)=a\omega$.
 
-The bottom condition clearly means
+Its extreme now yields this dispersion relation:
 \[
-\left. \frac{\partial \phi}{\partial z}\right|_{z= -h } = g'(-h)= 0 .
+  \omega^2  =    g  k \frac{\rho-\rho'}{\rho + \rho'} +
+  \frac{\sigma}{\rho+\rho'} k^3 .
+\]
+So we see that the short wave-length regime (high values of $k$) is
+indeed dominated by a new $k^3$ term due to surface tension. The long
+wave-length regime (low $k$ values) is, on the other hand, unaffected.
+
+In order to analyze this expression, let us introduce reduced units
+once more,
+\[
+\omega=\omega_0 \omega^* \qquad k = k_0 k^* ,
+\]
+where the typical angular frequency and wave vector are found by
+demanding this simple expression holds:
+\[
+\omega^{*2}= k^* + k^{*3} .
 \]
 
-
-All together, we are looking for a function with these boundary
-conditions:
+After some algebra, we find
 \begin{align}
-  g'(0) &=  a \omega \\
-  g'(-h) &= 0 .
+  \label{eq:capillary_k0}
+  k_0&=\sqrt{\frac{ g (\rho-\rho') }{ \sigma }} \\
+  \label{eq:capillary_om0}
+  \omega_0^2 = g  \frac{ \rho-\rho' }{ \rho + \rho' } k_0
 \end{align}
 
-However, the fact that Laplace equation must be satisfied places a
-strong condition on the kind of function $g(z)$ may be:
-\[
-\nabla^2 \phi = 0 \qquad \implies \qquad
-g''(z)  \sin(kx -\omega t ) - g(z)  k^2 \sin(kx -\omega t ) = 0 ,
-\]
-which meanse
-\[
-g''(z)  = k^2 g(z) .
-\]
-Therefore, $g(z)$ must be an exponential function, with the decay
-constant being exactly equal to $k$, the wave number. In general, the
-solution is a linear combination of two exponentials. Instead of that,
-we may write another less conventional expression using hyperbolic
-functions. This is equivalent, since these functions are themselves
-linear combinaions of exponentials. Moreover, we choose to center them
-at $x=-h$ :
-\[
-g(z)  = a_1 \cosh(k(z+h)) + a_2 \sinh(k(z+h)) .
-\]
-By inspection, we realize $a_2=0$, since the $\sinh(k(z+h))$ function
-was the ``wrong'' behavior at $z=-h$: it has a slope, while the
-boundary condition implies it should not.
 
-The kinetic boundary condition implies
+Now, the reduced phase velocity is given by
 \[
-a_1 = \frac{a \omega}{ k \sinh(hk)  } .
+  c^* := \frac{\omega^*}{k^*} =
+  \sqrt{\frac{1}{k^*} +  k^* } ,
 \]
-This is indeed the only value for which $g'(0)= a \omega $. The
-potential is then
+so that it goes from a $\sim 1/\sqrt{k} $ growth at small $k$ (this is
+the gravity regime) to a $\sim \sqrt{k} $ growth at high $k$ (surface
+tension regime). It therefore has a minimum at some crossover
+wave-vector $k_\mathrm{cross}$, which we may find by
 \[
-\phi = \frac{a \omega  \cosh(k(z+h)) }{ k \sinh(hk)  }  \sin(kx -\omega t ) .
+\frac{\partial c^* }{\partial k^*} = 0 .
 \]
 
-From it, the velocity components may be found. These will have a term
-featuring $\sin(kx -\omega t )$, a common expression for a traveling
-wave. However, the theory is still incomplete since $\omega$ and $k$
-are not unrelated in a physical wave, but coupled by the phase
-velocity $c=\omega / k$. Remember how in sound waves this velocity was
-related to fluid compressibility (to be precise, the square root of
-the variation of pressure with density). In this case, such
-relationship is as yet missing. Also notice that gravity has played no
-role whatsoever, despite claims at the beginning of this chapter about
-this factor being the driving force behind this process.
-
-In order to find the missing link, let us remember our previous
-expression for the Bernoulli principle, Eq.~\ref{eq:Bern_unsteady},
-which can be written as
+It is actually easier to differenciate $c^{*2}$. The value is found at
+$k^*_\mathrm{cross} = 1$, at which
 \[
-\frac{\partial \bfu}{\partial t} +
-\nabla \cdot \left[
-  \frac12 u^2 + \frac{p}{\rho} + \varphi
-  \right] =  \frac{p}{\rho}\nabla \cdot \bfu .
+c^*_\mathrm{cross} = \sqrt{2} .
 \]
 
-In our case the fluid is incompressible, so the right hand side
-vanishes. Also, in potential flow we may write the whole equation
-compactly:
+The values of $k_\mathrm{cross} $ are given by bringing back the
+dimension factors in \ref{eq:capillary_k0} and \ref{eq:capillary_om0}.
+The velocity is given by the factor
 \[
-\nabla \cdot \left[
-  \frac{\partial \phi}{\partial t} +
-  \frac12 u^2 + \frac{p}{\rho} + \varphi
-  \right] =  0 .
+  c_0 = \frac{\omega_0}{k_0} =
+  \frac{[\sigma g (\rho-\rho')]^{1/4}}{(\rho-\rho')^{1/2}} .
 \]
 
-This means the whole term on which the divergence operator acts
-must be constant in space, but not in time in general:
+For water and air in standard conditions,
+$\sigma=\SI{70}{\milli\joule\per\meter\square}$,
+and we find
 \[
-  \frac{\partial \phi}{\partial t} +
-  \frac12 u^2 + \frac{p}{\rho} + \varphi =  f(t) .
+  k_\mathrm{cross} = \SI{374}{\radian\per\meter} \implies
+  \lambda_\mathrm{cross} = \frac{2\pi}{k_\mathrm{cross}}=
+  \SI{1.7}{\centi\meter} ,
 \]
-This is the less-known unsteady Bernoulli principle.
-
-In this particular case, since boundary conditions do not change in
-time (in fact, they do, but we are taking the surface to be close to
-$z=0$), any function $f(t)$ may be incorporated into the potential
-by making the following trick:
+and
 \[
-\phi' = \phi + \int_{t_0}^t f(t') dt' ,
+  c_\mathrm{cross} =  \SI{23}{\centi\meter\per\second} .
 \]
-hence we may just take $f(t)=0$ in this particular problem.
+This is the scale below wich surface tension is important, and the
+phase velocity is the lower possible.
 
-If we examine the ``head'' term, $ \partial \phi / \partial t +
-\frac12 u^2 + \frac{p}{\rho} + \varphi$ at the surface, we notice that
-the pressure should be constant (equal to atmospheric pressure, as in
-hydrostatics). The $u^2$ may be neglected within our
-assumptions. Last, but not least, gravity finally appears in the
-potential, $\varphi = g \eta $. This leaves us with
+The group velocity is defined as
 \[
-\left.\frac{\partial \phi}{\partial t}\right|_{z=0} + g \eta = 0 ,
+  c_\mathrm{gr} := \frac{\partial \omega }{\partial k}  .
 \]
-often called the ``dynamic condition''. 
-
-With our previous result, this means:
+Notice that, by differenciating $c = \omega / k$ with respect to $k$
+it is easy to prove the identity:
 \[
-\phi =  - \frac{a \omega^2  \cosh(k(z+h)) }{ k \sinh(hk)  }  \cos(kx -\omega t ) +
-g a \cos(kx -\omega t ) =0 .
+  c_\mathrm{gr} =  c + k \frac{\partial c }{\partial k}  .
 \]
+This clearly shows that the a difference in the values of the two
+velocities is caused by dispersion: the phase velocity having a
+dependence on the wave vector, as evident in the $dc/dk$ term. This
+also shows that at the crossover velocity, where this term vanishes,
+both velocities are the same. These waves are, then the only
+non-dispersive ones possible in the deep-water regime.
 
-The result is the following dispersion relation:
+The expression for the group velocity is, in reduced units,
 \[
-\omega^2= g k \tanh(k h)
+  c^*_\mathrm{gr} :=  \frac{1+ k ^2}{2\sqrt{k + k^3} } .
 \]
+It then goes from a low-$k$ regime in which $c_\mathrm{gr} \to c /2 $
+(gravity) to a high-$k$ regime with $ c_\mathrm{gr} \to 3 c /2 $
+(surface tension). In the latter regime, the group velocity is $50\%$
+faster than the phase velocity.  In
+\ref{fig:gravity_capillary_dispersion_k} we plot both velocities as
+functions of the reduced wave-vector. Both are seen to cross at a
+value of $1$.  In Figure \ref{fig:gravity_capillary_dispersion_lambda}
+the same is plotted as a function of wave-length. The crossing takes
+place at the reduced wave-length value of $\lambda^*=2\pi$.
 
-This is a surprising result, despite being obviously dimensionally
-correct, whith the two lengths in the problem, $\lambda=2\pi/k$ and $h$
-providing the relevant lenght scales.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/gravity_capillary_dispersion_k}
+  \caption{\label{fig:gravity_capillary_dispersion_k}}
+\end{figure}
 
-We may distinguish two limits.
 
-\subsection{Shallow water}
-If the bottom is small, compared to the wavelength $\lambda$, then
-$kh = 2\pi h / \lambda $ is a small number, and we may approximate
-$\tanh(kh)\approx kh$. Then,
-\[
-\omega^2= g h  k^2 \qquad \implies \qquad \omega= k \sqrt{g h} .
-\]
-
-In this limit, the phase velocity is independent of velocity, which
-means the process is non-dispersive:
-\[
-c =  \frac{\omega}{k} = \sqrt{ g h }  .
-\]
-The group velocity is of course equal to the phase velocity:
-\[
-c_\mathrm{g} =\frac{d\omega}{dk} = \sqrt{ g h } = c.
-\]
-
-The relevant length in this limit is the depth $h$, which provides the
-correct dimensions to get a velocity.
-
-Notice ``shallow'' is defined in relation to the wavelength. A seismic
-wave may be excited at the deep sea by a geological process that may
-involve tenths or hundreds of kilometers, much larger than the usual
-sea depth, which is some few kilometers (its mean value is about
-$\SI{3.8}{\kilo\meter}$.) The sea is then ``shallow'', and the speed
-at which the perturbation travels will be about
-\[
-c \approx \sqrt{\SI{9.8}{\meter\per\second\squared} \times
-  (\SI{4e3}{\meter}) } \approx \SI{200}{\meter\per\second}
-  \approx \SI{700}{\kilo\meter\per\hour} 
-\]
-This is an astonishing speed, which is nevertheless in agreement with
-measurements of these dramatic events.
-
-\subsection{Deep water}
-
-If the bottom is deep, compared to the wavelength $\lambda$, then $kh
-= 2\pi h / \lambda $ is a large number, and its hyperbolic tangent is
-very nearly $1$. In this limit,
-\[
-\omega^2 \approx g  k \qquad \implies \qquad \omega= \sqrt{g k} .
-\]
-These waves are highly dispersive, since their phase velocity depends
-on the wavelength:
-\[
-c =  \frac{\omega}{k} = \sqrt{ g /k  } =  \sqrt{ g \lambda / (2\pi)  }  .
-\]
-
-The group velocity is now different from the phase velocity. In fact,
-it is one half that value:
-\[
-2 \log\omega = \log k + \log g \qquad \implies \qquad
-\frac{2}{\omega} \frac{d\omega}{dk} = \frac1{k} \qquad  \implies \qquad
-c_\mathrm{g} = \frac{c}{2}
-\]
-
-In deep waters, the only two length scales we may think of are the
-wave amplitude $a$ and their wavength $\lambda$. As we expect the
-amplitude to play no role (as long as it is small, $a\ll\lambda$), we
-are left with the wavelength to provide the length scale.
-
-Notice that waves high high wavelenghts travel faster. This explains
-the groundsell phenomenon, by which waves generated by a far away
-storm may arrive quickly at some shore. These waves may precede the
-storm by a long time, if the storm does arrive at all. The velocity
-grows larger and larger with the wavelength, but as we have seen in
-the previous section, as the wavelength becomes comparable to the
-depth there will be a crossover to some finite velocity.
-
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/gravity_capillary_dispersion_lambda}
+  \caption{\label{fig:gravity_capillary_dispersion_lambda}}
+\end{figure}
 
