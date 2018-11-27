@@ -1,0 +1,156 @@
+\section{Monolayers and membranes}
+
+In their influential 1975 article Saffman and Delbr{\"u}ck
+\cite{saffman1975brownian} discussed several ways out of this paradox,
+and found out the most satisfactory way was to take into account the
+viscosity of the surrounding liquid, $ \mu_\mathbf{f}$.
+
+In \cite{lubensky1996hydrodynamics}, Lubensky and Goldstein proposed a
+modification of the original equation for 2D liquids. This are indeed
+feasible in a lab, as Langmuir monolayers \index{Langmuir monolayer},
+in which a one molecule thick layer of lipids forms between water and
+air. Also, in membranes, where a 2D bilayer lipid is surrounded on
+both sides by water (these are more involved to study, and may be
+prone to curve). The equation of motion, in the creeping regime is
+\begin{equation}
+  \label{eq:Stokes_2D}
+  \mu \nabla^2 \bfu - \nabla p = -\bff(\bfr) -\bff'(\bfr) ,
+\end{equation}
+%
+where all variables are two-dimensional: $\mu$ is the 2D shear
+viscosity, $p$ the 2D pressure, and $\bff$ a force per area. All
+variables have their physical dimensions changed from the 3D case, but
+for the position $\bfr$ and the velocity $\bfu$ --- both are in-plane,
+but their units do not change: length and length per time.
+
+In addition, the 2D flow is incompressible:
+\[
+  \nabla\cdot \bfu = 0
+\]
+
+The solvent produces an additional term $\bff'(\bfr) $, to be added to
+any external force that causes the flow (which may be an external
+forcing due to the motion of an immersed body, or perhaps due to a
+concentration gradient \cite{duque2018}. Of course, this surrounding
+flow is caused by the 2D fluid, so this will be a sort of
+self-interaction effect, as we will see.
+
+The solvent itself satisfies another momentum equation. It the solvent
+is taken to be also in the creeping regime:
+\[
+  \mu' \nabla'^2 \bfu' -\nabla' p' = 0 .
+\]
+In this section, primes refer to volume properties of the solvent
+(also for $\nabla'$, which is our usual, 3D, del operator). In this
+equation $\mu'$ is the ordinary solvent shear viscosity, often simply
+water.  The solvent is also incompressible:
+\[
+  \nabla'\cdot \bfu' = 0 .
+\]
+
+The reader may wonder how the 2D fluid affects the 3D one which is
+underneath (this is the case of monolayers, while in membranes there
+are two such regions, above and below.) The answer is, through the
+boundary condition at the surface:
+\[
+  \bfu'(z=0) = \bfu .
+\]
+In addition to this condition, another one must be set. Usually,
+disturbances die out quite fast (as we will see below), so the
+deep-water limit is a good approximation:
+\[
+  \bfu'(z \to -\infty ) = 0 .
+\]
+A more general condition $\bfu'(z = -H ) = 0$ is also easy, but
+somewhat obscures the discussion.
+
+Let us consider the 2D Fourier transform of our in-plane velocity
+field, $\bfu_\bfq$. The wave-vector $\bfq$ is also a 2D vector. Let us
+consider this ansatz for the solvent velocity field:
+\[
+  \bfu' =  \frac 1{(2\pi)^2}  \int d\bfq \, \bfu_\bfq e^{ i\bfq\cdot\bfr} e^{q z} .
+\]
+Notice that this is a half-Fourier inverse transform, only in $q_x$
+and $q_y$, but not on $q_z$. What we have here is a dilution of each
+of the 2D Fourier components $\bfu_\bfq$ as we go deeper into the
+solvent, each decaying as $e^{q z} $ (remember, $z$ is
+negative!). This means the sharper features will wash out first, and
+the longest-wavelength features will be the ones that will extend
+deeper.
+
+Notice that this velocity field is laminar: it is always parallel to
+the 2D layer (i.e. it has no $z$ component). It automatically
+satisfies incompressibility. It is also harmonic: $\nabla^2 \bfu' = 0$
+(for this, it is imperative that the decay is precisely
+$e^{qz}$. These two facts imply that the pressure field is not neede,
+and we may take it to be constant, or zero.
+
+Lastly, the force this velocity field will exert on the planar
+interface can only be a wall shear stress. The only non-zero value is
+\[
+  \bff' = \mu' \left. \frac{\partial \bfu'}{\partial z} \right_{z=0} .
+\]
+
+With our previous ansatz,
+\[
+  \bff' = \frac 1{(2\pi)^2} \mu' \int d\bfq \, q \bfu_\bfq e^{
+    i\bfq\cdot\bfr} .
+\]
+
+This is an interesting result. It is clear that the 2D Fourier
+transform of the solvent force is
+\[
+  \bff'_\bfq =  \mu' q \bfu_\bfq .
+\]
+
+Therefore, if we cast our original 2D momentum equation
+\ref{eq:Stokes_2D} into Fourier space:
+\[
+-  \mu q^2 \bfu_\bfq - i \bfq p_\bfq = -\bff_\bfq -\bff'_\bfq ,
+\]
+we have
+\[
+-  ( \mu q^2 +  \mu' q ) \bfu_\bfq - i \bfq p_\bfq = -\bff_\bfq .
+\]
+
+We may now repeat the steps by which we obtained
+\ref{eq:u_sol_Fourier}, with the result
+\begin{equation*}
+\bfu_i(\bfq) =  \sum_j T_{ij} \bff_j(\bfq),
+\end{equation*}
+%
+but now the Oseen tensor is re-defined:
+\[
+T_{ij}(\bfq) := \frac 1{\mu q^2 +  \mu' q  } \left[
+  \delta_{ij} - \frac{ \bfq_i  \bfq_j}{q^2} 
+\right].
+\]
+
+The denominator is usually written as
+\[
+  \mu q^2 +  \mu' q =:
+  \mu (q^2 +  q \xi ) ,
+\]
+where $\xi:= \mu'/\mu$ is the Saffman and Delbr{\"u}ck length
+\index{Saffman and Delbr{\"u}ck length }. (Remember the two
+viscosities have different dimensions, so their ratio is indeed a
+length). This length separates two regimes.  One of them is the
+high-$q$, short wave-length regime, when $q \gg 1/\xi$. In this case
+the effect of the solvent is negligible, as we recover our previous 2D
+result. The other is the low-$q$, high wave-length regime, when
+$q \ll 1/\xi$. In this case the $q\xi$ term dominates, and the tensor
+switches over to a $1/q$ increase which makes it Fourier
+invertible. Stokes' paradox is therefore removed! Sadly, the resulting
+expressions cannot be annalitically expressed in general (they can in
+those two limits.)
+
+For membranes the discussion is exactly the same, with two mirroring
+fluid zones above and below the membrane, both of them affecting the
+membrane. The only difference is therefore that in this case
+\[
+T_{ij}(\bfq) = \frac 1{\mu q^2 +  2 \mu' q  } \left[
+  \delta_{ij} - \frac{ \bfq_i  \bfq_j}{q^2} 
+\right],
+\]
+and the Saffman and Delbr{\"u}ck length $\xi = 2 \mu'/\mu$.
+
