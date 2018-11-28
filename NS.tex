@@ -7,13 +7,15 @@ have a shear component.
 
 Thus, the horizontal force will be given by, in part, by the
 contributions due to the walls at the left, back, and bottom
-\[
-\left. dF_x \right|_\text{l,bk,bm} =
-%- p         dy\, dz
--  \tau_{xx} dy\, dz
--  \tau_{yx} dx\, dz
--  \tau_{zx} dx\, dy .
-\]
+\begin{equation}
+  \label{eq:wall_shear_stress}
+  \left. dF_x \right|_\text{l,bk,bm} =
+  % - p         dy\, dz
+  -  \tau_{xx} dy\, dz
+  -  \tau_{yx} dx\, dz
+  -  \tau_{zx} dx\, dy .
+\end{equation}
+%
 The compression stress $\tau_{xx}$ is therefore quite similar to the
 pressure (see (Eq \ref{eq:}), and in fact will be seen to include a
 $-p$ term. The minus sign appears because normal stresses are
@@ -29,9 +31,14 @@ way). Similarly, $\tau_{zx} dx\, dy $ is the horizontal stress force
 at the bottom wall.
 
 Notice the convention for minus signs. First, the normal stress is
-$\tau_{xx} \parallel \bfn $. From it, $\tau_{xy} \parallel
-\bfe_z\times \tau_{xx} $, $\tau_{xz} \parallel \tau_{xx} \times \bfe_y
-$, respecting the $(x,y,z)$ cyclic order.
+$\tau_{xx} \parallel \bfn $. From it,
+$\tau_{xy} \parallel \bfe_z\times \tau_{xx} $,
+$\tau_{xz} \parallel \tau_{xx} \times \bfe_y $, respecting the
+$(x,y,z)$ cyclic order. A quick way to realize this is by considering
+the top face, on which these three directions coincide with the
+Cartesian axes. The directions on other faces are found by rotating
+these directions accordingly. The right hand may be used for this
+purpose.
 
 To get the whole horizontal force, the contributions from the other
 three walls must be added up:
@@ -250,15 +257,17 @@ the ``second viscosity coefficient'', $\mu$ being the first.) Then,
 \]
 
 To make this explicit, this means that diagonal terms have the form
-\[
-\tau_{ii}=
-2 \mu \epsilon_{ii}  - p + \lambda \nabla\cdot \bfu ,
-\]
+\begin{equation}
+  \label{eq:tau_diagonal}
+  \tau_{ii}=
+  2 \mu \epsilon_{ii}  - p + \lambda \nabla\cdot \bfu ,
+\end{equation}
 while off-diagonal terms are
-\[
-\tau_{ij}=
-2 \mu \epsilon_{ij}
-\]
+\begin{equation}
+  \label{eq:tau_off_diagonal}
+  \tau_{ij}=  2 \mu \epsilon_{ij} \qquad j \ne i
+\end{equation}
+
 
 (Why not always work in the system of principal axes? The answer is
 simple: principal axes vary from one particle to another, since they

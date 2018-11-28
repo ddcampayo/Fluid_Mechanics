@@ -151,45 +151,49 @@ As mentioned, this is a \emph{linear} equation for the velocity.  We
 may get a general solution to the equation that gives us the velocity
 field for any external field, by using Fourier techniques.
 
-In Fourier space all the fields are given as
+In Fourier space all the fields are given as \index{Fourier transform}
 \begin{align}
   \label{eq:F_r_to_q}
-  \phi(\bfq) &=                    \int d\bfr \, \phi(\bfr) e^{-i\bfq\cdot\bfr}  \\
+  \phi_\bfq &=                    \int d\bfr \, \phi(\bfr) e^{-i\bfq\cdot\bfr}  \\
   \label{eq:F_q_to_r}
-  \phi(\bfr) &= \frac 1{(2\pi)^d}  \int d\bfq \, \phi(\bfq) e^{ i\bfq\cdot\bfr} 
+  \phi(\bfr) &= \frac 1{(2\pi)^d}  \int d\bfq \, \phi_\bfq e^{ i\bfq\cdot\bfr} .
 \end{align}
+We follow the convention that is usual in physics, in which Fourier
+components are indicated by an index --- also, no tilde (``wiggly'')
+hat is used for them for simplicity. Thus, $ \phi_\bfq $ instead of
+$ \tilde{\phi}(\bfq) $.
 
 Stokes' equation for Cartesian coordinate $i$ reads
 \cite{bray2002theory}
 \[
--\mu q^2 \bfu_i(\bfq) - i \bfq_i p(\bfq) = - \bff_i(\bfq) ,
+-\mu q^2 \bfu_{\bfq,i} - i \bfq_i p_\bfq = - \bff_{\bfq,i} ,
 \]
 or
 \begin{equation}
 \label{eq:u_Fourier0}
-\bfu_i(\bfq) = \frac 1{\mu q^2}
+\bfu_{\bfq,i} = \frac 1{\mu q^2}
 \left[
-  - i \bfq_i p(\bfq) + \bff_i(\bfq) 
+  - i \bfq_i p_\bfq + \bff_{\bfq,i} 
 \right] .
 \end{equation}
 
 Now, the pressure is fixed by incompressibility. The condition
 $\nabla\cdot\bfu=0$, reads in Fourier space
 \[
-  \sum_i\bfq_i\cdot\bfu_i(\bfq) .
+  \sum_i\bfq_i\cdot\bfu_{\bfq,i} .
 \]
 Multiplying Equation \ref{eq:u_Fourier0} by $\bfq_i$ and adding up the
 $d$ equations:
 \[
-\sum_i \bfq_i \bfu_i(\bfq) = \frac 1{\mu q^2}
+\sum_i \bfq_i \bfu_{\bfq,i} = \frac 1{\mu q^2}
 \left[
-  - i q^2 p(\bfq) + q_i\bff_i(\bfq) 
+  - i q^2 p_\bfq + q_i\bff_{\bfq,i} 
 \right] =0 .
 \]
 
 Therefore,
 \[
-  - q^2 p(\bfq) = i q_i\bff_i(\bfq)   .
+  - q^2 p_\bfq = i q_i\bff_{\bfq,i}   .
 \]
 This looks like the Fourier version of a Poisson pressure equation:
 \[
@@ -208,21 +212,21 @@ incompressibility by projection.
 The pressure is then
 \begin{equation}
 \label{eq:p_Fourier0}
-p(\bfq) = -i \frac{\sum_i q_i\bff_i(\bfq) }{q^2} .
+p_\bfq = -i \frac{\sum_i q_i\bff_{\bfq,i} }{q^2} .
 \end{equation}
 
 With this result we may write Equation \ref{eq:u_Fourier0} as
 \begin{equation}
 \label{eq:u_sol_Fourier}
-\bfu_i(\bfq) = \frac 1{\mu q^2}
+\bfu_{\bfq,i} = \frac 1{\mu q^2}
 \sum_j
 \left[ \delta_{ij} - \frac{ \bfq_i  \bfq_j}{q^2} \right]
-\bff_j(\bfq) =: \sum_j T_{ij} \bff_j(\bfq),
+\bff_{\bfq,j} =: \sum_j T_{ij} \bff_{\bfq,j},
 \end{equation}
 %
 where the last equation the Oseen tensor is defined:
 \[
-T_{ij}(\bfq) := \frac 1{\eta q^2} \left[
+T_{\bfq,ij} := \frac 1{\eta q^2} \left[
   \delta_{ij} - \frac{ \bfq_i  \bfq_j}{q^2} 
 \right].
 \]
@@ -248,75 +252,39 @@ real space:
 \end{equation}
 
 In 2D, on the other hand, the Fourier expressions cannot be
-inverted. This is the famous ``Stokes paradox'': there are no
-solutions to his equation for steady translational motion in 2D (it
-also applies to 2D problems in 3D, such as the motion of an infinite
-cylinder). In their influential 1975 article
-\cite{saffman1975brownian} Saffman and Delbr{\"u}ck discussed several
-ways out of this paradox, and found out the most satisfactory way was
-to take into account the viscosity of the surrounding liquid,
-$ \eta_\mathbf{f}$.
+inverted. This is the famous ``Stokes paradox''\index{Stokes
+  paradox''}: there are no solutions to his equation for steady
+translational motion in 2D (it also applies to 2D problems in 3D, such
+as the motion of an infinite cylinder).
 
-In \cite{lubensky1996hydrodynamics}, Lubensky and Goldstein argued
-that this would modify the original Stokes equation as:
+
+\input{membrane}
+
+\section{Creeping flow past a sphere}
+
+Unfortunately, the creeping flow past a cylinder cannot be solved, due
+to Stokes paradox. This may have been anticipated by dimensional
+analysis. Indeed, the drag force on a sphere of radius $R$ is expected
+to be given by
 \[
-\eta_\mathbf{f} \nabla^2 \bfu -\nabla p = - \bff(\bfr) - 2
-\eta_\mathbf{f} \int d^2\mathbf{r'} K(\mathbf{r}-\mathbf{r'})
-\bfu(\mathbf{r'}) .
+  D \sim \mu u_0 R ,
 \]
-(We write $\eta_\mathbf{m}$, m for membrane, for what has been just
-$\eta$, since we also have $\eta_\mathbf{f}$.)  The last term reflects
-an aditional 2D force on the membrane due to its velocity field,
-mediated by the surrounding fluid (the factor of $2$ appears because
-there are two fluid regions at each side of the membrane). This
-convolution is just a product in Fourier space, and the Fourier
-transform of $K$ turns out to be simply $-q$.  The resulting Oseen
-tensor is then replaced by:
-\begin{equation}
-\label{eq:SD}
-T_{ij}(\bfq) := \frac 1{\eta_\mathrm{m} (q^2 + q / L_\mathrm{SD})}
-\left[ \delta_{ij} - \frac{ \bfq_i \bfq_j}{q^2} \right].
-\end{equation}
-I.e. the only modification is that the denominator of the original
-expression is replaced in this way:
+which has the right combination of units to yield a net force. It also
+makes sense, being proportional to the viscosity, velocity, and
+radius. (One may have expected $R^2$, the projected area, but this
+does not work dimensionally.) It is indeed correct, a fact that will
+be proved in this section, together with the missing numerical
+prefactor.
+
+If we write something similar for the drag force on a cylinder, the
+answer should come as a force per length in the perpendicular
+direction (as e.g. the lift for our cylinder with circulation of
+\ref{sec:}). I.e.
 \[
-\eta q^2 \rightarrow
-\eta_\mathrm{m} (q^2 + q / L_\mathrm{SD}) =
-\eta_\mathrm{m} q^2 + 2 \eta_\mathrm{f} q ,
+  \fracDR \sim \mu u_0 .
 \]
-with the Saffman-Delbr{\"u}ck length is given by
-\[
-L_\mathrm{SD} = \frac{\eta_\mathrm{m} }{ 2 \eta_\mathrm{f} } 
-\]
-(the 3D and 2D viscosities have different physical dimensions, and
-this ratio is indeed a length.)
-
-
-In Figure \ref{fig:SD} we plot the function $1/(q^2+q)$ in log-log
-scale.  At high $q$ (short distances), the denominator approaches
-\( \eta_\mathrm{m} q^2 \),
-which is the prediction from the standard theory as just described. At
-low $q$ (long distances), on the other hand, the denominator
-approaches \( 2 \eta_\mathrm{f} q \),
-which will cause a convergent real-space Oseen tensor with magnitude
-given by the viscosity of the surrounding liquid.
-
-At this stage, I do not know how to implement this correction in real
-space, and until I get results I am not convinced it is really that
-important.
-
-\begin{figure}
-  \centering
-  \begin{minipage}{0.45\textwidth}
-      \includegraphics[width=\textwidth]{figures/SD}
-  \end{minipage}
-  \caption{Plot of $1/(q^2+q)$ function
-    \label{fig:SD}}
-\end{figure}
-
-
-
-\subsection{Creeping flow past objects}
+But this makes no sense, since all dependence on $R$ is lost --- and
+there is not clear candidate to provide another length parameter.
 
 
 

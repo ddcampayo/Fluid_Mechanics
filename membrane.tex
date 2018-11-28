@@ -1,4 +1,4 @@
-\section{Monolayers and membranes}
+\subsection{Monolayers and membranes}
 
 In their influential 1975 article Saffman and Delbr{\"u}ck
 \cite{saffman1975brownian} discussed several ways out of this paradox,
@@ -19,11 +19,14 @@ prone to curve). The equation of motion, in the creeping regime is
 %
 where all variables are two-dimensional: $\mu$ is the 2D shear
 viscosity, $p$ the 2D pressure, and $\bff$ a force per area. All
-variables have their physical dimensions changed from the 3D case, but
-for the position $\bfr$ and the velocity $\bfu$ --- both are in-plane,
-but their units do not change: length and length per time.
+variables have their physical dimensions changed from the 3D case (and
+the rest of this book), but for the position $\bfr$ and the velocity
+$\bfu$ --- both are in-plane, but their units do not change: length
+and length per time.
 
-In addition, the 2D flow is incompressible:
+Notice that the fluid is taken to be Newtonian, which may not be such
+a good approximation for molecules as complex as lipids.  In addition,
+the 2D flow is incompressible:
 \[
   \nabla\cdot \bfu = 0
 \]
@@ -43,7 +46,9 @@ is taken to be also in the creeping regime:
 In this section, primes refer to volume properties of the solvent
 (also for $\nabla'$, which is our usual, 3D, del operator). In this
 equation $\mu'$ is the ordinary solvent shear viscosity, often simply
-water.  The solvent is also incompressible:
+water. It is also taken to be Newtonian, an approximation whose
+validity depends on the nature of the solvent. This flow is also
+incompressible:
 \[
   \nabla'\cdot \bfu' = 0 .
 \]
@@ -82,13 +87,40 @@ Notice that this velocity field is laminar: it is always parallel to
 the 2D layer (i.e. it has no $z$ component). It automatically
 satisfies incompressibility. It is also harmonic: $\nabla^2 \bfu' = 0$
 (for this, it is imperative that the decay is precisely
-$e^{qz}$. These two facts imply that the pressure field is not neede,
-and we may take it to be constant, or zero.
+$e^{qz}$. These two facts imply that the pressure field is not needed,
+and we may take it to be constant.
 
 Lastly, the force this velocity field will exert on the planar
-interface can only be a wall shear stress. The only non-zero value is
+interface can only be a wall shear stress. Recalling our expressions
+for the shear stress on walls, e.g. Eq.  \ref{eq:wall_shear_stress},
+the force per unit surface on the 2D fluid will be
+\begin{equation*}
+  f_x =  \tau_{zx} \qquad
+  f_y =  \tau_{zy} \qquad
+  f_z =  \tau_{zz} ,
+\end{equation*}
+since we would be considering only forces on the top wall of the cube
+of Fig. \ref{fig:cube_for_stresses}.
+
+Since our fluid is Newtonian, Eqs. \ref{eq:tau_diagonal} and
+\ref{eq:tau_off_diagonal} yield
+\begin{equation*}
+  \tau_{zz} = -p'  \qquad
+  \tau_{zx} = \mu' \frac{\partial u'_x}{\partial z}  \qquad
+  \tau_{zy} = \mu' \frac{\partial u'_y}{\partial z}  \qquad
+\end{equation*}
+where many terms have vanished because $\bfu'$ does not have a $z$
+component. The second viscosity of Eq. \ref{eq:tau_diagonal} does not
+appear since the flow is incompressible. The first equation represents
+a push from the constant pressure underneath, but in an experimental
+situation this is balanced by either some external pressure in
+the case of monolayers (most simply, atmospheric pressure), or
+by an equal pressure on the other side for the case of membranes.
+
+We may combine the two latter expressions to write down a vectorial
+equation for the force per unit area due to the solvent:
 \[
-  \bff' = \mu' \left. \frac{\partial \bfu'}{\partial z} \right_{z=0} .
+  \bff' = \mu' \left. \frac{\partial \bfu'}{\partial z} \right|_{z=0} .
 \]
 
 With our previous ansatz,
@@ -97,7 +129,7 @@ With our previous ansatz,
     i\bfq\cdot\bfr} .
 \]
 
-This is an interesting result. It is clear that the 2D Fourier
+This is a very interesting result. It is clear that the 2D Fourier
 transform of the solvent force is
 \[
   \bff'_\bfq =  \mu' q \bfu_\bfq .
@@ -153,4 +185,29 @@ T_{ij}(\bfq) = \frac 1{\mu q^2 +  2 \mu' q  } \left[
 \right],
 \]
 and the Saffman and Delbr{\"u}ck length $\xi = 2 \mu'/\mu$.
+
+
+
+
+In Figure \ref{fig:SD} we plot the function $1/(q^2+q)$ in log-log
+scale.  At high $q$ (short distances), the denominator approaches
+\( \eta_\mathrm{m} q^2 \),
+which is the prediction from the standard theory as just described. At
+low $q$ (long distances), on the other hand, the denominator
+approaches \( 2 \eta_\mathrm{f} q \),
+which will cause a convergent real-space Oseen tensor with magnitude
+given by the viscosity of the surrounding liquid.
+
+At this stage, I do not know how to implement this correction in real
+space, and until I get results I am not convinced it is really that
+important.
+
+\begin{figure}
+  \centering
+  \begin{minipage}{0.45\textwidth}
+      \includegraphics[width=\textwidth]{figures/SD}
+  \end{minipage}
+  \caption{Plot of $1/(q^2+q)$ function
+    \label{fig:SD}}
+\end{figure}
 

@@ -42,7 +42,7 @@ normal component should vanish there:
 \]
 where $\bfn$ is the normal vector at the surface of the cylinder,
 pointing outside. Given our choice of origin, this vector is the unit
-radial vector, $\bfn = \bfe_r$.
+radial vector, $\bfn = \bhe_r$.
 
 It turns out this condition is the \emph{only one} needed to complete
 the problem --- in the positive sense that we will be able to find
@@ -197,11 +197,11 @@ Now, the drag is given by the net force in the $x$ direction. The
 \[
 \mathbf{F} = \int_0^H \int_0^{2\pi}   p(\theta)  \bfn  R d\theta  dz ,
 \]
-where $p(\theta) \bfn \bfe_x R d\theta dz $ is the pressure force on a
+where $p(\theta) \bfn \bhe_x R d\theta dz $ is the pressure force on a
 differential surface of area $ R d\theta dz$. Now, the drag will be
 its projection on the horizontal axis:
 \[
-D= \mathbf{F} \cdot \bfe_x = \int_0^H \int_0^{2\pi}
+D= \mathbf{F} \cdot \bhe_x = \int_0^H \int_0^{2\pi}
 p(\theta) \cos(\theta) R d\theta dz .
 \]
 The integral is zero, since it consists of two terms. The first one
@@ -236,7 +236,7 @@ is a particular case in which $m=0$.
 It is also interesting that such an integral involving a sine and a
 cosine is always zero. This shows that the lift is always null:
 \[
-L= \mathbf{F} \cdot \bfe_x = \int_0^H \int_0^{2\pi}
+L= \mathbf{F} \cdot \bhe_x = \int_0^H \int_0^{2\pi}
 p(\theta) \sin(\theta) R d\theta dz = 0
 \]
 
@@ -246,36 +246,71 @@ p(\theta) \sin(\theta) R d\theta dz = 0
 
 For steady 2D flow, it is very convenient to introduce the stream
 function $\psi$. It is defined such that its contour lines produce the
-streamlines. Upon some reflection this means that its gradient should
-always be perpendicular to the velocity:
-\[
-\bfu \cdot \nabla\psi = 0 .
-\]
-This is at variance with the potential, whose gradient is parallel to
-the velocity (it is indeed, the velocity itself). Thus $\phi$ and
-$\psi$ are orthogonal functions, in the sense that their gradients
-are.
+streamlines \index{streamline}, i.e. the lines the fluid particles
+trace as they move. Upon some reflection, this means that its gradient
+should always be perpendicular to the velocity:
+\begin{equation}
+  \label{eq:stream_perp_to_u}
+  \bfu \cdot \nabla\psi = 0 .
+\end{equation}
+In steady flow, this means $d\psi/dt=0$, so the value of $\psi$ is
+carried with the flow. This is at variance with the potential, whose
+gradient is parallel to the velocity (it is indeed, the velocity
+itself). Thus $\phi$ and $\psi$ are orthogonal functions, in the sense
+that their gradients are.
 
-It is easy to check that if
-\[
-\bfu = \nabla\psi \times \bfe_z ,
-\]
-the resulting velocity has only $x$ and $y$ components (being
-perpendicular to $\bfe_z$), as it must. Also, $\nabla\psi$ will fit
-the requirements (since its gradient will be both perpendicular to
-$\bfe_z$, and to $\bfu$).
+The streamlines are important to visualize flows, in much the same way
+as Faraday's field lines are for electromagnetic fields
+(mathematically, they are equivalent). In computational fluid
+dynamics, they are customarilly computed and plotted, by ``seeding''
+points and integrating their motion following the velocity field.  A
+fine point is that for unsteady flow, these streamlines are in general
+different from the actual trajectories of fluid particles, which are
+called ``pathlines'' \index{pathline}.
 
-This leads to the identities, in cylindrical coordinates
-\begin{align}
-%\bfu_x &=  \frac{\partial \psi}{\partial y} \\
-%\bfu_y &= -\frac{\partial \psi}{\partial x} ,
-\bfu_r &= \frac1r \frac{\partial \psi}{\partial \theta} \\
-\bfu_\theta &=   - \frac{\partial \psi}{\partial r} .
-\end{align}
-The $\psi$ field is then found to be
+
+For steady flow, it is often convenient to define a vector potential
+\index{vector potential} in much the same way as it is done for the
+magnetic field in electromagnetism:
 \[
-\psi = u_0 \left( r-{\frac {R^{2}}{r}}\right)\sin \theta
+  \bfu = \nabla\times \bfA .
 \]
+The resulting velocity field will always be incompressible, since the
+divergence of a curl is zero.
+
+In the case of 2D, the choice for this vector potential is
+\begin{equation}
+  \label{eq:A_psi_2D}
+  \bfA = \psi(x,y) \bhe_z ,    
+\end{equation}
+perpendicular to the plane, but dependent on the in-plane
+coordinates. With this expression,
+\begin{align*}
+  u_x &=  \frac{\partial \psi}{\partial y} \\
+  u_y &= -\frac{\partial \psi}{\partial x} ,
+\end{align*}
+and it is easy to check that this stream function indeed traces
+stream-lines, since it complies with \ref{eq:stream_perp_to_u}.
+
+In cylindrical coordinates \cite{wiki:del},
+\begin{align*}
+u_r &= \frac1r \frac{\partial \psi}{\partial \theta} \\
+u_\theta &=   - \frac{\partial \psi}{\partial r} .
+\end{align*}
+
+
+\subsection{Streamlines around the cylinder}
+
+With tha latter expression for the stream function, and from our
+results for the velocity field, the $\psi$ field is found to be
+\[
+\psi = u_0 \left( r-{\frac {R^{2}}{r}}\right)\sin \theta .
+\]
+This method, of course, is working backwards from the known
+solution. It is also possible to derive the velocity field from the
+fact that $\psi$ satisfies Laplace's equation, plus the appropriate
+boundary conditions, in a manner very similar to what has been done
+for the potential (see Exercise \ref{ex:u_from_psi_cylinder}).
 
 The contour lines of this field are shown in
 Fig. \ref{fig:potential_flow_past_cylinder}.
@@ -287,7 +322,26 @@ Fig. \ref{fig:potential_flow_past_cylinder}.
 \end{figure}
 
 Interestingly, the $\psi$ field is also a solution of Laplace's
-equation, $\nabla^2 \psi=0$. There is also the fact that we may write
+equation, $\nabla^2 \psi=0$, as can be checked explicitely --- but
+also from the identity for the curl of the curl
+\cite{wiki:Vector_calculus_identities}:
+\begin{equation}
+  \label{eq:curl_of_curl}
+  \nabla \times \left(\nabla \times \mathbf {A} \right)=
+  \nabla (\nabla \cdot \mathbf {A} )-\nabla^{2}\mathbf {A} .
+\end{equation}
+
+Then, since the velocity field is curl-free:
+\[
+   \nabla \times \bfu = 0 =
+   \nabla (\nabla \cdot \mathbf {A} )- \nabla^{2}\mathbf {A} =
+   - \bhe_z \nabla^{2} \psi,
+\]
+where we use the fact that the $\bfA$ field of \ref{eq:A_psi_2D} is
+divergence-free.
+
+
+There is also the intriguing fact that we may write
 \[
 \phi = u_0 \Re \left( z  + \frac{R^2}{z} \right) ,
 \]
@@ -385,7 +439,7 @@ where we single out the only term that can produce a contribution to the lift.
 
 Now,
 \[
-L= \mathbf{F} \cdot \bfe_x = \int_0^H \int_0^{2\pi}
+L= \mathbf{F} \cdot \bhe_x = \int_0^H \int_0^{2\pi}
 p(\theta) \sin(\theta) R d\theta dz =
 2 L  \rho u_0  R  \frac{\Gamma}{2\pi R}   \int_0^{2\pi}  \sin^2(\theta) d\theta =
  H \rho u_0   \Gamma .
@@ -402,7 +456,7 @@ shape, by some conformal transformations. These transformations, or
 ``mappings'', preserve the harmonicity of functions --- hence the
 transformed $\phi$ and $\psi$ will still be solutions of Laplace's
 equation. Historically, the best known mappings are the Joukowsky
-K\'rm\'an–Trefftz transforms.
+K\'arm\'an–Trefftz transforms.
 
 For a plane wing, it makes sense to relate circulation and lift, since
 this captures, in a way, the fact that the velocity is higher at the
@@ -416,66 +470,158 @@ fluid. This is used (for spheres) in sports, such as tennis, golf and
 football. Also, for cylinder-like rotors in ``rotor ships,'' which use
 the Magnus effect for propulsion.
 
-
 As an aside, if we move along with the plane, or ship, we will not see
 those velocity fields. The horizontal component should be avoided in
 every equation, and the resulting velocity looks different. This is
-shown in Fig. , for the flow past a cylinder with and without
-circulation. It is seen that, for an observoer moving with the
-cylinder, the surrounding fluid is pushed from the fore, and moved
-around towards the aft (where it pushes our vehicle, magically making
-our journey a costless one!).
+shown in Fig. \ref{fig:potential_flow_past_cylinder_moving}, for the
+flow past a cylinder with and without circulation. It is seen that,
+for an observoer moving with the cylinder, the surrounding fluid is
+pushed from the fore, and moved around towards the aft (where it
+pushes our vehicle, magically making our journey a costless one!).
 
 \begin{figure}
   \centering
   \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_moving}
   \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_rotating_moving}
-  \caption{\label{fig:}}
+  \caption{\label{fig:potential_flow_past_cylinder_moving}}
 \end{figure}
 
 
+\subsection{Flow past a sphere}
+
+With the same assumption of potential flow as in the cylinder, the
+axisymmetric flow past a sphere may be tackled by using the potential,
+which should satisfy Laplace's equation, plus these boundary
+conditions:
+\[
+  \phi (r\to \infty) \to u_0 z = u_0 r \cos\theta \qquad
+  u_r(r=R) =\left. \frac{\partial \phi}{\partial r} \right|_{r=R} = 0 .
+\]
+Spherical coordinates \index{spherical coordinate system} are used:
+$r$ is the distance to the origin, $\theta$ is the polar angle (angle
+with the $z$ axis), and the azimuthal angle (angle around the $z$
+axis), here absent due to symmetry, is $\phi$ %.
+\footnote{This naming convention is the most common in physics, and is
+  pecified by ISO standard 80000-2:2009, and earlier in ISO 31-11
+  (1992). However, the name of the two angles is often reversed,
+  specially in mathematics. The advantage of the latter is that
+  $\theta$ then retains the same name as in 2D polar coordinates.}.
 
 
-\subsection{Exercises}
+Similarly to the cylinder, let us try a function
+\[
+\phi =  \left( u_0 r  + f(r) \right) \cos(\theta)  .
+\]
 
+By using the expression of the Laplacian in spherical coordinates
+\cite{wiki:del}, we soon come to the conclusion that $f(r)= A/r $ in
+order Laplace's equation be satisfied. This function also vanishes as
+$r$ gets large, as it should. With the no-trespassing condition for the
+velocity the value of $A$ may be found out.
 
-  The potential flow past a sphere of radius $R$ is given by the
-  potential function
-  \[
+The final result is
+\[
   \phi(r,z) = u_0 r
   \left[
     1 +
-    \frac12 \left(\frac{R}{r})^3\right)
+    \frac12 \left( \frac{R}{r}\right)^3
   \right] \cos\theta .
-  \]
-  Spherical coordinates are used: $r$ is the distance to the origin
-  (which coincides with the centre of the sphere), and $\theta$ is the
-  angle with the $z$ axis. Flow far away from the sphere is along the
-  $+z$ direction, with magnitude $u_0$.
+\]
+From its gradient we get the velocity field:
 
-    \begin{enumerate}
-      \item Demonstrate this fact.
-      \item Compute the velocity components $u_r$ and $u_\theta$.
-      \item Show that the stream function is given by
-      (see Fig. \ref{fig:potential_streamlines_sphere}).
-        \[
-      \psi(r,z) = \frac12 u_0 r^2
-      \left[
-        1 -
-        \left(\frac{R}{r})^3\right)
-        \right] \sin^2\theta .
-      \]
-    \item Compute the stream function for the flow as seen when moving
-      with the sphere
-      (see Fig. \ref{fig:potential_streamlines_moving_sphere}). 
-    \end{enumerate}
+\begin{align*}
+u_r &=  u_0
+  \left[
+    1 -
+      \left(\frac{R}{r}\right)^3
+  \right] \cos\theta \\
+u_\theta &=  -u_0
+  \left[
+    1 + \frac12
+      \left(\frac{R}{r}\right)^3
+  \right] \sin\theta
+\end{align*}
 
-    \begin{figure}
-      \centering
-      \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_sphere}
-      \caption{\label{fig:potential_streamlines_sphere} Streamlines of
-        the potential flow past sphere}
-    \end{figure}
+
+\subsubsection{Streamlines past a sphere}
+
+For axisymmetric flows, streamlines may be defined on a plane, since
+the resulting flow does not depend on the azimuthal angle (the angle
+around the axis of symmetry, which is $z$). However, these are not 2D
+flows, and the equations are more involved.
+
+In this case, the velocity field depends only on the other two
+coordinates. In spherical coordinates,
+\[
+  \bfu = \bfu(r,\theta) .
+\]
+
+The vector potential is still chosen as ``perpendicular'' to the other
+two coordinates. In spherical coordinates:
+\[
+  \bfA = A \bhe_\phi ,
+\]
+i.e. it is purely azimuthal. It is also divergence-free, so that is
+satisfies Laplace's equation for a curl-free flow.
+
+However, the choice of $A=\psi$ does \emph{not} result in the correct
+stream-line behavior of Eq.  \ref{eq:stream_perp_to_u}. The following
+choice, however, does:
+\[
+  \bfA = \frac{\psi(r,\theta)}{r \sin\theta } \bhe_\phi .
+\]
+This is called ``Stokes' stream function''.
+
+The resulting velocity field for spherical coordinates is then found
+to be
+\begin{equation}
+  \label{eq:u_from_psi_spherical}
+  \begin{split}
+    u_r     &=  \frac1{r^2 \sin\theta} \frac{\partial \psi}{\partial \theta} \\
+    u_\theta &= -\frac1{r   \sin\theta} \frac{\partial \psi}{\partial r}
+  \end{split}
+\end{equation}
+
+
+For completeness, in cylindrical coordinates the appropriate
+expression is
+\[
+  \bfA = \frac{\psi(\rho, z)}{ \rho } \bhe_\phi ,
+\]
+where $\rho$ is the distance to the $z$ axis. The
+resulting velocity field is
+\begin{equation*}
+  \begin{split}
+    u_\rho   &= - \frac1{\rho} \frac{\partial \psi}{\partial z} \\
+    u_z     &=   \frac1{\rho} \frac{\partial \psi}{\partial \rho}
+  \end{split}
+\end{equation*}
+
+
+
+For the flow around a sphere, the resulting stream function is then
+found to be
+\[
+  \psi(r,z) = \frac12 u_0 r^2
+  \left[
+    1 -
+    \left(\frac{R}{r}\right)^3
+  \right] \sin^2\theta .
+\]
+Again, this is found by working backwards from the known solution.
+See Exercise \ref{ex:u_from_psi_spher}) to derive the velocity field
+from $\psi$.
+
+In Fig. \ref{fig:potential_streamlines_sphere} these streamlines are
+plotted. The corresponding streamlines for the flow as seen from the
+sphere are in Fig. \ref{fig:potential_streamlines_moving_sphere}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_sphere}
+  \caption{\label{fig:potential_streamlines_sphere} Streamlines of
+    the potential flow past sphere}
+\end{figure}
 
 
 
@@ -486,6 +632,40 @@ our journey a costless one!).
 \end{figure}
 
 
+\subsection{Exercises}
+
+\begin{itemize}
+\item \label{ex:u_from_psi_cylinder} Derive the velocity field for
+  potential flow around a cylinder from $\psi$, solving Laplace's
+  equation, plus the appropriate boundary conditions.
+
+\item \label{ex:u_from_psi_sphere} Derive the velocity field for
+  potential flow around a sphere from $\psi$, solving Laplace's
+  equation, plus the appropriate boundary conditions. Notice that
+  Laplace equation $\nabla^2 \bfA = 0$ may be written for $\psi$ using
+  this identity:
+  \begin{equation}
+    \label{eq:psi_eq_from_A}
+    \nabla^2 \left(  \frac{\psi(r,\theta)}{r \sin\theta } \bhe_\phi \right) =
+    \frac{1}{r \sin\theta } 
+    \left(
+      \frac{\partial^2  }{\partial r^2} +
+      \frac{1}{r^2} \left[
+        \frac{\partial^2 }{\partial \theta^2} - 
+        \cot(\theta) \frac{\partial }{\partial \theta}
+      \right]
+    \right) \psi \bhe_\phi .
+  \end{equation}
+
+\item Prove the previous identity. Notice that $\bfA$ is a vector
+  field, so one need to apply the expression for the vector Laplacian
+  of e.g. \cite{wiki:del}. The expressions are not so bad since the
+  field is azimuthal only, and dependent on the other two components:
+  $ \bfA = A(r,\theta) \bhe_\phi$.
 
 
 
+
+
+
+\end{itemize}

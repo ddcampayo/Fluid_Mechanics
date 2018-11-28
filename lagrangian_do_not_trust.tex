@@ -1,66 +1,63 @@
-\begin{quote}
-[Water waves] that are easily seen by everyone and which are usually
-used as an example of waves in elementary courses [...] are the worst
-possible example [...]; they have all the complications that waves can
-have. \hfill (Richard Feynman, \textit{The Feynman Lectures on Physics})
-\end{quote}
+\section{Lagrangian formalism}
 
-\section{Gravity waves}
+There is an alternative description of an ideal incompressible fluid
+that is interesting, and may be useful (e.g. it will be used for
+capillary waves in the next Section.) \cite{whitham2011linear}
 
-Large waves, like those at the ocean, are driven by gravity. An
-initial perturbation on the water surface, like an elevation, will
-cause a rise in gravitational potenntial. As this energy is
-transferred to kinetic energy, the water around it moves. Similarly to
-a pendulum, an area below the mean surface will develop, which will be
-filled with surrounding liquid. Thus, the perturbation travels away
-from the initial disturbance.
-
-The mathematical treatment of this problem is, in general, very
-involved. This is mostly due to the presence of a free surface: the
-water-air interface. Mathematically, its location is described by a
-height function $\eta$:
-\begin{equation}
-  \label{eq:waves_elevation}
-  z=\eta  \qquad  \eta=\eta(x,y,t) ,
-\end{equation}
-which is valid if no overhangs are present (this is known as a ``Monge
-representation''). The fluid velocity is to be solved for a domain
-between this surface at the ocean bottom, which is supposed to be flat
-and at a height $z=-h$ (thus, $z=0$ is taken to be the surface when no
-waves occur.)
-
-We have the following boundary conditions for the velocity:
+It describes the system by a single scalar quantity called the
+Lagrangian:
+\[
+  {\cal L} := \int \left( T - U \right) d\bfr ,
+\]
+where the integral extends to the whole volume of the fluid, $T$ is
+the total kinetic energy, and $U$ the potential energy:
 \begin{align}
-  % p&=0 \\
-  \label{eq:waves_bc}
-  u_z(z=-h) &= 0 \\
-  \label{eq:waves_bc2}
-  u_z(z=0) &=  \frac{\partial \eta}{\partial t}
+  T &= \frac12 \int u^2 d\bfr \\
+  U &=  \int (\rho \varphi) d\bfr 
 \end{align}
 
-
-The first one is the usual condition at a solid wall, and the last one
-is called the ``kinematic condition'', expressing the fact that if the
-surface moves up or down, the fluid must do the same in order to be
-``stuck to it''.
-
-We will assume an incompressible, irrotational fluid. The fist
-assumption is a very reasonable one, and the second one turns out to
-be not so bad, since for small waves there is little vorticity
-creation (it mainly occurs at the bottom and on breaking waves).  The
-assumption of negligible viscosity is likewise not so bad in this
-case.
-
-
-
-Let us assume a wave train that only depends on the $x$ component
-(i.e. waves are very long in the $y$ direction):
-
+For the simple case of gravity, the latter is simply given by
 \begin{equation}
-  \label{eq:wave_on_x}
-  \eta = a \cos(kx -\omega t) .
+  U =    \int ( \rho g z ) d\bfr .
 \end{equation}
-%
+
+It can be demonstrated that the extremization of the Lagrangian, as a
+\emph{functional} of the velocity field yields the Euler equation. One
+technical detail is the role of the pressure. This arises from
+enforcing incompressibility. The actual functional that is considered
+is actually
+\[
+{\cal F} = {\cal L} - \int p \divu d\bfr .
+\]
+
+Another fine point is regarding the appeareance of the material time
+derivative, and not just the partial one. All this fine points are
+beyond the scope of these lectures, and are not important for the time
+being.
+
+If the flow is potential, the kinetic energy can be written as
+\begin{equation}
+  T &= \frac12 \int \left| \nabla\phi \right|^2 d\bfr ,
+\end{equation}
+a form that is appreciated in physics, where these sort of square
+gradient theories are widely studied. (They are often called
+``London-Linzburg-Landau'' theories, or a subset of those names, but
+they begun, it seems, with van der Waals' seminal theory for the
+liquid-vapor interface.)
+
+\section{Capillary waves}
+
+Let us assume, as we did previously, a description of the interface as
+in Eq. \label{eq:waves_elevation}, and boundary conditions as in
+Eq. \ref{eq:waves_bc}. We will be actually considering the deep water
+limit only, for simplicity. (Actually,
+
+
+a wave train that only depends on the $x$ component
+(i.e. waves are very long in the $y$ direction):
+\[
+\eta = a \cos(kx -\omega t) .
+\]
 The amplitude $a$, is taken to be small (in the sense $a\ll \lambda$,
 and $a\ll h$).
 
@@ -133,10 +130,9 @@ a_1 = \frac{a \omega}{ k \sinh(hk)  } .
 \]
 This is indeed the only value for which $g'(0)= a \omega $. The
 potential is then
-\begin{equation}
-  \label{eq:wave_potential}
-  \phi = \frac{a \omega  \cosh(k(z+h)) }{ k \sinh( kh )  }  \sin(kx -\omega t ) .
-\end{equation}
+\[
+\phi = \frac{a \omega  \cosh(k(z+h)) }{ k \sinh(hk)  }  \sin(kx -\omega t ) .
+\]
 
 From it, the velocity components may be found. These will have a term
 featuring $\sin(kx -\omega t )$, a common expression for a traveling
@@ -207,34 +203,12 @@ The result is the following dispersion relation:
 \[
 \omega^2= g k \tanh(k h)
 \]
+
 This is a surprising result, despite being obviously dimensionally
-correct, whith the two lengths in the problem, $\lambda=2\pi/k$ and
-$h$ providing the relevant lenght scales.
+correct, whith the two lengths in the problem, $\lambda=2\pi/k$ and $h$
+providing the relevant lenght scales.
 
-
-
-As a result, the phase velocity is then
-\[
-  c= \frac{\omega}{k} = \sqrt{ \frac{g}{k}  \tanh(k h) } ,
-\]
-while the group velocity, after some algebra is found to be
-\[
-  c_\mathrm{gr} := \frac{d\omega}{dk} =
-  \frac{c}{2}
-  \left(
-    1 + kh \frac{1- \tanh^{2}(kh)}{\tanh(k h)}
-  \right)
-\]
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.4\linewidth]{figures/gravity_waves_disp}
-  \caption{Dispersion relationship for gravity waves as a function of
-    reduced wave-vector $kh$. \label{fig:gravity_waves_disp}}
-\end{figure}
-
-These two velocities are shown in \ref{fig:gravity_waves_disp}. We may
-distinguish two limits, which we discuss separately.
+We may distinguish two limits.
 
 \subsection{Shallow water}
 If the bottom is small, compared to the wavelength $\lambda$, then
@@ -251,16 +225,11 @@ c =  \frac{\omega}{k} = \sqrt{ g h }  .
 \]
 The group velocity is of course equal to the phase velocity:
 \[
-c_\mathrm{g} := \frac{d\omega}{dk} = \sqrt{ g h } = c.
+c_\mathrm{g} =\frac{d\omega}{dk} = \sqrt{ g h } = c.
 \]
 
 The relevant length in this limit is the depth $h$, which provides the
 correct dimensions to get a velocity.
-
-
-
-
-
 
 Notice ``shallow'' is defined in relation to the wavelength. A seismic
 wave may be excited at the deep sea by a geological process that may
@@ -281,11 +250,9 @@ measurements of these dramatic events.
 If the bottom is deep, compared to the wavelength $\lambda$, then $kh
 = 2\pi h / \lambda $ is a large number, and its hyperbolic tangent is
 very nearly $1$. In this limit,
-\begin{equation}
-  \label{eq:water_disp_deep}
-  \omega^2 \approx g  k \qquad \implies \qquad \omega= \sqrt{g k} .
-\end{equation}
-
+\[
+\omega^2 \approx g  k \qquad \implies \qquad \omega= \sqrt{g k} .
+\]
 These waves are highly dispersive, since their phase velocity depends
 on the wavelength:
 \[
@@ -312,4 +279,35 @@ storm by a long time, if the storm does arrive at all. The velocity
 grows larger and larger with the wavelength, but as we have seen in
 the previous section, as the wavelength becomes comparable to the
 depth there will be a crossover to some finite velocity.
+
+Only the deep-water limit. Notice that, while this limit was bound to
+be violated sooner or later for long gravity waves (when their
+wave-length begins to be comparable to the water depth), capillary
+waves will eventually approach this limit at small wave-lengths.
+
+Let us consider explicitely an upper phase (``air'') of density
+$\rho'$ and a lower one (``water'') with density $\rho'$ (all primed
+variables refer to the upper phase in this section). They are
+separated by the interfacial surface at $z=\eta(x,y)$, but we will
+suppose that the surface fluctuates around a well-defined position,
+which we will take, for convenience, as $z=0$. The total potential
+energy is then
+\[
+U=
+\iint dx dy   \int_{-H}^\eta  dz  ( \rho g z)
+\iint dx dy   \int_\eta^{H'}  dz  ( \rho' g z)  ,
+\]
+where we suppose the bottom is at $z=-H$ and the air ends at $z=H'$. These
+limits are not important, since we will consider later the limit
+in which both are very large.
+
+We may split the two integrals at $z=0$, the equilibrium surface:
+\begin{align*}
+\iint dx dy   \int_{-H}^\eta  dz   &= 
+\iint dx dy   \int_{-H}^0  dz   +
+\iint dx dy   \int_{0}^\eta  dz   \\
+\iint dx dy   \int_\eta^{H'}  dz    &=
+\iint dx dy   \int_\0^{H'}  dz  -
+\iint dx dy   \int_\eta^{H'}  dz 
+\begin{align*}
 
