@@ -95,12 +95,16 @@ interface can only be a wall shear stress. Recalling our expressions
 for the shear stress on walls, e.g. Eq.  \ref{eq:wall_shear_stress},
 the force per unit surface on the 2D fluid will be
 \begin{equation*}
-  f_x =  \tau_{zx} \qquad
-  f_y =  \tau_{zy} \qquad
-  f_z =  \tau_{zz} ,
+  f_x = - \tau_{zx} \qquad
+  f_y = - \tau_{zy} \qquad
+  f_z = - \tau_{zz} ,
 \end{equation*}
 since we would be considering only forces on the top wall of the cube
-of Fig. \ref{fig:cube_for_stresses}.
+of Fig. \ref{fig:cube_for_stresses}. The minus sign arises because
+these forces are the reaction to the forces exerted by the wall upon
+the particles closeby. (If this is confusing, recall that in
+Poiseuille flow the force upon the walls of Eq \ref{eq:Couette_force}
+of course goes \emph{against} the flow.}
 
 Since our fluid is Newtonian, Eqs. \ref{eq:tau_diagonal} and
 \ref{eq:tau_off_diagonal} yield
@@ -112,20 +116,23 @@ Since our fluid is Newtonian, Eqs. \ref{eq:tau_diagonal} and
 where many terms have vanished because $\bfu'$ does not have a $z$
 component. The second viscosity of Eq. \ref{eq:tau_diagonal} does not
 appear since the flow is incompressible. The first equation represents
-a push from the constant pressure underneath, but in an experimental
-situation this is balanced by either some external pressure in
-the case of monolayers (most simply, atmospheric pressure), or
-by an equal pressure on the other side for the case of membranes.
+a push from the constant pressure underneath (recall that minus sign
+again), but in an experimental situation this is balanced by either
+some external pressure in the case of monolayers (most simply,
+atmospheric pressure), or by an equal pressure on the other side for
+the case of membranes.
 
 We may combine the two latter expressions to write down a vectorial
-equation for the force per unit area due to the solvent:
+equation for the force per unit area on the surface due to the
+solvent:
 \[
-  \bff' = \mu' \left. \frac{\partial \bfu'}{\partial z} \right|_{z=0} .
+  \bff' = - \mu' \left. \frac{\partial \bfu'}{\partial z} \right|_{z=0} .
 \]
+
 
 With our previous ansatz,
 \[
-  \bff' = \frac 1{(2\pi)^2} \mu' \int d\bfq \, q \bfu_\bfq e^{
+  \bff' = - \frac 1{(2\pi)^2} \mu' \int d\bfq \, q \bfu_\bfq e^{
     i\bfq\cdot\bfr} .
 \]
 

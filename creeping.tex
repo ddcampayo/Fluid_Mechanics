@@ -141,11 +141,11 @@ Equation \ref{eq:Kolmo_orig}.
 
 In Equation \ref{eq:Navier-Stokes_nondim2}, we may disregard
 completely the left hand side if the Reynolds number is very low. This
-leads to Stokes' equation:
+leads to Stokes' equation \index{Stokes' equation}:
 %, which in dimensionless units is:
 \begin{equation}
-\label{eq:Stokes}
-\mu \nabla^2 \bfu -\nabla p = - \bff(\bfr) .
+  \label{eq:Stokes}
+  \mu \nabla^2 \bfu -\nabla p = - \bff(\bfr) .
 \end{equation}
 As mentioned, this is a \emph{linear} equation for the velocity.  We
 may get a general solution to the equation that gives us the velocity
@@ -286,8 +286,332 @@ direction (as e.g. the lift for our cylinder with circulation of
 But this makes no sense, since all dependence on $R$ is lost --- and
 there is not clear candidate to provide another length parameter.
 
+To solve this problem, we begin with the Stokes equation with no
+forces:
+\begin{equation}
+  \label{eq:Stokes}
+  \mu \nabla^2 \bfu -\nabla p = 0 .
+\end{equation}
+
+We may intruduce the vorticity $\vort=\nabla\times\bfu$, and recall
+the expression for the curl of the curl used previously,
+Eq. \ref{eq:curl_of_curl},
+%
+\begin{equation*}
+  \nabla \times \vort =
+  \nabla (\nabla \cdot \bfu )-\nabla^{2} \bfu .
+\end{equation*}
+
+The first term is null due to incompressibility. Hence,
+\[
+\mu \nabla \times \vort = - \nabla p.
+\]
+If we take the divergence of this expression we find that the pressure
+is harmonic:
+\[
+  \nabla^2 p = 0
+\]
+
+If, on the other hand, we take the curl, we find
+\[
+  \nabla \times \left(\nabla \times \vort \right)= 0
+\]
+This is again, the curl of a curl, so Eq. \ref{eq:curl_of_curl} may be
+again used:
+\begin{equation*}
+  \nabla \times \left(\nabla \times \vort \right)=
+  \nabla (\nabla \cdot \vort )-\nabla^{2}\vort .
+\end{equation*}
+But the vorticity is always divergence-free, it being the curl of
+another field. Therefore vorticity is also harmonic!:
+\[
+  \nabla^2 \vort = 0 .
+\]
+
+Our method of solution will make use of the stream
+function. Introducing our vector potential of
+Eq. \ref{eq:vector_potential}
+\[
+  \vort = \nabla \times ( \nabla \times \bfA ) .
+\]
+Using, for the third time,  Eq. \ref{eq:curl_of_curl},
+\[
+  \vort =   \nabla (\nabla \cdot \mathbf {A} )-\nabla^2\bfA .
+\]
+If we make sure $\bfA$ is divergence-free, then
+\[
+  \nabla^2 \left( \nabla^2\bfA \right) = 0 \implies
+  \nabla^4 \bfA  = 0 .
+\]
+The operator $\nabla^4$ is called the bi-harmonic operator, or
+bi-Laplacian. \index{bi-Laplacian}
+
+This is a daunting equation, but we may make use of our experience
+when dealing with potential axysimmetric problems in spherical
+coordinates. Once again, the vector potential will be purely
+azimuthal, and related with the stream function $\psi$ as in
+\ref{eq:Stokes_stream_spherical}.
+
+The identity of Eq. \ref{eq:psi_eq_from_A} leads to an equation
+of the form:
+\[
+  \nabla^2\bfA = \frac{1}{r \sin\theta} {\cal L} \psi  \bhe_\phi ,
+\]
+where the operator $\cal L$ is defined as
+\[
+  {\cal L} :=
+  \frac{\partial^2  }{\partial r^2} +
+  \frac{1}{r^2} \left[
+    \frac{\partial^2 }{\partial \theta^2} - 
+    \cot(\theta) \frac{\partial }{\partial \theta}
+  \right] .
+\]
+
+Now, something very interesting happens: this result is relatively
+simple due to the way $\psi$ and $\bfA$ are related in
+\ref{eq:Stokes_stream_spherical}, in particular
+$\frac{\psi}{r \sin\theta}$ being the only component, purely
+azimuthal, and dependent on $r$ and $\theta$.  But, our result for
+$\nabla^2\bfA$ complies with this very same conditions!  This means,
+that by defining the function $g:=  {\cal L} \psi $, we get
+\[
+  \nabla^2\bfA := \frac{1}{r \sin\theta} g(r,\theta) \bhe_\phi ,
+\]
+and we know the result of another application of the Laplacian is
+going to be
+\[
+  \nabla^2( \nabla^2\bfA) = \frac{1}{r \sin\theta} {\cal L} g  \bhe_\phi ,
+\]
+or
+\[
+  \nabla^4\bfA = \frac{1}{r \sin\theta} {\cal L}^2 \psi \bhe_\phi .
+\]
+Then, the bi-Laplacian equation for $\bfA$ translates into
+\[
+  {\cal L}^2 \psi = 0.
+\]
+
+This still looks quite impressive, but it turns out that simple
+separation of variables yields the answer. First, our boundary
+conditions must be
+\[
+  \psi(r \to \infty ,\theta) \to \frac12 u_0 r^2 \sin^2\theta
+  \qquad
+  \left.\frac{\partial \psi}{\partial \theta}\right|_{r=R} =
+  \left.\frac{\partial \psi}{\partial r}\right|_{r=R} = 0
+\]
+The first one reproduces the correct uniform field in the $z$
+direction away from the sphere (see the potential stream function,
+Eq. \ref{eq:potential_sphere_stream}.) The other two are no-slip
+boundary conditions at the sphere surface.
+
+Let us try this simple ansatz: $\psi=f(r) \sin^2\theta$. Moreover, let
+us find out which power-laws satisfy the bi-Laplacian equation by
+exploring $f(r) \sim r^a$.
 
 
-\includegraphics[width=0.8\linewidth]{figures/creeping_flow_past_sphere}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/creeping_flow_past_sphere}
+  \caption{\label{fig:creeping_flow_past_sphere}}
+\end{figure}
 
-\includegraphics[width=0.8\linewidth]{figures/creeping_flow_past_sphere_moving}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/creeping_flow_past_sphere_moving}
+  \caption{\label{fig:creeping_flow_past_sphere_moving}}
+\end{figure}
+
+
+
+% to be merged onto creeping.tex
+
+If we try $\psi=r^2 \sin^2\theta$ we find
+\[
+  {\cal L} \psi = \left[ a(a-1) - 2 \right] r^{a-2} \sin^2\theta ,
+\]
+so the possible exponent values for ${\cal L} \psi = 0$ are $a=2$ and
+$a=-1$ (this basically solves the potential flow problem.)
+
+Notice that, once again, the outcome contains a function that is very
+similar to the input. This means that, applying twice the differential
+operator we will get
+\[
+  {\cal L}^2 \psi =
+  \left[   a  (a-1) - 2 \right]
+  \left[ (a-2)(a-3) - 2 \right]
+  r^{a-4} \sin^2\theta ,
+\]
+so  the possible exponent values for ${\cal L}^2 \psi = 0$ are $a=2$ and
+$a=-1$, as before, plus $a=4$ and $a=1$.
+
+The solution we try will be a combination of all four posibilities --- but
+the $a=4$ we can discard right away because it is too high a divergence. Let
+us write
+\[
+  \psi = u_0 \left[ \frac12 r^2 + \frac{A}{r} + B r \right] \sin^2\theta .
+\]
+Then our boundary conditions at $r=R$ imply
+\begin{align*}
+  \left.\frac{\partial \psi}{\partial r}\right|_{r=R} = 0 &\implies
+                                                            R-\frac{A}{R^2} + B  =0 \\
+  \left.\frac{\partial \psi}{\partial \theta}\right|_{r=R} = 0 &\implies
+                                                            \frac12 R^2-\frac{A}{R} + BR  =0 ,
+\end{align*}
+from which we may obtain $A$ and $B$, and finally write the solution
+\[
+  \psi = \frac12 u_0 R^2
+  \left[\left(  \frac{r}{R} \right)^2
+    + \frac12 \frac{R}{r} - \frac32 \frac{r}{R} \right] \sin^2\theta .
+\]
+The components of the velocity are readily found from
+\ref{eq:u_from_psi_spherical},
+\begin{equation*}
+  \begin{split}
+    u_r     &=  u_0  \left[
+      1+ \frac12 \left(\frac{R}{r}\right)^3 - \frac32 \frac{R}{r}
+    \right] \cos \theta \\
+    u_\theta &=
+    - u_0  \left[
+      1
+      - \frac14 \left(\frac{R}{r}\right)^3 - \frac34 \frac{R}{r}
+    \right] \sin \theta
+  \end{split}
+\end{equation*}
+
+The pressure is found from \ref{eq:}, and found to have a simple expression,
+\[
+  p=p_0 - \frac32 \frac{\mu u_0}{R} \left(\frac{R}{r}\right)^2
+  \cos\theta ,
+\]
+where $p_0$ is the pressure far from the sphere. Notice this pressure
+is harmonic, as discussed above. At the sphere surface,
+\[
+  p(r=R) = p_0 - \frac32 \frac{\mu u_0}{R} \cos\theta,
+\]
+with a high-pressure zone at the fore of the sphere (the point facing
+the upstream direction, $\theta=\pi$), and a lower pressure at the aft
+($\theta=0$). This clearly asymmetric pressure distribution results in
+a net drag on the sphere
+\[
+  D_p=  - \int_S  p \cos\theta dA =
+  -2\pi R^2 \int_0^\pi d\theta \sin\theta  p(\theta) \cos\theta =
+  + 3 \pi \mu u_0 R \int_0^\pi d\theta \sin\theta  \cos^2\theta .
+\]
+The minus sign comes from the fact that we want the pressure upon the
+sphere, which by reaction is opposite the pressure upon the fluid.
+The last integral is immediate: the primitive is $-(1/3)\cos^3\theta$,
+so the definite integral provides a $2/3$ factor. Finally,
+\[
+  D_p=  2 \pi \mu u_0 R .
+\]
+This agrees with our guess of \ref{eq:drag_sphere_guess}.
+
+However, this drag force is due to pressure only. There will be an
+additiona shear drag, which may be calculated from the shear stress.
+The relevant component of the tensor is (see \cite{white1991viscous},
+Eq. B17, p. 584):
+\[
+  \tau_{r\theta} = \mu \left(
+    \frac1r
+    \frac{\partial u_r}{\partial \theta} +
+    r \frac{\partial }{\partial r} \left( \frac{u_\theta}{r}\right) 
+  \right) .
+\]
+
+This can be computed to obtain
+\[
+  \tau_{r\theta} = 
+  - \frac32 \frac{\mu u_0}{r} \left(\frac{R}{r}\right)^3 \sin\theta ,
+\]
+hence at the sphere surface,
+\[
+  \tau_{r\theta} (r=R) =  - \frac32 \frac{\mu u_0}{R}  \sin\theta .
+\]
+This looks very similar to the pressure, with a $\sin$ instead of a
+$\cos$, which means the stress is maximal at the equator, which seems
+reasonable. However, the contribution to the drag force is higher ---
+twice higher, to be precise. Indeed,
+\[
+  D_\tau =  - \int_S  \tau_{r\theta} \sin\theta dA ,
+\]
+with a minus sign for the same reason as the pressure, and a $\sin$
+because this is a shear stress, resulting in a force that is
+tangential to the surface of the sphere.  Then
+\[
+  D_\tau =
+  - 2\pi R^2 \int_0^\pi d\theta   \tau_{r\theta} \sin^2\theta  =
+  3 \pi \mu u_0 R  \int_0^\pi d\theta \sin^3\theta .
+\]
+The primitive of $\sin^3\theta$ is, through
+$\cos^2\theta=1-\sin^2\theta$, equal to
+$(1/3) \cos^3\theta - \cos\theta$. The definite integral is then $4/3$, and
+\[
+  D_\tau = 4 \pi \mu u_0 R .
+\]
+
+The final drag force is the celebrated Stokes drag law: \index{Stokes drag law}
+\[
+  D_\tau = 6 \pi \mu u_0 R ,
+\]
+where $1/3$ of the drag is due to pressure and $2/3$ to shear stress.
+
+Despite the shear having a contribution that is twice that two
+pressure, notice that by writing 
+\begin{align*}
+  - p(r=R) + p_0 &= \bar{p} \cos\theta,  
+  -\tau_{r\theta} (r=R) &= \bar{p} \sin\theta,  
+\end{align*}
+where $\bar{p} := - (3/2) \frac{\mu u_0}{R}$, it is apparent that the
+normal force, due to pressure, and the tangential one, due to shear
+stress, result from a decomposition of a force upon the sphere surface:
+\[
+  \bff := \frac32 \frac{\mu u_0}{R} \bhe_z .
+\]
+It is remarkable that this force is equal for every point on the
+sphere.
+
+
+
+
+FOR POTENTIAL.TEX:
+
+
+
+
+In axisymmetric flow,
+\[
+  \divu =
+  {1 \over r^2}{\partial \left( r^2 u_r \right) \over  \partial r} +
+  {1 \over r\sin\theta}{\partial \over \partial  \theta} \left( u_\theta\sin\theta \right) ,
+\]
+but an equivalent expression is
+\[
+  \divu =
+  {\partial \left( r^2 u_r \sin\theta \right) \over  \partial r} +
+  {\partial \left( r u_\theta\sin\theta \right)  \over \partial  \theta}
+\]
+
+so continuity is trivially satisfied with the choice
+\ref{eq:u_from_psi_spherical}.
+
+
+From the curl in spherical coordinates,
+\begin{align}
+  u_r     &= \frac {1}{r\sin \theta }
+            \frac{ \left( \partial A  \sin \theta \right) }{\partial \theta }  \\
+  u_\theta &= -\frac1{r} \frac{\partial (rA) }{\partial r} 
+\end{align}
+and we find
+\begin{equation}
+%  \label{eq:u_from_psi_spherical}
+  \begin{split}
+    u_r     &=  \frac1{r^2 \sin\theta} \frac{\partial \psi}{\partial \theta} \\
+    u_\theta &= -\frac1{r   \sin\theta} \frac{\partial \psi}{\partial r}
+  \end{split}
+\end{equation}
+
+
+
+Notice $A=\psi / \rho $ also in spherical coordinates !
