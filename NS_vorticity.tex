@@ -1,0 +1,66 @@
+% To be merged onto NS.tex
+
+Begining with our momentum equation for a Newtonian fluid undergoing
+athermal incompressible flow, \ref{eq:NS_usual}.
+\begin{equation*}
+  \frac{\partial \bfu }{\partial t}
+  + \bfu \nabla \bfu
+  =
+  - \nabla p 
+  + \nu \nabla^2 \bfu
+  + \bfg ,
+\end{equation*}
+(where ``$p$'' is actually ``p/\rho$, as customary in incompressible
+flow), we may begin modifying the convective acceleration using Lamb's
+identity \ref{eq:Lambs_identity}:
+\begin{equation*}
+  \frac{\partial \bfu }{\partial t}
+  + \frac12 \nabla (u^2)
+  -\bfu\times\vort
+  =
+  - \nabla p 
+  + \nu \nabla^2 \bfu
+  + \bfg .
+\end{equation*}
+The viscous term may be written as $\nabla^2 \bfu =
+-\nabla\times\vort$, from the expression for the curl of a curl
+\ref{eq:curl_of_curl} for incompressible flows. Taking the curl of
+this expression, all the terms that are gradients of fields vanish,
+and we get
+\begin{equation*}
+  \frac{\partial \vort }{\partial t}
+  -\nabla\times (\bfu \times \vort )
+  =
+  -\nu  \nabla\times\nabla\times\vort .
+\end{equation*}
+Now, the curl of a vector product may be simplified as in Section
+\ref{sec:Euler_vorticity}, $\nabla\times (\bfu \times \vort ) =
+-\bfu\nabla\vort + \vort\nabla\bfu$ (again, valid for incompressible
+flow). The double curl can again be cast as minus the Laplacian, since
+the curl is always divergence-free.
+
+Therefore,
+\begin{equation*}
+  \frac{\partial \vort }{\partial t} +
+  \bfu\nabla\vort 
+  =
+  \vort\nabla\bfu
+  +\nu  \nabla^2\vort .
+\end{equation*}
+
+Finally,
+\begin{equation*}
+  \frac{d \vort }{d t}
+  =
+  \vort\nabla\bfu
+  +\nu  \nabla^2\vort .
+\end{equation*}
+
+This is clearly the Euler expression for the evolution of vorticity,
+times an extra, diffusion term. The constant of diffusivity is $\nu$,
+the same as velocity. It may seem that little is changed from that
+situation. The reality is much different: it is actually the boundary
+conditions which are usually sources of vorticity, which is then
+carried onto the rest of the fluid by a combination of advecion and
+diffusion. The ratio of these two processes depend of course on the
+particular fluid (through $\nu$) and the flow features.
