@@ -17,10 +17,10 @@ contributions due to the walls at the left, back, and bottom
 \end{equation}
 %
 The compression stress $\tau_{xx}$ is therefore quite similar to the
-pressure (see (Eq \ref{eq:}), and in fact will be seen to include a
-$-p$ term. The minus sign appears because normal stresses are
-historically defined as positive if pointing outside the particle
-(i.e. in the direction of the normal vector).
+pressure (see (Eq  \ref{eq:pressure_force_on_left}), and in fact
+will be seen to include a $-p$ term. The minus sign appears because
+normal stresses are historically defined as positive if pointing
+outside the particle (i.e. in the direction of the normal vector).
 %
 %where we include not only the pressure force, as before 
 %and a compression stress $\tau_{xx}$ quite similar to it,
@@ -134,14 +134,16 @@ the matrix notation, by which
 where $\nabla\tran$ is a transposed (row) vector operator, multiplying
 matrix $\tau$ from the left.
 
-The resulting Navier-Stokes equation is then,
-\[
-\rho \frac{d\bfu }{dt} = \nabla \cdot \tau   + \rho \bfg .
-\]
+The resulting Navier-Stokes momentum equation is then
+\begin{equation}
+  \label{eq:NS}
+  \rho \frac{d\bfu }{dt} = \nabla \cdot \tau   + \rho \bfg .
+\end{equation}
 
 
 
 \subsection{Newtonian fluids}
+\label{sec:Newtonian}
 
 The previous equation is still too general, and a connection between
 stress and strain is still needed. Here we consider the case in which
@@ -163,13 +165,13 @@ constant of proportionality is given by $\mu$, the viscosity
 coefficient, or simply ``the viscosity''. This constant may vary with
 temperature, density, pressure, but the point with Newtonian fluids is
 that it does not vary with the velocity field (or its
-derivatives). Later, in section \ref{sec:}, this flow will be solved
-as a solution of the Navier-Stokes equations, the Couette flow. There,
-it will be shown that the velocity is everywhere in the direction of
-the force exerted on the upper plane, let us call it $x$, and varies
-linearly between the planes, in the $y$ direction. Therefore, the only
-components of the strain rate tensor are $\epsilon_{xy} =
-\epsilon_{yx} = u_0 / ( 2 L )$. We therefore have
+derivatives). Later, in section \ref{sec:Couette}, this flow will be
+solved as a solution of the Navier-Stokes equations, the Couette
+flow. There, it will be shown that the velocity is everywhere in the
+direction of the force exerted on the upper plane, let us call it $x$,
+and varies linearly between the planes, in the $y$
+direction. Therefore, the only components of the strain rate tensor
+are $\epsilon_{xy} = \epsilon_{yx} = u_0 / ( 2 L )$. We therefore have
 \[
 \tau_{xy} = \mu  \epsilon_{xy} .
 \]
@@ -543,85 +545,69 @@ momentum equation is simply written as
 \section{Vorticity}
 \label{sec:NS_vort}
 
-The momentum equation \ref{eq:NS_usual} can be treated by the method
-in Sec. \ref{sec:NS_vort} in order to obtain an equation for the
-vorticity and velocity alone.
-
-Using the expresion for the curl of a curl \ref{eq:curl_of_curl},
-\[
-  \nabla^2 \bfu = \nabla (\divu) - \nabla\times\vort =  - \nabla\times\vort ,
-\]
-where we have supposed incompressibility in the second equality. This
-means \ref{eq:NS_usual} can be cast as
-\[
-  \frac{\partial \bfu }{\partial t} +
-  \frac12 \nabla u^2 - \bfu \times\vort =
-  - \frac{1}{\rho} \nabla p 
-  + \bfg + 
-  - \nu \nabla\times\vort ,
-\]
-where we have used Lamb's identity  \label{eq:Lambs_identity}.
-
-
-Now we may apply the curl operator to the whole equation, to get
-\[
-\frac{\partial \vort }{\partial t} -
-\nabla\times(\bfu\times\vort) = 0 .
-\]
-
-In e.g. \cite{wiki:Vector_calculus_identities} we find an expression
-for the curl of a vector product:
-\[
-  \nabla \times (\mathbf {a} \times \mathbf {b} ) =
-  \mathbf {a} \ (\nabla \cdot \mathbf {b} )
-  -\mathbf {b} \ (\nabla \cdot \mathbf {a} )
-  +(\mathbf {b} \cdot \nabla )\mathbf {a}
-  -(\mathbf {a} \cdot \nabla )\mathbf {b} .
-\]
-Hence,
-\[
-  \nabla \times (\bfu \times \vort ) =
-  \bfu \ (\nabla \cdot \vort )
-  -\vort \ (\nabla \cdot \bfu )
-  +(\vort \cdot \nabla )\bfu
-  -(\bfu \cdot \nabla )\vort.
-\]
-The first term is always zero, since the vorticity is divergence-free
-(it being the curl of a field). The second is if the flow is
-incompressible. In this case,
-\[
+Let us begin applyy the method in Sec. \ref{sec:NS_vort} to our
+momentum equation for a Newtonian fluid undergoing athermal
+incompressible flow,\ref{eq:NS_usual}, in order to obtain an equation
+for the vorticity and velocity alone.
+\begin{equation*}
+  \frac{\partial \bfu }{\partial t}
+  + \bfu \nabla \bfu
+  =
+  - \nabla p 
+  + \nu \nabla^2 \bfu
+  + \bfg ,
+\end{equation*}
+(where ``$p$'' is actually ``$p/\rho$'', as customary in
+incompressible flow), we may begin modifying the convective
+acceleration using Lamb's identity \ref{eq:Lambs_identity}:
+\begin{equation*}
+  \frac{\partial \bfu }{\partial t}
+  + \frac12 \nabla (u^2)
+  -\bfu\times\vort
+  =
+  - \nabla p 
+  + \nu \nabla^2 \bfu
+  + \bfg .
+\end{equation*}
+The viscous term may be written as
+$\nabla^2 \bfu = -\nabla\times\vort$, from the expression for the curl
+of a curl \ref{eq:curl_of_curl} for incompressible flows. Taking the
+curl of this expression, all the terms that are gradients of fields
+vanish, and we get
+\begin{equation*}
   \frac{\partial \vort }{\partial t}
-  + ( \bfu \cdot \nabla )\vort =  (\vort \cdot \nabla )\bfu .
-\]
-The left hand side is the advective derivative. Then:
-\[
-  \frac{d \vort }{d t}  =  (\vort \cdot \nabla )\bfu ,
-\]
-which means vorticity is ``almost'' conserved. The righ-hand side
-represents an advection of velocity by vorticity, which sounds a bit
-upside-down. This term may be neglected if the flow is slow (since it
-involves a term quadratic in the velocity), to arrive at
-$\frac{d \vort }{d t}\approx 0$. We will see, in Section \ref{sec:},
-how
+  -\nabla\times (\bfu \times \vort )
+  =
+  -\nu  \nabla\times\nabla\times\vort .
+\end{equation*}
+Now, the curl of a vector product may be simplified as in Section
+\ref{sec:Euler_vorticity}, $\nabla\times (\bfu \times \vort ) =
+-\bfu\nabla\vort + \vort\nabla\bfu$ (again, valid for incompressible
+flow). The double curl can again be cast as minus the Laplacian, since
+the curl is always divergence-free.
 
+Therefore,
+\begin{equation*}
+  \frac{\partial \vort }{\partial t} +
+  \bfu\nabla\vort 
+  =
+  \vort\nabla\bfu
+  +\nu  \nabla^2\vort .
+\end{equation*}
 
-In any case, the equation involves only the velocity and its curl, the
-pressure having been ``curled-away.'' Indeed, there is a class of
-numerical methods, called ``vortex methods'' in which this
-simplification is employed.  In many applications, however, its
-usefulness is limited. For example, boundary conditions may be
-difficult to define for these terms.
+Finally,
+\begin{equation*}
+  \frac{d \vort }{d t}
+  =
+  \vort\nabla\bfu
+  +\nu  \nabla^2\vort .
+\end{equation*}
 
-There is, however, an important consequence of this equation: if a
-given flow is curl-free at some instant, it must \emph{remain} so
-at every other time (both future, and past). This is because the equation
-is first order in time, and a null right-hand side translates into
-a null change. We will see later that when viscosity is introduced,
-a diffusion term appears which is second order in space. This term
-is, in many cases, responsible for the generation of vorticity.
-In the clearest instance, the no-slip boundary condition close
-to solid walls, by which the velocity must be zero there, creates
-zones of vorticity generation. That boundary condition cannot be
-enforced within the Euler framework, because it only features first order
-spatial derivatives of the velocity.
-
+This is clearly the Euler expression for the evolution of vorticity,
+times an extra, diffusion term. The constant of diffusivity is $\nu$,
+the same as velocity. It may seem that little is changed from that
+situation. The reality is much different: it is actually the boundary
+conditions which are usually sources of vorticity, which is then
+carried onto the rest of the fluid by a combination of advecion and
+diffusion. The ratio of these two processes depend of course on the
+particular fluid (through $\nu$) and the flow features.

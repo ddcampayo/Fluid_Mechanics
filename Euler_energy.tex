@@ -36,7 +36,7 @@ The right hand side may be expanded
  \bfu \cdot \nabla p .
 \]
 
-Recalling that, from the Euler equation \ref{eq:Euler} ,
+Recalling that, from the Euler equation \ref{eq:Euler_momentum} ,
 \[
 \nabla p  = \rho \bfg - \rho \frac{d \bfu}{dt} ,
 \]
@@ -49,18 +49,19 @@ we may write
 \]
 
 Now, multiplying by $1/\rho$:
-\[
-\frac{1}{V} \frac{d \epsilon }{dt} =
- \bfu \cdot \frac{d \bfu}{dt}  -
- \bfg \cdot  \bfu 
--  \frac{p}{\rho} \nabla\cdot \bfu .
-\]
-Where we have defined the specific energy $\epsilon=E/M$.
+\begin{equation}
+  \label{eq:specific_energy}
+  \frac{d \epsilon }{dt} =
+  \bfu \cdot \frac{d \bfu}{dt}  -
+  \bfg \cdot  \bfu 
+  -  \frac{p}{\rho} \nabla\cdot \bfu ,
+\end{equation}
+where we have defined the specific energy $\epsilon=E/M$.
 
 This may be written as
 \[
 \frac{d}{dt} \left[
-  \epsilon - \frac12 u^2  + \bfg \cdot \bfu
+  \epsilon - \frac12 u^2  + \bfg \cdot \bfr
   \right] = -  \frac{p}{\rho} \nabla\cdot \bfu ,
 \]
 or
@@ -69,7 +70,7 @@ or
   \epsilon - \frac12 u^2  - \varphi
   \right] = -  \frac{p}{\rho} \nabla\cdot \bfu ,
 \]
-
+%
 This is clearly a law for
 \[
 e = \epsilon - \frac12 u^2  - \varphi ,
@@ -80,25 +81,26 @@ minus kinetic energy, minus gravitational potential energy. In other words,
 \epsilon  = e  + \frac12 u^2  + \varphi .
 \]
 
-Notice also that in our steady Bernoulli principle,
-Eq. \ref{eq:Bernoulli} we had
-\[
-\bfu \cdot
-\nabla \left[
-  \frac12 u^2 + \frac{p}{\rho} + \varphi
-  \right] =  \frac{p}{\rho} \nabla \cdot \bfu ,
-\]
-while in the steady state,
+The specific internal energy then satisfies a convection equation with
+a source term due to the divergence of the velocity
+\begin{equation}
+  \label{eq:Euler_energy}
+  \frac{d e}{dt}  = -  \frac{p}{\rho} \nabla\cdot \bfu ,  
+\end{equation}
+
+Notice also that in the steady state,
 \[
 \bfu \cdot \nabla e = -  \frac{p}{\rho} \nabla\cdot \bfu.
 \]
-Combining both we have the steady state Bernoulli equation for
-a compressible fluid:
+But, recalling our steady Bernoulli principle,
+Eq. \ref{eq:Bern_u_times}, replacing
+$\frac{p}{\rho} \nabla\cdot \bfu$, we arrive at the steady state
+Bernoulli equation for a compressible fluid:
 \[
 \bfu \cdot \nabla \left[ e + \frac12 u^2 + \frac{p}{\rho} + \varphi
   \right] = 0 ,
 \]
-
+%
 which tells us the combination $ e + \frac12 u^2 + \frac{p}{\rho} +
 \varphi = \epsilon + \frac{p}{\rho} $ is constant along streamlines.
 Notice that, by the definition of enthalpy,
@@ -112,9 +114,9 @@ h=H/M = e + p / \rho ,
 so the Bernoulli principle claims that the total specific enthalpy
 ($h'=h + \frac12 u^2 + \varphi$) is constant along streamlines.
 
-We may also find an equation for the enthalpy. In Eq. \ref{eq: }
-above, the right hand side maybe changed using the continuity
-equation:
+We may also find an equation for the enthalpy. In
+Eq. \ref{eq:Euler_energy} above, the right hand side may be changed
+using the continuity equation:
 \[
 - \rho \nabla\cdot \bfu = \frac{d\rho}{dt} .
 \]
@@ -166,11 +168,13 @@ Altogether, the total heat flux rate is
 \[
 \frac{dQ}{dt} = -V \nabla\cdot \bfq,
 \]
-and the final equation for the change of specific internal energy of
-an ideal fluid is
-\[
-\rho \frac{de}{dt}  = -  p \nabla\cdot \bfu  - \nabla\cdot \bfq .
-\]
+and the final equation for the rate of change of specific internal
+energy of an ideal fluid is
+\begin{equation}
+  \label{eq:Euler_energy_w_q}
+  \rho \frac{de}{dt}  = -  p \nabla\cdot \bfu  - \nabla\cdot \bfq .
+\end{equation}
+
 
 The heat flux must be either due to an external source, or due to heat
 diffusion. In the latter case, a well-known theory is Fourier's law, by

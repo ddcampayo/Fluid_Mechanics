@@ -266,9 +266,11 @@ Unfortunately, the creeping flow past a cylinder cannot be solved, due
 to Stokes paradox. This may have been anticipated by dimensional
 analysis. Indeed, the drag force on a sphere of radius $R$ is expected
 to be given by
-\[
+\begin{equation}
+  \label{eq:drag_sphere_guess}
   D \sim \mu u_0 R ,
-\]
+\end{equation}
+%
 which has the right combination of units to yield a net force. It also
 makes sense, being proportional to the viscosity, velocity, and
 radius. (One may have expected $R^2$, the projected area, but this
@@ -278,8 +280,8 @@ prefactor.
 
 If we write something similar for the drag force on a cylinder, the
 answer should come as a force per length in the perpendicular
-direction (as e.g. the lift for our cylinder with circulation of
-\ref{sec:}). I.e.
+direction (as e.g. the lift for our cylinder with circulation,
+Eq. \ref{eq:lift_potential_cyl}). I.e.
 \[
   \frac{D}{R} \sim \mu u_0 .
 \]
@@ -289,7 +291,7 @@ there is not clear candidate to provide another length parameter.
 To solve this problem, we begin with the Stokes equation with no
 forces:
 \begin{equation}
-  \label{eq:Stokes}
+  \label{eq:Stokes_no_f}
   \mu \nabla^2 \bfu -\nabla p = 0 .
 \end{equation}
 
@@ -480,7 +482,8 @@ The components of the velocity are readily found from
   \end{split}
 \end{equation*}
 
-The pressure is found from \ref{eq:}, and found to have a simple expression,
+The pressure is found from \ref{eq:Stokes_no_f}, and found to have a
+simple expression,
 \[
   p=p_0 - \frac32 \frac{\mu u_0}{R} \left(\frac{R}{r}\right)^2
   \cos\theta ,
@@ -506,7 +509,8 @@ so the definite integral provides a $2/3$ factor. Finally,
 \[
   D_p=  2 \pi \mu u_0 R .
 \]
-This agrees with our guess of \ref{eq:drag_sphere_guess}.
+This agrees with our guess of Eq. \ref{eq:drag_sphere_guess}, based on
+dimensional considerations.
 
 However, this drag force is due to pressure only. There will be an
 additiona shear drag, which may be calculated from the shear stress.
@@ -575,43 +579,4 @@ sphere.
 
 
 
-FOR POTENTIAL.TEX:
 
-
-
-
-In axisymmetric flow,
-\[
-  \divu =
-  {1 \over r^2}{\partial \left( r^2 u_r \right) \over  \partial r} +
-  {1 \over r\sin\theta}{\partial \over \partial  \theta} \left( u_\theta\sin\theta \right) ,
-\]
-but an equivalent expression is
-\[
-  \divu =
-  {\partial \left( r^2 u_r \sin\theta \right) \over  \partial r} +
-  {\partial \left( r u_\theta\sin\theta \right)  \over \partial  \theta}
-\]
-
-so continuity is trivially satisfied with the choice
-\ref{eq:u_from_psi_spherical}.
-
-
-From the curl in spherical coordinates,
-\begin{align}
-  u_r     &= \frac {1}{r\sin \theta }
-            \frac{ \left( \partial A  \sin \theta \right) }{\partial \theta }  \\
-  u_\theta &= -\frac1{r} \frac{\partial (rA) }{\partial r} 
-\end{align}
-and we find
-\begin{equation}
-%  \label{eq:u_from_psi_spherical}
-  \begin{split}
-    u_r     &=  \frac1{r^2 \sin\theta} \frac{\partial \psi}{\partial \theta} \\
-    u_\theta &= -\frac1{r   \sin\theta} \frac{\partial \psi}{\partial r}
-  \end{split}
-\end{equation}
-
-
-
-Notice $A=\psi / \rho $ also in spherical coordinates !

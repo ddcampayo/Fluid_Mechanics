@@ -1,7 +1,7 @@
 \section{Bernouilli's principle}
 
 Let us approach Eq. \ref{eq:Euler_momentum_w_vort} in a completely
-different manner. Instead of getting rid of the gradients, let us
+different manner. Instead of getting rid of the gradient terms, let us
 express as many terms as we can as gradients, for reasons that will
 become clear soon. First, the gravitational acceleration is, by
 definition, $\bfg = -\nabla\varphi$, where $\varphi $ is the
@@ -14,21 +14,22 @@ to the gradient of pressure over density, thus:
 \frac{p}{\rho}
 \right) =
 \frac{ \nabla p }{\rho} -
-\frac{ \nabla p }{\rho^2} \nabla \rho 
+\frac{ p }{\rho^2} \nabla \rho 
 \]
 Therefore,
-\[
-\frac{\partial \bfu }{\partial t} +
- \nabla
-\left(
-\frac12 u^2 +
-\frac{p}{\rho} +
-\varphi
-\right)
-=
+\begin{equation}
+  \label{eq:Bern_unsteady}
+  \frac{\partial \bfu }{\partial t} +
+  \nabla
+  \left(
+    \frac12 u^2 +
+    \frac{p}{\rho} +
+    \varphi
+  \right)
+  =
   \bfu \times\vort +
- \frac{ \nabla p }{\rho^2} \nabla \rho 
-\]
+  \frac{ p }{\rho^2} \nabla \rho 
+ \end{equation}
 
 Now, in steady flow we would have
 \[
@@ -39,33 +40,47 @@ Now, in steady flow we would have
 \varphi
 \right)
 =
-  \bfu \times\vort +
- \frac{ \nabla p }{\rho^2} \nabla \rho  .
+  \bfu \times\vort -
+ \frac{ p }{\rho^2} \nabla \rho  .
 \]
 
 The term involving the vector product of the vorticity and the
 velocity is perpendicular to both. Hence, it vanishes upon a scalar
 multiplication with $\bfu$:
-\[
-\bfu\cdot
-\nabla
-\left(
-\frac12 u^2 +
-\frac{p}{\rho} +
-\varphi
-\right)
-=
-\frac{ \nabla p }{\rho^2} \bfu\cdot \nabla \rho  .
-\]
+\begin{equation*}
+%  \label{eq:Bern_u_times}
+  \bfu\cdot
+  \nabla
+  \left(
+    \frac12 u^2 +
+    \frac{p}{\rho} +
+    \varphi
+  \right)
+  = 
+ - \frac{ p }{\rho^2} \bfu\cdot \nabla \rho  .
+\end{equation*}
  
 In steady flow, the continuity equation is
 \[
 \bfu\cdot \nabla \rho  +
 \rho \nabla \cdot \bfu = 0 ,
 \]
-hence if the flow is incompressible (technically, divergence-free, as
-explained in section \ref{sec:}), $\bfu\cdot \nabla \rho $. I.e. the
-density does not change along streamlines. Then,
+and we may also write
+\begin{equation}
+  \label{eq:Bern_u_times}
+  \bfu\cdot
+  \nabla
+  \left(
+    \frac12 u^2 +
+    \frac{p}{\rho} +
+    \varphi
+  \right)
+  = 
+  \frac{ p }{\rho} \divu.
+\end{equation}
+%
+Hence, if the flow is incompressible (technically, divergence-free, as
+explained in section \ref{sec:incompressibility}),
 \[
 \bfu\cdot
 \nabla
@@ -84,7 +99,7 @@ h = \frac12 u^2 + \frac{p}{\rho} + \varphi
 is constant along a given streamline. This result is known as
 Bernoulli's principle, and applies only to ideal, steady,
 incompressible flow. (There is a variant of it that applies to
-unsteady flow, as we will see in section \ref{sec:}.)
+unsteady flow, as we will see in section \ref{sec:gravity_waves}.)
 %
 This combination is called ``the head'' and is customarily used in
 elementary applications of this result. Some of its direct

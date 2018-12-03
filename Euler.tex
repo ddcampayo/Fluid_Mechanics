@@ -81,12 +81,12 @@ components
   (\nabla  \bfu)_{ij} = \frac{\partial u_j}{\partial x_i} ,
 \end{equation}
 i.e. a direct product of the vector operator $\nabla$ and vector
-$\bfu$ (also known as the gradient of vector $bfu$.) The operation
-$\bfu \cdot ( \nabla \bfu )$ is then similar to a left multiplication
-of a matrix by a row vector, resulting in a column vector. This sort
-of tensors will be again considered in Section \ref{sec:particles}.
-Given these two possible interpretations, the acceleration is often
-written without any parentheses:
+$\bfu$ (also known as ``the gradient of vector $\bfu$.'') The
+operation $\bfu \cdot ( \nabla \bfu )$ is then similar to a left
+multiplication of a matrix by a row vector, resulting in a column
+vector. This sort of tensors will be again considered in Section
+\ref{sec:particle}.  Given these two possible interpretations, the
+acceleration is often written without any parentheses:
 \[
 \frac{d \bfu  }{dt} =
 \frac{\partial \bfu }{\partial t} +
@@ -121,13 +121,15 @@ The continuity equation, Eq. \ref{eq:continuity} may be written as
 (\bfu \cdot \nabla) \rho = 0 ,
 \]
 or
-\[
-\frac{d \rho }{d t} = 
- - \rho \nabla  \cdot \bfu .
-\]
-This later expression is called the ``convergence equation'' by Joe
-Monaghan: if $\nabla \cdot \bfu $ is the divergence, $ - \nabla \cdot
-\bfu $ could be called the convergence.
+%
+\begin{equation}
+  \label{eq:convergence}
+  \frac{d \rho }{d t} = 
+  - \rho \nabla  \cdot \bfu .
+\end{equation}
+This expression is called the ``convergence equation'' by Joe
+Monaghan: if $\nabla \cdot \bfu $ is the divergence,
+$ - \nabla \cdot \bfu $ could be called the convergence.
 
 We now see that incompressibility, defined as $\nabla \cdot \bfu = 0
 $, implies $d(\rho)/(dt) = 0$. This means that density is ``carried
@@ -188,6 +190,7 @@ We stress that this discussion applies to any field, even if vectorial
 
 
 \section{External and pressure forces}
+\label{sec:pressure_forces}
 
 Let us discuss possible forces acting upon a particle. They may be
 split into volume, or external, or surface. The first one includes all
@@ -217,10 +220,11 @@ forces. The latter are absent in an ideal fluid by definition, and we
 are left only with compression. This effect is caused by the best
 known surface force field: the pressure. Indeed, a pressure on the
 left wall of the particle will cause a horizontal force
-\[
-\left. F_{p,x} \right|_\text{l} =
+\begin{equation}
+  \label{eq:pressure_force_on_left}
+  \left. F_{p,x} \right|_\text{l} =
   p  dy\, dz .
-\]
+\end{equation}
 The net force is the pressure times the area, $dy\,dz$, and there is a
 minus sign because by definition pressure acts from outside to the
 inside. The total horizontal force will also have an influence from the

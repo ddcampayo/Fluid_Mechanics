@@ -33,8 +33,8 @@ the viscosity coefficients for simplicity.
 Eq. \ref{eq:NS_Newtonian_const_visc} may seem different from previous
 expressions, but it is the correct one when $\mu$ is constant, but
 incompressibility does not hold. In this case, the term in
-\ref{eq:epsilon_term_with_divergence} is not zero, but rather gives
-rise to a $\mu \nabla\cdot ( \divu )$ term.
+\ref{eq:NS_Newtonian} is not zero, but rather gives rise to a
+$(\mu + \lambda) \nabla ( \divu )$ term.
 
 Our systems is not as simple as the one in Section
 \ref{sec:sound_waves}, where the continuity and momentum equations
@@ -161,12 +161,12 @@ This is the frequency above which the viscosity begins to be relevant.
 Numerical values can be found in Table \ref{tbl:sound_att}. The
 frequency is really high for the human hearing range, which goes up to
 about $\SI{20}{\kilo\hertz}$ for humans. The record in the animal
-kingdom is held by porpoises (\ref{fig:porpoise}), but it is only
+kingdom is held by porpoises (\ref{fig:porpoises}), but it is only
 about $\SI{160}{\kilo\hertz}$. Ultrasonic cleaners used in dentistry
 operate at $\SI{40}{\kilo\hertz}$. Medical ultrasound for imaging goes
 as high as $\SI{16}{\mega\hertz}$. Only acoustic microscopy
-\cite{kp:AM} reaches a few \si{\giga\hertz}, matching our estimate for
-air.
+\cite{wiki:AM} reaches a few \si{\giga\hertz}, matching our estimate
+for air.
 
 
 \begin{figure}
@@ -202,9 +202,8 @@ in Figure \ref{fig:sound_wave_att}.)  The resulting expressions are,
 moreover, not very iluminating except at low and high frequencies
 (with respect to $\omega_\mathrm{c}$). We find it better then to study
 these two limits from approximations to
-Eq. \ref{eq:waves_att_dispersion}, and refer the reader to a general
-solution as an Exercise (number \ref{ex:sound_att}.)
-
+Eq. \ref{eq:waves_att_dispersion}, and leave the general solution as
+Exercise \ref{ex:sound_att}, for the interested reader.
 
 \begin{figure}
   \centering
@@ -244,7 +243,7 @@ It therefore grows as the square of the frequency (red dotted blue
 line at low frequencies in Figure \ref{fig:sound_wave_att}).  This
 agrees is called ``Stokes' law of sound'' \index{Stokes' law of
   sound}. Notice that the alternative form is often found
-\cite{kp:SloS}
+\cite{wiki:SLoSA}:
 \[
   \alpha =  \frac{\omega^2}{\rho_0 c^3}
   \left( \frac23 \mu+ \frac12 \eta  \right),
@@ -298,17 +297,24 @@ g(x)= f(x/\ell) \qquad  f(x) = e^{-x}\cos(x) .
 In Figure \ref{fig:expcos}, it is seen to decay very fast, with just
 one maximum of minimum of importance.
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{figures/expcos}
+  \end{center}
+  \caption{Graph of the function $e^{-x}\cos(x)$ \label{fig:expcos}}
+\end{figure}
+ 
+
 
 
 \subsubsection{At the crossover frequency}
-
 
 A fast check on the above approximations is to see what happens when
 the frequency is exactly the crossover frequency. At this point, the
 growth of the attenuation coefficient as the square of frequency
 crosses over to a growth as the square root. This would mean a bend in
 a log-log plot, between two straight lines with different slopes. This
-is shown in Figure \ref{fig:loglog}.
+is indeed apparent in Figure \ref{fig:sound_wave_att}.
 
 The extrapolation of the low frequency expression yields
 \[
@@ -386,7 +392,7 @@ frequency.
       \right)
     \right] 
   \]
-  for our linear wave \label{eq:wave_form_visc} in the case it is
+  for our linear wave \ref{eq:wave_form_visc} in the case it is
   longitudinal. Show that it is traceless (which it must, by
   definition), but non-zero. This latter fact indicates that our wave
   is not purely compressive in nature.
@@ -397,9 +403,9 @@ frequency.
    \mu \nabla \cdot  \tau_\mathrm{ps}  = -\frac43 \mu \beta^2 \bfu
   \]
 
-\item Find the general solution of Eq. \ref{eq:waves_att_dispersion}
-  for the real and imaginary parts of $\beta$. Hint: use reduced
-  quantities $\beta'= c\beta/\omega $,
+\item \label{ex:sound_att} Find the general solution of
+  Eq. \ref{eq:waves_att_dispersion} for the real and imaginary parts
+  of $\beta$. Hint: use reduced quantities $\beta'= c\beta/\omega $,
   $\omega'=\omega/\omega_\mathrm{c}$, in terms of which the equation
   reads simpler:
   \[

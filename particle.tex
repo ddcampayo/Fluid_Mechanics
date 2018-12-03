@@ -1,8 +1,11 @@
+\section{Kinematics of a particle}
+
 \label{sec:particle}
 
-Let us focus again on a fluid particle, as we did on \ref{sec:}, but
-now focusing on how the particle itself distorts as a consequence of a
-velocity field.
+Let us focus again on a fluid particle, as we did on Sections
+\ref{sec:continuity} and \ref{sec:pressure_forces}, but now focusing
+on how the particle itself distorts as a consequence of a velocity
+field.
 
 All possible distorsions of a particle will be a combination of the
 following:
@@ -156,16 +159,19 @@ Therefore, the curl indeed is twice the angular velocity.
 
 Finally, let us recall, from the definition of the tensor
 $\nabla \bfu$ of Eq. \ref{eq:nabla_u_def},
-\[
-\frac{d\Omega_{ij}}{dt} = \frac12
-\left[
- (\nabla \bfu)_{ij} -
- (\nabla \bfu)_{ji}
-\right] .
-\]
-where the cyclic convention $(i,j,k)$ is implied for the indices of
-$d\Omega_{ij}/ dt$ (see Exercise \ref{ex:} for a definition in terms
-of the Levi-Civita symbol.)
+\begin{equation}
+  \label{eq:dOmega_as_grad_u}
+  \frac{d\Omega_{ij}}{dt} = \frac12
+  \left[
+    (\nabla \bfu)_{ij} -
+    (\nabla \bfu)_{ji}
+  \right] ,  
+\end{equation}
+%
+where the cyclic convention $(i,j,k)$ is implied in order to relate
+the indices of $d\Omega_{ij}/ dt$ and the components $d\Omega_k/ dt$
+(see Exercise \ref{ex:dOmega_LC} for a definition in terms of the
+Levi-Civita symbol.)
 
 
 \subsubsection{Strain}
