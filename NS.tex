@@ -11,9 +11,9 @@ contributions due to the walls at the left, back, and bottom
   \label{eq:wall_shear_stress}
   \left. dF_x \right|_\text{l,bk,bm} =
   % - p         dy\, dz
-  -  \tau_{xx} dy\, dz
-  -  \tau_{yx} dx\, dz
-  -  \tau_{zx} dx\, dy .
+    \tau_{xx} dy\, dz
+    \tau_{yx} dx\, dz
+    \tau_{zx} dx\, dy .
 \end{equation}
 %
 The compression stress $\tau_{xx}$ is therefore quite similar to the
@@ -30,18 +30,23 @@ actually equals $dx\, dy$, but it is clearer to write it this
 way). Similarly, $\tau_{zx} dx\, dy $ is the horizontal stress force
 at the bottom wall.
 
-Notice the convention for minus signs. First, the normal stress is
-$\tau_{xx} \parallel \bfn $. From it,
-$\tau_{xy} \parallel \bfe_z\times \tau_{xx} $,
-$\tau_{xz} \parallel \tau_{xx} \times \bfe_y $, respecting the
-$(x,y,z)$ cyclic order. A quick way to realize this is by considering
-the top face, on which these three directions coincide with the
-Cartesian axes. The directions on other faces are found by rotating
-these directions accordingly. The right hand may be used for this
-purpose.
+Notice the convention for labeling: $\tau_{ij}$ is the stress in the
+$j$ direction on a face normal to axis $i$. I.e. the left face has the
+same convention as the right one, the back as the front, the top as
+the bottom.
+
+%First, the normal stress is
+%$\tau_{xx} \parallel \bfn $. From it,
+%$\tau_{xy} \parallel \bfe_z\times \tau_{xx} $,
+%$\tau_{xz} \parallel \tau_{xx} \times \bfe_y $, respecting the
+%$(x,y,z)$ cyclic order. A quick way to realize this is by considering
+%the top face, on which these three directions coincide with the
+%Cartesian axes. The directions on other faces are found by rotating
+%these directions accordingly. The right hand may be used for this
+%purpose.
 
 To get the whole horizontal force, the contributions from the other
-three walls must be added up:
+three walls must be considered:
 \[
 \left. dF_x \right|_\text{r,ft,up} =
 %- p         dy\, dz
@@ -49,10 +54,24 @@ three walls must be added up:
   \tau_{yx}(x   ,y+dy,z   )  dx\, dz +
   \tau_{zx}(x   ,y   ,z+dz)  dx\, dy .
 \]
-This time, the sign convention is positive. It the stresses are the
-same on those faces, the resultant force will then be zero (those
-forces may exert a net torque, but not a force). In general, they will
-be different on those faces, as made explitic on their arguments.
+%This time, the sign convention is positive.
+
+To get the total horizontal force due to stresses, the two contributions
+must be substracted:
+\[
+dF_x =
+\left( \tau_{xx}(x+dx,y   ,z   ) - \tau_{xx} \right) dy\, dz +
+\left( \tau_{yx}(x+dx,y   ,z   ) - \tau_{yx} \right)  dx\, dz +
+\left( \tau_{zx}(x+dx,y   ,z   ) - \tau_{zx} \right) dx\, dy .
+\]
+Notice that the substraction is in order: if the stresses are the same
+on those faces, the resultant force will then be zero (those forces
+may exert a net torque, but not a force).  In general, they will be
+different on those faces, as as been made explitic on their arguments.
+
+The choice is such that an variation in a given direction is assigned
+a positive sign. This affects later results, in particular the fact
+that the pressure appears with a negative sign.
 
 Expanding in Taylor series, we get the following net horizontal force:
 \[
@@ -205,7 +224,9 @@ C_3 \tilde{\epsilon}_{y} .
 We have added a $-p$ term that has to be there even when there is no
 movement. This is needed, since a diagonal stress tensor $\tau=-p\eye$
 produces the $-\nabla p$ term of hydrostatics (in Couette flow, $p$ is
-constant, and this term is not needed.)
+constant, and this term is not needed.) The minus sign of $-p$ stems
+from the fact that the pressure force points toward the interior of a
+particle.
 
 If isotropy is assumed, there should be no distinction between
 traverse directions $y$ and $z$. Therefore, $C_2=C_3$, and
@@ -514,4 +535,93 @@ momentum equation is simply written as
 \end{equation}
 
 
+
+
+
+
+
+\section{Vorticity}
+\label{sec:NS_vort}
+
+The momentum equation \ref{eq:NS_usual} can be treated by the method
+in Sec. \ref{sec:NS_vort} in order to obtain an equation for the
+vorticity and velocity alone.
+
+Using the expresion for the curl of a curl \ref{eq:curl_of_curl},
+\[
+  \nabla^2 \bfu = \nabla (\divu) - \nabla\times\vort =  - \nabla\times\vort ,
+\]
+where we have supposed incompressibility in the second equality. This
+means \ref{eq:NS_usual} can be cast as
+\[
+  \frac{\partial \bfu }{\partial t} +
+  \frac12 \nabla u^2 - \bfu \times\vort =
+  - \frac{1}{\rho} \nabla p 
+  + \bfg + 
+  - \nu \nabla\times\vort ,
+\]
+where we have used Lamb's identity  \label{eq:Lambs_identity}.
+
+
+Now we may apply the curl operator to the whole equation, to get
+\[
+\frac{\partial \vort }{\partial t} -
+\nabla\times(\bfu\times\vort) = 0 .
+\]
+
+In e.g. \cite{wiki:Vector_calculus_identities} we find an expression
+for the curl of a vector product:
+\[
+  \nabla \times (\mathbf {a} \times \mathbf {b} ) =
+  \mathbf {a} \ (\nabla \cdot \mathbf {b} )
+  -\mathbf {b} \ (\nabla \cdot \mathbf {a} )
+  +(\mathbf {b} \cdot \nabla )\mathbf {a}
+  -(\mathbf {a} \cdot \nabla )\mathbf {b} .
+\]
+Hence,
+\[
+  \nabla \times (\bfu \times \vort ) =
+  \bfu \ (\nabla \cdot \vort )
+  -\vort \ (\nabla \cdot \bfu )
+  +(\vort \cdot \nabla )\bfu
+  -(\bfu \cdot \nabla )\vort.
+\]
+The first term is always zero, since the vorticity is divergence-free
+(it being the curl of a field). The second is if the flow is
+incompressible. In this case,
+\[
+  \frac{\partial \vort }{\partial t}
+  + ( \bfu \cdot \nabla )\vort =  (\vort \cdot \nabla )\bfu .
+\]
+The left hand side is the advective derivative. Then:
+\[
+  \frac{d \vort }{d t}  =  (\vort \cdot \nabla )\bfu ,
+\]
+which means vorticity is ``almost'' conserved. The righ-hand side
+represents an advection of velocity by vorticity, which sounds a bit
+upside-down. This term may be neglected if the flow is slow (since it
+involves a term quadratic in the velocity), to arrive at
+$\frac{d \vort }{d t}\approx 0$. We will see, in Section \ref{sec:},
+how
+
+
+In any case, the equation involves only the velocity and its curl, the
+pressure having been ``curled-away.'' Indeed, there is a class of
+numerical methods, called ``vortex methods'' in which this
+simplification is employed.  In many applications, however, its
+usefulness is limited. For example, boundary conditions may be
+difficult to define for these terms.
+
+There is, however, an important consequence of this equation: if a
+given flow is curl-free at some instant, it must \emph{remain} so
+at every other time (both future, and past). This is because the equation
+is first order in time, and a null right-hand side translates into
+a null change. We will see later that when viscosity is introduced,
+a diffusion term appears which is second order in space. This term
+is, in many cases, responsible for the generation of vorticity.
+In the clearest instance, the no-slip boundary condition close
+to solid walls, by which the velocity must be zero there, creates
+zones of vorticity generation. That boundary condition cannot be
+enforced within the Euler framework, because it only features first order
+spatial derivatives of the velocity.
 

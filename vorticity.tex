@@ -1,4 +1,5 @@
 \section{Vorticity}
+\label{sec:Euler_vort}
 
 The momentum equation \ref{eq:Euler_momentum} is still quite daunting
 due to its nonlinear term in the convective derivative.
@@ -6,16 +7,17 @@ due to its nonlinear term in the convective derivative.
 In order to make progress, it was Lamb's idea in 1895 to use the
 following identity for the vector product of any vector field and its
 curl:
-\[
-\bfu \times ( \nabla\times \bfu) =
-\frac12 \nabla u^2 - \bfu (\nabla \bfu )
-\]
+\begin{equation}
+  \label{eq:Lambs_identity}
+  \bfu \times ( \nabla\times \bfu) =
+  \frac12 \nabla u^2 - \bfu (\divu )
+\end{equation}
 (in fact, the identity is somewhat more general, see exercise
 \ref{ex:vector_identity}).
 
 Introducing the name ``vorticity'' for the curl of the velocity field,
 \[
-\vort = \nabla\times\bfu ,
+\vort := \nabla\times\bfu ,
 \]
 we may write the momentum equation as
 \begin{equation}
@@ -29,14 +31,60 @@ we may write the momentum equation as
 Now, recalling that the curl of a gradient is always zero,
 we may apply the curl operator to the whole equation, to get
 \[
-\frac{\partial \vort }{\partial t} =
-\nabla\times(\bfu\times\vort) .
+\frac{\partial \vort }{\partial t} -
+\nabla\times(\bfu\times\vort) = 0 .
 \]
-This is a very remarkable equation, involving only the velocity
-and its curl. Indeed, there is a class of numerical methods,
-called ``vortex methods'' in which this simplification is employed.
-In many applications, however, its usefulness is limited. For
-example, boundary conditions may be difficult to define for these terms.
+
+In e.g. \cite{wiki:Vector_calculus_identities} we find an expression
+for the curl of a vector product:
+\[
+  \nabla \times (\mathbf {a} \times \mathbf {b} ) =
+  \mathbf {a} \ (\nabla \cdot \mathbf {b} )
+  -\mathbf {b} \ (\nabla \cdot \mathbf {a} )
+  +(\mathbf {b} \cdot \nabla )\mathbf {a}
+  -(\mathbf {a} \cdot \nabla )\mathbf {b} .
+\]
+Hence,
+\[
+  \nabla \times (\bfu \times \vort ) =
+  \bfu \ (\nabla \cdot \vort )
+  -\vort \ (\nabla \cdot \bfu )
+  +(\vort \cdot \nabla )\bfu
+  -(\bfu \cdot \nabla )\vort.
+\]
+The first term is always zero, since the vorticity is divergence-free
+(it being the curl of a field). The second is if the flow is
+incompressible. In this case,
+\begin{equation}
+  \label{eq:conv_accel_as_vort}
+  \nabla \times (\bfu \times \vort ) =
+  (\vort \cdot \nabla )\bfu
+  -(\bfu \cdot \nabla )\vort,
+\end{equation}
+and we may write
+\[
+  \frac{\partial \vort }{\partial t}
+  + ( \bfu \cdot \nabla )\vort =  (\vort \cdot \nabla )\bfu .
+\]
+The left hand side is the advective derivative. Then:
+\[
+  \frac{d \vort }{d t}  =  (\vort \cdot \nabla )\bfu ,
+\]
+which means vorticity is ``almost'' conserved. The righ-hand side
+represents an advection of velocity by vorticity, which sounds a bit
+upside-down. This term may be neglected if the flow is slow (since it
+involves a term quadratic in the velocity), to arrive at
+$\frac{d \vort }{d t}\approx 0$. We will see, in Section
+\ref{sec:NS_vort}, how viscosity adds a diffusion term to this
+equation.
+
+
+In any case, the equation involves only the velocity and its curl, the
+pressure having been ``curled-away.'' Indeed, there is a class of
+numerical methods, called ``vortex methods'' in which this
+simplification is employed.  In many applications, however, its
+usefulness is limited. For example, boundary conditions may be
+difficult to define for these terms.
 
 There is, however, an important consequence of this equation: if a
 given flow is curl-free at some instant, it must \emph{remain} so
