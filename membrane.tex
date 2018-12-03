@@ -168,7 +168,7 @@ T_{ij}(\bfq) := \frac 1{\mu q^2 +  \mu' q  } \left[
 The denominator is usually written as
 \[
   \mu q^2 +  \mu' q =:
-  \mu (q^2 +  q \xi ) ,
+  \mu (q^2 +  q / \xi ) ,
 \]
 where $\xi:= \mu'/\mu$ is the Saffman and Delbr{\"u}ck length
 \index{Saffman and Delbr{\"u}ck length }. (Remember the two
@@ -191,30 +191,23 @@ T_{ij}(\bfq) = \frac 1{\mu q^2 +  2 \mu' q  } \left[
   \delta_{ij} - \frac{ \bfq_i  \bfq_j}{q^2} 
 \right],
 \]
-and the Saffman and Delbr{\"u}ck length $\xi = 2 \mu'/\mu$.
+and the Saffman and Delbr{\"u}ck length is $\xi = 2 \mu'/\mu$.
 
 
-
-
-In Figure \ref{fig:SD} we plot the function $1/(q^2+q)$ in log-log
+In Figure \ref{fig:SD} we plot the function $1/(q^2+q/\xi)$ in log-log
 scale.  At high $q$ (short distances), the denominator approaches
-\( \eta_\mathrm{m} q^2 \),
-which is the prediction from the standard theory as just described. At
-low $q$ (long distances), on the other hand, the denominator
-approaches \( 2 \eta_\mathrm{f} q \),
-which will cause a convergent real-space Oseen tensor with magnitude
-given by the viscosity of the surrounding liquid.
+\( \eta_\mathrm{m} q^2 \), which is the prediction from the standard
+theory as just described. At low $q$ (long distances), on the other
+hand, the denominator approaches \( 2 \eta_\mathrm{f} q \), which will
+cause a convergent real-space Oseen tensor with magnitude given by the
+viscosity of the surrounding liquid.
 
-At this stage, I do not know how to implement this correction in real
-space, and until I get results I am not convinced it is really that
-important.
 
 \begin{figure}
-  \centering
-  \begin{minipage}{0.45\textwidth}
-      \includegraphics[width=\textwidth]{figures/SD}
-  \end{minipage}
-  \caption{Plot of $1/(q^2+q)$ function
+%  \centering
+      \includegraphics[width=0.7\textwidth]{figures/SD}
+      \caption{Plot of the $1/(q^2+q/\xi) = { \xi^2 \over (q\xi)^2 + (q\xi) }$
+      function
     \label{fig:SD}}
 \end{figure}
 
