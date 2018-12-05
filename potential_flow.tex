@@ -571,7 +571,6 @@ However, the choice of $A=\psi$ does \emph{not} result in the correct
 stream-line behavior of Eq.  \ref{eq:stream_perp_to_u}.
 
 
-
 In axisymmetric flow,
 \[
   \divu =
@@ -582,24 +581,35 @@ but an equivalent expression is
 \[
   \divu =
   {\partial \left( r^2 u_r \sin\theta \right) \over  \partial r} +
-  {\partial \left( r u_\theta\sin\theta \right)  \over \partial  \theta}
+  {\partial \left( r u_\theta\sin\theta \right)  \over \partial  \theta} .
 \]
-so continuity is trivially satisfied with the choice
+The curl in spherical coordinates is
+\begin{align}
+  u_r     &= \frac {1}{r\sin \theta }
+            \frac{ \partial  \left( A  \sin \theta \right) }{\partial \theta }  \\
+  u_\theta &= -\frac1{r} \frac{\partial (rA) }{\partial r} .
+\end{align}
+Therefore,
+\[
+  \divu =
+  {\partial\over\partial r} \left( r
+      \frac{ \partial  \left( A  \sin \theta \right) }{\partial \theta }
+    \right)  -
+  {\partial \over \partial  \theta}  \left(
+      \frac{\partial (rA) }{\partial r} 
+      \sin\theta \right)  .
+\]
+Continuity is therefore trivially satisfied with the choice
 \begin{equation}
   \label{eq:Stokes_stream_spherical}
   \bfA = \frac{\psi(r,\theta)}{r \sin\theta } \bhe_\phi .    
 \end{equation}
 %
-This $\psi$ is called ``Stokes' stream function''\index{Stokes' stream
-  function}, since there are differences with the 2D stream function.
+This $\psi$ is called ``Stokes stream function''\index{Stokes stream
+  function}, since there are differences with the 2D stream function
+  (traditionally called ``Lagrange stream function''.)
 
-From the curl in spherical coordinates,
-\begin{align}
-  u_r     &= \frac {1}{r\sin \theta }
-            \frac{ \left( \partial A  \sin \theta \right) }{\partial \theta }  \\
-  u_\theta &= -\frac1{r} \frac{\partial (rA) }{\partial r} 
-\end{align}
-thus we find
+Appling the curl expression, we find
 \begin{equation}
   \label{eq:u_from_psi_spherical}
   \begin{split}
