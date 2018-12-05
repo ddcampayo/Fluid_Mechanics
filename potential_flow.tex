@@ -591,10 +591,7 @@ so continuity is trivially satisfied with the choice
 \end{equation}
 %
 This $\psi$ is called ``Stokes' stream function''\index{Stokes' stream
-  function}, but there is no fundamental difference with the usual,
-2D, stream function.
-
-
+  function}, since there are differences with the 2D stream function.
 
 From the curl in spherical coordinates,
 \begin{align}
@@ -607,9 +604,11 @@ thus we find
   \label{eq:u_from_psi_spherical}
   \begin{split}
     u_r     &=  \frac1{r^2 \sin\theta} \frac{\partial \psi}{\partial \theta} \\
-    u_\theta &= -\frac1{r   \sin\theta} \frac{\partial \psi}{\partial r}
+    u_\theta &= -\frac1{r   \sin\theta} \frac{\partial \psi}{\partial r} .
   \end{split}
 \end{equation}
+(There may be an additional azimuthal $u_\phi$ velocity component
+which cannot be obtained from $\psi$.)
 
 
 For completeness, in cylindrical coordinates the appropriate
@@ -618,7 +617,9 @@ expression is
   \bfA = \frac{\psi(\rho, z)}{ \rho } \bhe_\phi ,
 \]
 where $\rho$ is the distance to the $z$ axis. Notice this is the same
-expression as in spherical coordinates, since $\rho=r\sin\theta$.
+expression as in spherical coordinates, since
+$\rho=r\sin\theta$. There is a reason for this, as explained in
+Ref. \cite{batchelor} p. 78.
 
 
 The resulting velocity field is
