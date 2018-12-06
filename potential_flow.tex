@@ -559,7 +559,7 @@ coordinates. In spherical coordinates,
   \bfu = \bfu(r,\theta) .
 \]
 
-The vector potential is still chosen as ``perpendicular'' to the other
+The vector potential may still be thought of as ``perpendicular'' to the other
 two coordinates. In spherical coordinates:
 \[
   \bfA = A \bhe_\phi ,
@@ -569,7 +569,6 @@ satisfies Laplace's equation for a curl-free flow.
 
 However, the choice of $A=\psi$ does \emph{not} result in the correct
 stream-line behavior of Eq.  \ref{eq:stream_perp_to_u}.
-
 
 In axisymmetric flow,
 \[
@@ -617,8 +616,9 @@ Appling the curl expression, we find
     u_\theta &= -\frac1{r   \sin\theta} \frac{\partial \psi}{\partial r} .
   \end{split}
 \end{equation}
-(There may be an additional azimuthal $u_\phi$ velocity component
-which cannot be obtained from $\psi$.)
+%
+There may be an additional azimuthal $u_\phi$ velocity component
+which cannot be obtained from $\psi$ (see Ex. \ref{ex:azimuthal_velocity}).
 
 
 For completeness, in cylindrical coordinates the appropriate
@@ -707,8 +707,15 @@ sphere are in Fig. \ref{fig:potential_streamlines_moving_sphere}.
   field is azimuthal only, and dependent on the other two components:
   $ \bfA = A(r,\theta) \bhe_\phi$.
 
+\item  \label{ex:azimuthal_velocity}) Prove that the velocity
+may indeed have an azimuthal component for axisymmetric flow. Begin by writing down the
+expressions for the divergence and the curl in spherical coordinates,
+and neglecting all variation on the azimuthal angle, allowing for the
+possibility that the vector potential may have all three components, not just than $A_\phi$.
+This result in a $u_\phi$ velocity component that can have basically any expression
+as far as continuity equation is concerned, since this is always satisfied
 
-
+\item  Repeat the previous calculation for cylindrical coordinates.
 
 
 
