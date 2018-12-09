@@ -354,10 +354,10 @@ coordinates. Once again, the vector potential will be purely
 azimuthal, and related with the stream function $\psi$ as in
 \ref{eq:Stokes_stream_spherical}.
 
-The identity of Eq. \ref{eq:psi_eq_from_A} leads to an equation
-of the form:
+The identity of Eq. \ref{eq:psi_eq_from_A} leads to an equation of the
+form:
 \[
-  \nabla^2\bfA = \frac{1}{r \sin\theta} {\cal L} \psi  \bhe_\phi ,
+  \nabla^2\bfA = \frac{1}{r \sin\theta} {\cal L}[ \psi] \,  \bhe_\phi ,
 \]
 where the operator $\cal L$ is defined as
 \[
@@ -375,7 +375,7 @@ simple due to the way $\psi$ and $\bfA$ are related in
 $\frac{\psi}{r \sin\theta}$ being the only component, purely
 azimuthal, and dependent on $r$ and $\theta$.  But, our result for
 $\nabla^2\bfA$ complies with this very same conditions!  This means,
-that by defining the function $g:=  {\cal L} \psi $, we get
+that by defining the function $g:= {\cal L} \psi $, we get
 \[
   \nabla^2\bfA := \frac{1}{r \sin\theta} g(r,\theta) \bhe_\phi ,
 \]
@@ -557,14 +557,14 @@ $(1/3) \cos^3\theta - \cos\theta$. The definite integral is then $4/3$, and
 
 The final drag force is the celebrated Stokes drag law: \index{Stokes drag law}
 \[
-  D_\tau = 6 \pi \mu u_0 R ,
+  D = 6 \pi \mu u_0 R ,
 \]
 where $1/3$ of the drag is due to pressure and $2/3$ to shear stress.
 
 Despite the shear having a contribution that is twice that two
 pressure, notice that by writing 
 \begin{align*}
-  - p(r=R) + p_0 &= \bar{p} \cos\theta,  
+  - p(r=R) + p_0 &= \bar{p} \cos\theta,  \\
   -\tau_{r\theta} (r=R) &= \bar{p} \sin\theta,  
 \end{align*}
 where $\bar{p} := - (3/2) \frac{\mu u_0}{R}$, it is apparent that the
@@ -577,6 +577,61 @@ It is remarkable that this force is equal for every point on the
 sphere.
 
 
+In engineering, it is customary to cast forces upon objects to
+dimensionless quantities, called ``force coefficients''. \index{force
+  coefficients} Of course, the correct combination with the dimension
+of force is $\mu R u_0$, from which a drag coefficient would be
+\[
+  C_\mathrm{visc} = \frac{ D }{ \mu R u_0 } = 6\pi .
+\]
+
+A typical experiment would be to check whether this value is indeed
+obtained for a variety of fluids and physical conditions, at low
+Reynolds number. The numerical value of $6\pi$ is also dependent
+on the body being a sphere, hence another line would be to measure
+and compute this coefficient for other bluff bodies.
+
+Nevertheless, the weight of the tradition favors defining these
+coefficients with respect to the typical force due to inertial effects
+(even if these effects are neglected in the creeping limit.) The force
+is given by the typical pressure in this regime, $\rho u_0^2 / 2 $,
+times the projected area of the sphere, $\pi R^2$ . Then,
+\[
+  C_\mathrm{visc} = \frac{  2 D }{ \rho u_0^2 \pi R^2 } =
+  \frac{  12 \mu  }{ \rho u_0 R }   =
+  24 \frac{1}{\mathrm{Re}} ,
+\]
+where the Reynolds number is, as usual, defined in term of the
+diameter $2R$:
+\[
+  \mathrm{Re} = \frac{ \rho u_0 ( 2 R ) }{ \mu } 
+\]
+Then, in White's words (\cite{white1991viscous}, p. 171), a Reynolds
+number effect is introduced when none exists. In the graphs of drag
+coefficient as a function of Reynolds number a vertical assymptote is
+reached at low values. This is misleading: the drag approaches a
+constant value, independent of the Reynolds number. Of course, any
+quantity that is divided by a increasingly small number will turn
+become very high, even if there is no dependence.
 
 
+\section{Exercises}
 
+
+\begin{enumerate}
+
+\item Repeat the calculation of Stokes flow around a sphere using
+  cylindrical coordinates. Use the fact that the identity of
+  Eq. \ref{eq:psi_eq_from_A_cyl} leads to
+  \begin{equation*}
+    \nabla^2 \bfA = \frac{1}{\rho } {\cal L} [\psi] \, \bhe_\phi ,
+  \end{equation*}
+  where the operator $\cal L$ is defined as
+  \[
+    {\cal L} :=
+    \frac{\partial^2  }{\partial \rho^2} -
+    \frac{1}{ \rho } 
+    \frac{\partial  }{\partial \rho} +
+    \frac{\partial^2  }{\partial z^2}.
+  \]
+\end{enumerate}
