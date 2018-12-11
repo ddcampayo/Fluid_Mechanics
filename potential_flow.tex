@@ -189,8 +189,11 @@ as we will see.)
 In case some mathematical justification is required, the pressure
 at the surface on the cylinder is
 \[
- p= p_0 + \frac12  u_0^2 \left(1 -  4   \sin^2(\theta) \right),
+ p= p_0 + \frac12  u_0^2 \left(1 -  4   \sin^2(\theta) \right) =
+ p_0 -\frac12 u_0^2 + u_0^2 \cos(2\theta)  .
 \]
+In the last equation, the identity
+$\sin^{2}\theta ={\frac {1-\cos(2\theta )}{2}}$ has been used.
 
 Now, the drag is given by the net force in the $x$ direction. The
 (vector) force due to pressure is:
@@ -211,16 +214,14 @@ force, and mathematically:
  \int_0^{2\pi} C \cos(\theta) d\theta = C  \int_0^{2\pi}  \cos(\theta) d\theta = 0 .
 \]
 
-The other term involves a $sin^2$ term. Now, this integral is also
+The other term involves a $\cos(2\theta)$ term. Now, this integral is also
 zero:
 \[
- \int_0^{2\pi}  \cos(\theta)  \sin^2(\theta) d\theta = 0 .
+ \int_0^{2\pi}  \cos(\theta)  \cos(2 \theta) d\theta = 0 .
 \]
-qThe reason is that $\sin^2$ may be written as another constant term
-and a term proportional to $\cos(2\theta)$. (To be precise,
-$\sin^{2}\theta ={\frac {1-\cos(2\theta )}{2}}$.) Cosines form an
+The reason is that cosines form an
 orthogonal basis: an integral of two different cosines over one period
-will be zero. Unless they are the same cosine, when the integral is
+will be zero --- unless they are the same cosine, when the integral is
 $\pi$. To be precise, for integer $m$ and $n$:
 \[
 \frac{1}{2\pi} \int_0^{2\pi}  \cos(m \theta) \cos(n \theta)  d\theta = 
@@ -230,11 +231,12 @@ $\pi$. To be precise, for integer $m$ and $n$:
 \end{cases} .
 \]
 (It is more elegant to divide by $2\pi$ to express the integral as a
-mean value.) In fact, the previous result about the constant pressure
+mean value.) In fact, the previous result about constant pressure
 is a particular case in which $m=0$.
 
-It is also interesting that such an integral involving a sine and a
-cosine is always zero. This shows that the lift is always null:
+It is also interesting that similar integrals involving a sine and a
+cosine are always zero (i.e. sines are cosines are orthogonal.)
+This shows that the lift is always null:
 \[
 L= \mathbf{F} \cdot \bhe_x = \int_0^H \int_0^{2\pi}
 p(\theta) \sin(\theta) R d\theta dz = 0
