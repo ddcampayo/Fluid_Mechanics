@@ -1,6 +1,21 @@
-\documentclass[a4paper,10pt]{book}
+\documentclass[a4paper,10pt,twoside]{book}
 \usepackage{graphicx} %\usepackage[utf8]{inputenc}
-% center all figures:
+
+% headers and footers
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thechapter}
+\fancyhead[RE,LO]{\thesection}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+ 
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
+
+
+%center all figures:
 \makeatletter
 \g@addto@macro\@floatboxreset\centering
 \makeatother

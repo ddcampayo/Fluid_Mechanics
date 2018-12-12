@@ -282,13 +282,17 @@ If we write something similar for the drag force on a cylinder, the
 answer should come as a force per length in the perpendicular
 direction (as e.g. the lift for our cylinder with circulation,
 Eq. \ref{eq:lift_potential_cyl}). I.e.
-\[
-  \frac{D}{R} \sim \mu u_0 .
-\]
-But this makes no sense, since all dependence on $R$ is lost --- and
-there is not clear candidate to provide another length parameter.
+\begin{equation}
+  \label{eq:drag_cyl_guess}
+  \frac{D}{L} \sim \mu u_0 .
+\end{equation}
+%
+But this makes little sense, as all dependence on $R$ is lost ---
+and there is not clear candidate to provide another length parameter.
+See, nevertheless Section \ref{sec:creeping_cylinder} for a ``dirty
+way'' around this problem.
 
-To solve this problem, we begin with the Stokes equation with no
+To solve for the sphere, we begin with the Stokes equation with no
 forces:
 \begin{equation}
   \label{eq:Stokes_no_f}
@@ -341,10 +345,11 @@ Using, for the third time,  Eq. \ref{eq:curl_of_curl},
   \vort =   \nabla (\nabla \cdot \mathbf {A} )-\nabla^2\bfA .
 \]
 If we make sure $\bfA$ is divergence-free, then
-\[
+\begin{equation}
+  \label{eq:bi-laplacian}
   \nabla^2 \left( \nabla^2\bfA \right) = 0 \implies
-  \nabla^4 \bfA  = 0 .
-\]
+  \nabla^4 \bfA  = 0 .  
+\end{equation}
 The operator $\nabla^4$ is called the bi-harmonic operator, or
 bi-Laplacian. \index{bi-Laplacian}
 
@@ -523,11 +528,13 @@ Eq. B17, p. 584):
     r \frac{\partial }{\partial r} \left( \frac{u_\theta}{r}\right) 
   \right) .
 \]
+%(sign???)
 
-This can be computed to obtain
+This can be computed (in fact, the only terms that give a contribution
+are the $1/r$ ones) to obtain
 \[
   \tau_{r\theta} = 
-  - \frac32 \frac{\mu u_0}{r} \left(\frac{R}{r}\right)^3 \sin\theta ,
+  - \frac32 \frac{\mu u_0}{R} \left(\frac{R}{r}\right)^4 \sin\theta ,
 \]
 hence at the sphere surface,
 \[
@@ -576,7 +583,6 @@ stress, result from a decomposition of a force upon the sphere surface:
 It is remarkable that this force is equal for every point on the
 sphere.
 
-
 In engineering, it is customary to cast forces upon objects to
 dimensionless quantities, called ``force coefficients''. \index{force
   coefficients} Of course, the correct combination with the dimension
@@ -597,7 +603,7 @@ coefficients with respect to the typical force due to inertial effects
 is given by the typical pressure in this regime, $\rho u_0^2 / 2 $,
 times the projected area of the sphere, $\pi R^2$ . Then,
 \[
-  C_\mathrm{visc} = \frac{  2 D }{ \rho u_0^2 \pi R^2 } =
+  C_\mathrm{inertial} = \frac{  2 D }{ \rho u_0^2 \pi R^2 } =
   \frac{  12 \mu  }{ \rho u_0 R }   =
   24 \frac{1}{\mathrm{Re}} ,
 \]
