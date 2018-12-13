@@ -521,35 +521,78 @@ However, this drag force is due to pressure only. There will be an
 additiona shear drag, which may be calculated from the shear stress.
 The relevant component of the tensor is (see \cite{white1991viscous},
 Eq. B17, p. 584):
-\[
+\begin{equation}
+  \label{eq:tau_r_th}
   \tau_{r\theta} = \mu \left(
     \frac1r
     \frac{\partial u_r}{\partial \theta} +
     r \frac{\partial }{\partial r} \left( \frac{u_\theta}{r}\right) 
   \right) .
-\]
-%(sign???)
+\end{equation}
 
 This can be computed (in fact, the only terms that give a contribution
 are the $1/r$ ones) to obtain
-\[
-  \tau_{r\theta} = 
-  - \frac32 \frac{\mu u_0}{R} \left(\frac{R}{r}\right)^4 \sin\theta ,
-\]
-hence at the sphere surface,
+\begin{align*}
+  \tau_{r\theta}  =
+  &
+    \frac{\mu u_0 \cos\theta  }{R}
+    \frac{ R  }{r}
+    \left[
+    1+
+    \frac12   \left(\frac{R}{r}\right)^3 -
+    \frac32   \left(\frac{R}{r}\right)
+    \frac{R}{r}
+    \right] + \\
+  &  \frac{\mu u_0 \sin\theta r }{R}
+    \frac{ r  }{R}
+    \left[
+    \left(\frac{R}{r}\right)^2 -
+    \left(\frac{R}{r}\right)^5 -
+    \frac32   \left(\frac{R}{r}\right)^2
+    \right] .
+\end{align*}
+At the sphere surface the first term, which is
+$ (1/r) \frac{\partial u_r}{\partial \theta} $, vanishes, and we
+obtain
 \[
   \tau_{r\theta} (r=R) =  - \frac32 \frac{\mu u_0}{R}  \sin\theta .
 \]
 This looks very similar to the pressure, with a $\sin$ instead of a
 $\cos$, which means the stress is maximal at the equator, which seems
-reasonable. However, the contribution to the drag force is higher ---
-twice higher, to be precise. Indeed,
+reasonable. Notice the sign: by definition this stress is the stress
+on a surface of fixed $r$ (the surface of the sphere) in the $\theta$
+direction. Both coordinates are signed. If we pick an angle between
+$0$ and $\pi$ we get a negative stress. This means the upper part of
+the sphere will be subject to a force in the negative $\theta$
+direction. Intuitively, since the velocity field is slower close to
+the sphere than far away, the liquid tries to rotate the sphere so
+that the velocities smooth out (such is the role of viscosity).
+
+The sphere does not rotate as a whole, because the force at angle
+$\theta$ has a counterpart in the lower hemisphere at angle $-\theta$
+--- however, these stresses share a common horizontal component that
+does not cancel and produce a net drag. (This symmetry is actually
+fixed by our assumption of axisymmetric flow.) See Exercise
+\ref{ex:tau_r_t} about stresses for some velocity fields.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/creeping_flow_past_sphere_vel}
+  \caption{\label{fig:creeping_flow_past_sphere_vel}}
+\end{figure}
+
+
+It would seem pressure and stress contribute equally, since their
+expressions are so similar, but the contribution to the drag force is
+higher --- twice higher, to be precise. This is because the sphere
+contributes more from the equator than from the poles. Indeed,
 \[
-  D_\tau =  - \int_S  \tau_{r\theta} \sin\theta dA ,
+  D_\tau =  \int_S  \tau_{r\theta} (- \sin\theta) dA ,
 \]
-with a minus sign for the same reason as the pressure, and a $\sin$
-because this is a shear stress, resulting in a force that is
-tangential to the surface of the sphere.  Then
+with a minus sign on the $\sin\theta$ from projecting from the
+tangential unit vector $\bhe_\theta$ to the horizontal $\bhe_z$.  We
+integrate in spherical coordinates, with
+$dA=2\pi R^2 \sin\theta d\theta$. Then
 \[
   D_\tau =
   - 2\pi R^2 \int_0^\pi d\theta   \tau_{r\theta} \sin^2\theta  =
@@ -640,4 +683,13 @@ become very high, even if there is no dependence.
     \frac{\partial  }{\partial \rho} +
     \frac{\partial^2  }{\partial z^2}.
   \]
+\item \label{ex:tau_r_th} Calculate the stress of
+  Eq. \ref{eq:tau_r_th} for these purely polar fields ($u_r=0$):
+  $u_\theta = u_0 r^2/R^2$,
+  $u_\theta = u_0 r / R$,
+  $u_\theta = u_0$,
+  $u_\theta = u_0 R/r$,
+  $u_\theta = u_0 R^2/r^2$,
+  and discuss the results for the stress on a sphere of radius $R$.
+
 \end{enumerate}

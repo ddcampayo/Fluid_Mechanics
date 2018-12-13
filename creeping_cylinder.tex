@@ -1,10 +1,10 @@
-\section{Around Stokes paradox*}
+\section{Exploring Stokes paradox*}
 \label{sec:creeping_cylinder}
 
 Stokes paradox is very soon encountered. Our task is to solve the
 bi-Laplace equation, Eq. \ref{eq:bi-laplacian}, for a 2D case, in
-which the vector potential $\bfA$ only has a $z$ component, equal
-to the stream function $\psi$. Then,
+which the vector potential $\bfA$ only has a $z$ component, equal to
+the stream function $\psi$. Then,
 \[
   \nabla^4 \psi = 0 ,
 \]
@@ -41,7 +41,8 @@ The bi-Laplacian is then
 The ``new'' possible exponents are now $\alpha=3$ and $\alpha=1$. The
 first one is of no use, since it leads to the wrong behavior away from
 the cylinder. The second one is not new at all! We are therefore stuck
-with the same functional set as for potential flow.
+with the same functional set as for potential flow. This is, in a
+nutshell, the paradox.
 
 This means that the only sensible solution is the potential one, which
 of course features free-slip boundary conditions on the surface of the
@@ -190,7 +191,8 @@ expression for the relevant part of the stress tensor is
     r \frac{\partial }{\partial r} \left( \frac{u_\theta}{r}\right) 
   \right) 
 \]
-(i.e. it looks exactly as in spherical coordinates).
+(i.e. it looks exactly as in spherical coordinates,
+Eq. \ref{eq:tau_r_th}).
 
 After some computations, at the surface we obtain
 \[
@@ -204,21 +206,30 @@ not. Indeed, this force will be
 \begin{equation}
   \label{eq:viscous_drag_on_cyl_creeping}
   \frac{  D_\tau }{L} =
-   R \int_0^{2\pi} d\theta  (- \tau_{r\theta}) (- \sin\theta)  =
-  4 \mu u_0 \int_0^{2\pi} d\theta  \sin^2\theta  =  4 \pi \mu u_0 .
+   R \int_0^{2\pi} d\theta  (\tau_{r\theta}) (- \sin\theta)  =
+  - 4 \mu u_0 \int_0^{2\pi} d\theta  \sin^2\theta  =  - 4 \pi \mu u_0 .
 \end{equation}
 Notice there is a minus sign due to projection on the $x$ axis from
-the tangential direction, and another due to the shear on the cylinder
-being the reaction of the shear of the cylinder on the fluid.
+the tangential direction, as in the shear stress on the sphere.  The
+result is, in a sense, worse than the vanishing pressure force: the
+drag acts in the upstream direction! Notice that the $\sin\theta$
+term, which is the only one contributing, comes from the potential
+solution. In this solution there are two zone, at the upper and lower
+points of the cylinder, at which the velocity is quite higher than
+$u_0$. This means that, in the upper part of the cylinder, the shear
+force will tend to rotate the cylinder counter-clockwise, in the
+positive direction, to equalize velocities. The same will happen in
+the lower part, with a vanishing rotation but a non-vanishing drag in
+the ``wrong'' direction.
 
-The drag coefficient, defined as for the sphere (with an exposed area
-now given by $2RL$), would be
+If we nevertheless define a drag coefficient as for the sphere (with
+an exposed area now given by $2RL$), this would be
 \[
-  C_\mathrm{inertial} = \frac{  2 D }{ \rho u_0^2 (2 R L) } =
+  C_\mathrm{inertial} = \frac{  2 |D| }{ \rho u_0^2 (2 R L) } =
   \frac{ 4 \pi \mu u_0   }{ \rho u_0^2  R L } =
   8\pi \frac{1}{\mathrm{Re}} ,
 \]
-with a Reynolds numberdefined in term of the diameter $2R$:
+with a Reynolds number defined in term of the diameter $2R$:
 \[
   \mathrm{Re} = \frac{ \rho u_0 ( 2 R ) }{ \mu } .
 \]
