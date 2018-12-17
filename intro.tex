@@ -42,30 +42,65 @@ Madrid, Spain 2018
 Fluids, by definition, flow.
 
 The main field is the velocity field, and the displacement is
-secundary.
+secundary \ldots
 
 
 \section{Notation}
 \label{sec:notation}
 
-The velocity field is represented in many ways. Here,
-we use bold letters for the whole vector, and subindices
-for its components, Cartesian or otherwise:
+When labeling coordinates, we will follow this convention:
+\begin{equation*}
+  \bfr =
+  \begin{cases}
+   ( x, y, z)  &\qquad \text{Cartesian} \\
+   ( r, \theta, 0 ) & \qquad \text{Polar} \\
+   ( \rho, \theta, z) &\qquad \text{Cylindrical} \\
+    ( r , \phi , \theta) &\qquad \text{Spherical} .
+  \end{cases}
+\end{equation*}
+For spherical coordinates, we stick to the naming convention that is
+most common in physics, and is specified by ISO standard 80000-2:2009,
+and earlier in ISO 31-11 (1992). I.e.: $\phi$ is the azimuthal angle,
+about the $z$ axis, and $\theta$ is the polar angle with the $z$ angle
+(also called ``the co-latitude''.)
+
+In cylindrical coordinates, $\rho$, the distance to the $z$ axis,
+could be confused with the density, but it always is quite clear to
+tell them apart. We deviate from the standard (ISO 31-11, to be
+precise) by using $\theta$ for the azimuthal angle for 2D polar and
+cylindrical coordinates. We are aware that the right symbol is $\phi$
+(or, $\varphi$), and we are moving towards implementing the
+recommendations, but the usage of $\theta$ is quite ingrained. For the
+2D polar distance to the origin, either $r$ or $\rho$ are valid,
+depending on whether this 2D case is taken as: $z = 0$ from
+cylindrical coordinates; or, as $\theta \to \pi/2$ from spherical
+ones. We choose the former.
+
+The velocity field is represented in many ways. Here, we use bold
+letters for vectors, and italice letters with subindices for its
+components, Cartesian or otherwise:
 \begin{align*}
-  \bfu = ( u_x, u_y, u_z) \qquad \text{Cartesian} \\
-  \bfu = ( u_r, u_\theta, u_z) \qquad \text{Polar, cylindrical} \\
-  \bfu = ( u_r, u_\theta, u_\phi) \qquad \text{Polar, spherical} .
+  \bfu =
+  \begin{cases}
+     ( u_x, u_y, u_z)& \qquad \text{Cartesian} \\
+     ( u_r, u_\theta, 0 )& \qquad \text{Polar} \\
+     ( u_\rho, u_\theta, u_z)& \qquad \text{Cylindrical} \\
+     ( u_r , u_\phi , u_\theta)& \qquad \text{Spherical} .
+   \end{cases}
 \end{align*}
+This convention is applied for any vector field, we just write it down
+explicitely because the velocity is, by far, the most used field in
+these notes.
 
-
-
-  This naming convention is the most common in physics, and is
-  pecified by ISO standard 80000-2:2009, and earlier in ISO 31-11
-  (1992). However, the name of the two angles is often reversed,
-  specially in mathematics. The advantage of the latter is that
-  $\theta$ then retains the same name as in 2D polar coordinates ---
-  even though some mathematicians consistently use $\phi$ for the 2D
-  polar angle
+We \emph{do not} use the traditional convention of using different
+letters for each Cartesian velocity component:
+\[
+  \bfu = ( u , v, w ) =
+  u \bhe_x +
+  v \bhe_x +
+  w \bhe_x   \qquad \text{(not used)} 
+\]
+(we do use pointy hats, or ``circumflexes'', for unit vectors.)
 
 \section{Style}
 
