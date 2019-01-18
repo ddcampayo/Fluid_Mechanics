@@ -403,6 +403,7 @@ The resulting velocity field still complies with the boundary
 conditions, since the resulting velocities:
 \begin{align}
 u_r     &=   u_0  \left[ 1 - \left( \frac{R}{r}\right)^2 \right] \cos(\theta) \\
+\label{eq:u_theta_cyl_pot_circ}
 u_\theta &=   u_0  \left[ 1 + \left( \frac{R}{r}\right)^2 \right] \sin(\theta) +\frac{\Gamma}{2\pi r} 
 \end{align}
 have an additional term which dies away far from the cylinder, while
@@ -478,8 +479,35 @@ fluid. This is used (for spheres) in sports, such as tennis, golf and
 football. Also, for cylinder-like rotors in ``rotor ships,'' which use
 the Magnus effect for propulsion.
 
-As an aside, if we move along with the plane, or ship, we will not see
-those velocity fields. The horizontal component should be avoided in
+We may obtain an expression for the Magnus force by equating the
+circulation term $\Gamma/(2\pi R)$ for the tangential velocity
+of the fluid at the surface of the cylinder
+(Eq. \ref{eq:u_theta_cyl_pot_circ}) with the cylinder surface
+velocity:
+\[
+\frac{\Gamma}{2\pi R} = \omega_0 R $
+\]
+This is a sort of ``no-slip'' condition --- but, incomplete,
+since the correct condition would be the whole tangential velocity
+being equal to the cylinder surface velocity. This requirement
+is, again, too strong for an ideal fluid, and is only met when
+viscosity is introduced.
+
+The expression for the Magnus force is then,
+\[
+\frac{L}{H} = 2 \pi \rho u_0 \omega_0 R^2 ,
+\]
+proportional to both the wind speed $u_0$ and the angular
+velocity of the spinning cylinders, $\omega_0$ (of course, also
+proportional to their length). Since the force is perpendicular
+to the wind, the Magnus effect works best for wind coming
+from the sides (``abeam''). Also, this is the ``apparent wind'':
+the wind at the cylinders is the vector sum of the true
+wind and the velocity of the ship. The effect of the latter
+is to bring the apparent wind closer to the fore.
+
+As an aside, if we move in the airplane, or on the ship, we will \emph{not}
+measure those velocity fields. The horizontal component should be avoided in
 every equation, and the resulting velocity looks different. This is
 shown in Fig. \ref{fig:potential_flow_past_cylinder_moving}, for the
 flow past a cylinder with and without circulation. It is seen that,
