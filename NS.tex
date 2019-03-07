@@ -332,17 +332,18 @@ Defining volume pressure
   \eta:=\frac23 \mu  + \lambda,
 \end{equation}
 we may write the mechanical pressure as
-\[
-  \bar{p}=
+\begin{equation}
+  \label{eq:mech_p_definition}
+  \bar{p} :=
   p - \eta \nabla\cdot \bfu .
-\]
-
-The result is that the mechanical pressure, defined in such a way, is
-different from the thermodynamic pressure in an incompressible fluid.
-There are several ways out of this puzzling result. One of them is to
-assume simply that the fluid is incompressible. This is of course
-entirely correct, but would limit the applicability of the theory to
-incompressible problems.
+\end{equation}
+%
+The result is that the mechanical pressure, defined this a way, is
+\emph{different} from the thermodynamic pressure in an incompressible
+fluid.  There are several ways out of this puzzling result. One of
+them is to assume simply that the fluid is incompressible. This is of
+course entirely correct, but would limit the applicability of the
+theory to incompressible problems.
 
 Another approach is to boldly assume $( 2/3 ) \mu+\lambda=0$. This
 step was taken by Stokes, and defines a ``Stokesian fluid''. On the
@@ -363,6 +364,7 @@ The Navier-Stokes equation for Newtonian liquids is finally:
   + \nabla [ \lambda ( \divu ) ]
   + \rho \bfg .
 \end{equation}
+
 
 
 \subsubsection{Pure shear and compression}
@@ -461,6 +463,17 @@ as
 
 
 
+If the mechanical pressure (\ref{eq:mech_p_definition}) is used instead,
+\begin{equation}
+  \label{eq:NS_const_viscs_mech_press}
+  \rho \frac{d\bfu }{dt} =
+  - \nabla \bar{p} +
+  \mu \nabla^2  \bfu
+  + \frac13  \mu \nabla ( \divu ) )
+  + \rho \bfg ,
+\end{equation}
+where one the shear viscosity appears (the other one being swept under
+the rug, in the mechanical pressure.)
 
 
 \subsubsection{Incompressible, athermal case}
