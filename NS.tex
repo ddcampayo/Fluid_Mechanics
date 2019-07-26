@@ -11,8 +11,8 @@ contributions due to the walls at the left, back, and bottom
   \label{eq:wall_shear_stress}
   \left. dF_x \right|_\text{l,bk,bm} =
   % - p         dy\, dz
-    \tau_{xx} dy\, dz
-    \tau_{yx} dx\, dz
+    \tau_{xx} dy\, dz +
+    \tau_{yx} dx\, dz +
     \tau_{zx} dx\, dy .
 \end{equation}
 %
@@ -326,7 +326,7 @@ of the stress tensor:
 - \left( \frac23 \mu  + \lambda \right) \nabla\cdot \bfu .
 \]
 
-Defining volume pressure
+Defining volume viscosity as
 \begin{equation}
   \label{eq:vol_visc_definition}
   \eta:=\frac23 \mu  + \lambda,
