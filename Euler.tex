@@ -1,6 +1,6 @@
 \section{Material derivative}
 
-When deriving our equations, it is important to distiguish between
+When deriving our equations, it is important to distinguish between
 a partial time variation and the total one. This is mathematically
 encapsulated in the expression for the total variation of a function
 of three Cartesian coordinates plus time:
@@ -143,7 +143,7 @@ definition, is the partial time derivative. If however, we measure
 its value as we move along with the flow, we will obtain its total
 derivative.
 
-A common example consideres temperature, partly because this is a
+A common example considers temperature, partly because this is a
 quantity that humans can readily ``feel'', and which is routinely
 measured with thermometers. Imagine a thermometer probe inserted at
 some point along a stream. Its reading are approximately constant
@@ -184,10 +184,53 @@ established, from a cold region to a hotter one. Fluid going from one
 to the other will register this change in temperature even if
 locally the variation is null.
 
-We stress that this discussion applies to any field, even if vectorial
+We stress that this discussion applies to any field, even if they
+are vector fields
 (since it applies to each of its components, which are scalar).
 
 
+\subsection{The steady state}
+
+If the state of the flow is \emph{steady} this means that
+all fields do not change with time when evaluated at a given
+point --- but, they may still change in space. Mathematically.
+\begin{equation*}
+\frac{\partial A}{\partial t} = 0
+\end{equation*}
+for all $A$ field (including vector fields, through e.g. their
+Cartesian components).
+
+In particular, the velocity field will be fixed in time. The paths
+in space traced by the velocity field are called streamlines.
+Intuitively, one starts at some point and moves following the
+velocity field, thus tracing a streamline. Numerically, this is
+in essence what is computed by CFD software. Mathematically, the
+equation will be
+\begin{equation*}
+\frac{d \bfr}{\partial s} = \bfu( \bff(s) ) ,
+\end{equation*}
+where we use $s$ instead of $t$ to stress the fact that the
+parameter in this ``trajectory'' is \emph{not} the physical time,
+and is only used to trace the line.
+
+It is instructive to consider mass continuity in this case.
+It reduces to
+\begin{equation*}
+\nabla \cdot (\rho \bfu ) =   
+\rho \nabla \cdot \bfu + \bfu   \cdot \nabla \rho  = 0 .
+\end{equation*}
+
+If the velocity field is, moreover, divergence-free,
+\begin{equation*}
+ \bfu   \cdot \nabla \rho  = 0 .
+\end{equation*}
+Now, the gradient of a field is a vector field perpendicular to
+its iso-contours (the contours at which the field has constant
+values). Since the gradient of the density is perpendicular to
+the velocity, this equation tell us that the density is
+\emph{constant} along streamlines. This applies not only
+to the density, but to any conserved quantity. See Exercise
+\ref{ex:2D_dens_for_u} for a concrete simple case.
 
 \section{External and pressure forces}
 \label{sec:pressure_forces}
@@ -302,7 +345,7 @@ acceleration, or equivalently, to the variation of linear momentum
 therefore worried about this law being the right one.  In fact, a
 direct application of the ideas in Section \ref{sec:continuity} would
 lead to this sort of equation for the change in the $i$-th component
-of the angular momentum:
+of the linear momentum:
 \[
 \frac{\partial (\rho u_i) } {\partial t} =
 - \nabla \cdot  ( \rho u_i \bfu )
@@ -310,7 +353,10 @@ of the angular momentum:
   + \rho g_i .
 \]
 In it, the change of linear momentum per volume is changed due to
-volumetric forces, and also due to convection of momentum. This can
+volumetric forces, and also due to convection of momentum.
+
+
+This can
 also be written in vector form:
 \[
 \frac{\partial  (\rho \bfu ) }{\partial t} +
