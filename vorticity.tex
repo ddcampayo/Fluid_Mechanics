@@ -29,7 +29,8 @@ we may write the momentum equation as
 \end{equation}
 
 Now, recalling that the curl of a gradient is always zero,
-we may apply the curl operator to the whole equation, to get
+we may apply the curl operator to the whole equation.
+If we assume constant density, then
 \[
 \frac{\partial \vort }{\partial t} -
 \nabla\times(\bfu\times\vort) = 0 .
@@ -53,8 +54,11 @@ Hence,
   -(\bfu \cdot \nabla )\vort.
 \]
 The first term is always zero, since the vorticity is divergence-free
-(it being the curl of a field). The second is if the flow is
-``incompressible'' (in the sense of divergence-free). In this case,
+(it being the curl of a field). The second is also zero,
+since we have already assumed constant density (which, according
+to the discussion in \S \ref{sec:incompressibility},
+implies the velocity is divergence-free).
+In this case,
 \begin{equation}
   \label{eq:conv_accel_as_vort}
   \nabla \times (\bfu \times \vort ) =

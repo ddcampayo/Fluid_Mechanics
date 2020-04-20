@@ -38,7 +38,7 @@ cylinder. The least that the velocity field must satisfy is that the
 flow does not trespass the surface of the cylinder. This means its
 normal component should vanish there:
 \[
-\bfu \bfn = 0  \qquad \text{at the cylinder} ,
+\bfu \cdot \bfn = 0  \qquad \text{at the cylinder} ,
 \]
 where $\bfn$ is the normal vector at the surface of the cylinder,
 pointing outside. Given our choice of origin, this vector is the unit
@@ -120,8 +120,16 @@ Also, the velocity modulus is
 \[
 u = \sqrt{ u_r^2 + u_\theta^2}  ,
 \]
-which may be readily computed, see
-Fig. \ref{fig:potential_flow_past_cylinder_vel}, where it is shown
+which may be readily computed as
+\begin{equation*}
+u = u_0^2 
+\left[
+ 1 + \left( \frac{r}{R}\right)^4 -
+ 2 \left( \frac{r}{R}\right)^2 \cos(2\theta) ,
+\right]
+\end{equation*}
+where we have used $\cos(2\theta) =\cos^2(\theta)  - \sin^2(2\theta) $. In
+Fig. \ref{fig:potential_flow_past_cylinder_vel}  it is shown
 that the velocity has maximum values at point at the surface of the
 cylinder, at $\theta=\pm \pi/2$. At these surface, the radial velocity
 vanishes and the velocity is readily obtained:
@@ -134,32 +142,39 @@ so the maximum speed is twice the current velocity.
 \begin{figure}
   \centering
   \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_vel}
-  \caption{\label{fig:potential_flow_past_cylinder_vel}}
+  \caption{
+  	Potential flow past a cylinder. Velocity magnitude contours, $u/u_0$.
+  	\label{fig:potential_flow_past_cylinder_vel}}
 \end{figure}
 
 
 \begin{figure}
   \centering
   \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_vel_p}
-  \caption{}%\label{fig:potential_flow_past_cylinder_vel}}
+  \caption{	Potential flow past a cylinder. Velocity field, $\bfu/u_0$, and pressure field $ (p-p_0)/(\rho u_0^2)$. \label{fig:potential_flow_past_cylinder_vel_p}}
 \end{figure}
 
 
 The pressure field can be obtained from Bernoulli's principle:
-\[
-p= p_0 +  \frac{\rho}2  \left(u_0^2 - u^2 \right) ,
-\]
-and is plotted in
-Fig. \ref{fig:potential_flow_past_cylinder_phi_p}. This Figure also
-shows the potential field, to stress the difference between the
-two. The velocity field does not simply ``goes from high to low
-pressures'', except in those areas in which the two fields happen to
+%
+\begin{equation*}
+p = p_0 +  \frac{\rho}2  \left(u_0^2 - u^2 \right)  ,\\
+\end{equation*}
+so it basically resembles the velocity modulus above, but for
+a non-important constant shift, and multiplication by $-\rho/2$.
+Isobars are plotted in Fig. \ref{fig:potential_flow_past_cylinder_vel_p}, together
+with the velocity field. It is clear that the velocity field does not simply ``goes from high to low pressures''.
+To make this point clearer, Figure \ref{fig:potential_flow_past_cylinder_phi_p} 
+shows isobars and contours of the potential field, to stress the difference between the
+two, except in those areas in which the two fields happen to
 have similar gradients.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_phi_p}
-  \caption{\label{fig:potential_flow_past_cylinder_phi_p}}
+  \caption{	Potential flow past a cylinder. Pressure field $ (p-p_0)/(\rho u_0^2)$
+  and potential $\phi / (u_0 R)	$ .
+  	\label{fig:potential_flow_past_cylinder_phi_p}}
 \end{figure}
 
 The pressure field has a striking left-right symmetry. This of course
@@ -191,11 +206,24 @@ In case some mathematical justification is required, the pressure
 at the surface on the cylinder is
 \begin{equation}
   \label{eq:press_at_cyl_pot}
-  p= p_0 + \frac12  u_0^2 \left(1 -  4   \sin^2(\theta) \right) =
-  p_0 -\frac12 u_0^2 + u_0^2 \cos(2\theta)  .
+  p=   p_0  + \rho  u_0^2  \left[ \frac12 - \cos(2\theta)  \right] ,
 \end{equation}
-In the last equation, the identity
-$\sin^{2}\theta ={\frac {1-\cos(2\theta )}{2}}$ has been used.
+as plotted in Figure.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/potential_flow_past_cylinder_p_on_cyl}
+	\caption{Potential flow past a cylinder. Pressure on
+		cylinder surface $ (p-p_0)/(\rho u_0^2)$. Position $0$ corresponds to the
+	``stern'' of the cylinder, position $\pi$ to the ``bow''.   }
+	\label{fig:potential_flow_past_cylinder_p_on_cyl}
+\end{figure}
+
+
+
+%In the last equation, the identity
+%$\sin^{2}\theta ={\frac {1-\cos(2\theta )}{2}}$ has been used.
 
 Now, the drag is given by the net force in the $x$ direction. The
 (vector) force due to pressure is:
@@ -307,25 +335,51 @@ u_\theta &=   - \frac{\partial \psi}{\partial r} .
 
 \subsection{Streamlines around the cylinder}
 
-With tha latter expression for the stream function, and from our
+With the latter expression for the stream function, and from our
 results for the velocity field, the $\psi$ field is found to be
-\[
+
+\begin{equation}\label{eq:streamlines_past_cylinder}
 \psi = u_0 \left( r-{\frac {R^{2}}{r}}\right)\sin \theta .
-\]
+\end{equation}
 This method, of course, is working backwards from the known
 solution. It is also possible to derive the velocity field from the
 fact that $\psi$ satisfies Laplace's equation, plus the appropriate
 boundary conditions, in a manner very similar to what has been done
 for the potential (see Exercise \ref{ex:u_from_psi_cylinder}).
 
-The contour lines of this field are shown in
+The streamlines, which are the contour lines of this field are shown in
 Fig. \ref{fig:potential_flow_past_cylinder}.
+
+
+
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder}
-  \caption{\label{fig:potential_flow_past_cylinder}}
+  \includegraphics[width=0.6\linewidth]{figures/potential_flow_past_cylinder}
+  \caption{Potential flow past cylinder, streamlines
+  	as contour lines of function $\psi / (u_0 R)$.
+  	\label{fig:potential_flow_past_cylinder}}
 \end{figure}
+
+%It is simple and interesting to inquire the form of the streamlines if we were moving with the 
+%far-away velocity $\bfu_0$. This would entail subtracting the far-away term, $u_0 r \sin\theta$, %from the stream function \ref{eq:streamlines_past_cylinder}. The resulting streamlines
+%are shown in \ref{fig:potential_flow_past_cylinder_moving}. The cylinder is seen to
+%``push away'' the surrounding liquid which, nevertheless, comes around and ends up pushing
+%against it. This is a further indication of the d'Alembert paradox.
+
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.6\linewidth]{figures/potential_flow_past_cylinder_moving}
+%	\caption{%
+%		Potential flow past cylinder, streamlines as seen from the
+%		fluid,  contour lines of function $ ( \psi - u_0 r\sin\theta )  / (u_0 R)$.
+%	\label{fig:potential_flow_past_cylinder_moving}}
+%\end{figure}
+
+
+
+
+\subsection{Potential function, stream function and complex analysis}
 
 Interestingly, the $\psi$ field is also a solution of Laplace's
 equation, $\nabla^2 \psi=0$, as can be checked explicitely --- but
@@ -506,20 +560,24 @@ the wind at the cylinders is the vector sum of the true
 wind and the velocity of the ship. The effect of the latter
 is to bring the apparent wind closer to the fore.
 
-As an aside, if we move in the airplane, or on the ship, we will \emph{not}
-measure those velocity fields. The horizontal component should be avoided in
-every equation, and the resulting velocity looks different. This is
-shown in Fig. \ref{fig:potential_flow_past_cylinder_moving}, for the
+As an aside, if we move with the flow velocity $\bfu_0$,
+% the airplane, or on the ship,
+we will \emph{not} measure those velocity fields. The far-way term
+should be avoided in every equation, and the resulting velocity looks different.
+This is shown in Fig. \ref{fig:potential_flow_past_cylinder_moving}, for the
 flow past a cylinder with and without circulation. It is seen that,
-for an observoer moving with the cylinder, the surrounding fluid is
-pushed from the fore, and moved around towards the aft (where it
-pushes our vehicle, magically making our journey a costless one!).
+for an observer moving with the flow, a cylinder moving to the left
+pushes the surrounding fluid from the fore, which then moves around towards the aft
+(where it pushes our vehicle, magically making our journey a cost-less one!).
 
 \begin{figure}
   \centering
   \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_moving}
   \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_rotating_moving}
-  \caption{\label{fig:potential_flow_past_cylinder_moving}}
+  \caption{%
+  		Potential flow past cylinder, streamlines as seen from the
+  		fluid,  contour lines of function $ ( \psi - u_0 r\sin\theta )  / (u_0 R)$.
+  	\label{fig:potential_flow_past_cylinder_moving}}
 \end{figure}
 
 
