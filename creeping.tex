@@ -17,16 +17,42 @@ We may again cast the equation into reduced form, to get
 \]
 where $\bff^*= L/(\rho_0 u_0^2) \bff$. 
 
-As $\mathbf{Re}$ is very small, the equation will tend to
+This may be trivially written as
 \[
-0 = - \mathrm{Re} \nabla^* p^* + \nabla^2 \bfu^* + \mathrm{Re} \bff^*
+\mathrm{Re}\,
+\rho^* \frac{d\bfu^* }{dt^* }
+ = - \mathrm{Re}\, \nabla^* p^* + \nabla^2 \bfu^* + \mathrm{Re}\,\bff^*
 .
 \]
+As $\mathrm{Re}$ is very small, the left-hand side will vanish. However,
+there is no reason for the pressure and force terms on the right to
+do so. Indeed, the combination $\mathrm{Re}\, p^*$ may
+be written as $L / (\mu u_0 ) p $. That is, in this limit it is not the
+combination $\rho u_0^2$ which sets the pressure scale, but rather
+$\mu u_0 / L$, as seems fitting for a regime dominated by viscosity
+(recall Newton's law, \ref{eq:Newton_simple_law} ). The same goes for the
+term $\mathrm{Re}\,\bff^*$, in which the force is seen to be scaled
+by $\mu u_0 / L^2$.
+We may use double asterisks are used for this new reduced pressure and
+force:
+\begin{align*}
+   p^{**} &= \left( \frac{L  }{\mu u_0 }\right) p \\
+\bff^{**} &= \left( \frac{L^2}{\mu u_0 }\right) \bff 
+\end{align*}
+
+
+
+The equation will tend to
+\[
+0 = - \nabla^* p^{**} + \nabla^2 \bfu^* + \bff^{**} .
+\]
+
+
 All time derivatives are gone from the equation! The only time
-variation that is sometimes considered is the case in which $\bff^*$
+variation that is sometimes considered is the case in which $\bff$
 is a explicit function of time. In this case, the velocity field
 adapts instantaneously following the changes in external force. Coming
-from previous chapters, devoted to cases where intertial effects are
+from previous chapters, devoted to cases where inertial effects are
 not negligible, this may come as a surprise --- nevertheless, this is
 the correct description of a regime which is important in fields such
 as microfluidics and the biological physics of small systems (from
@@ -92,15 +118,15 @@ or
 \end{equation}
 where we again find the Reynolds number, given as
 \[
-  \mathbf{Re}=\frac{\rho L^3 f_0 }{\mu^2}.
+  \mathrm{Re}=\frac{\rho L^3 f_0 }{\mu^2}.
 \]
 This definition looks rather different from the standard one,
-$ \mathbf{Re}=\rho L u_0 / \mu$, but upon insertion of
+$ \mathrm{Re}=\rho L u_0 / \mu$, but upon insertion of
 the typical velocity both are seen to coincide.
 
 Notice that the reduced response time is given by the Reynolds number.
 This is a sort of ``double-reduced'' time, given by
-$t^{**}= t^* / \mathbf{Re}$. A high Reynolds number therefore means a
+$t^{**}= t^* / \mathrm{Re}$. A high Reynolds number therefore means a
 long reduced time to respond, while a low Reynolds one the response is
 very rapid, and the equilibrium solution is reached very fast. Also,
 the pressure is reduced as $p^*= p / ( f_0 L ) $.
@@ -262,8 +288,8 @@ as the motion of an infinite cylinder).
 
 \section{Creeping flow past a sphere}
 
-Unfortunately, the creeping flow past a cylinder cannot be solved, due
-to Stokes paradox. This may have been anticipated by dimensional
+Unfortunately, the creeping flow past a cylinder cannot be solved, a fact known
+as ``Stokes paradox''. This may have been anticipated by dimensional
 analysis. Indeed, the drag force on a sphere of radius $R$ is expected
 to be given by
 \begin{equation}
@@ -309,9 +335,10 @@ Eq. \ref{eq:curl_of_curl},
 \end{equation*}
 
 The first term is null due to incompressibility. Hence,
-\[
+%
+\begin{equation}\label{eq:creeping_p_vort}
 \mu \nabla \times \vort = - \nabla p.
-\]
+\end{equation}
 If we take the divergence of this expression we find that the pressure
 is harmonic:
 \[
@@ -487,14 +514,23 @@ The components of the velocity are readily found from
   \end{split}
 \end{equation*}
 
-The pressure is found from \ref{eq:Stokes_no_f}, and found to have a
-simple expression,
+The pressure may be found from \ref{eq:Stokes_no_f}, but
+it is easier to obtain it from the vorticity, using
+\ref{eq:creeping_p_vort}. The latter is may be computed,
+resulting in a rather simple expression:
+\[
+\vort = 
+- \frac32 \frac{\mu u_0 R \sin\theta }{r^2} \bfe_\phi .
+\]
+Taking its curl, and focusing on its $r$ component, the pressure
+field is obtained as
 \[
   p=p_0 - \frac32 \frac{\mu u_0}{R} \left(\frac{R}{r}\right)^2
   \cos\theta ,
 \]
-where $p_0$ is the pressure far from the sphere. Notice this pressure
-is harmonic, as discussed above. At the sphere surface,
+where $p_0$ is the pressure far from the sphere (of course, the
+$\phi$ component yields the same result, as can be checked). Notice
+this pressure field is harmonic, as discussed above. At the sphere surface,
 \[
   p(r=R) = p_0 - \frac32 \frac{\mu u_0}{R} \cos\theta,
 \]
@@ -519,7 +555,22 @@ dimensional considerations.
 
 However, this is the only part of the drag force due to pressure. There will be an
 additional shear drag, which may be calculated from the shear stress.
-The relevant component of the tensor is (see \cite{white1991viscous},
+The stress tensor has diagonal elements $\tau_{rr}$ and
+$\tau_{\theta\theta}$ that vanish at the sphere (except for
+the presure part). For example,
+\begin{equation*}
+\tau_{rr} = \mu u_0
+\left(
+\frac{3R}{2 r^2} -
+\frac{3R^3}{2 r^4}
+\right)
+\cos\theta - p
+\end{equation*}
+
+
+
+The relevant elements of the tensor are the two (equal) off-diagonal ones that
+correspond to shear (see \cite{white1991viscous},
 Eq. B17, p. 584):
 \begin{equation}
   \label{eq:tau_r_th}

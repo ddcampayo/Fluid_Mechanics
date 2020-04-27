@@ -7,7 +7,7 @@ Let us focus again on a fluid particle, as we did on Sections
 on how the particle itself distorts as a consequence of a velocity
 field.
 
-All possible distorsions of a particle will be a combination of the
+All possible distortions of a particle will be a combination of the
 following:
 \begin{enumerate}
  \item Translation
@@ -20,14 +20,14 @@ A translation is just the motion of its center of mass from one place
 to another, and for a small time is given simply by $\bfu dt$. The
 other motions are more complicated, since they involve spatial
 derivatives of the velocity. They must: for a constant velocity field
-translation is the only mode that occurs.
+translation is the only motion that occurs.
 
 \subsubsection{Rotation}
 
 We will refer to particle in figure \ref{fig:}, with vertices A, B,
 and C. Vertex D plays no role --- also, it is sufficient to focus on
 the face that is portrait, even if the shape of a particle is supposed
-to be a cube. It is straightfoward to include the other faces, as we
+to be a cube. It is straightforward to include the other faces, as we
 will see.
 
 After a small time $d$ the particle has distorted, so that the
@@ -84,15 +84,23 @@ where we have taken the origin to coincide with the position of A. The
 partial derivative is supposed to be evaluated at A, but in the limit
 as $dx$ goes to zero it is just ``at the particle''. Similarly, the opposing
 side is:
-\[ 
-d\ell = y(B')-y(B) \approx
-v_y(B) dt \approx
+%
+\begin{align*}
+d\ell & = y(B')-y(A') \approx
+y(B) + 
+v_y(B) dt
+-
+y(A) - 
+v_y(A) dt \\
+& =
 \left(
-v_y(A) +
-\frac{\partial v_y}{\partial x} dx
-\right ) dt = \frac{\partial v_y}{\partial x} dx dt ,
-\].
-
+v_y(B) - v_y(A) 
+\right) dt 
+ \approx
+\frac{\partial v_y}{\partial x} dx dt
+.
+\end{align*}
+%
 Therefore, to first order in $dt$:
 \[
 \alpha \approx \frac{\partial v_y}{\partial x}  dt .
@@ -134,16 +142,16 @@ origin:
 \[
 \bfr =
 \begin{cases}
-&x=r \cos(\omega_0 t) \\
-&y=r \sin(\omega_0 t) .
+x =r \cos(\omega_0 t) \\
+y =r \sin(\omega_0 t) .
 \end{cases}
 \]
 The velocity field is
 \[
 \bfu =
 \begin{cases}
-&u_x= -r \omega_0 \sin(\omega_0 t) = -\omega_0 y \\
-&u_y=  r \omega_0 \cos(\omega_0 t) =  \omega_0 x.
+u_x= -r \omega_0 \sin(\omega_0 t) = -\omega_0 y \\
+u_y=  r \omega_0 \cos(\omega_0 t) =  \omega_0 x.
 \end{cases}
 \]
 
@@ -179,7 +187,7 @@ Levi-Civita symbol.)
 Similarly to the definition of rotation, let us define the strain as
 half the difference between angle $\beta$ and $\alpha$:
 \[
-d\Omega_z = \frac12
+d\epsilon_{xy} = \frac12
 \left(
         \alpha - \beta
 \right) .
@@ -259,7 +267,7 @@ V'-V =  V \sum_j  \epsilon_{jj} dt .
 \]
 In the limit as $dt\to 0$,
 \[
-\frac{d V}{dt} = V \sum_j  \epsilon_{jj} dt .
+\frac{d V}{dt} = V \sum_j  \epsilon_{jj} .
 \]
 This clearly identifies the diagonal components of the strain tensor
 as those responsible for the relative rate of change of the volume.

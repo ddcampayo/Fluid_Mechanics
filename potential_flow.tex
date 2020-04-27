@@ -650,44 +650,60 @@ coordinates. In spherical coordinates,
 The vector potential may still be thought of as ``perpendicular'' to the other
 two coordinates. In spherical coordinates:
 \[
-  \bfA = A \bhe_\phi ,
+  \bfA = A(r,\theta)  \bhe_\phi ,
 \]
 i.e. it is purely azimuthal. It is also divergence-free, so that is
 satisfies Laplace's equation for a curl-free flow, by the argument
 exactly as in Eq. \ref{eq:if_no_curl_then_stream_harmonic}.
 
-However, the choice of $A=\psi$ does \emph{not} result in the correct
-stream-line behavior of Eq.  \ref{eq:stream_perp_to_u}.
+However, the simple choice of $A=\psi$ will \emph{not} result in the correct
+stream-line behavior of Eq.  \ref{eq:stream_perp_to_u}. We must recall
+that the contour lines of the streamline function correspond
+to the velocity stream lines, as encapsulated in
+the requirement $\bfu\cdot\nabla\psi =0$.
 
-In axisymmetric flow,
+By writing the gradient of $\psi$ in spherical coordinates,
 \[
-  \divu =
-  {1 \over r^2}{\partial \left( r^2 u_r \right) \over  \partial r} +
-  {1 \over r\sin\theta}{\partial \over \partial  \theta} \left( u_\theta\sin\theta \right) ,
+\nabla \psi =
+{\partial \psi \over  \partial r} \bhe_r +
+\frac1r {\partial \psi \over  \partial \theta} \bhe_\theta ,
 \]
-but an equivalent expression is
-\[
-  \divu =
-  {\partial \left( r^2 u_r \sin\theta \right) \over  \partial r} +
-  {\partial \left( r u_\theta\sin\theta \right)  \over \partial  \theta} .
-\]
-The curl in spherical coordinates is
+and the velocity as the curl of the vector potential in spherical coordinates,
 \begin{align}
-  u_r     &= \frac {1}{r\sin \theta }
-            \frac{ \partial  \left( A  \sin \theta \right) }{\partial \theta }  \\
-  u_\theta &= -\frac1{r} \frac{\partial (rA) }{\partial r} .
+\label{eq:u_from_A_spherical}
+u_r = (\nabla\times A)_r    
+&=  \frac {1}{r\sin \theta }
+\frac{ \partial  \left( A  \sin \theta \right) }{\partial \theta }  \\
+u_\theta = (\nabla\times A)_\theta
+&= - \frac1{r} \frac{\partial (rA) }{\partial r} ,
 \end{align}
-Therefore,
-\[
-  \divu =
-  {\partial\over\partial r} \left( r
-      \frac{ \partial  \left( A  \sin \theta \right) }{\partial \theta }
-    \right)  -
-  {\partial \over \partial  \theta}  \left(
-      \frac{\partial (rA) }{\partial r} 
-      \sin\theta \right)  .
-\]
-Continuity is therefore trivially satisfied with the choice
+the scalar product of both is
+\begin{align*}
+\bfu\cdot\nabla\psi  =
+& \frac{1}{r\sin \theta }
+\frac{ \partial  \left( A  \sin \theta \right) }{\partial \theta }
+{\partial \psi \over  \partial r} - \\
+& -
+\frac1{r^2} \frac{\partial (rA) }{\partial r}
+{\partial \psi \over  \partial \theta} .
+\end{align*}
+%
+%In axisymmetric flow,
+%\[
+%  \divu =
+%  {1 \over r^2}{\partial \left( r^2 u_r \right) \over  \partial r} +
+%  {1 \over r\sin\theta}{\partial \over \partial  \theta} \left( u_\theta\sin\theta %\right) ,
+%\]
+%but an equivalent expression is
+%\[
+%  \divu =
+%  \frac{1}{r^2 \sin\theta}
+%  \left[
+%  {\partial \left( r^2 u_r \sin\theta \right) \over  \partial r} +
+%  {\partial \left( r u_\theta\sin\theta \right)  \over \partial  \theta} 
+%  \right].
+%\]
+This is satisfied with the choice
 \begin{equation}
   \label{eq:Stokes_stream_spherical}
   \bfA = \frac{\psi(r,\theta)}{r \sin\theta } \bhe_\phi .    
@@ -697,7 +713,9 @@ This $\psi$ is called ``Stokes stream function''\index{Stokes stream
   function}, since there are differences with the 2D stream function
   (traditionally called ``Lagrange stream function''.)
 
-Appling the curl expression, we find
+The curl expressions \ref{eq:u_from_A_spherical} in terms of
+$\bfA$ translate to more symmetrical versions in terms of this
+$\psi$:
 \begin{equation}
   \label{eq:u_from_psi_spherical}
   \begin{split}
@@ -706,7 +724,7 @@ Appling the curl expression, we find
   \end{split}
 \end{equation}
 %
-There may be an additional azimuthal $u_\phi$ velocity component
+Note that there may be an additional azimuthal $u_\phi$ velocity component
 which cannot be obtained from $\psi$ (see Ex. \ref{ex:azimuthal_velocity}).
 
 
@@ -767,15 +785,33 @@ sphere are in Fig. \ref{fig:potential_streamlines_moving_sphere}.
 \subsection{Exercises}
 
 \begin{itemize}
-\item \label{ex:u_from_psi_cylinder} Derive the velocity field for
-  potential flow around a cylinder from $\psi$, solving Laplace
-  equation for this field, plus the appropriate boundary conditions.
+\item \label{ex:u_from_psi_cylinder} 
+	The fact that $\nabla\cdot\bfu=0$ implies $\bfu=\nabla\times A$. If
+	the flow is, moreover, irrotational, $\nabla\times\bfu = 0$, then
+	the vector potential satisfies Laplace's equation, $\nabla^2\bfA=0$,
+	given identity \ref{eq:curl_of_curl}. Notice that $\bfA$ is divergence-free
+	by construction, since it depends on two spherical coordinates,
+	$r$ and $\theta$, while pointing in the other one, $\phi$.
+	Solving the Laplace  equation for this field, taking into account the
+	appropriate boundary conditions.
+%   NO!
+%	We have also supposed that
+%	$\nabla\cdot\bfA =0$, which in this case is a \emph{choice}, known
+%	as ``gauge'' in electromagnetism. Indeed, any addition%
+%	$\bfA \to \bfA + \nabla\c$ 
+
+%Derive the velocity field for
+%  potential flow around a cylinder from $\psi$, solving the Laplace
+%  equation for this field, plus the appropriate boundary conditions.
   
 \item \label{ex:u_from_psi_sphere} Derive the velocity field for
   potential flow around a sphere from $\psi$, solving Laplace equation
   for this field with the appropriate boundary conditions. Use the
-  fact that Laplace equation $\nabla^2 \bfA = 0$ may be written for
-  $\psi$ using this identity:
+  the following identity for the Laplacian:
+%  
+%  fact that Laplace equation $\nabla^2 \bfA = 0$ translates
+%  to may be written for
+%  $\psi$ using this identity:
   \begin{equation}
     \label{eq:psi_eq_from_A}
     \nabla^2 \left(  \frac{\psi(r,\theta)}{r \sin\theta } \bhe_\phi \right) =
@@ -810,17 +846,15 @@ sphere are in Fig. \ref{fig:potential_streamlines_moving_sphere}.
   \end{equation}
   
 
-\item \label{ex:azimuthal_velocity}) Prove that the velocity may
+\item \label{ex:azimuthal_velocity} Prove that the velocity may
   indeed have an azimuthal component for axisymmetric flow. Begin by
   writing down the expressions for the divergence and the curl in
   spherical coordinates, and neglecting all variation on the azimuthal
   angle, allowing for the possibility that the vector potential may
   have all three components, not just than $A_\phi$.  This result in a
   $u_\phi$ velocity component that can have basically any expression
-  as far as continuity equation is concerned, since this is always
-  satisfied
-
-
+  as far as continuity is concerned, since it will always be
+  satisfied.
 
 
 \end{itemize}

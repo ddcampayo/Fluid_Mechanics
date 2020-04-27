@@ -57,13 +57,13 @@ three walls must be considered:
 %This time, the sign convention is positive.
 
 To get the total horizontal force due to stresses, the two contributions
-must be substracted:
-\[
-dF_x =
-\left( \tau_{xx}(x+dx,y   ,z   ) - \tau_{xx} \right) dy\, dz +
-\left( \tau_{yx}(x+dx,y   ,z   ) - \tau_{yx} \right)  dx\, dz +
-\left( \tau_{zx}(x+dx,y   ,z   ) - \tau_{zx} \right) dx\, dy .
-\]
+must be subtracted:
+\begin{align*}
+dF_x = 
+&\left( \tau_{xx}(x+dx,y   ,z   ) - \tau_{xx} \right) dy\, dz + \\
+&\left( \tau_{yx}(x   ,y+dy,z   ) - \tau_{yx} \right)  dx\, dz + \\
+&\left( \tau_{zx}(x   ,y   ,z +dz  ) - \tau_{zx} \right) dx\, dy 
+\end{align*}.
 Notice that the substraction is in order: if the stresses are the same
 on those faces, the resultant force will then be zero (those forces
 may exert a net torque, but not a force).  In general, they will be
@@ -95,7 +95,7 @@ f_x  =
 
 With integer notation for Cartesian coordinates:
 \[
- df_1  =
+ f_1  =
 %-\frac{\partial p      }{\partial x_1}
  %+
  \sum_{j=1,2,3}
@@ -105,7 +105,7 @@ With integer notation for Cartesian coordinates:
 
 In general, for any component we will have:
 \[
- df_i  =
+ f_i  =
 %-\frac{\partial p      }{\partial x_i}
  %+
  \sum_{j=1,2,3}
@@ -120,7 +120,7 @@ divergence of a tensor:
 \]
  which results in a vector:
 \[
- d\bff  =
+ \bff  =
 %-\nabla p
  %+
  \nabla \cdot \tau .
@@ -155,9 +155,9 @@ confined between two planes. One of them moves sideways with a certain
 speed $u_0$, while the other is kept fixed. After a certain transient,
 some force is needed in order to keep this shearing. The simplest
 expression is
-\[
+\begin{equation}\label{eq:Newton_simple_law}
 F= \mu A \frac{u_0}{L} .
-\]
+\end{equation}
 The force is proportional to the area and to the velocity difference
 between the planes. It is also inversely proportional to their
 separation, $L$ (this fact being the least obvious). Finally, a
@@ -197,7 +197,7 @@ It is easy to find the two eigenvalues and associated eigenvectors of
 this matrix:
 \begin{align*}
   \lambda_1=  u_0/(2L) \qquad &\bfv_1=(1/\sqrt{2}) \begin{pmatrix} 1 &  1 \end{pmatrix}\tran \\
-  \lambda_1= -u_0/(2L) \qquad &\bfv_2=(1/\sqrt{2})  \begin{pmatrix} 1 &  -1 \end{pmatrix}\tran \\
+  \lambda_2= -u_0/(2L) \qquad &\bfv_2=(1/\sqrt{2})  \begin{pmatrix} 1 &  -1 \end{pmatrix}\tran \\
 \end{align*}
 Notice the first eigenvalue correnspond to a dilation along the $x=y$
 diagonal, while the second is a compression along the $x=-y$ one.
@@ -247,7 +247,7 @@ tensor, a quantity which is invariant under change of basis. We can
 now write:
 \[
 \tilde{\tau}_{xx}=
-- p + C_2 \nabla\cdot \bfu 
+- p + C_2 \nabla\cdot \bfu +
 K \tilde{\epsilon}_{xx} .
 \]
 
