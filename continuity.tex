@@ -1,24 +1,37 @@
-\section{The concept of particle}
+\section{The concept of small regions}
 
-In these notes, we will be dealing with ``particles'' \index{particle}
+In these notes, we will be dealing with regions that are ''infinitesimally small''
 quite a lot. This is because fluid dynamics are part of what is called
 continuum mechanics, in which bodies are supposed to be continuous in
 a mathematical sense. By this me mean, we can pieces of any material
-as small as we want. 
+as small as we want, so that we may use the mathematical language of calculus.
+Nevertheless, these regions are large enough so that may be considered
+continuous, and have defined macroscopic physical parameters: density, mass,
+volume, temperature, and so on.
 
+This is an excellent approximation, most of the time, since the number of molecules
+involved in a flow is usually so large, that even for a very small region of it, there
+are very many molecules. An interesting exercise is to go through an order-of-magnitude
+calculation of these numbers.
+
+In these notes, we will consider two sort of regions: volume parcels\index{parcel}, which are very
+small regions that are fixed in space, and particles\index{particle}, which
+are small regions of the moving fluid (thus, in general, changing their positions with time).
+A parcel is related to an ``Eulerian'' point of view, in which a flow moves over
+fixed coordinates --- particles are related to the complementary, ``Lagrangian,'' view of the particle as moving with the flow, as will be discussed in \ref{sec:continuity2}.
 
 
 
 \section{The continuity equation}
 \label{sec:continuity}
 
-Let us consider a particle that is cubic in shape, with one of their
+Let us consider a fixed that is cubic in shape, with one of their
 corners at the origin and the three incident edges aligned with the
 Cartesian coordinates. This choice is completely general, given our
-freedom in defining a particle (as long as we make it infinitesimally
+freedom in defining a region (as long as we make it infinitesimally
 small at the end), and in origin and axes for coordinates.
 
-There may be a mass influx though the left face of the particle due
+There may be a mass influx though the left face of the parcel due
 to advection (i.e. the existence of a velocity field). For a small
 time $dt$, it will be given by
 \[
@@ -28,7 +41,7 @@ time $dt$, it will be given by
 Indeed, all the fluid material that a distance $\delta= u_x \, dt$
 away, or closer, will pass through the surface. The whole mass influx
 is therefore $\rho$ times $\delta dA$, where $dA=dy dz$ is the cross-
-sectional area. (Since the particle is cubic, $dx=dy=dz$, but it is
+sectional area. (Since the parcel is cubic, $dx=dy=dz$, but it is
 clearer to use different symbols.)
 
 At the right wall, the mass change will be negative (if $v_x$ is positive
@@ -66,18 +79,16 @@ Or,
 -\frac{\partial  \rho  u_x}{\partial x}
 \]
 
-Since $dm/V=\rho$, the density of the particle, we may write, in the
+Since $dm/V=\rho$, the density of the parcel, and $V$ does not change with time, since the parcel does not move, we may write, in the
 limit of $dt\to 0$,
 \[
 \left. \frac{\partial \rho}{\partial t} \right|_x =
 -\frac{\partial  \rho  u_x}{\partial x} .
 \]
 
-Notice the usage of the $\partial$ symbol: since the particle is
+Notice the usage of the $\partial$ symbol: since the parcel is
 fixed, with matter entering and leaving, this is the correct
-symbol. This is an ``Eulerian'' point of view --- a complementary,
-``Lagrangian'' view of the particle as moving with the flow will be
-discussed in \ref{sec:continuity2}.
+symbol.
 
 In order to get the total rate of change in density, we have to
 add up the other two directions. In doing so, we obtain
@@ -153,10 +164,10 @@ constant, even though its reverse is true. Indeed, in this case:
 \frac{\partial \rho }{\partial t} +   \bfu \cdot \nabla \rho = 0 .
 \]
 
-As will be discussed in \ref{sec:continuity2}, this means that the
+As will be discussed in Section \ref{sec:continuity2}, this means that the
 total (or ``convective'') time derivative of $\rho$ is zero. This
 implies that $\rho$ is constant at every moving particle, or along
 streamlines.
 
 In order to make the distiction clear, the term ``divergence-free'' (or
-``divergence-less'') is sometimes used.\index{divergence-free}
+``divergence-less'', or ``solenoidal'') is sometimes used.\index{divergence-free}
