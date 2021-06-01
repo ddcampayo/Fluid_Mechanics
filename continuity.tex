@@ -115,25 +115,41 @@ than differentials.
 
 By definition, mass is the integral of the density:
 \[
-d m = \int_V \rho d\bfr
+m = \int_V \rho d\bfr \quad \Rightarrow \quad \frac{\partial m}{\partial t} = \int_V \frac{\partial \rho}{\partial t}  d\bfr,
 \]
-However, a mass flux $\rho\bfu$ may cause changes in it:
+where the latter time derivative may be taken since $V$ is a fixed parcel, that does not change with time.
+
+A net mass flux $\rho\bfu$  entering or leaving parcel $V$ may cause changes in it:
 \[
-d m = - \oint_{\partial V} \rho \bfu \cdot \bfn dS ,
+\frac{\partial m}{\partial t} =
+- \oint_{\partial V} \rho \bfu \cdot \bfn dS ,
 \]
-where $\partial V$ is the surface around volume $V$. The minus sign
+where $\partial V$ is the surface enclosing volume $V$. The minus sign
 appears because the surface normal, $\bfn$ points from the inside
 toward the outside of the surface. We may transform the latter
 integral into a volume integral from Gauss' theorem:
 \[
-d m = - \int_V \nabla\cdot (\rho \bfu ) dV .
+\frac{\partial m}{\partial t} =
+- \int_V \nabla\cdot (\rho \bfu ) dV .
 \]
-Equating both changes,
+Equating both mass change rates,
 \[
 \int_V \rho d\bfr = - \int_V \nabla\cdot (\rho \bfu ) dV .
 \]
 Since the identity is valid for any volume $V$, the integrands may
 be equal. This fact leads to the same expression as before.
+
+In the derivations above, no mention has been made to the nature of
+the $\rho$ field. Therefore, the results are general for any field $A$,
+corresponding to a physical quantity that is conserved while carried
+by a velocity field. In general,
+the resulting equation is called the convection\index{convection}, or advection\index{advection},
+equation:
+\begin{equation}
+	\label{eq:convection}
+	\frac{\partial A }{\partial t} +  \nabla \cdot (A \bfu ) = 0 .
+\end{equation}
+
 
 
 \subsection{Incompressibility}
@@ -160,14 +176,15 @@ constant, even though its reverse is true. Indeed, in this case:
 + \rho \underbrace{\nabla \cdot \bfu}_{=0} = 0
 \]
 
-\[
-\frac{\partial \rho }{\partial t} +   \bfu \cdot \nabla \rho = 0 .
-\]
+\begin{equation}\label{eq:continuity_incomp}
+	\frac{\partial \rho }{\partial t} +   \bfu \cdot \nabla \rho = 0 .
+\end{equation}
 
 As will be discussed in Section \ref{sec:continuity2}, this means that the
 total (or ``convective'') time derivative of $\rho$ is zero. This
 implies that $\rho$ is constant at every moving particle, or along
-streamlines.
+streamlines. Again, this would apply to any field $A$ of a conserved
+quantity.
 
 In order to make the distiction clear, the term ``divergence-free'' (or
 ``divergence-less'', or ``solenoidal'') is sometimes used.\index{divergence-free}
