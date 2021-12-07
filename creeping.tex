@@ -68,7 +68,7 @@ discussed in the next section.
 
 
 
-\subsection{Kolmogorov flow}
+\section{Kolmogorov flow}
 
 In order to get an idea of the features of the flow (typical speed,
 time scale, Reynolds number), we may gain some insight from the
@@ -123,7 +123,7 @@ where we again find the Reynolds number, given as
 \]
 This definition looks rather different from the standard one,
 $ \mathrm{Re}=\rho L u_0 / \mu$, but upon insertion of
-the typical velocity both are seen to coincide.
+the typical velocity, \ref{eq:reduced_u0}, both are seen to coincide.
 
 Notice that the reduced response time is given by the Reynolds number.
 This is a sort of ``double-reduced'' time, given by
@@ -146,16 +146,25 @@ value. Therefore, in reduced units (dropping the askterisks for
 clarity),
 \[
   \mathrm{Re} \frac{\partial u_x}{\partial t} =
-  \frac{\partial  u_x}{\partial y^2} u + \cos(2\pi y) .
+  \frac{\partial^2  u_x}{\partial y^2}  + \cos(2\pi y) .
 \]
 
-The solution is easily found:
+The solution is easily found. First, the stationary state corresponds
+to setting the time derivative to zero. In reduced units,
+\[
+\frac{\partial^2  u_x}{\partial y^2}  + \cos(2\pi y) = 0.
+\]
+
+The solution is then $u=\cos(2\pi y) /(2\pi)^2 $: a velocity profile
+that is proportional to the applied force. Trying a solution that
+includes this (homogeneous) solution, plus a (non-homogeneous) time-dependent
+term, we arrive at
 \[
   u_x = \frac{1}{(2\pi)^2} \left( 1-e^{ - (2\pi)^2 t/Re } \right)
   \cos(2\pi y) .
 \]
 
-Putting the scales back in, we find
+Going back to dimensioned quantites, we may write
 \[
   u = \frac{ f_0 L^2 }{(2\pi)^2 \mu} \left( 1-e^{- (2\pi)^2 \mu t /
       (\rho L^2) } \right) \cos(2\pi y/L) ,
@@ -164,7 +173,7 @@ which indeed can be checked to be the solution to the original
 Equation \ref{eq:Kolmo_orig}.
 
 
-\section{General solution}
+\section{General solution in the overdamped limit}
 
 In Equation \ref{eq:Navier-Stokes_nondim2}, we may disregard
 completely the left hand side if the Reynolds number is very low. This
