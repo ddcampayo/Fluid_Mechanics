@@ -16,13 +16,14 @@ The Fourier components can be obtained by the direct Fourier transform:
 	\phi_\bfq =                    \int d\bfr \, \phi(\bfr) e^{-i\bfq\cdot\bfr}  
 \end{equation}
 
-In the incompressible Navier-Stokes equation \eqref{eq:NS_usual}, the viscous and force terms are trivial in Fourier space, giving
+The incompressible Navier-Stokes equation \eqref{eq:NS_usual} read in Fourier space:
 \begin{equation*}
 	\frac{\partial}{\partial_t} \mathbf{u} (\mathbf{k}) + \mathbf{a}(\mathbf{k}) =
 	-[\nabla p ](\mathbf{k}) - \nu k^2 \mathbf{u}(\mathbf{k}) + \mathbf{f}(\mathbf{k}) ,
 \end{equation*}
-where $\mathbf{a}$ stands for the convective acceleration, $ \mathbf{a} := (\mathbf{u}\cdot\nabla)\mathbf{u} $. Ignoring, and the pressure, the Fourier modes are decoupled. For example, starting from a null velocity field, the solution is
-readily obtained as
+where $\mathbf{a}$ stands for the convective acceleration, $ \mathbf{a} := (\mathbf{u}\cdot\nabla)\mathbf{u} $. These terms are non-trivial, unlike the viscous and force terms.
+
+If we assume the pressure and acceleration contributions vanish, the Fourier modes decouple. For example, starting from a null velocity field, the solution is readily obtained as
 \begin{equation} \label{eq:Fourier_simple_solution}
 	\mathbf{u} (\mathbf{k}, t ) =
 	\frac{\mathbf{f}(\mathbf{k})}{\nu k^2}
@@ -31,6 +32,12 @@ readily obtained as
 
 This shows that the final velocity is given by $\mathbf{f}(\mathbf{k}) / \nu k^2 \sim  \mathbf{f}(\mathbf{k}) \lambda^2 / \nu $, so that longer wavelengths are more affected by a force.
 Also, the typical relaxation time of a mode is given by $\tau= 1/( \nu k^2 ) \sim \lambda^2 / \nu$, so longer wavelengths take longer to reach equilibrium.
+
+Inconpressibility is also quite simple in Fourier terms:
+\begin{equation*}
+	\mathbf{k} \cdot \mathbf{u}(\mathbf{k}) = 0.
+\end{equation*}
+
 
 
 
@@ -53,7 +60,7 @@ It is clearer perhaps in Fourier component form:
 \[
 a_i = 
 \sum_\mathbf{p} u_j(\mathbf{p} )  e^{\mathi \mathbf{p}\cdot\mathbf{r}} 
-\partial_j
+\frac{\partial}{\partial x_j}
 \sum_\mathbf{q} u_i(\mathbf{q} ) e^{\mathi \mathbf{q}\cdot\mathbf{r}} ,
 \]
 where Einstein's summation convention is used. Also, $\mathi$ is used
