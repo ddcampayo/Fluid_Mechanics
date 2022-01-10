@@ -1,0 +1,247 @@
+\section{Fourier space}
+
+In Fourier space all the fields are given as \index{Fourier transform} of their Fourier components:
+\begin{equation}
+	\label{eq:F_q_to_r}
+	\phi(\bfr) = \frac 1{(2\pi)^d}  \int d\bfq \, \phi(\bfq) e^{ i\bfq\cdot\bfr} .
+\end{equation}
+In some settings, this integral may be replaced by a sum over integer-labeled Fourier components
+(and is therefore termed a Fourier series.)
+Notice that in this section Fourier components are indicated by their arguments taking a wave-vector. This is not too elegant, and a tilde (``wiggly'')
+hat should be used for them.
+
+The Fourier components can be obtained by the direct Fourier transform:
+\begin{equation}
+	\label{eq:F_r_to_q}
+	\phi_\bfq =                    \int d\bfr \, \phi(\bfr) e^{-i\bfq\cdot\bfr}  
+\end{equation}
+
+In the incompressible Navier-Stokes equation \eqref{eq:NS_usual}, the viscous and force terms are trivial in Fourier space, giving
+\begin{equation*}
+	\frac{\partial}{\partial_t} \mathbf{u} (\mathbf{k}) + \mathbf{a}(\mathbf{k}) =
+	-[\nabla p ](\mathbf{k}) - \nu k^2 \mathbf{u}(\mathbf{k}) + \mathbf{f}(\mathbf{k}) ,
+\end{equation*}
+where $\mathbf{a}$ stands for the convective acceleration, $ \mathbf{a} := (\mathbf{u}\cdot\nabla)\mathbf{u} $. Ignoring, and the pressure, the Fourier modes are decoupled. For example, starting from a null velocity field, the solution is
+readily obtained as
+\begin{equation} \label{eq:Fourier_simple_solution}
+	\mathbf{u} (\mathbf{k}, t ) =
+	\frac{\mathbf{f}(\mathbf{k})}{\nu k^2}
+	\left[ 1-  \exp \left( - \nu k^2 t  \right)   \right]  .
+\end{equation}
+
+This shows that the final velocity is given by $\mathbf{f}(\mathbf{k}) / \nu k^2 \sim  \mathbf{f}(\mathbf{k}) \lambda^2 / \nu $, so that longer wavelengths are more affected by a force.
+Also, the typical relaxation time of a mode is given by $\tau= 1/( \nu k^2 ) \sim \lambda^2 / \nu$, so longer wavelengths take longer to reach equilibrium.
+
+
+
+\subsection{Convective acceleration in Fourier space}
+
+From its definition \(
+\mathbf{a} := (\mathbf{u}\cdot\nabla)\mathbf{u} ,
+\)
+%
+\[
+\mathbf{a} = 
+\left(
+\sum_\mathbf{p} \mathbf{u}(\mathbf{p} ) e^{\mathi \mathbf{p}\cdot\mathbf{r}} 
+\cdot\nabla
+\right)
+\sum_\mathbf{q} \mathbf{u}(\mathbf{q} ) e^{\mathi \mathbf{q}\cdot\mathbf{r}} .
+\]
+
+It is clearer perhaps in Fourier component form:
+\[
+a_i = 
+\sum_\mathbf{p} u_j(\mathbf{p} )  e^{\mathi \mathbf{p}\cdot\mathbf{r}} 
+\partial_j
+\sum_\mathbf{q} u_i(\mathbf{q} ) e^{\mathi \mathbf{q}\cdot\mathbf{r}} ,
+\]
+where Einstein's summation convention is used. Also, $\mathi$ is used
+for the imaginary unit, since the letter $i$ is used as an index for
+Cartesian components. Then,
+\[
+a_i = \mathi
+\sum_{ \mathbf{p}, \mathbf{q}}
+u_j(\mathbf{p} )
+q_j
+u_i(\mathbf{q} )
+e^{\mathi ( \mathbf{p}  +  \mathbf{q} ) \cdot\mathbf{r}} ,
+\]
+or
+\[
+\mathbf{a} = \mathi
+\sum_{ \mathbf{p}, \mathbf{q}}
+(\mathbf{u}(\mathbf{p} )
+\cdot
+\mathbf{q})
+\mathbf{u}(\mathbf{q} )
+e^{\mathi ( \mathbf{p}  +  \mathbf{q} ) \cdot\mathbf{r}} .
+\]
+
+The Fourier components will be given by \eqref{eq:F_q_to_r}, and by orthogonality of the
+complex exponential functions:
+\[
+\mathbf{a}(\mathbf{k})= \mathi
+\sum_{ \mathbf{p} + \mathbf{q} = \mathbf{k}}
+(\mathbf{u}(\mathbf{p} )
+\cdot
+\mathbf{q})
+\mathbf{u}(\mathbf{q} ) .
+\]
+This is a \emph{single} sum: for a given $\mathbf{k}$ we sum over all $\mathbf{p}$,
+with $\mathbf{q}$ fixed by the sum rule $\mathbf{p} + \mathbf{q} = \mathbf{k}$.
+
+Clearly, the convective acceleration is responsible for the coupling of the different Fourier modes.
+
+
+Also, since $\mathbf{p} \cdot \mathbf{u}(\mathbf{p}) = 0$ by incompressibility, we
+may change $\mathbf{q}$ to $\mathbf{q} + \mathbf{p} = \mathbf{k} $,
+so
+\[
+\mathbf{a}(\mathbf{k})=\mathi
+\sum_{ \mathbf{p} + \mathbf{q} = \mathbf{k}}
+(\mathbf{u}(\mathbf{p} )
+\cdot
+\mathbf{k})
+\mathbf{u}(\mathbf{q} ).
+\]
+The term $\mathbf{k}$ can be taken out of the summation, but it is awkward in vector form. Not so in components:
+\[
+a_i(\mathbf{k})=\mathi
+k_j
+\sum_{ \mathbf{p} + \mathbf{q} = \mathbf{k}}
+u_j (\mathbf{p} )
+u_i(\mathbf{q} ) .
+\]
+
+
+
+\subsection{Pressure in Fourier space}
+
+Taking the divergence of the Navier-Stokes equation, \eqref{eq:NS_usual}, and applying incompressibility,
+\begin{equation}\label{eq:Poisson}
+	\nabla\cdot \mathbf{a} = -\nabla^2 p + \nabla\cdot \mathbf{f} ,
+\end{equation}
+which is the \index{Poisson pressure equation} (PPE).
+In principle, this equation can be solved in real space, obtaining the pressure from it. Introducing its gradient back into \eqref{eq:NS_usual} the Navier-Stokes equation this is a possible way to solve the problem. (Indeed, this is the procedure in some computational algorithms.)
+
+In Fourier space,
+\[
+-k^2 p (\mathbf{k} ) = - \mathi \mathbf{k} \cdot \mathbf{a}(\mathbf{k}) + \mathi \mathbf{k} \cdot \mathbf{f}(\mathbf{k}) ,
+\]
+or
+\[
+p (\mathbf{k} ) =  \frac{\mathi}{k^2} \mathbf{k} \cdot \mathbf{a}(\mathbf{k})
+- \mathi \frac{\mathbf{k} \cdot \mathbf{f}(\mathbf{k})}{k^2}  .
+\]
+
+
+Hence,
+\begin{align*}
+	p (\mathbf{k} ) & = -\frac{1}{k^2} 
+	\sum_{ \mathbf{p} + \mathbf{q} = \mathbf{k}}
+	(\mathbf{u}(\mathbf{p} )
+	\cdot
+	\mathbf{k}
+	)
+	(
+	\mathbf{u}(\mathbf{q} ) \cdot
+	\mathbf{k}
+	) 
+	- \mathi
+	\frac{\mathbf{k} \cdot \mathbf{f}(\mathbf{k}) }{k^2}     
+	%\\
+	%&= -\frac{1}{k^2} 
+	%\left[
+	%\sum_{ \mathbf{p} + \mathbf{q} = \mathbf{k}}
+	%(\mathbf{u}(\mathbf{p} )
+	%\cdot
+	%\mathbf{k}
+	%)
+	%(
+	%\mathbf{u}(\mathbf{q} ) \cdot
+	%\mathbf{k}
+	%) 
+	%+ \mathi
+	%(\mathbf{k} \cdot \mathbf{f}(\mathbf{k}) )
+	%\right]
+\end{align*}
+
+
+Or, in components,
+\[
+p (\mathbf{k} ) = -\frac{k_j k_m}{k^2}
+\sum_{ \mathbf{p} + \mathbf{q} = \mathbf{k}}
+u_j(\mathbf{p} )
+u_m(\mathbf{q} )
+- \mathi
+\frac{k_j f_j(\mathbf{k}) }{k^2} .
+\]
+
+
+The NS equation features the pressure gradient, which will be given in Fourier space as:
+\[
+[\nabla p ](\mathbf{k}) = \mathi \mathbf{k} p(\mathbf{k}) .
+\]
+
+I.e.
+\[[\nabla p ](\mathbf{k}) =
+-\mathi \frac{\mathbf{k} }{k^2} 
+\sum_{ \mathbf{p} + \mathbf{q} = \mathbf{k}}
+(\mathbf{u}(\mathbf{p} )
+\cdot
+\mathbf{k}
+)
+(
+\mathbf{u}(\mathbf{q} ) \cdot
+\mathbf{k}
+) 
++ \mathbf{k}
+\frac{\mathbf{k} \cdot \mathbf{f}(\mathbf{k})  }{k^2} 
+\]
+
+
+
+
+\subsection{Assembly of the final equation}
+
+
+Recalling our previous expressions for the convective acceleration and pressure,
+\begin{equation*}
+	\partial_t \mathbf{u} (\mathbf{k})  =
+	- \mathi  
+	\sum_{ \mathbf{p} + \mathbf{q} = \mathbf{k}}
+	(\mathbf{u}(\mathbf{p} ) \cdot \mathbf{k} )
+	\left[ 
+	1 - \mathbf{k} \frac{\mathbf{k} }{k^2} \cdot 
+	\right]
+	\mathbf{u}(\mathbf{q} )
+	%
+	- \nu k^2 \mathbf{u}(\mathbf{k}) +
+	\left[ 
+	1 - \mathbf{k} \frac{\mathbf{k} }{k^2} \cdot 
+	\right]
+	\mathbf{f}(\mathbf{k}) .
+\end{equation*}
+
+In component form,
+\begin{equation*}
+	\partial_t u_i (\mathbf{k})  =
+	- \mathi  k_m
+	\left[ 
+	\delta_{ij} - \frac{k_i k_j  }{k^2}
+	\right]
+	\sum_{ \mathbf{p} + \mathbf{q} = \mathbf{k}}
+	u_j(\mathbf{p} ) u_m(\mathbf{p} ) 
+	- \nu k^2 u_i(\mathbf{k}) +
+	\left[ 
+	\delta_{ij} - \frac{k_i k_j }{k^2} 
+	\right]
+	f_j(\mathbf{k}) .
+\end{equation*}
+
+Notice the appearance of the operator \(  \delta_{ij} - k_i k_j  / k^2 \) in both the
+term coupling the velocities in different modes, and in the external force. In both cases,
+\(  \delta_{ij} \) represents a straight correspondence, while \(  - k_i k_j  / k^2 \)
+is a term brought about by the pressure.
+

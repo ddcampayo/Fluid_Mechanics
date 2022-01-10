@@ -172,6 +172,12 @@ Going back to dimensioned quantites, we may write
 which indeed can be checked to be the solution to the original
 Equation \ref{eq:Kolmo_orig}.
 
+It a simple exercise to arrive to this solution from the more general 
+on of \eqref{eq:Fourier_simple_solution}, where pressure and convective acceleration
+were assumed to be zero. See \cite{chatterjee_kolmogorov_2020} for an application of Fourier
+techniques to the instability of this sort of flow. The idea is to incorporate a minimum number
+of modes so that the solution may become unstable.
+
 
 \section{General solution in the overdamped limit}
 
@@ -187,15 +193,9 @@ As mentioned, this is a \emph{linear} equation for the velocity.  We
 may get a general solution to the equation that gives us the velocity
 field for any external field, by using Fourier techniques.
 
-In Fourier space all the fields are given as \index{Fourier transform}
-\begin{align}
-  \label{eq:F_r_to_q}
-  \phi_\bfq &=                    \int d\bfr \, \phi(\bfr) e^{-i\bfq\cdot\bfr}  \\
-  \label{eq:F_q_to_r}
-  \phi(\bfr) &= \frac 1{(2\pi)^d}  \int d\bfq \, \phi_\bfq e^{ i\bfq\cdot\bfr} .
-\end{align}
-We follow the convention that is usual in physics, in which Fourier
-components are indicated by an index --- also, no tilde (``wiggly'')
+We recover the expressions of \eqref{eq:F_r_to_q} and \eqref{eq:F_q_to_r},
+with a slight change of notation: we follow the convention that is usual in physics,
+in which Fourier components are indicated by aa index --- also, no tilde (``wiggly'')
 hat is used for them for simplicity. Thus, $ \phi_\bfq $ instead of
 $ \tilde{\phi}(\bfq) $.
 
