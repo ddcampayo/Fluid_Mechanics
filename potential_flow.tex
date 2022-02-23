@@ -424,9 +424,9 @@ harmonic (i.e. they satisfy Laplace's equation) and orthogonal. To be
 more precise, the complex function must be analytic. The later
 requirement is pretty general: it means the function must be
 single-valued and and must have a derivative everywhere. The reader
-may worry about the origin and the $1/z$ function. This is, however,
-outside our domain, which ends when $r>R$. However, the fact that our
-domain has this ``hole'' in it has some consequences, as we will see
+may worry about the $1/z$ function blowing up at the origin. This is, however,
+\emph{outside} our domain, which ends when $r>R$. The fact that our
+domain has this ``hole'' in it has some other consequences, as we will see
 next.
 
 
@@ -446,8 +446,11 @@ The most general one is given by
  \phi=\Re(f) \quad
  \psi=\Im(f) .
 \]
-I.e. we may add an additional term which is also analytic. The $i
-\Gamma/(2\pi)$ factor is chosen for convenience, as will become
+I.e. we may add an additional term which is also analytic.%
+\footnote{To be precise, it is not, since $\log z$ blows up at
+the origin. But, as with $1/z$ before, the origin is not part of
+our domain.}
+The $i \Gamma/(2\pi)$ factor is chosen for convenience, as will become
 clear. Both $\phi$ and $\psi$ are still harmonic and orthogonal, since
 $\log(z)$ is analytic. Notice $i \log(z)= i \log(r) - \theta$, so
 $\phi$ contains a term that is just the polar angle, while $\psi$ will
@@ -468,21 +471,24 @@ The name of $\Gamma$ is ``circulation'', since
 \[
 \Gamma = \oint_C \bfu\cdot d\mathbf{l}
 \]
-for any contour around the cylinder \footnote{This makes the velocity
+for any contour around the cylinder.%
+\footnote{This makes the velocity
   field non-conservative, which is again allowed due to the domain
-  being not simply-connected.}.
+  being not simply-connected.}
 
 At the surface of the cylinder,
-\[
-u= u_\theta =   u_0  2 \sin(\theta) +\frac{\Gamma}{2\pi R} .
-\]
+\begin{equation}\label{eq:u_surface_cyl_pot_circ}
+	u= u_\theta =  2 u_0  \sin(\theta) +\frac{\Gamma}{2\pi R} .
+\end{equation}
 The stagnation points then move away from their positions, to points given by
-\[
-\sin(\theta_\mathrm{st})  = \frac{\Gamma}{4\pi R u_0} .
-\]
-This has two solutions, of course, as long as the right-hand side is
-between $-1$ and $1$. For values below or above, the points coalesce
-into a single stagnation point that is outside the cylinder.
+\begin{equation}\label{eq:u_stag_cyl_pot_circ}
+	\sin(\theta_\mathrm{st})  = -\frac{\Gamma}{4\pi R u_0} .
+\end{equation}
+This has two solutions, of course, symmetrically located about the vertical axis.
+Notice that the minus sign means that the
+stagnation point will be below the horizontal axis for positive
+circulation. For values as the right-hand side above $1$ or below $-1$,
+the points coalesce into a single stagnation point that is outside the cylinder.
 
 \begin{figure}
   \centering
@@ -518,19 +524,43 @@ is to map our solution for a cylinder to another, more wing-like,
 shape, by some conformal transformations. These transformations, or
 ``mappings'', preserve the harmonicity of functions --- hence the
 transformed $\phi$ and $\psi$ will still be solutions of Laplace's
-equation. Historically, the best known mappings are the Joukowsky
-K\'arm\'an–Trefftz transforms.
+equation. Historically, the best known mappings are the Joukowsky-K\'arm\'an–Trefftz transforms.
 
-For a plane wing, it makes sense to relate circulation and lift, since
+For an airplane wing, it makes sense to relate circulation and lift, since
 this captures, in a way, the fact that the velocity is higher at the
 top of the wing, lower below, so the net circulation is non zero. (Of
 course, this cannot hold right at the surface of an actual wing, since
 the velocity there will be zero. But this can be measured somewhat
-further away, beyond a boundary layer.) For a cylinder, this makes
-little sense, but this picture is sometimes used to explain the Magnus
-effect. This causes a rotating cylinder to bend as it moves across a
-fluid. This is used (for spheres) in sports, such as tennis, golf and
-football. Also, for cylinder-like rotors in ``rotor ships,'' which use
+further away, beyond a boundary layer.) The question is, of course,
+how to provide an expression for the value of the circulation $\Gamma$.
+The historical answer is given by the Kutta condition: at the trailing
+edge of the wing, there should be an stagnation point.
+
+The original argument by Kutta actually applies to the velocity being the
+same at the two sides of the trailing edge of a wing. This is explained by
+the fact that the velocity field should not include discontinuities. In
+fact, such a velocity field may be allowed in the Euler equations, but in
+an ideal fluid the viscosity, however small, will smear out such jumps. 
+In any case, according to our inviscid
+solution the velocity is always tangential to the wing. The only
+way the velocity can match, coming from opposite sides of the wing, is by
+being zero. Thus, the wing geometry fixes the angle $\theta_\text{st}$  on
+the cylinder, after a Joukowsky transform. Eq. \eqref{eq:u_stag_cyl_pot_circ}
+then implies $\Gamma = - 4\pi R u_0 \sin(\theta_\text{st})$, hence
+Eq. \eqref{eq:lift_potential_cyl} yields
+\[
+\frac{L}{H} = -4\pi R \rho u_0^2 \sin(\theta_\text{st}) ,
+\]
+with the prediction that the lift force will increase quadratically with speed.
+The minus sign should not cause concern, since the angles are negative for
+positive circulation. Notice there is also a prediction of a maximum lift force,
+when the sine has a value of $-1$, which is perhaps an indication of the
+stalling phenomenon (?).
+
+Another way to fix the value of the vorticity is when the cylinder is supposed
+to be rotating with angular velocity $\omega_0$. In this case, lift is generated
+by the Magnus effect. This effect is used (for spheres) in sports, such as tennis, golf and
+football. Also, for cylinder-like rotors, in ``rotor ships,'' which use
 the Magnus effect for propulsion.
 
 We may obtain an expression for the Magnus force by equating the
@@ -543,9 +573,9 @@ velocity:
 \]
 This is a sort of ``no-slip'' condition --- but, incomplete,
 since the correct condition would be the whole tangential velocity
-being equal to the cylinder surface velocity. This requirement
-is, again, too strong for an ideal fluid, and is only met when
-viscosity is introduced.
+being equal to the cylinder surface velocity, and we are equating
+its mean value only. This requirement is, again, too strong for an ideal fluid,
+and is only met when viscosity is introduced.
 
 The expression for the Magnus force is then,
 \[
