@@ -6,7 +6,7 @@ equations, is established in this section.
 Our set of equations includes the Euler momentum equation, neglecting
 gravity
 \[
-\frac{d \bfu }{\partial t}= - \frac{1}{\rho} \nabla p  .
+\frac{d \bfu }{d t}= - \frac{1}{\rho} \nabla p  .
 \]
 
 Continuity is also important: since we are expecting density waves,
@@ -21,7 +21,9 @@ between variations in the density and variations in the pressure. This
 comes from thermodynamics. Indeed, the reference pressure and density
 are tied by an equation of state
 \[
-p=p(\rho,T) .\] For example, at about $T_0=\SI{300}{\kelvin}$, and a
+p=p(\rho,T) .
+\]
+For example, at about $T_0=\SI{300}{\kelvin}$, and a
 pressure of $p_0=\SI{1e3}{\hecto\pascal}$, we know
 $\rho_0\approx\SI{1.225}{\kilo\gram\per\cubed\meter}$, since those are
 so-called standard conditions.
@@ -66,9 +68,8 @@ pressure:
 \begin{align}
   \label{eq:sound_lin_cont}
   \frac{\partial \bfu }{\partial t} & = - \frac{1}{\rho_0} \nabla p' \\
-  %
-  \rho_0 \kappa \nabla \cdot \mathbf{\rho u} +
-  \frac{\partial p'}{\partial t} =0 
+  % 
+  \frac{\partial p'}{\partial t} = & - \rho_0 \kappa \nabla \cdot \mathbf{u}
 \end{align}
 The kinematic viscosity is defined as $ \nu=\mu/\rho_0$.%
 \index{kinematic viscosity}
