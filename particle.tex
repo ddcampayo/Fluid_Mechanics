@@ -231,7 +231,16 @@ Eq. \ref{eq:nabla_u_def},
   \right] ,
 \end{equation}
 so that $\epsilon$ is the symmetrized version of the gradient of the
-velocity.
+velocity. In compact notation,
+\begin{equation}
+	\label{eq:epsilon_as_grad_u_compact}
+	\epsilon = \frac12
+	\left[
+	\nabla \bfu +
+	\nabla \bfu^{\tran}
+	\right] .
+\end{equation}
+
 
 We may also extend these definitions to the diagonal terms:
 \[
@@ -293,8 +302,24 @@ to build what is called the deviatoric \index{deviatoric} rate of strain tensor:
 \]
 The tensor is traceless by construction. In compact notation,
 \begin{equation}\label{eq:deviatoric_rate_of_strain}
-	\tilde{\epsilon} := \epsilon - \frac13 \left( \nabla\cdot \bfu \right)  \eye .
+	\tilde{\epsilon} := \epsilon - \frac13 \left( \nabla\cdot \bfu \right)  \eye =
+\frac12
+\left[
+\nabla \bfu +
+\nabla \bfu\tran
+\right] - \frac13 \left( \nabla\cdot \bfu \right)  \eye .
 \end{equation}
+
+
+Is is easily demonstrated, that the tensor is traceless, since
+$\Tr  \nabla\bfu = \Tr \nabla\bfu\tran = \divu $. Therefore,
+\[
+\Tr \left( \frac12 \nabla\bfu + \frac12 \nabla\bfu\tran -\frac13 (\divu) \eye \right) =
+2\times \frac12 \divu - 3\times \frac13 (\divu) = 0 .
+\]
+
+
+
 
 \subsection{Continuity, re-revisited}
 \label{sec:continuity3}
