@@ -210,26 +210,35 @@ the air density of approximately $10\%$ about its unperturbed value)
 translates into about ${\SI{140}{\hecto\pascal}}$, which is a $14\%$
 pressure modulation, more or less.
 
-Finally, the velocity may be recovered from \ref{eq:sound_lin_cont}. The
-solution to it is
+Finally, the velocity may be recovered from \ref{eq:sound_lin_cont}.
+The gradient of the pressure field points in the $x$ direction, so the
+velocity must have the form
 \[
 \bfu = u_0  \cos(k x  - \omega t) \bfe_x .
 \]
 It is therefore a purely longitudinal wave, since the particles move
 in the direction of wave propagation, $x$ (at variance with planar
-light waves in vacuum, which is purely transversal).
+light waves in vacuum, which are purely transversal).
 
-The value of $u_0$ is set by the requirement that $\bfu$ is indeed a
-solution:
+The value of $u_0$, the velocity modulation, is tied to the density
+modulation $\rho_A$, since \ref{eq:sound_lin_cont} implies
 \[
-\omega \rho_A - \rho_0 u_0 k = 0 \qquad\implies\qquad
-u_0 = \frac{\rho_A}{\rho_0} c .
+u_0 \omega = \frac{1}{\rho_0}  \rho_A c^2 k
+\qquad\implies\qquad
+\frac{u_0}{c}  = \frac{\rho_A}{\rho_0}.
 \]
+This is an interesting result: the velocity of the particles relative
+to the speed of sound equals the relative density perturbation
+(which, in turn, equals the relative pressure perturbation).
+In the example above, the ratio $\rho_A / \rho_0$ was
+about $0.1$, so the maximum velocity will be $0.1 c$. In fact,
+a Mach number may be defined precisely as this ratio --- to be interpreted
+as a measure of the particles velocities relative to the speed of
+sound of course (the wave itself moves at exactly Mach 1!).
+This Mach number must be small for our approximations
+to remain valid.
 
-The velocity of the particles is therefore related to the speed of
-sound $c$, but lower than it, since the ratio $\rho_A / \rho_0$ (of
-about $0.1$ in the example above) must be small for our approximations
-to remain valid. Also, all three fields, pressure, density, and
+Also, all three fields, pressure, density, and
 velocity are in phase. The speed is moving to the right, and the zones
 with high pressure and density move to the right, while the ones with
 low pressure and density move to the left. If the waved moved to the
@@ -237,4 +246,14 @@ left, the sign of $u_0$ would change, and the situation would be the
 opposite.
 
 
-\section{Mach's number and compressibility}
+\section{Mach's number and incompressibility}
+
+We are often told that water is clearly incompressible, while air is not.
+This is true in a sense, but the compression we carry out in simple
+experiments (trying to compress a bottle filled with liquid, or inflating a tyre)
+have to do with hydrostatics.
+
+It turns out a fluid is not incompressible \textit{per se}: a \emph{flow} is!
+Air, for example, is very nearly incompressible in many situations, very often even for
+airplanes. It turns out the Mach number is crucial in determining
+whether a particular state of flow can be treated as incompressible or not.
