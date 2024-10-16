@@ -22,7 +22,7 @@ other motions are more complicated, since they involve spatial
 derivatives of the velocity. They must: for a constant velocity field
 translation is the only motion that occurs.
 
-\subsubsection{Rotation}
+\subsection{Rotation}
 
 We will refer to particle in figure \ref{fig:}, with vertices A, B,
 and C. Vertex D plays no role --- also, it is sufficient to focus on
@@ -70,16 +70,19 @@ tiny. Hence, we may approximate it by its tangent:
   \caption{\label{fig:particle1}}
 \end{figure}
 
-For a small time, we have the following:
-\[
-dx'=x(B')-x(A') \approx
-(dx+v_x(B) dt) - v_x(A) dt \approx
-dx+
-\left(
-v_x(A) +
-\frac{\partial v_x}{\partial x} dx
-\right ) dt - v_x(A) dt = dx + \frac{\partial v_x}{\partial x} dx dt ,
-\]
+For a small time interval, we have the following:
+\begin{align*}
+	dx' & =
+	  x(B')-x(A') \approx
+	 (dx+v_x(B) dt) - v_x(A) dt  \\
+	& \approx
+	dx+
+	\left(
+	v_x(A) +
+	\frac{\partial v_x}{\partial x} dx
+	\right ) dt - v_x(A) dt \\
+	& = dx + \frac{\partial v_x}{\partial x} dx dt ,
+\end{align*}
 where we have taken the origin to coincide with the position of A. The
 partial derivative is supposed to be evaluated at A, but in the limit
 as $dx$ goes to zero it is just ``at the particle''. Similarly, the opposing
@@ -182,7 +185,7 @@ the indices of $d\Omega_{ij}/ dt$ and the components $d\Omega_k/ dt$
 Levi-Civita symbol.)
 
 
-\subsubsection{Strain}
+\subsection{Strain}
 
 Similarly to the definition of rotation, let us define the strain as
 half the difference between angle $\beta$ and $\alpha$:
@@ -196,7 +199,7 @@ Indeed, if both are equal we get a pure rotation, and no strain. If,
 however, they have the same magnitude but opposite sign, we have a pure
 strain and no rotation.
 
-This definition leads to
+This definition leads to the rate of strain tensor
 \[
 \epsilon_{xy} = \frac12
 \left(
@@ -228,7 +231,16 @@ Eq. \ref{eq:nabla_u_def},
   \right] ,
 \end{equation}
 so that $\epsilon$ is the symmetrized version of the gradient of the
-velocity.
+velocity. In compact notation,
+\begin{equation}
+	\label{eq:epsilon_as_grad_u_compact}
+	\epsilon = \frac12
+	\left[
+	\nabla \bfu +
+	\nabla \bfu^{\tran}
+	\right] .
+\end{equation}
+
 
 We may also extend these definitions to the diagonal terms:
 \[
@@ -236,7 +248,7 @@ We may also extend these definitions to the diagonal terms:
 \]
 which are not really strains, as we show next.
 
-\subsubsection{Dilation}
+\subsection{Dilation (or compression)}
 
 We have derived before that the change on side $dx$ is
 \[
@@ -269,7 +281,7 @@ In the limit as $dt\to 0$,
 \[
 \frac{d V}{dt} = V \sum_j  \epsilon_{jj} .
 \]
-This clearly identifies the diagonal components of the strain tensor
+This clearly identifies the diagonal components of the strain rate tensor
 as those responsible for the relative rate of change of the volume.
 Moreover, due to its definition, the sum of all components (i.e. the
 trace of the tensor) is precisely the divergence of the velocity:
@@ -281,6 +293,33 @@ We therefore arrive at the expression for the rate of change of a particle:
 \[
 \frac{d V}{dt} = V  \nabla\cdot \bfu .
 \]
+
+Also, and since the diagonal terms of the rate of strain tensor are
+not really related to strain at all, there is the possibility to subtract them
+to build what is called the deviatoric \index{deviatoric} rate of strain tensor:
+\[
+\tilde{\epsilon}_{ij} := \epsilon_{ij} - \frac13 \epsilon_{kk} \delta_{ij} .
+\]
+The tensor is traceless by construction. In compact notation,
+\begin{equation}\label{eq:deviatoric_rate_of_strain}
+	\tilde{\epsilon} := \epsilon - \frac13 \left( \nabla\cdot \bfu \right)  \eye =
+\frac12
+\left[
+\nabla \bfu +
+\nabla \bfu\tran
+\right] - \frac13 \left( \nabla\cdot \bfu \right)  \eye .
+\end{equation}
+
+
+Is is easily demonstrated, that the tensor is traceless, since
+$\Tr  \nabla\bfu = \Tr \nabla\bfu\tran = \divu $. Therefore,
+\[
+\Tr \left( \frac12 \nabla\bfu + \frac12 \nabla\bfu\tran -\frac13 (\divu) \eye \right) =
+2\times \frac12 \divu - 3\times \frac13 (\divu) = 0 .
+\]
+
+
+
 
 \subsection{Continuity, re-revisited}
 \label{sec:continuity3}

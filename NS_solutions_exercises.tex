@@ -1,4 +1,44 @@
 \section{Exercises}
 
-Prove the expression for the unsteady Couette flow
+\begin{enumerate}
 
+	\item Prove the expression for the unsteady Couette flow.
+	
+	\item \label{ex:shear_in_wave} Write down the pure-shear stress tensor
+	(see also Eq. \ref{eq:pure_stress_pure_compression}):
+	\[
+	\tau_\mathrm{ps} :=
+	\mu  \left[
+	\left(
+	\nabla\bfu + \nabla\bfu\tran  - \frac23 (\divu)  \eye
+	\right)
+	\right] 
+	\]
+	for our linear wave \ref{eq:wave_form_visc} in the case it is
+	longitudinal. Show that it is traceless (which it must, by
+	definition), but non-zero. This latter fact indicates that our wave
+	is not purely compressive in nature.
+	
+	\item \label{ex:div_of_traceless} Show that the volumetric force due
+	to the previous pure-stress is
+	\[
+	\mu \nabla \cdot  \tau_\mathrm{ps}  = -\frac43 \mu \beta^2 \bfu
+	\]
+	
+	\item \label{ex:sound_att} Find the general solution of
+	Eq. \ref{eq:waves_att_dispersion} for the real and imaginary parts
+	of $\beta$. Hint: use reduced quantities $\beta'= c\beta/\omega $,
+	$\omega'=\omega/\omega_\mathrm{c}$, in terms of which the equation
+	reads simpler:
+	\[
+	\beta'^2 = \frac{1}{1-i \omega'} .
+	\]
+	Then, write $\beta'=k'+i \alpha'$, find its square, and equate real
+	and complex parts on both sides of the equation.  The solution is
+	\begin{align*}
+		2\alpha'^2 &=\frac {1}{\sqrt{1+\omega'^{2}}} - \frac {1}{1+\omega'^{2}} \\
+		2k'^2     &=\frac {1}{\sqrt{1+\omega'^{2}}} + \frac {1}{1+\omega'^{2}}
+	\end{align*}
+	
+	
+\end{enumerate}
