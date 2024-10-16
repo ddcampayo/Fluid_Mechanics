@@ -24,10 +24,18 @@ By expanding in a Taylor series, this may be written as
 dW_x = - \frac{\partial p u_x}{\partial x} \Delta x A \Delta t.
 \]
 
-Now, adding the other three components we find
+Now, adding the other three components, and since $dE=dW$, we find
 \[
-\frac{dW}{dt} = - V \nabla\cdot (p\bfu) .
+\frac{dE}{dt} = - V \nabla\cdot (p\bfu) .
 \]
+
+Dividing by the mass,
+\[
+\frac{d \epsilon}{dt} = - \frac{1}{\rho} \nabla\cdot (p\bfu) ,
+\]
+with the specific energy $\epsilon:=E/M$.
+
+
 
 The right hand side may be expanded
 \[
@@ -41,22 +49,21 @@ Recalling that, from the Euler equation \ref{eq:Euler_momentum} ,
 \nabla p  = \rho \bfg - \rho \frac{d \bfu}{dt} ,
 \]
 we may write
-\[
-\frac{1}{V} \frac{dW}{dt} =
--  p \nabla\cdot \bfu +
-\rho  \bfu \cdot \frac{d \bfu}{dt}  -
-\rho  \bfg \cdot  \bfu .
-\]
-
-Now, multiplying by $1/\rho$:
+%\[
+%\frac{1}{V} \frac{dW}{dt} =
+%-  p \nabla\cdot \bfu +
+%\rho  \bfu \cdot \frac{d \bfu}{dt}  -
+%\rho  \bfg \cdot  \bfu .
+%\]
+%
+%Now, multiplying by $1/\rho$:
 \begin{equation}
   \label{eq:specific_energy}
-  \frac{d \epsilon }{dt} =
+  \frac{d \epsilon}{dt} =
   \bfu \cdot \frac{d \bfu}{dt}  -
   \bfg \cdot  \bfu 
   -  \frac{p}{\rho} \nabla\cdot \bfu ,
 \end{equation}
-where we have defined the specific energy $\epsilon=E/M$.
 
 This may be written as
 \[
@@ -75,8 +82,8 @@ This is clearly a law for
 \[
 e = \epsilon - \frac12 u^2  - \varphi ,
 \]
-where we define $e$, the specific internal energy as the total energy
-minus kinetic energy, minus gravitational potential energy. In other words,
+where we define $e$, the specific internal energy as the total (specific) energy
+minus (specific) kinetic energy, minus the gravitational potential. In other words,
 \[
 \epsilon  = e  + \frac12 u^2  + \varphi .
 \]
@@ -92,10 +99,9 @@ Notice also that in the steady state,
 \[
 \bfu \cdot \nabla e = -  \frac{p}{\rho} \nabla\cdot \bfu.
 \]
-But, recalling our steady Bernoulli principle,
-Eq. \ref{eq:Bern_u_times}, replacing
-$\frac{p}{\rho} \nabla\cdot \bfu$, we arrive at the steady state
-Bernoulli equation for a compressible fluid:
+But, recalling our steady state Bernoulli principle, \eqref{eq:Bern_u_times}, has
+the exact same right hand side, but with a minus sign, 
+we arrive at the steady state Bernoulli equation for a compressible fluid:
 \[
 \bfu \cdot \nabla \left[ e + \frac12 u^2 + \frac{p}{\rho} + \varphi
   \right] = 0 ,
@@ -111,8 +117,9 @@ the specific enthalpy is
 \[
 h=H/M = e + p / \rho ,
 \]
-so the Bernoulli principle claims that the total specific enthalpy
-($h'=h + \frac12 u^2 + \varphi$) is constant along streamlines.
+so the Bernoulli principle claims that the specific enthalpy,
+%($h'=h + \frac12 u^2 + \varphi$)
+$h$,  is constant along streamlines.
 
 We may also find an equation for the enthalpy. In
 Eq. \ref{eq:Euler_energy} above, the right hand side may be changed
