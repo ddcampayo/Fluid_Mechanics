@@ -121,13 +121,14 @@ Also, the velocity squared modulus is
 u^2 = u_r^2 + u_\theta^2  ,
 \]
 which may be readily computed as
-\begin{equation*}
+\begin{equation}
+\label{eq:u2_flow_cylinder}
 u^2 = u_0^2 
 \left[
  1 + \left( \frac{R}{r}\right)^4 -
  2 \left( \frac{R}{r}\right)^2 \cos(2\theta) ,
 \right]
-\end{equation*}
+\end{equation}
 where we have used $\cos(2\theta) =\cos^2(\theta)  - \sin^2(2\theta) $. In
 Fig. \ref{fig:potential_flow_past_cylinder_vel}  it is shown
 that the velocity has maximum values at point at the surface of the
@@ -493,7 +494,7 @@ the points coalesce into a single stagnation point that is outside the cylinder.
 \begin{figure}
   \centering
   \includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_rotating}
-  \caption{\label{fig:}}
+  \caption{\label{fig:potential_flow_past_cylinder_rotating}}
 \end{figure}
 
 
@@ -614,6 +615,40 @@ pushes the surrounding fluid from the fore, which then moves around towards the 
   		fluid,  contour lines of function $ ( \psi - u_0 r\sin\theta )  / (u_0 R)$.
   	\label{fig:potential_flow_past_cylinder_moving}}
 \end{figure}
+
+\subsection{Power and energy}
+
+We may ask ourselves about the power transferred to the fluid, which was discussed in
+\S \ref{ss:Euler_energy}. Since the flow is incompressible,
+\[
+\frac{d \epsilon}{d t} = -\frac{1}{\rho} \bfu \cdot \nabla p .
+\]
+
+The pressure is related by the square of the velocity field (by Bernoulli's principle), hence
+\[
+-\frac{1}{\rho} \bfu \cdot \nabla p =  \frac12 \bfu \cdot \nabla u^2 .
+\]
+The expression of $u^2$ was given in \eqref{eq:u2_flow_cylinder}, from
+which, after some calculations, we find
+\[
+\frac{d \epsilon}{d t} =
+\frac{2 u_0^3 R^3}{r^3}
+\left[ 
+\cos(3\theta) +
+\frac{R^2}{r^2}
+\left( \frac{R^2}{r^2} - 2 \right) \cos(\theta)
+\right] .
+\]
+
+In Fig. \ref{fig:potential_flow_past_cylinder_energy} we show $\ldots$
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_rotating}
+	\caption{\label{fig:potential_flow_past_cylinder_energy}}
+\end{figure}
+
 
 
 \section{Flow past a sphere}
