@@ -624,7 +624,7 @@ We may ask ourselves about the power transferred to the fluid, which was discuss
 \frac{d \epsilon}{d t} = -\frac{1}{\rho} \bfu \cdot \nabla p .
 \]
 
-The pressure is related by the square of the velocity field (by Bernoulli's principle), hence
+The pressure is related to the square of the velocity field (by Bernoulli's principle), hence
 \[
 -\frac{1}{\rho} \bfu \cdot \nabla p =  \frac12 \bfu \cdot \nabla u^2 .
 \]
@@ -640,13 +640,18 @@ which, after some calculations, we find
 \right] .
 \]
 
-In Fig. \ref{fig:potential_flow_past_cylinder_energy} we show $\ldots$
+In Fig. \ref{fig:potential_flow_past_cylinder_energy} we show the power
+for potential flow around a cylinder. This power is defined as the time variation
+of the specific energy $e$. We see there are two zones in the upwind face in which the
+fluid would heat up, and two zones in the downwind face where it would cool down. The
+overall energy change is null.
 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_power}
-	\caption{\label{fig:potential_flow_past_cylinder_energy}}
+	\caption{Specific power (change in specific energy with time) for potential
+		flow past cylinder.  \label{fig:potential_flow_past_cylinder_energy}}
 \end{figure}
 
 
