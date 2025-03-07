@@ -21,7 +21,7 @@ dW_x = u_x \Delta t p A  -  u_x'  \Delta t p' A .
 \]
 By expanding in a Taylor series, this may be written as
 \[
-dW_x = - \frac{\partial p u_x}{\partial x} \Delta x A \Delta t.
+dW_x = - \frac{\partial (p u_x)}{\partial x} \Delta x A \Delta t.
 \]
 
 Now, adding the other three components, and since $dE=dW$, we find
@@ -83,7 +83,7 @@ This is clearly a law for
 e = \epsilon - \frac12 u^2  - \varphi ,
 \]
 where we define $e$, the specific internal energy as the total (specific) energy
-minus (specific) kinetic energy, minus the gravitational potential. In other words,
+minus (specific) kinetic energy, minus the gravitational potential. In other words:
 \[
 \epsilon  = e  + \frac12 u^2  + \varphi .
 \]
@@ -92,10 +92,36 @@ The specific internal energy then satisfies a convection equation with
 a source term due to the divergence of the velocity
 \begin{equation}
   \label{eq:Euler_energy}
-  \frac{d e}{dt}  = -  \frac{p}{\rho} \nabla\cdot \bfu ,  
+  \frac{d e}{dt}  = -  \frac{p}{\rho} \nabla\cdot \bfu .
+\end{equation}
+This means the internal energy can only change through compression
+or expansion, and does not change in incompressible flow.
+To be more precise: in incompressible flow it does not change along
+streamlines, so that the internal energy is just advected by the flow.
+Indeed, temperature advection is an usual pedagogic picture to
+explain the meaning of the advective derivative ---
+as explained below, the internal energy is often
+proportional to the temperature.
+
+
+Indeed, using the continuity equation:
+\[
+- \rho \nabla\cdot \bfu = \frac{d\rho}{dt} .
+\]
+%which means
+Hence,
+\begin{equation}
+%	\quad
+%\Rightarrow
+%\quad
+\label{eq:Euler_dedt_drho_dt}
+\frac{d e}{dt}  = 
+\frac{p}{\rho^2} \frac{d\rho}{dt} .
 \end{equation}
 
-Notice also that in the steady state,
+
+
+Notice also that in the steady state, $\partial e/\partial t=0$, and
 \[
 \bfu \cdot \nabla e = -  \frac{p}{\rho} \nabla\cdot \bfu.
 \]
@@ -117,39 +143,28 @@ the specific enthalpy is
 \[
 h=H/M = e + p / \rho ,
 \]
-so the Bernoulli principle claims that the specific enthalpy,
+so the Bernoulli principle claims that 
+$ h + \frac12 u^2 +  \varphi  $
+%specific enthalpy,
 %($h'=h + \frac12 u^2 + \varphi$)
-$h$,  is constant along streamlines.
+%$h$, plus the kinetic and gravitational terms,
+is constant along streamlines.
 
-We may also find an equation for the enthalpy. In
-Eq. \ref{eq:Euler_energy} above, the right hand side may be changed
-using the continuity equation:
+We may also find an equation for the enthalpy, since
 \[
-- \rho \nabla\cdot \bfu = \frac{d\rho}{dt} .
+\frac{d h}{d t} =
+\frac{d e}{d t}  +  \frac{d (p / \rho) }{dt} =
+\left[ \frac{d e}{d t}  -
+\frac{ p }{\rho^2}  \frac{d \rho }{dt} \right]  +
+\frac{ 1 }{\rho} \frac{d p }{dt}  
+= \frac{ 1 }{\rho} \frac{d p }{dt}  ,
 \]
-which means
-\[
--  \frac{p}{\rho} \nabla\cdot \bfu =
-\frac{p}{\rho^2} \frac{d\rho}{dt}
-\]
+where we have used \eqref{eq:Euler_dedt_drho_dt} to cancel the terms
+inside the square brackets.
 
-But
-\[
-\frac{d (p / \rho) }{dt} =
-\frac{ 1 }{\rho} 
-\frac{d p }{dt} -
-\frac{ p }{\rho^2} 
-\frac{d \rho }{dt}  .
-\]
-Hence,
-\[
-\frac{d ( e + p / \rho) }{dt} = \frac{ 1 }{\rho} \frac{d p }{dt} ,
-\]
-or
-\[
-\frac{d h }{dt} = \frac{ 1 }{\rho} \frac{d p }{dt} .
-\]
-Changes in the enthalpy are therefore tied to changes in pressure.
+This shows that, while changes in the internal energy are tied to changes in the density,
+Eq.~\eqref{eq:Euler_dedt_drho_dt}, changes in the enthalpy are
+tied to changes in pressure.
 
 
 \subsection{Heat flux}

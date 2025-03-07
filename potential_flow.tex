@@ -619,15 +619,21 @@ pushes the surrounding fluid from the fore, which then moves around towards the 
 \subsection{Power and energy}
 
 We may ask ourselves about the power transferred to the fluid, which was discussed in
-\S \ref{ss:Euler_energy}. Since the flow is incompressible,
+\S \ref{ss:Euler_energy}. Since the flow is incompressible, the rate in variation
+of the specific energy is:
 \[
 \frac{d \epsilon}{d t} = -\frac{1}{\rho} \bfu \cdot \nabla p .
 \]
 
 The pressure is related to the square of the velocity field (by Bernoulli's principle), hence
 \[
--\frac{1}{\rho} \bfu \cdot \nabla p =  \frac12 \bfu \cdot \nabla u^2 .
+\frac{d \epsilon}{d t} =  \bfu \cdot \left( \frac12  \nabla u^2\right)  .
 \]
+But this is trivial, since $\epsilon = u^2 /2 $ plus constant terms (the internal
+energy is constant along a streamline in incompressible ideal flow, \eqref{eq:Euler_energy}),
+and in this steady state only the time derivative is just the convective derivative.
+
+
 The expression of $u^2$ was given in \eqref{eq:u2_flow_cylinder}, from
 which, after some calculations, we find
 \[
@@ -641,17 +647,16 @@ which, after some calculations, we find
 \]
 
 In Fig. \ref{fig:potential_flow_past_cylinder_energy} we show the power
-for potential flow around a cylinder. This power is defined as the time variation
-of the specific energy $e$. We see there are two zones in the upwind face in which the
-fluid would heat up, and two zones in the downwind face where it would cool down. The
+for potential flow around a cylinder, defined as the time variation
+of the specific kinetic energy. We see there are two zones in the upwind face in which the
+fluid speeds up, and two zones in the downwind face where it would slows down. The
 overall energy change is null.
-
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.4\linewidth]{figures/potential_flow_past_cylinder_power}
 	\caption{Specific power (change in specific energy with time) for potential
-		flow past cylinder.  \label{fig:potential_flow_past_cylinder_energy}}
+		flow past cylinder. This is due only to changes in the kinetic energy. \label{fig:potential_flow_past_cylinder_energy}}
 \end{figure}
 
 
